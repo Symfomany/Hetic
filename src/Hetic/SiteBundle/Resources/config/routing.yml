@@ -1,0 +1,80 @@
+hetic_site_hello:
+  pattern:  /
+  defaults: { _controller: HeticSiteBundle:Default:index }
+
+hetic_about:
+  pattern:  /about
+  defaults: { _controller: HeticSiteBundle:Default:about }
+
+hetic_contact:
+  pattern:  /contact
+  defaults: { _controller: HeticSiteBundle:Default:contact }
+
+hetic_site_remove:
+    pattern:  /remove/article/{id}
+    defaults: { _controller: HeticSiteBundle:Default:removeArticle }
+
+hetic_site_add_star:
+    pattern:  /addfavoris/addstar/{id}
+    defaults: { _controller: HeticSiteBundle:Default:putInStar }
+
+hetic_site_remove_star:
+    pattern:  /articles/removestar/{id}
+    defaults: { _controller: HeticSiteBundle:Default:pullInStar }
+
+hetic_site_articles_by_cat:
+    pattern:  /articles/sortbycategory/{id}
+    defaults: { _controller: HeticSiteBundle:Default:getArticlesByCategory }
+
+hetic_site_articles_by_tags:
+    pattern:  /articles/{tag}
+    defaults: { _controller: HeticSiteBundle:Default:getArticlesByTags }
+
+hetic_site_visible:
+    pattern:  /visible/{id}
+    defaults: { _controller: HeticSiteBundle:Default:visible }
+
+hetic_site_invisible:
+    pattern:  /invisible/{id}
+    defaults: { _controller: HeticSiteBundle:Default:invisible }
+
+hetic_site_edit:
+    pattern:  /editable/{id}
+    defaults: { _controller: HeticSiteBundle:Default:editable }
+
+hetic_article_see:
+    pattern:  /article/{id}
+    defaults: { _controller: HeticSiteBundle:Default:seearticle }
+
+hetic_article_more:
+    pattern:  /bonus-article/{id}
+    defaults: { _controller: HeticSiteBundle:Default:bonusarticle }
+
+hetic_article_less:
+    pattern:  /malus-article/{id}
+    defaults: { _controller: HeticSiteBundle:Default:malusarticle }
+
+hetic_category_detail:
+    pattern:  /category/{id}
+    defaults: { _controller: HeticSiteBundle:Default:categorydetail }
+
+hetic_category_sorted:
+    pattern:  /sort-by-category/{id}
+    defaults: { _controller: HeticSiteBundle:Default:categorysort }
+
+hetic_article_detail:
+    pattern:  /article-single/{id}
+    defaults: { _controller: HeticSiteBundle:Default:articledetail }
+
+hetic_category_create:
+    pattern:  /category-add/
+    defaults: { _controller: HeticSiteBundle:Default:categorycreate }
+
+hetic_category_edit:
+    pattern:  /category-edit/{id}
+    defaults: { _controller: HeticSiteBundle:Default:categoryedit }
+
+
+hetic_tag_remove:
+    pattern:  /tag-remove/{id}/{aid}
+    defaults: { _controller: HeticSiteBundle:Default:tagremove }

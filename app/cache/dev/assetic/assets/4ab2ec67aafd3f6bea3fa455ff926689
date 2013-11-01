@@ -1,0 +1,5 @@
+/* line 1, assetic_compassvuZZMK.sass */
+body {
+  background: #f6f4f4 url(https://www.myposeo.com/img/frontend/main_background.jpg) repeat;
+  margin: 0;
+}

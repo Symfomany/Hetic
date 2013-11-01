@@ -1,0 +1,27 @@
+{% block topmenu %}
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="{{ path('hetic_site_hello') }}">Hetic</a>
+                <div class="nav-collapse collapse">
+                    <p class="navbar-text pull-right">
+                       Copyrights @Hetic Symfony 2
+                    </p>
+                    <ul class="nav">
+                        <li {% if app.request.attributes.get('_route') == 'hetic_site_hello' %}class="active"{% endif %}><a href="{{ path('hetic_site_hello') }}"><i class="icon-home"></i> Home</a></li>
+                        <li {% if app.request.attributes.get('_route') == 'hetic_about' %}class="active"{% endif %}><a href="{{ path('hetic_about') }}"><i class="icon-question-sign"></i> About</a></li>
+                        <li {% if app.request.attributes.get('_route') == 'hetic_contact' %}class="active"{% endif %}><a href="{{ path('hetic_contact') }}"><i class="icon-envelope"></i> Contact</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+    <br /><br />
+    <br /><br />
+{% endblock %}
+

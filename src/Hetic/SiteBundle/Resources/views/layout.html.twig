@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Source de Symfony 2 à Hetic{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css" />
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic' rel='stylesheet' type='text/css'>    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400" />
+    {% stylesheets '@HeticSiteBundle/Resources/public/css/main.sass' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+
+{% block body %}
+    {% include 'HeticSiteBundle:Default:topmenu.html.twig' %}
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                {% for flashMessage in app.session.flashbag.get('notice') %}
+                    <div class="flash-notice alert alert-block">
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+{% endblock %}

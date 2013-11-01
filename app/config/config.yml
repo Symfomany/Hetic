@@ -1,0 +1,128 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+
+framework:
+    esi:             ~
+    #translator:      { fallback: %locale% }
+    secret:          %secret%
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+        #assets_version: SomeVersionScheme
+    default_locale:  "%locale%"
+    trusted_proxies: ~
+    session:         ~
+    fragments: { path: /_fragment }
+    http_method_override: true
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+    form:
+      resources:
+          - 'HeticSiteBundle:Form:fields.html.twig'
+
+
+
+# Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        ["HeticSiteBundle"]
+    #java: /usr/bin/java
+    filters:
+         cssrewrite: ~
+         uglifyjs:
+          bin: '/usr/bin/uglifyjs'
+#         less:
+#            node: /usr/local/bin/node
+#            node_paths: [/usr/local/lib/node, /usr/local/lib/node_modules]
+         coffee:
+            bin: /usr/bin/coffee
+            node: /usr/bin/node
+            apply_to: "\.coffee$"
+         sass:
+            bin: /usr/local/bin/sass
+         compass:
+            bin: /usr/local/bin/compass
+            apply_to: "\.s[ac]ss$"
+         yui_css:
+            jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   %database_driver%
+        host:     %database_host%
+        port:     %database_port%
+        dbname:   %database_name%
+        user:     %database_user%
+        password: %database_password%
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver, add the path in parameters.yml
+        # e.g. database_path: %kernel.root_dir%/data/data.db3
+        # path:     %database_path%
+
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: %mailer_transport%
+    host:      %mailer_host%
+    username:  %mailer_user%
+    password:  %mailer_password%
+    spool:     { type: memory }
+
+#Symfony2 Extensions
+sensio_framework_extra:
+    router:  { annotations: true }
+    request: { converters: true }
+    view:    { annotations: false }
+    cache:   { annotations: true }
+
+fos_rest:
+    param_fetcher_listener: true
+    body_listener: true
+    format_listener: true
+    routing_loader:
+      default_format: json
+    view:
+        view_response_listener: 'force'
+
+services:
+    twig.extension.text:
+       class: Twig_Extensions_Extension_Text
+       tags:
+           - { name: twig.extension }
+
+jms_security_extra:
+    # Whether you want to secure all services (true), or only secure specific
+    # services (false); see also below
+    secure_all_services: true
+
+    # Enabling this setting will add an additional special attribute "ROLE_IDDQD".
+    # Anybody with this attribute will effectively bypass all security checks.
+    enable_iddqd_attribute: false
+
+    # Enables expression language
+    expressions: true
+
+knp_paginator:
+    page_range: 5                      # default page range used in pagination control
+    default_options:
+        page_name: page                # page query parameter name
+        sort_field_name: sort          # sort field query parameter name
+        sort_direction_name: direction # sort direction query parameter name
+        distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
+    template:
+        pagination: HeticSiteBundle:Pagination:sliding.html.twig     # sliding pagination controls template
+        sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
