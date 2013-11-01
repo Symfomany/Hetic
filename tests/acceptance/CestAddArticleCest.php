@@ -15,7 +15,7 @@ class CestAddArticleCest
     }
 
     public function onHome(WebGuy $I) {
-        $I->wantTo('Ajouter un article');
+        $I->wantTo('Aller sur la home');
         $I->amOnPage('/');
         $I->seeElement('h2');
         $I->dontSeeInCurrentUrl('/users/');
@@ -25,6 +25,7 @@ class CestAddArticleCest
     }
 
     public function persistOnArticle(WebGuy $I) {
+        $I->wantTo('Enregistrer un article');
         $em = $I->grabServiceFromContainer('doctrine');
         $category = $em->getRepository('HeticSiteBundle:Category')->find(1);
         $I->expect($category->getName());
@@ -35,8 +36,9 @@ class CestAddArticleCest
     }
 
     public function addAnArticle(WebGuy $I) {
-        $I->amOnPage('/');
+        $I->wantTo('Ajouter un article depuis la home');
 
+        $I->amOnPage('/');
         $content = "Contenu de mon article test";
         $I->submitForm('form',
             array(
@@ -55,6 +57,8 @@ class CestAddArticleCest
     }
 
     public function addAnCategory(WebGuy $I) {
+        $I->wantTo('Ajouter une category depuis la home');
+
         $I->amOnPage('/');
 
         $content = "Contenu de ma category test";
@@ -66,10 +70,11 @@ class CestAddArticleCest
             ));
         $errors = $I->grabTextFrom('.alert');
         $I->expect($errors);
-
     }
 
     public function getInCategory(WebGuy $I) {
+        $I->wantTo('Etre dans une category');
+
         $I->amOnPage('/');
         $I->click('table tr:nth-child(3) td:nth-child(3) a');
         $I->see("Sports extremes");
@@ -78,6 +83,8 @@ class CestAddArticleCest
 
 
     public function modifyOnArticle(WebGuy $I) {
+        $I->wantTo('Modifier une category depuis la home');
+
         $I->amOnPage('/');
         $I->click('table tr:nth-child(3) .edit');
         $I->see("Editer mon article");
@@ -104,17 +111,23 @@ class CestAddArticleCest
     }
 
     public function visibleAnArticle(WebGuy $I) {
+        $I->wantTo('Rendre visibe/invisible un article');
+
         $I->amOnPage('/');
         $I->click('table tr:nth-child(2) .visible');
     }
 
     public function morePointAnArticle(WebGuy $I) {
+        $I->wantTo('Ajouter un point à un article');
+
         $I->amOnPage('/');
         $I->click('table tr:nth-child(2) .plus');
         $I->click('table tr:nth-child(3) .less');
     }
 
     public function naviguateOnArticle(WebGuy $I) {
+        $I->wantTo('Naviguer sur un article');
+
         $I->amOnPage('/');
         $I->seeLink('A La Une');
         $I->click('#action_cates a:nth-child(3)');
@@ -128,7 +141,25 @@ class CestAddArticleCest
         $I->see("Lilian Thuram");
     }
 
+    public function editAdnCategory(WebGuy $I) {
+        $I->wantTo('Editer une category');
+
+        $I->amOnPage('/category/3');
+        $I->see('A La Une');
+        $I->click('Editer');
+        $I->submitForm('form',
+            array(
+                'name' => 'A la une',
+                'description' => 'A la deux',
+                'articles' => array(47),
+            ));
+        $errors = $I->grabTextFrom('.alert');
+        $I->expect($errors);
+    }
+
     public function removeAnArticle(WebGuy $I) {
+        $I->wantTo('Supprimer un article');
+
         $I->amOnPage('/');
         $I->see('Sécurité Routière : Souriez ! Vous Êtes Flashés - Le Retour');
 //        $I->click('table tr:nth-child(4) .remove');

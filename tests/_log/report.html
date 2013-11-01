@@ -1,0 +1,662 @@
+<html>
+ <head>
+	<title>Test results</title>
+	<meta charset='utf-8'>
+	<link href='http://fonts.googleapis.com/css?family=Varela+Round&v2' rel='stylesheet' type='text/css'>
+
+	 <style>
+		 .layout {
+		 margin: 0 auto;
+		 width: 960px;
+
+		 }
+		 body { font-family: arial, serif; margin: 0; padding 0; background: #333;}
+		 h1,h2,h3 { arial, serif; color: white; }
+		 h1 { font-size: 2.5em; }
+		 h2 { font-size: 1.3em; }
+         h3 { font-size: 1em; color: #84BBDD; margin: 0.5em 0;}
+
+		 table {border: none; margin: 0; padding 0;}
+		 .scenarioStepsTable .stepName { padding: 5px }
+
+		 .scenarioStepsTable td {
+		 font-size: 80%;
+		 border: 1px solid #ccc;
+		 font-family: 'Varela Round', arial;
+		 -webkit-border-radius: 5px;
+		 -moz-border-radius: 5px;
+		 border-radius: 5px;
+		 background: rgb(255,255,255); /* Old browsers */
+		 background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6+ */
+		 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(229,229,229,1))); /* Chrome,Safari4+ */
+		 background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10+,Safari5.1+ */
+		 background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Opera11.10+ */
+		 background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* IE10+ */
+		 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+		 background: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C */
+
+		 }
+
+		 p {
+		    cursor: pointer;
+		 padding: 5px;
+
+		 -webkit-border-radius: 5px;
+		 -moz-border-radius: 5px;
+		 border-radius: 5px;
+
+		 }
+
+		 .header { font-size: large; font-weight: bold; }
+		 p.scenarioSuccess {
+		 background: rgb(157,213,58); /* Old browsers */
+		 background: -moz-linear-gradient(top, rgba(157,213,58,1) 0%, rgba(161,213,79,1) 50%, rgba(124,188,10,1) 100%); /* FF3.6+ */
+		 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(157,213,58,1)), color-stop(50%,rgba(161,213,79,1)), color-stop(100%,rgba(124,188,10,1))); /* Chrome,Safari4+ */
+		 background: -webkit-linear-gradient(top, rgba(157,213,58,1) 0%,rgba(161,213,79,1) 50%,rgba(124,188,10,1) 100%); /* Chrome10+,Safari5.1+ */
+		 background: -o-linear-gradient(top, rgba(157,213,58,1) 0%,rgba(161,213,79,1) 50%,rgba(124,188,10,1) 100%); /* Opera11.10+ */
+		 background: -ms-linear-gradient(top, rgba(157,213,58,1) 0%,rgba(161,213,79,1) 50%,rgba(124,188,10,1) 100%); /* IE10+ */
+		 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9dd53a', endColorstr='#7cbc0a',GradientType=0 ); /* IE6-9 */
+		 background: linear-gradient(top, rgba(157,213,58,1) 0%,rgba(161,213,79,1) 50%,rgba(124,188,10,1) 100%); /* W3C */
+
+		 }
+
+
+		 .scenario { color: black; }
+		 p.scenarioFailed { color: black;
+		 background: rgb(204,0,0); /* Old browsers */
+		 background: -moz-linear-gradient(top, rgba(204,0,0,1) 0%, rgba(119,0,0,1) 100%); /* FF3.6+ */
+		 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(204,0,0,1)), color-stop(100%,rgba(119,0,0,1))); /* Chrome,Safari4+ */
+		 background: -webkit-linear-gradient(top, rgba(204,0,0,1) 0%,rgba(119,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+		 background: -o-linear-gradient(top, rgba(204,0,0,1) 0%,rgba(119,0,0,1) 100%); /* Opera11.10+ */
+		 background: -ms-linear-gradient(top, rgba(204,0,0,1) 0%,rgba(119,0,0,1) 100%); /* IE10+ */
+		 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc0000', endColorstr='#770000',GradientType=0 ); /* IE6-9 */
+		 background: linear-gradient(top, rgba(204,0,0,1) 0%,rgba(119,0,0,1) 100%); /* W3C */
+		 }
+
+
+		 table.scenarioFailed tr:last-child { font-weight: bold; color: red }
+
+		 td.scenarioSuccess { color: green }
+		 td.scenarioFailed { color: red }
+		 .scenarioSkipped { color: teal; }
+		 .scenarioIncomplete { color: gray; }
+		 .scenarioStepsTable { margin-left: 10px; display: none; color: #333; }
+
+		 #stepContainerSummary {
+		 background: white;
+		 -webkit-border-radius: 5px;
+		 -moz-border-radius: 5px;
+		 border-radius: 5px;
+		 padding: 20px;
+		 }
+	 </style>
+
+  <script type="text/javascript">
+  function showHide(nodeId, linkObj)
+  {
+    var subObj = document.getElementById('stepContainer' + nodeId);
+
+    if (linkObj.innerHTML.indexOf('+')>0) {
+      linkObj.innerHTML = linkObj.innerHTML.replace('+','-');
+      subObj.style.display='block';
+      subObj.style.width = '100%';
+    } else {
+      linkObj.innerHTML = linkObj.innerHTML.replace('-','+');
+      subObj.style.display='none';
+    }
+  }
+  </script>
+ </head>
+
+ <body>
+ <div class="layout">
+ <h1>Codeception Results <small><span style="color: green">OK</span> (5.8s)</small></h1>
+
+
+	 <table border="0" style="width: 100%;">
+		<tr>
+ <td>
+     <h3>Unit Tests</h3>
+ </td>
+</tr>   <tr>
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('1', this)">[+] test me (0.02s)</p>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer1">
+
+     </table>
+    </td>
+   </tr>
+
+   <tr>
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('2', this)">[+] test get articles by category (0.1s)</p>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer2">
+
+     </table>
+    </td>
+   </tr>
+
+   <tr>
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('3', this)">[+] test get articles by tags (0.04s)</p>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer3">
+
+     </table>
+    </td>
+   </tr>
+
+   <tr>
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('4', this)">[+] test find category (0.03s)</p>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer4">
+
+     </table>
+    </td>
+   </tr>
+
+<tr>
+ <td>
+     <h3>Functional Tests</h3>
+ </td>
+</tr><tr>
+ <td>
+     <h3>Acceptance Tests</h3>
+ </td>
+</tr>   <tr>
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('5', this)">[+] ajouter un article (AddArticleCept.php) (0.78s)</p>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer5">
+      <tr>
+       <td class="stepName">I am on page <span style="color: #732E81;">"/"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see element <span style="color: #732E81;">"h2"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I don't see in current url <span style="color: #732E81;">"/users/"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I don't see link <span style="color: #732E81;">"Logout"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see current url equals <span style="color: #732E81;">"/"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see in current url <span style="color: #732E81;">"/"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I grab service from container <span style="color: #732E81;">"doctrine"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I <strong>I expect ?</strong></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I <strong>I expect GET</strong></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I <strong>I expect Drak</strong></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I <strong>I expect Drak</strong></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see link <span style="color: #732E81;">"A La Une"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I click <span style="color: #732E81;">"#action_cates a:nth-child(3)"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see <span style="color: #732E81;">"Gérard De Villiers,"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I click <span style="color: #732E81;">"Gérard De Villiers,"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I grab from current url <span style="color: #732E81;"></span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I <strong>I expect ?</strong></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see <span style="color: #732E81;">"Gérard De Villiers,"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see <span style="color: #732E81;">"Date de publication de l'article: 20-11-2013"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see <span style="color: #732E81;">"Lilian Thuram"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I am on page <span style="color: #732E81;">"/"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see <span style="color: #732E81;">"Sécurité Routière : Souriez ! Vous Êtes Flashés - Le Retour"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see <span style="color: #732E81;">"<i class="icon-star"></i>"</span></td>
+      </tr>
+
+
+     </table>
+    </td>
+   </tr>
+
+   <tr>
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('6', this)">[+] ajouter un article (CestAddArticleCest.onHome) (0.22s)</p>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer6">
+      <tr>
+       <td class="stepName">I am on page <span style="color: #732E81;">"/"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see element <span style="color: #732E81;">"h2"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I don't see in current url <span style="color: #732E81;">"/users/"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I don't see link <span style="color: #732E81;">"Logout"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see current url equals <span style="color: #732E81;">"/"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see in current url <span style="color: #732E81;">"/"</span></td>
+      </tr>
+
+
+     </table>
+    </td>
+   </tr>
+
+   <tr>
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('7', this)">[+] persist on article (CestAddArticleCest.persistOnArticle) (0.03s)</p>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer7">
+      <tr>
+       <td class="stepName">I grab service from container <span style="color: #732E81;">"doctrine"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I <strong>I expect ?</strong></td>
+      </tr>
+
+
+     </table>
+    </td>
+   </tr>
+
+   <tr>
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('8', this)">[+] add an article (CestAddArticleCest.addAnArticle) (0.57s)</p>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer8">
+      <tr>
+       <td class="stepName">I am on page <span style="color: #732E81;">"/"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I submit form <span style="color: #732E81;">"form",{"title":"Ici le titre de mon article de test","content":"Contenu de mon article test","category":1,"isVisible":true,"point":8,"datePublication":"2015-05-07","nature":1,"tags":[10]}</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I grab text from <span style="color: #732E81;">".alert"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I <strong>I expect ?</strong></td>
+      </tr>
+
+
+     </table>
+    </td>
+   </tr>
+
+   <tr>
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('9', this)">[+] add an category (CestAddArticleCest.addAnCategory) (0.53s)</p>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer9">
+      <tr>
+       <td class="stepName">I am on page <span style="color: #732E81;">"/"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I submit form <span style="color: #732E81;">"#addcategory",{"name":"New Caté !","description":"Contenu de ma category test","articles":[25,28]}</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I grab text from <span style="color: #732E81;">".alert"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I <strong>I expect ?</strong></td>
+      </tr>
+
+
+     </table>
+    </td>
+   </tr>
+
+   <tr>
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('10', this)">[+] get in category (CestAddArticleCest.getInCategory) (0.3s)</p>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer10">
+      <tr>
+       <td class="stepName">I am on page <span style="color: #732E81;">"/"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I click <span style="color: #732E81;">"table tr:nth-child(3) td:nth-child(3) a"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see <span style="color: #732E81;">"Sports extremes"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see <span style="color: #732E81;">"le Dr Muller acquitté"</span></td>
+      </tr>
+
+
+     </table>
+    </td>
+   </tr>
+
+   <tr>
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('11', this)">[+] modify on article (CestAddArticleCest.modifyOnArticle) (0.7s)</p>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer11">
+      <tr>
+       <td class="stepName">I am on page <span style="color: #732E81;">"/"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I click <span style="color: #732E81;">"table tr:nth-child(3) .edit"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see <span style="color: #732E81;">"Editer mon article"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I grab from current url <span style="color: #732E81;"></span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I <strong>I expect ?</strong></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I submit form <span style="color: #732E81;">"form",{"title":"Près de Nancy : le Dr Muller acquitté du meurtre de sa femme","content":"La cour d'assises de Meurthe-et-Moselle a acquitté jeudi le docteur Jean-Louis Muller de l'accusation de meurtre de sa femme en 1999. Il comparaissait pour la troisième fois dans cette affaire, après avoir été condamné à deux reprises à 20 ans de prison. ","category":4,"isVisible":true,"point":10,"datePublication":"2014-12-10","nature":2,"tags":[5,8,11,16]}</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I grab text from <span style="color: #732E81;">".alert"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I <strong>I expect ?</strong></td>
+      </tr>
+
+
+     </table>
+    </td>
+   </tr>
+
+   <tr>
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('12', this)">[+] visible an article (CestAddArticleCest.visibleAnArticle) (0.51s)</p>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer12">
+      <tr>
+       <td class="stepName">I am on page <span style="color: #732E81;">"/"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I click <span style="color: #732E81;">"table tr:nth-child(2) .visible"</span></td>
+      </tr>
+
+
+     </table>
+    </td>
+   </tr>
+
+   <tr>
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('13', this)">[+] more point an article (CestAddArticleCest.morePointAnArticle) (0.81s)</p>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer13">
+      <tr>
+       <td class="stepName">I am on page <span style="color: #732E81;">"/"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I click <span style="color: #732E81;">"table tr:nth-child(2) .plus"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I click <span style="color: #732E81;">"table tr:nth-child(3) .less"</span></td>
+      </tr>
+
+
+     </table>
+    </td>
+   </tr>
+
+   <tr>
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('14', this)">[+] naviguate on article (CestAddArticleCest.naviguateOnArticle) (0.52s)</p>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer14">
+      <tr>
+       <td class="stepName">I am on page <span style="color: #732E81;">"/"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see link <span style="color: #732E81;">"A La Une"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I click <span style="color: #732E81;">"#action_cates a:nth-child(3)"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see <span style="color: #732E81;">"Gérard De Villiers,"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I click <span style="color: #732E81;">"Gérard De Villiers,"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I grab from current url <span style="color: #732E81;"></span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I <strong>I expect ?</strong></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see <span style="color: #732E81;">"Gérard De Villiers,"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see <span style="color: #732E81;">"Date de publication de l'article: 20-11-2013"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see <span style="color: #732E81;">"Lilian Thuram"</span></td>
+      </tr>
+
+
+     </table>
+    </td>
+   </tr>
+
+   <tr>
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('15', this)">[+] edit adn category (CestAddArticleCest.editAdnCategory) (0.48s)</p>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer15">
+      <tr>
+       <td class="stepName">I am on page <span style="color: #732E81;">"/category/3"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see <span style="color: #732E81;">"A La Une"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I click <span style="color: #732E81;">"Editer"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I submit form <span style="color: #732E81;">"form",{"name":"A la une","description":"A la deux","articles":[47]}</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I grab text from <span style="color: #732E81;">".alert"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I <strong>I expect ?</strong></td>
+      </tr>
+
+
+     </table>
+    </td>
+   </tr>
+
+   <tr>
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('16', this)">[+] remove an article (CestAddArticleCest.removeAnArticle) (0.2s)</p>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer16">
+      <tr>
+       <td class="stepName">I am on page <span style="color: #732E81;">"/"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see <span style="color: #732E81;">"Sécurité Routière : Souriez ! Vous Êtes Flashés - Le Retour"</span></td>
+      </tr>
+
+
+     </table>
+    </td>
+   </tr>
+
+
+   <tr>
+    <td>
+	    <h2>Summary</h2>
+     <div id="stepContainerSummary">
+      <table border="0">
+       <tr>
+        <td width="250" class="scenarioSuccess">Successful scenarios:</td>
+        <td class="scenarioSuccessValue"><strong>16</strong></td>
+       </tr>
+       <tr>
+        <td class="scenarioFailed">Failed scenarios:</td>
+        <td class="scenarioFailedValue"><strong>0</strong></td>
+       </tr>
+       <tr>
+        <td class="scenarioSkipped">Skipped scenarios:</td>
+        <td class="scenarioSkippedValue"><strong>0</strong></td>
+       </tr>
+       <tr>
+        <td class="scenarioIncomplete">Incomplete scenarios:</td>
+        <td class="scenarioIncompleteValue"><strong>0</strong></td>
+       </tr>
+      </table>
+     </div>
+    </td>
+   </tr>
+  </table>
+ </div>
+ </body>
+</html>

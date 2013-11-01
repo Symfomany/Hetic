@@ -274,17 +274,9 @@ class appTestUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_edit')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::editableAction',));
         }
 
-        if (0 === strpos($pathinfo, '/a')) {
-            // hetic_administration
-            if ($pathinfo === '/administration') {
-                return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::editableAction',  '_route' => 'hetic_administration',);
-            }
-
-            // hetic_article_see
-            if (0 === strpos($pathinfo, '/article') && preg_match('#^/article/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_article_see')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::seearticleAction',));
-            }
-
+        // hetic_article_see
+        if (0 === strpos($pathinfo, '/article') && preg_match('#^/article/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_article_see')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::seearticleAction',));
         }
 
         // hetic_article_more
