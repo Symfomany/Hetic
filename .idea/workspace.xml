@@ -251,10 +251,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="9" selection-start="29" selection-end="29" vertical-scroll-proportion="0.06030151">
+            <state line="2" column="9" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="0" selection-start="312" selection-end="312" vertical-scroll-proportion="0.36180905">
               <folding />
             </state>
           </provider>
@@ -284,8 +293,8 @@
         <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Default/topmenu.html.twig" />
         <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Controller/DefaultController.php" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -607,16 +616,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="311" selection-end="311" vertical-scroll-proportion="0.3316583">
+        <state line="2" column="9" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="9" selection-start="29" selection-end="29" vertical-scroll-proportion="0.06030151">
+        <state line="12" column="0" selection-start="312" selection-end="312" vertical-scroll-proportion="0.36180905">
           <folding />
         </state>
       </provider>
