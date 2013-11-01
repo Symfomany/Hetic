@@ -231,6 +231,7 @@
     <file path="/about.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383323680621" ignored="false" />
     <file path="/contact.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383323882143" ignored="false" />
     <file path="/README.md" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383326250642" ignored="false" />
+    <file path="/.gitignore" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383326402281" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,10 +251,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="311" selection-end="311" vertical-scroll-proportion="0.3316583">
+            <state line="2" column="9" selection-start="29" selection-end="29" vertical-scroll-proportion="0.06030151">
               <folding />
             </state>
           </provider>
@@ -269,7 +270,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/tests/_log/acceptance-2013-11-01" />
         <option value="$PROJECT_DIR$/tests/functional/AddArticleFunctionalCept.php" />
         <option value="$PROJECT_DIR$/tests/unit.suite.yml" />
         <option value="$PROJECT_DIR$/tests/acceptance/AddArticleCept.php" />
@@ -285,6 +285,7 @@
         <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -508,13 +509,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/codeception.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="20" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Repository/ArticleRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="37" selection-start="633" selection-end="650" vertical-scroll-proportion="0.39745402">
@@ -616,6 +610,13 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="0" selection-start="311" selection-end="311" vertical-scroll-proportion="0.3316583">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="9" selection-start="29" selection-end="29" vertical-scroll-proportion="0.06030151">
           <folding />
         </state>
       </provider>
