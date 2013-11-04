@@ -141,7 +141,7 @@ class CestAddArticleCest
         $I->see("Lilian Thuram");
     }
 
-    public function editAdnCategory(WebGuy $I) {
+    public function editACategory(WebGuy $I) {
         $I->wantTo('Editer une category');
 
         $I->amOnPage('/category/3');
@@ -155,6 +155,12 @@ class CestAddArticleCest
             ));
         $errors = $I->grabTextFrom('.alert');
         $I->expect($errors);
+    }
+
+    public function clickOnTag(WebGuy $I) {
+        $I->amOnPage('sort-by-category/4');
+        $I->see('A La Une');
+//        $this->assertTrue(true);
     }
 
     public function removeAnArticle(WebGuy $I) {

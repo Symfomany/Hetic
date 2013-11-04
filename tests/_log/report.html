@@ -110,7 +110,7 @@
 
  <body>
  <div class="layout">
- <h1>Codeception Results <small><span style="color: green">OK</span> (5.8s)</small></h1>
+ <h1>Codeception Results <small><span style="color: green">OK</span> (6s)</small></h1>
 
 
 	 <table border="0" style="width: 100%;">
@@ -133,7 +133,7 @@
 
    <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('2', this)">[+] test get articles by category (0.1s)</p>
+     <p class="scenarioSuccess" onclick="showHide('2', this)">[+] test get articles by category (0.09s)</p>
     </td>
    </tr>
    <tr>
@@ -285,7 +285,7 @@
 
    <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('6', this)">[+] ajouter un article (CestAddArticleCest.onHome) (0.22s)</p>
+     <p class="scenarioSuccess" onclick="showHide('6', this)">[+] aller sur la home (CestAddArticleCest.onHome) (0.19s)</p>
     </td>
    </tr>
    <tr>
@@ -322,7 +322,7 @@
 
    <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('7', this)">[+] persist on article (CestAddArticleCest.persistOnArticle) (0.03s)</p>
+     <p class="scenarioSuccess" onclick="showHide('7', this)">[+] enregistrer un article (CestAddArticleCest.persistOnArticle) (0.03s)</p>
     </td>
    </tr>
    <tr>
@@ -343,7 +343,7 @@
 
    <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('8', this)">[+] add an article (CestAddArticleCest.addAnArticle) (0.57s)</p>
+     <p class="scenarioSuccess" onclick="showHide('8', this)">[+] ajouter un article depuis la home (CestAddArticleCest.addAnArticle) (0.63s)</p>
     </td>
    </tr>
    <tr>
@@ -372,7 +372,7 @@
 
    <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('9', this)">[+] add an category (CestAddArticleCest.addAnCategory) (0.53s)</p>
+     <p class="scenarioSuccess" onclick="showHide('9', this)">[+] ajouter une category depuis la home (CestAddArticleCest.addAnCategory) (0.46s)</p>
     </td>
    </tr>
    <tr>
@@ -401,7 +401,7 @@
 
    <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('10', this)">[+] get in category (CestAddArticleCest.getInCategory) (0.3s)</p>
+     <p class="scenarioSuccess" onclick="showHide('10', this)">[+] etre dans une category (CestAddArticleCest.getInCategory) (0.27s)</p>
     </td>
    </tr>
    <tr>
@@ -430,7 +430,7 @@
 
    <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('11', this)">[+] modify on article (CestAddArticleCest.modifyOnArticle) (0.7s)</p>
+     <p class="scenarioSuccess" onclick="showHide('11', this)">[+] modifier une category depuis la home (CestAddArticleCest.modifyOnArticle) (0.73s)</p>
     </td>
    </tr>
    <tr>
@@ -475,7 +475,7 @@
 
    <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('12', this)">[+] visible an article (CestAddArticleCest.visibleAnArticle) (0.51s)</p>
+     <p class="scenarioSuccess" onclick="showHide('12', this)">[+] rendre visibe/invisible un article (CestAddArticleCest.visibleAnArticle) (0.47s)</p>
     </td>
    </tr>
    <tr>
@@ -496,7 +496,7 @@
 
    <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('13', this)">[+] more point an article (CestAddArticleCest.morePointAnArticle) (0.81s)</p>
+     <p class="scenarioSuccess" onclick="showHide('13', this)">[+] ajouter un point ã  un article (CestAddArticleCest.morePointAnArticle) (0.77s)</p>
     </td>
    </tr>
    <tr>
@@ -521,7 +521,7 @@
 
    <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('14', this)">[+] naviguate on article (CestAddArticleCest.naviguateOnArticle) (0.52s)</p>
+     <p class="scenarioSuccess" onclick="showHide('14', this)">[+] naviguer sur un article (CestAddArticleCest.naviguateOnArticle) (0.44s)</p>
     </td>
    </tr>
    <tr>
@@ -574,7 +574,7 @@
 
    <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('15', this)">[+] edit adn category (CestAddArticleCest.editAdnCategory) (0.48s)</p>
+     <p class="scenarioSuccess" onclick="showHide('15', this)">[+] editer une category (CestAddArticleCest.editACategory) (0.64s)</p>
     </td>
    </tr>
    <tr>
@@ -611,12 +611,33 @@
 
    <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('16', this)">[+] remove an article (CestAddArticleCest.removeAnArticle) (0.2s)</p>
+     <p class="scenarioSuccess" onclick="showHide('16', this)">[+] click on tag (CestAddArticleCest.clickOnTag) (0.2s)</p>
     </td>
    </tr>
    <tr>
     <td>
      <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer16">
+      <tr>
+       <td class="stepName">I am on page <span style="color: #732E81;">"sort-by-category/4"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see <span style="color: #732E81;">"A La Une"</span></td>
+      </tr>
+
+
+     </table>
+    </td>
+   </tr>
+
+   <tr>
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('17', this)">[+] supprimer un article (CestAddArticleCest.removeAnArticle) (0.18s)</p>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer17">
       <tr>
        <td class="stepName">I am on page <span style="color: #732E81;">"/"</span></td>
       </tr>
@@ -638,7 +659,7 @@
       <table border="0">
        <tr>
         <td width="250" class="scenarioSuccess">Successful scenarios:</td>
-        <td class="scenarioSuccessValue"><strong>16</strong></td>
+        <td class="scenarioSuccessValue"><strong>17</strong></td>
        </tr>
        <tr>
         <td class="scenarioFailed">Failed scenarios:</td>
