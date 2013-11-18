@@ -34,7 +34,7 @@ class Article
      * )
      * @Assert\Length(
      *      min = "5",
-     *      max = "50",
+     *      max = "200",
      *      minMessage = "Votre titre doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères"
      * )
@@ -42,11 +42,18 @@ class Article
      */
     private $title;
 
+
     /**
      * @Assert\Choice(choices = {"1","2", "3"}, message = "Choisissez un genre valide.")
      * @ORM\Column(name="nature", type="integer", length=200, nullable=true)
      */
     private $nature;
+
+    /**
+     * @Assert\NotBlank(message = "Votre contenu est vide :(")
+     * @ORM\Column(name="cover", type="text", nullable=true)
+     */
+    private $cover;
 
     /**
      * @Assert\NotBlank(message = "Votre contenu est vide :(")
@@ -85,6 +92,11 @@ class Article
      * @ORM\JoinTable(name="article_tags")
      */
     private $tags;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Produit", inversedBy="articles")
+     */
+    private $produits;
 
     /**
      * @var integer
@@ -321,5 +333,50 @@ class Article
     public function getPoint()
     {
         return $this->point;
+    }
+
+    /**
+     * Set nature
+     *
+     * @param integer $nature
+     * @return Article
+     */
+    public function setNature($nature)
+    {
+        $this->nature = $nature;
+    
+        return $this;
+    }
+
+    /**
+     * Get nature
+     *
+     * @return integer 
+     */
+    public function getNature()
+    {
+        return $this->nature;
+    }
+
+    /**
+     * Set cover
+     *
+     * @param text $cover
+     * @return Article
+     */
+    public function setCover($cover)
+    {
+        $this->cover = $cover;
+        return $this;
+    }
+
+    /**
+     * Get cover
+     *
+     * @return text 
+     */
+    public function getCover()
+    {
+        return $this->cover;
     }
 }

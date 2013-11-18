@@ -5,6 +5,8 @@ namespace Doctrine\Tests\DBAL\Platforms;
 use Doctrine\DBAL\Platforms\PostgreSqlPlatform;
 use Doctrine\DBAL\Types\Type;
 
+require_once __DIR__ . '/../../TestInit.php';
+
 class PostgreSqlPlatformTest extends AbstractPlatformTestCase
 {
     public function createPlatform()
@@ -155,7 +157,7 @@ class PostgreSqlPlatformTest extends AbstractPlatformTestCase
             $this->_platform->getCreateSequenceSQL($sequence)
         );
         $this->assertEquals(
-            'DROP SEQUENCE myseq CASCADE',
+            'DROP SEQUENCE myseq',
             $this->_platform->getDropSequenceSQL('myseq')
         );
         $this->assertEquals(
@@ -223,21 +225,6 @@ class PostgreSqlPlatformTest extends AbstractPlatformTestCase
         return array(
             "CREATE TABLE test (id INT NOT NULL, data TEXT NOT NULL, PRIMARY KEY(id))",
             "COMMENT ON COLUMN test.data IS '(DC2Type:array)'"
-        );
-    }
-
-    protected function getQuotedColumnInPrimaryKeySQL()
-    {
-        return array(
-            'CREATE TABLE "quoted" ("key" VARCHAR(255) NOT NULL, PRIMARY KEY("key"))',
-        );
-    }
-
-    protected function getQuotedColumnInIndexSQL()
-    {
-        return array(
-            'CREATE TABLE "quoted" ("key" VARCHAR(255) NOT NULL)',
-            'CREATE INDEX IDX_22660D028A90ABA9 ON "quoted" ("key")',
         );
     }
 }

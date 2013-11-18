@@ -40,15 +40,22 @@
         <div class="row-fluid">
             <div class="span12">
                                         <div class="row-fluid">
+                    <h2>Rechercher un article</h2>
+        <form action="/app_test.php/rechercher/" method="post" id="addarticle">
+                <div     ><div><label for="search" class="required">Search</label><input type="text"     id="search" name="search" required="required"        class="input-xxlarge" placeholder="Rechercher un article" /></div></div>
+            <button class="btn btn-primary" type="submit">Rechercher un article</button>
+        </form>
+
+
             <div class="span4">
                 <h2>Ajout d'un article</h2>
                     <form action="/app_test.php/" method="post" id="addarticle">
-                        <form name="" method="post" action=""><div     ><div><label for="title" class="required">Title</label><input type="text"     id="title" name="title" required="required"        class="input-xlarge" placeholder="Titre de la tâches" /></div><div><label for="category">Category</label><select     id="category" name="category"><option value=""></option><option value="1">Actua BD</option><option value="2">Insolite</option><option value="3">A la une</option><option value="4">Sports extremes</option><option value="9">New Caté !</option><option value="15">New Caté !</option><option value="16">New Caté !</option></select></div><div><label for="point">Point</label><input type="number"     id="point" name="point" /></div><div><label for="tags" class="required">Tags</label><select     id="tags" name="tags[]" required="required" multiple="multiple"><option value="1">footballeur</option><option value="2">Une fillette</option><option value="3">sex-appeal</option><option value="4">NRJ Music Awards</option><option value="5">Lilian Thuram</option><option value="6">Pékin Express</option><option value="7">Duke Nukem </option><option value="8">RMNG</option><option value="9">800 millions d’euros</option><option value="10">migrants africains</option><option value="11">les Bleus</option><option value="12">Dynamo Kiev</option><option value="13">GlaxoSmithKline</option><option value="14">suppressions de postes</option><option value="15">MSC Croisières</option><option value="16">objet ultra-lumineux</option></select></div><div><label class="required">Nature</label><div     id="nature"><input type="radio"     id="nature_0" name="nature" required="required" value="1" /><label for="nature_0" class="required">Brouillon</label><input type="radio"     id="nature_1" name="nature" required="required" value="2" /><label for="nature_1" class="required">Relus</label><input type="radio"     id="nature_2" name="nature" required="required" value="3" /><label for="nature_2" class="required">Final</label></div></div><div><label for="content">Content</label><textarea     id="content" name="content"        style="width: 394px;height: 129px;" rows="5" cols="5" placeholder="Contenu de la tâche"></textarea></div><div><label for="isVisible">Is visible</label><input type="checkbox"     id="isVisible" name="isVisible" value="1" /></div><div><label for="datePublication" class="required">Date publication</label><input type="date"     id="datePublication" name="datePublication" required="required" value="2013-11-01" /></div><div><button type="submit" id="Sauvegarder" name="Sauvegarder" class="btn btn-primary">Sauvegarder</button></div></div></form>
+                        <form name="" method="post" action=""><div     ><div><label for="title" class="required">Title</label><input type="text"     id="title" name="title" required="required"        class="input-xlarge" placeholder="Titre de la tâches" /></div><div><label for="category">Category</label><select     id="category" name="category"><option value=""></option><option value="1">Actua BD</option><option value="2">Insolite</option><option value="3">A la une</option><option value="4">Sports extremes</option><option value="9">New Caté !</option><option value="15">New Caté !</option><option value="16">New Caté !</option><option value="17">New Caté !</option><option value="18">New Caté !</option></select></div><div><label for="point">Point</label><input type="number"     id="point" name="point" /></div><div><label for="tags" class="required">Tags</label><select     id="tags" name="tags[]" required="required" multiple="multiple"><option value="1">footballeur</option><option value="2">Une fillette</option><option value="3">sex-appeal</option><option value="4">NRJ Music Awards</option><option value="5">Lilian Thuram</option><option value="6">Pékin Express</option><option value="7">Duke Nukem </option><option value="8">RMNG</option><option value="9">800 millions d’euros</option><option value="10">migrants africains</option><option value="11">les Bleus</option><option value="12">Dynamo Kiev</option><option value="13">GlaxoSmithKline</option><option value="14">suppressions de postes</option><option value="15">MSC Croisières</option><option value="16">objet ultra-lumineux</option></select></div><div><label class="required">Nature</label><div     id="nature"><input type="radio"     id="nature_0" name="nature" required="required" value="1" /><label for="nature_0" class="required">Brouillon</label><input type="radio"     id="nature_1" name="nature" required="required" value="2" /><label for="nature_1" class="required">Relus</label><input type="radio"     id="nature_2" name="nature" required="required" value="3" /><label for="nature_2" class="required">Final</label></div></div><div><label for="content">Content</label><textarea     id="content" name="content"        style="width: 394px;height: 129px;" rows="5" cols="5" placeholder="Contenu de la tâche"></textarea></div><div><label for="isVisible">Is visible</label><input type="checkbox"     id="isVisible" name="isVisible" value="1" /></div><div><label for="datePublication" class="required">Date publication</label><input type="date"     id="datePublication" name="datePublication" required="required" value="2013-11-06" /></div><div><button type="submit" id="Sauvegarder" name="Sauvegarder" class="btn btn-primary">Sauvegarder</button></div></div></form>
                     </form>
                 <h2>Ajout d'une catégory</h2>
 <form action="/app_test.php/category-add/" method="post" id="addcategory">
     <div class="errors">    </div>
-        <div     ><div><label for="name" class="required">Name</label><input type="text"     id="name" name="name" required="required"        class="input-xlarge" placeholder="Titre de la tâches" /></div><div><label for="description" class="required">Description</label><textarea     id="description" name="description" required="required"></textarea></div><div><label for="articles" class="required">Articles</label><select     id="articles" name="articles[]" required="required" multiple="multiple"><option value="25">Sécurité routière : Souriez ! Vous êtes flashés - le retour</option><option value="27">L&#039;Ukraine adversaire de la France en barrages du Mondial 2014 : l&#039;équipe qui était déjà éliminée</option><option value="28">Le groupe pharmaceutique GSK va supprimer 271 postes en France</option><option value="47">Gérard de Villiers, &quot;honorable correspondant&quot; des services secrets français</option><option value="48">Près de Nancy : le Dr Muller acquitté du meurtre de sa femme</option><option value="55">Ici le titre de mon article de test</option><option value="56">Ici le titre de mon article de test</option></select></div></div>
+        <div     ><div><label for="name" class="required">Name</label><input type="text"     id="name" name="name" required="required"        class="input-xlarge" placeholder="Titre de la tâches" /></div><div><label for="description" class="required">Description</label><textarea     id="description" name="description" required="required"></textarea></div><div><label for="articles" class="required">Articles</label><select     id="articles" name="articles[]" required="required" multiple="multiple"><option value="25">Sécurité routière : Souriez ! Vous êtes flashés - le retour</option><option value="27">L&#039;Ukraine adversaire de la France en barrages du Mondial 2014 : l&#039;équipe qui était déjà éliminée</option><option value="28">Le groupe pharmaceutique GSK va supprimer 271 postes en France</option><option value="47">Gérard de Villiers, &quot;honorable correspondant&quot; des services secrets français</option><option value="48">Près de Nancois : le Dr Muller acquitté du meurtre</option><option value="55">Ici le titre de mon article de test</option><option value="56">Ici le titre de mon article de test</option><option value="59">Ici le titre de mon article de test</option><option value="60">Ici le titre de mon article de test</option></select></div></div>
     <button class="btn" type="submit">Enregistrer la category</button>
 </form>
 
@@ -63,6 +70,8 @@
                                         <a class="btn btn-primary" href="/app_test.php/sort-by-category/9">New Caté !</a>
                                         <a class="btn btn-primary" href="/app_test.php/sort-by-category/15">New Caté !</a>
                                         <a class="btn btn-primary" href="/app_test.php/sort-by-category/16">New Caté !</a>
+                                        <a class="btn btn-primary" href="/app_test.php/sort-by-category/17">New Caté !</a>
+                                        <a class="btn btn-primary" href="/app_test.php/sort-by-category/18">New Caté !</a>
                                     </div>
                 <hr class="clear"/>
                 <h2>Liste des Articles par popularité</h2>
@@ -78,6 +87,8 @@
                                                                     <li> <a href="/app_test.php/articles/RMNG"><i class="icon-comment"></i> RMNG</a></li>
                                                                     <li> <a href="/app_test.php/articles/les%20Bleus"><i class="icon-comment"></i> les Bleus</a></li>
                                                                     <li> <a href="/app_test.php/articles/objet%20ultra-lumineux"><i class="icon-comment"></i> objet ultra-lumineux</a></li>
+                                                                                                                                <li> <a href="/app_test.php/articles/migrants%20africains"><i class="icon-comment"></i> migrants africains</a></li>
+                                                                                                                                <li> <a href="/app_test.php/articles/migrants%20africains"><i class="icon-comment"></i> migrants africains</a></li>
                                                                                                                                 <li> <a href="/app_test.php/articles/migrants%20africains"><i class="icon-comment"></i> migrants africains</a></li>
                                                                                                                                 <li> <a href="/app_test.php/articles/migrants%20africains"><i class="icon-comment"></i> migrants africains</a></li>
                                                                                                                                 <li> <a href="/app_test.php/articles/RMNG"><i class="icon-comment"></i> RMNG</a></li>
@@ -133,7 +144,7 @@
                                     </div>
                                                             </td>
                             <td><p class="content" style="font-size: 11px">Mort le 31 octobre à 83 ans, Gérard de Villiers n'a jamais fait mystère de ses sources excellentes au sein des services secrets. Français, mais pas seulement... Les personnages imaginaires et folkloriques...</p></td>
-                            <td><span class="badge badge-info">23</span></td>
+                            <td><span class="badge badge-info">25</span></td>
                             <td>
                                 <p class="">
                                     <a class="remove" href="/app_test.php/remove/article/47">
@@ -168,7 +179,7 @@
                                             <tr>
                             <td><a href="/app_test.php/article-single/48">48</a></td>
                             <td><h5>
-                                 <a  href="/app_test.php/article-single/48">Près De Nancy : Le Dr Muller Acquitté Du Meurtre De Sa Femme</a>
+                                 <a  href="/app_test.php/article-single/48">Près De Nancois : Le Dr Muller Acquitté Du Meurtre</a>
                                 </h5></td>
                             <td><h5><a href="/app_test.php/category/4">Sports Extremes</a></h5></td>
                             <td>
@@ -319,6 +330,100 @@
                                         <i class="icon-plus"></i>
                                     </a>
                                     <a class="less" href="/app_test.php/malus-article/56">
+                                        <i class="icon-minus"></i>
+                                    </a>
+                                </p>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td><a href="/app_test.php/article-single/59">59</a></td>
+                            <td><h5>
+                                 <a  href="/app_test.php/article-single/59">Ici Le Titre De Mon Article De Test</a>
+                                </h5></td>
+                            <td><h5><a href="/app_test.php/category/1">Actua Bd</a></h5></td>
+                            <td>
+                                                                    <div class="btn btn-small">
+                                        <i class="icon-tags"></i>
+                                        <a href="/app_test.php/articles/sortbycategory/1">
+                                            Migrants Africains
+                                        </a>
+                                    </div>
+                                                            </td>
+                            <td><p class="content" style="font-size: 11px">Contenu de mon article test</p></td>
+                            <td><span class="badge badge-info">8</span></td>
+                            <td>
+                                <p class="">
+                                    <a class="remove" href="/app_test.php/remove/article/59">
+                                        <i class="icon-remove"></i>
+                                    </a>
+                                </p>
+                                <p class="">
+                                                                            <a class="star" href="/app_test.php/addfavoris/addstar/59">
+                                            <i class="icon-star"></i>
+                                        </a>
+                                                                    </p>
+                                <p class="">
+                                                                            <a class="visible"  href="/app_test.php/invisible/59">
+                                            <i class="icon-ban-circle"></i>
+                                        </a>
+                                                                    </p>
+                                <p class="">
+                                    <a class="edit"  href="/app_test.php/editable/59">
+                                        <i class="icon-pencil"></i>
+                                    </a>
+                                </p>
+                                <p class="">
+                                    <a class="plus"  href="/app_test.php/bonus-article/59">
+                                        <i class="icon-plus"></i>
+                                    </a>
+                                    <a class="less" href="/app_test.php/malus-article/59">
+                                        <i class="icon-minus"></i>
+                                    </a>
+                                </p>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td><a href="/app_test.php/article-single/60">60</a></td>
+                            <td><h5>
+                                 <a  href="/app_test.php/article-single/60">Ici Le Titre De Mon Article De Test</a>
+                                </h5></td>
+                            <td><h5><a href="/app_test.php/category/1">Actua Bd</a></h5></td>
+                            <td>
+                                                                    <div class="btn btn-small">
+                                        <i class="icon-tags"></i>
+                                        <a href="/app_test.php/articles/sortbycategory/1">
+                                            Migrants Africains
+                                        </a>
+                                    </div>
+                                                            </td>
+                            <td><p class="content" style="font-size: 11px">Contenu de mon article test</p></td>
+                            <td><span class="badge badge-info">8</span></td>
+                            <td>
+                                <p class="">
+                                    <a class="remove" href="/app_test.php/remove/article/60">
+                                        <i class="icon-remove"></i>
+                                    </a>
+                                </p>
+                                <p class="">
+                                                                            <a class="star" href="/app_test.php/addfavoris/addstar/60">
+                                            <i class="icon-star"></i>
+                                        </a>
+                                                                    </p>
+                                <p class="">
+                                                                            <a class="visible"  href="/app_test.php/invisible/60">
+                                            <i class="icon-ban-circle"></i>
+                                        </a>
+                                                                    </p>
+                                <p class="">
+                                    <a class="edit"  href="/app_test.php/editable/60">
+                                        <i class="icon-pencil"></i>
+                                    </a>
+                                </p>
+                                <p class="">
+                                    <a class="plus"  href="/app_test.php/bonus-article/60">
+                                        <i class="icon-plus"></i>
+                                    </a>
+                                    <a class="less" href="/app_test.php/malus-article/60">
                                         <i class="icon-minus"></i>
                                     </a>
                                 </p>
@@ -497,11 +602,11 @@ Ce plan,...</p></td>
             </div>
         </div>
     </div>
-                
+                    
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 
             <script src="/app_test.php/js/cf7b8d6_index_1.js" type="text/javascript"></script>
     
-        <script src="/app_test.php/js/aee4d46_index_1.js" type="text/javascript"></script>
+            <script src="/app_test.php/js/aee4d46_index_1.js" type="text/javascript"></script>
         </body>
 </html>

@@ -95,7 +95,7 @@ public function getInt($key, $default = 0, $deep = false)
 {
 return (int) $this->get($key, $default, $deep);
 }
-public function filter($key, $default = null, $deep = false, $filter = FILTER_DEFAULT, $options = array())
+public function filter($key, $default = null, $deep = false, $filter=FILTER_DEFAULT, $options=array())
 {
 $value = $this->get($key, $default, $deep);
 if (!is_array($options) && $options) {
@@ -418,7 +418,6 @@ public $headers;
 protected $content;
 protected $languages;
 protected $charsets;
-protected $encodings;
 protected $acceptableContentTypes;
 protected $pathInfo;
 protected $requestUri;
@@ -430,7 +429,6 @@ protected $session;
 protected $locale;
 protected $defaultLocale ='en';
 protected static $formats;
-protected static $requestFactory;
 public function __construct(array $query = array(), array $request = array(), array $attributes = array(), array $cookies = array(), array $files = array(), array $server = array(), $content = null)
 {
 $this->initialize($query, $request, $attributes, $cookies, $files, $server, $content);
@@ -447,7 +445,6 @@ $this->headers = new HeaderBag($this->server->getHeaders());
 $this->content = $content;
 $this->languages = null;
 $this->charsets = null;
-$this->encodings = null;
 $this->acceptableContentTypes = null;
 $this->pathInfo = null;
 $this->requestUri = null;
@@ -458,7 +455,7 @@ $this->format = null;
 }
 public static function createFromGlobals()
 {
-$request = self::createRequestFromFactory($_GET, $_POST, array(), $_COOKIE, $_FILES, $_SERVER);
+$request = new static($_GET, $_POST, array(), $_COOKIE, $_FILES, $_SERVER);
 if (0 === strpos($request->headers->get('CONTENT_TYPE'),'application/x-www-form-urlencoded')
 && in_array(strtoupper($request->server->get('REQUEST_METHOD','GET')), array('PUT','DELETE','PATCH'))
 ) {
@@ -531,11 +528,7 @@ $queryString = http_build_query($query,'','&');
 }
 $server['REQUEST_URI'] = $components['path'].(''!== $queryString ?'?'.$queryString :'');
 $server['QUERY_STRING'] = $queryString;
-return self::createRequestFromFactory($query, $request, array(), $cookies, $files, $server, $content);
-}
-public static function setFactory($callable)
-{
-self::$requestFactory = $callable;
+return new static($query, $request, array(), $cookies, $files, $server, $content);
 }
 public function duplicate(array $query = null, array $request = null, array $attributes = null, array $cookies = null, array $files = null, array $server = null)
 {
@@ -561,7 +554,6 @@ $dup->headers = new HeaderBag($dup->server->getHeaders());
 }
 $dup->languages = null;
 $dup->charsets = null;
-$dup->encodings = null;
 $dup->acceptableContentTypes = null;
 $dup->pathInfo = null;
 $dup->requestUri = null;
@@ -609,7 +601,7 @@ $_SERVER['HTTP_'.$key] = implode(', ', $value);
 }
 }
 $request = array('g'=> $_GET,'p'=> $_POST,'c'=> $_COOKIE);
-$requestOrder = ini_get('request_order') ?: ini_get('variable_order');
+$requestOrder = ini_get('request_order') ?: ini_get('variables_order');
 $requestOrder = preg_replace('#[^cgp]#','', strtolower($requestOrder)) ?:'gp';
 $_REQUEST = array();
 foreach (str_split($requestOrder) as $order) {
@@ -841,7 +833,7 @@ $host = $this->server->get('SERVER_ADDR','');
 }
 $host = strtolower(preg_replace('/:\d+$/','', trim($host)));
 if ($host && !preg_match('/^\[?(?:[a-zA-Z0-9-:\]_]+\.?)+$/', $host)) {
-throw new \UnexpectedValueException(sprintf('Invalid Host "%s"', $host));
+throw new \UnexpectedValueException('Invalid Host "'.$host.'"');
 }
 if (count(self::$trustedHostPatterns) > 0) {
 if (in_array($host, self::$trustedHosts)) {
@@ -853,7 +845,7 @@ self::$trustedHosts[] = $host;
 return $host;
 }
 }
-throw new \UnexpectedValueException(sprintf('Untrusted Host "%s"', $host));
+throw new \UnexpectedValueException('Untrusted Host "'.$host.'"');
 }
 return $host;
 }
@@ -1026,13 +1018,6 @@ return $this->charsets;
 }
 return $this->charsets = array_keys(AcceptHeader::fromString($this->headers->get('Accept-Charset'))->all());
 }
-public function getEncodings()
-{
-if (null !== $this->encodings) {
-return $this->encodings;
-}
-return $this->encodings = array_keys(AcceptHeader::fromString($this->headers->get('Accept-Encoding'))->all());
-}
 public function getAcceptableContentTypes()
 {
 if (null !== $this->acceptableContentTypes) {
@@ -1177,65 +1162,12 @@ return $match[0];
 }
 return false;
 }
-private static function createRequestFromFactory(array $query = array(), array $request = array(), array $attributes = array(), array $cookies = array(), array $files = array(), array $server = array(), $content = null)
-{
-if (self::$requestFactory) {
-$request = call_user_func(self::$requestFactory, $query, $request, $attributes, $cookies, $files, $server, $content);
-if (!$request instanceof Request) {
-throw new \LogicException('The Request factory must return an instance of Symfony\Component\HttpFoundation\Request.');
-}
-return $request;
-}
-return new static($query, $request, $attributes, $cookies, $files, $server, $content);
-}
 }
 }
 namespace Symfony\Component\HttpFoundation
 {
 class Response
 {
-const HTTP_CONTINUE = 100;
-const HTTP_SWITCHING_PROTOCOLS = 101;
-const HTTP_PROCESSING = 102; const HTTP_OK = 200;
-const HTTP_CREATED = 201;
-const HTTP_ACCEPTED = 202;
-const HTTP_NON_AUTHORITATIVE_INFORMATION = 203;
-const HTTP_NO_CONTENT = 204;
-const HTTP_RESET_CONTENT = 205;
-const HTTP_PARTIAL_CONTENT = 206;
-const HTTP_MULTI_STATUS = 207; const HTTP_ALREADY_REPORTED = 208; const HTTP_IM_USED = 226; const HTTP_MULTIPLE_CHOICES = 300;
-const HTTP_MOVED_PERMANENTLY = 301;
-const HTTP_FOUND = 302;
-const HTTP_SEE_OTHER = 303;
-const HTTP_NOT_MODIFIED = 304;
-const HTTP_USE_PROXY = 305;
-const HTTP_RESERVED = 306;
-const HTTP_TEMPORARY_REDIRECT = 307;
-const HTTP_PERMANENTLY_REDIRECT = 308; const HTTP_BAD_REQUEST = 400;
-const HTTP_UNAUTHORIZED = 401;
-const HTTP_PAYMENT_REQUIRED = 402;
-const HTTP_FORBIDDEN = 403;
-const HTTP_NOT_FOUND = 404;
-const HTTP_METHOD_NOT_ALLOWED = 405;
-const HTTP_NOT_ACCEPTABLE = 406;
-const HTTP_PROXY_AUTHENTICATION_REQUIRED = 407;
-const HTTP_REQUEST_TIMEOUT = 408;
-const HTTP_CONFLICT = 409;
-const HTTP_GONE = 410;
-const HTTP_LENGTH_REQUIRED = 411;
-const HTTP_PRECONDITION_FAILED = 412;
-const HTTP_REQUEST_ENTITY_TOO_LARGE = 413;
-const HTTP_REQUEST_URI_TOO_LONG = 414;
-const HTTP_UNSUPPORTED_MEDIA_TYPE = 415;
-const HTTP_REQUESTED_RANGE_NOT_SATISFIABLE = 416;
-const HTTP_EXPECTATION_FAILED = 417;
-const HTTP_I_AM_A_TEAPOT = 418; const HTTP_UNPROCESSABLE_ENTITY = 422; const HTTP_LOCKED = 423; const HTTP_FAILED_DEPENDENCY = 424; const HTTP_RESERVED_FOR_WEBDAV_ADVANCED_COLLECTIONS_EXPIRED_PROPOSAL = 425; const HTTP_UPGRADE_REQUIRED = 426; const HTTP_PRECONDITION_REQUIRED = 428; const HTTP_TOO_MANY_REQUESTS = 429; const HTTP_REQUEST_HEADER_FIELDS_TOO_LARGE = 431; const HTTP_INTERNAL_SERVER_ERROR = 500;
-const HTTP_NOT_IMPLEMENTED = 501;
-const HTTP_BAD_GATEWAY = 502;
-const HTTP_SERVICE_UNAVAILABLE = 503;
-const HTTP_GATEWAY_TIMEOUT = 504;
-const HTTP_VERSION_NOT_SUPPORTED = 505;
-const HTTP_VARIANT_ALSO_NEGOTIATES_EXPERIMENTAL = 506; const HTTP_INSUFFICIENT_STORAGE = 507; const HTTP_LOOP_DETECTED = 508; const HTTP_NOT_EXTENDED = 510; const HTTP_NETWORK_AUTHENTICATION_REQUIRED = 511;
 public $headers;
 protected $content;
 protected $version;
@@ -1353,10 +1285,10 @@ public function sendHeaders()
 if (headers_sent()) {
 return $this;
 }
-header(sprintf('HTTP/%s %s %s', $this->version, $this->statusCode, $this->statusText), true, $this->statusCode);
+header(sprintf('HTTP/%s %s %s', $this->version, $this->statusCode, $this->statusText));
 foreach ($this->headers->allPreserveCase() as $name => $values) {
 foreach ($values as $value) {
-header($name.': '.$value, false, $this->statusCode);
+header($name.': '.$value, false);
 }
 }
 foreach ($this->headers->getCookies() as $cookie) {
@@ -2241,12 +2173,12 @@ protected $booted;
 protected $name;
 protected $startTime;
 protected $loadClassCache;
-const VERSION ='2.4.0-BETA2';
-const VERSION_ID ='20400';
+const VERSION ='2.3.7';
+const VERSION_ID ='20307';
 const MAJOR_VERSION ='2';
-const MINOR_VERSION ='4';
-const RELEASE_VERSION ='0';
-const EXTRA_VERSION ='BETA2';
+const MINOR_VERSION ='3';
+const RELEASE_VERSION ='7';
+const EXTRA_VERSION ='';
 public function __construct($environment, $debug)
 {
 $this->environment = $environment;
@@ -2722,8 +2654,8 @@ use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 abstract class Bundle extends ContainerAware implements BundleInterface
 {
 protected $name;
+protected $reflected;
 protected $extension;
-protected $path;
 public function boot()
 {
 }
@@ -2757,16 +2689,17 @@ return $this->extension;
 }
 public function getNamespace()
 {
-$class = get_class($this);
-return substr($class, 0, strrpos($class,'\\'));
+if (null === $this->reflected) {
+$this->reflected = new \ReflectionObject($this);
+}
+return $this->reflected->getNamespaceName();
 }
 public function getPath()
 {
-if (null === $this->path) {
-$reflected = new \ReflectionObject($this);
-$this->path = dirname($reflected->getFileName());
+if (null === $this->reflected) {
+$this->reflected = new \ReflectionObject($this);
 }
-return $this->path;
+return dirname($this->reflected->getFileName());
 }
 public function getParent()
 {
@@ -2794,14 +2727,7 @@ $ns = $prefix;
 if ($relativePath = $file->getRelativePath()) {
 $ns .='\\'.strtr($relativePath,'/','\\');
 }
-$class = $ns.'\\'.$file->getBasename('.php');
-if ($this->container) {
-$alias ='console.command.'.strtolower(str_replace('\\','_', $class));
-if ($this->container->has($alias)) {
-continue;
-}
-}
-$r = new \ReflectionClass($class);
+$r = new \ReflectionClass($ns.'\\'.$file->getBasename('.php'));
 if ($r->isSubclassOf('Symfony\\Component\\Console\\Command\\Command') && !$r->isAbstract() && !$r->getConstructor()->getNumberOfRequiredParameters()) {
 $application->add($r->newInstance());
 }
@@ -2869,25 +2795,21 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
-use Symfony\Component\HttpKernel\Event\FinishRequestEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpKernel\Event\PostResponseEvent;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 class HttpKernel implements HttpKernelInterface, TerminableInterface
 {
 protected $dispatcher;
 protected $resolver;
-protected $requestStack;
-public function __construct(EventDispatcherInterface $dispatcher, ControllerResolverInterface $resolver, RequestStack $requestStack = null)
+public function __construct(EventDispatcherInterface $dispatcher, ControllerResolverInterface $resolver)
 {
 $this->dispatcher = $dispatcher;
 $this->resolver = $resolver;
-$this->requestStack = $requestStack ?: new RequestStack();
 }
 public function handle(Request $request, $type = HttpKernelInterface::MASTER_REQUEST, $catch = true)
 {
@@ -2895,7 +2817,6 @@ try {
 return $this->handleRaw($request, $type);
 } catch (\Exception $e) {
 if (false === $catch) {
-$this->finishRequest($request, $type);
 throw $e;
 }
 return $this->handleException($e, $request, $type);
@@ -2907,7 +2828,6 @@ $this->dispatcher->dispatch(KernelEvents::TERMINATE, new PostResponseEvent($this
 }
 private function handleRaw(Request $request, $type = self::MASTER_REQUEST)
 {
-$this->requestStack->push($request);
 $event = new GetResponseEvent($this, $request, $type);
 $this->dispatcher->dispatch(KernelEvents::REQUEST, $event);
 if ($event->hasResponse()) {
@@ -2941,13 +2861,7 @@ private function filterResponse(Response $response, Request $request, $type)
 {
 $event = new FilterResponseEvent($this, $request, $type, $response);
 $this->dispatcher->dispatch(KernelEvents::RESPONSE, $event);
-$this->finishRequest($request, $type);
 return $event->getResponse();
-}
-private function finishRequest(Request $request, $type)
-{
-$this->dispatcher->dispatch(KernelEvents::FINISH_REQUEST, new FinishRequestEvent($this, $request, $type));
-$this->requestStack->pop();
 }
 private function handleException(\Exception $e, $request, $type)
 {
@@ -2955,7 +2869,6 @@ $event = new GetResponseForExceptionEvent($this, $request, $type, $e);
 $this->dispatcher->dispatch(KernelEvents::EXCEPTION, $event);
 $e = $event->getException();
 if (!$event->hasResponse()) {
-$this->finishRequest($request, $type);
 throw $e;
 }
 $response = $event->getResponse();
@@ -3007,7 +2920,6 @@ return (string) $var;
 namespace Symfony\Component\HttpKernel\DependencyInjection
 {
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\HttpKernel;
 use Symfony\Component\HttpKernel\Controller\ControllerResolverInterface;
@@ -3017,9 +2929,9 @@ use Symfony\Component\DependencyInjection\Scope;
 class ContainerAwareHttpKernel extends HttpKernel
 {
 protected $container;
-public function __construct(EventDispatcherInterface $dispatcher, ContainerInterface $container, ControllerResolverInterface $controllerResolver, RequestStack $requestStack = null)
+public function __construct(EventDispatcherInterface $dispatcher, ContainerInterface $container, ControllerResolverInterface $controllerResolver)
 {
-parent::__construct($dispatcher, $controllerResolver, $requestStack);
+parent::__construct($dispatcher, $controllerResolver);
 $this->container = $container;
 if (!$container->hasScope('request')) {
 $container->addScope(new Scope('request'));

@@ -16,7 +16,7 @@ class SqlitePlatformTest extends AbstractPlatformTestCase
 
     public function getGenerateTableSql()
     {
-        return 'CREATE TABLE test (id INTEGER NOT NULL, test VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id))';
+        return 'CREATE TABLE test (id INTEGER NOT NULL, test VARCHAR(255) DEFAULT NULL, PRIMARY KEY("id"))';
     }
 
     public function getGenerateTableWithMultiColumnUniqueIndexSql()
@@ -130,41 +130,5 @@ class SqlitePlatformTest extends AbstractPlatformTestCase
     public function testGetAlterTableSqlDispatchEvent()
     {
         $this->markTestSkipped('SQlite does not support ALTER Table.');
-    }
-
-    /**
-     * @group DDC-1845
-     */
-    public function testGenerateTableSqlShouldNotAutoQuotePrimaryKey()
-    {
-        $table = new \Doctrine\DBAL\Schema\Table('test');
-        $table->addColumn('"like"', 'integer', array('notnull' => true, 'autoincrement' => true));
-        $table->setPrimaryKey(array('"like"'));
-
-        $createTableSQL = $this->_platform->getCreateTableSQL($table);
-        $this->assertEquals(
-            'CREATE TABLE test ("like" INTEGER NOT NULL, PRIMARY KEY("like"))',
-            $createTableSQL[0]
-        );
-
-        $this->assertEquals(
-            'ALTER TABLE test ADD PRIMARY KEY ("like")',
-            $this->_platform->getCreatePrimaryKeySQL($table->getIndex('primary'), 'test')
-        );
-    }
-
-    protected function getQuotedColumnInPrimaryKeySQL()
-    {
-        return array(
-            'CREATE TABLE "quoted" ("key" VARCHAR(255) NOT NULL, PRIMARY KEY("key"))',
-        );
-    }
-
-    protected function getQuotedColumnInIndexSQL()
-    {
-        return array(
-            'CREATE TABLE "quoted" ("key" VARCHAR(255) NOT NULL)',
-            'CREATE INDEX IDX_22660D028A90ABA9 ON "quoted" ("key")',
-        );
     }
 }

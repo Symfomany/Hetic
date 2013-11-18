@@ -82,7 +82,40 @@ $I->amOnPage('/register');
 
 ### amOnSubdomain
 
-__not documented__
+
+Sets 'url' configuration parameter to hosts subdomain.
+It does not open a page on subdomain. Use `amOnPage` for that
+
+``` php
+<?php
+// If config is: 'http://mysite.com'
+// or config is: 'http://www.mysite.com'
+// or config is: 'http://company.mysite.com'
+
+$I->amOnSubdomain('user');
+$I->amOnPage('/');
+// moves to http://user.mysite.com/
+?>
+```
+ * param $subdomain
+ * return mixed
+
+
+### appendField
+
+
+Append text to an element
+Can add another selection to a select box
+
+``` php
+<?php
+$I->appendField('#mySelectbox', 'SelectValue');
+$I->appendField('#myTextField', 'appended');
+?>
+```
+
+ * param string $field
+ * param string $value
 
 
 ### attachFile
@@ -208,7 +241,11 @@ $I->seeCheckboxIsChecked('#signup_form input[type=checkbox]'); // I suppose user
 
 ### dontSeeCookie
 
-__not documented__
+
+Checks that cookie doesn't exist
+
+ * param $cookie
+ * return mixed
 
 
 ### dontSeeCurrentUrlEquals
@@ -412,9 +449,18 @@ $I->fillField("//input[@type='text']", "Hello World!");
  * param $value
 
 
-### grabCookie
+### getName
 
 __not documented__
+
+
+### grabCookie
+
+
+Grabs a cookie value.
+
+ * param $cookie
+ * return mixed
 
 
 ### grabFromCurrentUrl
@@ -524,6 +570,15 @@ https://code.google.com/p/selenium/wiki/JsonWireProtocol#/session/:sessionId/mov
  * return null
 
 
+### pauseExecution
+
+
+Pauses test execution in debug mode.
+To proceed test press "ENTER" in console.
+
+This method is recommended to use in test development, for additional page analysis, locator searing, etc.
+
+
 ### pressKey
 
 
@@ -557,7 +612,11 @@ Reloads current page
 
 ### resetCookie
 
-__not documented__
+
+Unsets cookie
+
+ * param $cookie
+ * return mixed
 
 
 ### resizeWindow
@@ -617,7 +676,11 @@ $I->seeCheckboxIsChecked('//form/input[@type=checkbox and  * name=agree]');
 
 ### seeCookie
 
-__not documented__
+
+Checks that cookie is set.
+
+ * param $cookie
+ * return mixed
 
 
 ### seeCurrentUrlEquals
@@ -805,7 +868,12 @@ $I->selectOption('Which OS do you use?', array('Windows','Linux'));
 
 ### setCookie
 
-__not documented__
+
+Sets a cookie.
+
+ * param $cookie
+ * param $value
+ * return mixed
 
 
 ### submitForm
@@ -981,6 +1049,41 @@ $I->waitForElementChange('#menu', function(\WebDriverElement $el) {
  * param \Closure $callback
  * param int $timeout seconds
  * throws \Codeception\Exception\ElementNotFound
+
+
+### waitForElementNotVisible
+
+
+Waits for element to not be visible on the page for $timeout seconds to pass.
+If element stays visible, timeout exception is thrown.
+
+``` php
+<?php
+$I->waitForElementNotVisible('#agree_button', 30); // secs
+?>
+```
+
+ * param $element
+ * param int $timeout seconds
+ * throws \Exception
+
+
+### waitForElementVisible
+
+
+Waits for element to be visible on the page for $timeout seconds to pass.
+If element doesn't appear, timeout exception is thrown.
+
+``` php
+<?php
+$I->waitForElementVisible('#agree_button', 30); // secs
+$I->click('#agree_button');
+?>
+```
+
+ * param $element
+ * param int $timeout seconds
+ * throws \Exception
 
 
 ### waitForJS

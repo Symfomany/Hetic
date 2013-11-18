@@ -81,6 +81,12 @@ class Category extends \Hetic\SiteBundle\Entity\Category implements \Doctrine\OR
         return parent::__toString();
     }
 
+    public function getStarPicture()
+    {
+        $this->__load();
+        return parent::getStarPicture();
+    }
+
     public function addArticle(\Hetic\SiteBundle\Entity\Article $articles)
     {
         $this->__load();
@@ -99,10 +105,196 @@ class Category extends \Hetic\SiteBundle\Entity\Category implements \Doctrine\OR
         return parent::getArticles();
     }
 
+    public function addArticles(\Hetic\SiteBundle\Entity\Article $articless)
+    {
+        $this->__load();
+        return parent::addArticles($articless);
+    }
+
+    public function removeArticles(\Hetic\SiteBundle\Entity\Article $articless)
+    {
+        $this->__load();
+        return parent::removeArticles($articless);
+    }
+
+    public function getArticless()
+    {
+        $this->__load();
+        return parent::getArticless();
+    }
+
+    public function setDateCreated($dateCreated)
+    {
+        $this->__load();
+        return parent::setDateCreated($dateCreated);
+    }
+
+    public function getDateCreated()
+    {
+        $this->__load();
+        return parent::getDateCreated();
+    }
+
+    public function setVisible($visible)
+    {
+        $this->__load();
+        return parent::setVisible($visible);
+    }
+
+    public function getVisible()
+    {
+        $this->__load();
+        return parent::getVisible();
+    }
+
+    public function setLft($lft)
+    {
+        $this->__load();
+        return parent::setLft($lft);
+    }
+
+    public function getLft()
+    {
+        $this->__load();
+        return parent::getLft();
+    }
+
+    public function setLvl($lvl)
+    {
+        $this->__load();
+        return parent::setLvl($lvl);
+    }
+
+    public function getLvl()
+    {
+        $this->__load();
+        return parent::getLvl();
+    }
+
+    public function setRgt($rgt)
+    {
+        $this->__load();
+        return parent::setRgt($rgt);
+    }
+
+    public function getRgt()
+    {
+        $this->__load();
+        return parent::getRgt();
+    }
+
+    public function setRoot($root)
+    {
+        $this->__load();
+        return parent::setRoot($root);
+    }
+
+    public function getRoot()
+    {
+        $this->__load();
+        return parent::getRoot();
+    }
+
+    public function setParent(\Hetic\SiteBundle\Entity\Category $parent = NULL)
+    {
+        $this->__load();
+        return parent::setParent($parent);
+    }
+
+    public function getParent()
+    {
+        $this->__load();
+        return parent::getParent();
+    }
+
+    public function addChildren(\Hetic\SiteBundle\Entity\Category $children)
+    {
+        $this->__load();
+        return parent::addChildren($children);
+    }
+
+    public function removeChildren(\Hetic\SiteBundle\Entity\Category $children)
+    {
+        $this->__load();
+        return parent::removeChildren($children);
+    }
+
+    public function getChildren()
+    {
+        $this->__load();
+        return parent::getChildren();
+    }
+
+    public function setCover($cover)
+    {
+        $this->__load();
+        return parent::setCover($cover);
+    }
+
+    public function getCover()
+    {
+        $this->__load();
+        return parent::getCover();
+    }
+
+    public function getOptionLabel()
+    {
+        $this->__load();
+        return parent::getOptionLabel();
+    }
+
+    public function setPath($path)
+    {
+        $this->__load();
+        return parent::setPath($path);
+    }
+
+    public function getPath()
+    {
+        $this->__load();
+        return parent::getPath();
+    }
+
+    public function addProduit(\Hetic\SiteBundle\Entity\Produit $produits)
+    {
+        $this->__load();
+        return parent::addProduit($produits);
+    }
+
+    public function removeProduit(\Hetic\SiteBundle\Entity\Produit $produits)
+    {
+        $this->__load();
+        return parent::removeProduit($produits);
+    }
+
+    public function getProduits()
+    {
+        $this->__load();
+        return parent::getProduits();
+    }
+
+    public function addImage(\Hetic\SiteBundle\Entity\ImageCategory $images)
+    {
+        $this->__load();
+        return parent::addImage($images);
+    }
+
+    public function removeImage(\Hetic\SiteBundle\Entity\ImageCategory $images)
+    {
+        $this->__load();
+        return parent::removeImage($images);
+    }
+
+    public function getImages()
+    {
+        $this->__load();
+        return parent::getImages();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'name', 'description', 'articles');
+        return array('__isInitialized__', 'id', 'name', 'path', 'description', 'cover', 'dateCreated', 'visible', 'lft', 'lvl', 'rgt', 'root', 'articles', 'produits', 'articless', 'parent', 'children', 'images');
     }
 
     public function __clone()
@@ -114,7 +306,7 @@ class Category extends \Hetic\SiteBundle\Entity\Category implements \Doctrine\OR
             if ($original === null) {
                 throw new \Doctrine\ORM\EntityNotFoundException();
             }
-            foreach ($class->reflFields as $field => $reflProperty) {
+            foreach ($class->reflFields AS $field => $reflProperty) {
                 $reflProperty->setValue($this, $reflProperty->getValue($original));
             }
             unset($this->_entityPersister, $this->_identifier);

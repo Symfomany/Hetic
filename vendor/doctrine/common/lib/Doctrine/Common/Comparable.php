@@ -13,24 +13,26 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * This software consists of voluntary contributions made by many individuals
- * and is licensed under the MIT license. For more information, see
+ * and is licensed under the LGPL. For more information, see
  * <http://www.doctrine-project.org>.
  */
+
 
 namespace Doctrine\Common;
 
 /**
  * Comparable interface that allows to compare two value objects to each other for similarity.
  *
- * @link   www.doctrine-project.org
- * @since  2.2
- * @author Benjamin Eberlei <kontakt@beberlei.de>
- * @author Guilherme Blanco <guilhermeblanco@hotmail.com>
+ * @license     http://www.opensource.org/licenses/lgpl-license.php LGPL
+ * @link        www.doctrine-project.com
+ * @since       2.2
+ * @author      Benjamin Eberlei <kontakt@beberlei.de>
+ * @author      Guilherme Blanco <guilhermeblanco@hotmail.com>
  */
 interface Comparable
 {
     /**
-     * Compares the current object to the passed $other.
+     * Compare the current object to the passed $other.
      *
      * Returns 0 if they are semantically equal, 1 if the other object
      * is less than the current one, or -1 if its more than the current one.
@@ -38,9 +40,8 @@ interface Comparable
      * This method should not check for identity using ===, only for semantical equality for example
      * when two different DateTime instances point to the exact same Date + TZ.
      *
-     * @param mixed $other
-     *
      * @return int
      */
     public function compareTo($other);
 }
+

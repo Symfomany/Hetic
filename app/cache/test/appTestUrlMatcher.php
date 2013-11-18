@@ -326,6 +326,15 @@ class appTestUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_tag_remove')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::tagremoveAction',));
         }
 
+        // hetic_search
+        if (rtrim($pathinfo, '/') === '/rechercher') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'hetic_search');
+            }
+
+            return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::searchAction',  '_route' => 'hetic_search',);
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }

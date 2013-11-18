@@ -6,6 +6,22 @@ use Doctrine\ORM\EntityRepository;
 
 class ArticleRepository extends EntityRepository
 {
+    /**
+     * @return QueryBuilder
+     */
+    public function createIsActiveQueryBuilder()
+    {
+        $queryBuilder = $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('m')
+            ->from('Hetic\SiteBundle\Entity\Article', 'm')
+            ->leftJoin('m.category', 'c')
+            ->leftJoin('m.tags', 't')
+            ->orderBy('m.id', 'DESC');
+        return $queryBuilder;
+    }
+
+
     public function findAllOrderedByName()
     {
         return $this->getEntityManager()

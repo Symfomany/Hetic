@@ -13,21 +13,16 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * This software consists of voluntary contributions made by many individuals
- * and is licensed under the MIT license. For more information, see
+ * and is licensed under the LGPL. For more information, see
  * <http://www.doctrine-project.org>.
  */
 
 namespace Doctrine\ORM;
 
-use Doctrine\ORM\Mapping\ClassMetadata;
-
-use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Selectable;
-use Doctrine\Common\Collections\Criteria;
-use Doctrine\Common\Collections\ExpressionBuilder;
-
-use Closure;
+use Doctrine\ORM\Mapping\ClassMetadata,
+    Doctrine\Common\Collections\Collection,
+    Doctrine\Common\Collections\ArrayCollection,
+    Closure;
 
 /**
  * A PersistentCollection represents a collection of elements that have persistent state.
@@ -42,10 +37,9 @@ use Closure;
  * @author    Konsta Vesterinen <kvesteri@cc.hut.fi>
  * @author    Roman Borschel <roman@code-factory.org>
  * @author    Giorgio Sironi <piccoloprincipeazzurro@gmail.com>
- * @author    Stefano Rodriguez <stefano.rodriguez@fubles.com>
- * @todo      Design for inheritance to allow custom implementations?
+ * @todo Design for inheritance to allow custom implementations?
  */
-final class PersistentCollection implements Collection, Selectable
+final class PersistentCollection implements Collection
 {
     /**
      * A snapshot of the collection at the moment it was fetched from the database.
@@ -655,7 +649,7 @@ final class PersistentCollection implements Collection, Selectable
 
         $this->initialized = true; // direct call, {@link initialize()} is too expensive
 
-        if ($this->association['isOwningSide'] && $this->owner) {
+        if ($this->association['isOwningSide']) {
             $this->changed();
 
             $uow->scheduleCollectionDeletion($this);
@@ -789,48 +783,10 @@ final class PersistentCollection implements Collection, Selectable
         }
 
         $this->initialize();
+        $this->owner = null;
 
-        $this->owner    = null;
         $this->snapshot = array();
 
         $this->changed();
     }
-
-    /**
-     * Select all elements from a selectable that match the expression and
-     * return a new collection containing these elements.
-     *
-     * @param \Doctrine\Common\Collections\Criteria $criteria
-     * @return Collection
-     */
-    public function matching(Criteria $criteria)
-    {
-        if ($this->isDirty) {
-            $this->initialize();
-        }
-
-        if ($this->initialized) {
-            return $this->coll->matching($criteria);
-        }
-
-        if ($this->association['type'] !== ClassMetadata::ONE_TO_MANY) {
-            throw new \RuntimeException("Matching Criteria on PersistentCollection only works on OneToMany assocations at the moment.");
-        }
-
-        $id              = $this->em
-            ->getClassMetadata(get_class($this->owner))
-            ->getSingleIdReflectionProperty()
-            ->getValue($this->owner);
-        $builder         = Criteria::expr();
-        $ownerExpression = $builder->eq($this->backRefFieldName, $id);
-        $expression      = $criteria->getWhereExpression();
-        $expression      = $expression ? $builder->andX($expression, $ownerExpression) : $ownerExpression;
-
-        $criteria->where($expression);
-
-        $persister = $this->em->getUnitOfWork()->getEntityPersister($this->association['targetEntity']);
-
-        return new ArrayCollection($persister->loadCriteria($criteria));
-    }
 }
-

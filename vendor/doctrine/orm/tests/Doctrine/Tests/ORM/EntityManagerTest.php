@@ -114,10 +114,10 @@ class EntityManagerTest extends \Doctrine\Tests\OrmTestCase
 
     /**
      * @dataProvider dataMethodsAffectedByNoObjectArguments
+     * @expectedException \InvalidArgumentException
+     * @param string $methodName
      */
     public function testThrowsExceptionOnNonObjectValues($methodName) {
-        $this->setExpectedException('Doctrine\ORM\ORMInvalidArgumentException',
-            'EntityManager#'.$methodName.'() expects parameter 1 to be an entity object, NULL given.');
         $this->_em->$methodName(null);
     }
 
@@ -154,22 +154,5 @@ class EntityManagerTest extends \Doctrine\Tests\OrmTestCase
         });
 
         $this->assertEquals('foo', $return);
-    }
-
-    public function testTransactionalAcceptsVariousCallables()
-    {
-        $this->assertSame('callback', $this->_em->transactional(array($this, 'transactionalCallback')));
-    }
-
-    public function testTransactionalThrowsInvalidArgumentExceptionIfNonCallablePassed()
-    {
-        $this->setExpectedException('InvalidArgumentException', 'Expected argument of type "callable", got "object"');
-        $this->_em->transactional($this);
-    }
-
-    public function transactionalCallback($em)
-    {
-        $this->assertSame($this->_em, $em);
-        return 'callback';
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Doctrine\Tests\DBAL\Schema;
 
+require_once __DIR__ . '/../../TestInit.php';
+
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\DBAL\Schema\Table;
 use Doctrine\DBAL\Schema\TableBuilder;
@@ -494,35 +496,5 @@ class TableTest extends \Doctrine\Tests\DbalTestCase
         $table = new Table("test");
         $this->assertEquals('test.test', $table->getFullQualifiedName("test"));
         $this->assertEquals('other.test', $table->getFullQualifiedName("other"));
-    }
-
-    /**
-     * @group DBAL-224
-     */
-    public function testDropIndex()
-    {
-        $table = new Table("test");
-        $table->addColumn('id', 'integer');
-        $table->addIndex(array('id'), 'idx');
-
-        $this->assertTrue($table->hasIndex('idx'));
-
-        $table->dropIndex('idx');
-        $this->assertFalse($table->hasIndex('idx'));
-    }
-
-    /**
-     * @group DBAL-224
-     */
-    public function testDropPrimaryKey()
-    {
-        $table = new Table("test");
-        $table->addColumn('id', 'integer');
-        $table->setPrimaryKey(array('id'));
-
-        $this->assertTrue($table->hasPrimaryKey());
-
-        $table->dropPrimaryKey();
-        $this->assertFalse($table->hasPrimaryKey());
     }
 }

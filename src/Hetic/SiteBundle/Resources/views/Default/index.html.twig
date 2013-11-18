@@ -1,147 +1,46 @@
 {% extends 'HeticSiteBundle::layout.html.twig' %}
 
 {% block javascripts %}
-    {{ parent() }}
+        {{ parent() }}
     {% javascripts '@HeticSiteBundle/Resources/public/js/index.js' filter="cssrewrite" %}
         <script src="{{ asset_url }}" type="text/javascript"></script>
     {% endjavascripts %}
 
-    {% javascripts '@HeticSiteBundle/Resources/public/js/index.coffee'    %}
-    <script src="{{ asset_url }}" type="text/javascript"></script>
-    {% endjavascripts %}
 {% endblock %}
 
 {% block content %}
-        <div class="row-fluid">
-            <div class="span4">
-                <h2>Ajout d'un article</h2>
-                    <form action="{{ path('hetic_site_hello') }}" method="post" id="addarticle">
-                        {{ form(form) }}
-                    </form>
-                {{  render(controller("HeticSiteBundle:Default:categorycreate")) }}
-            </div><!--/span-->
-            <div class="span8">
-                <h2>Liste des Catégories</h2>
-                <div id="action_cates">
-                    {% for category in categories %}
-                    <a class="btn btn-primary" href="{{ path('hetic_category_sorted', {'id' : category.id }) }}">{{ category.name|title }}</a>
-                    {% endfor %}
-                </div>
-                <hr class="clear"/>
-                <h2>Liste des Articles par popularité</h2>
-                {% if category is defined %}<h3>Catégory courante: {{ category.name|title }}</h3>{% endif %}
-                <div class="navbar">
-                    <div class="navbar-inner">
-                        <h4>Tags</h4>
-                        <ul class="nav">
-                            {% for article in articles %}
-                                {% for tag in article.tags %}
-                                    <li> <a href="{{ path('hetic_site_articles_by_tags', {'tag' : tag.word }) }}"><i class="icon-comment"></i> {{ tag.word }}</a></li>
-                                {% endfor %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-                {#<div class="navigation">#}
-                    {#{{ knp_pagination_render(articles) }}#}
-                {#</div>#}
-                <table class="table table-striped table-bordered">
-                    <thead>
-                        <tr>
-                            <th><a href="">#</a></th>
-                            <th>Titre</th>
-                            <th>Category</th>
-                            <th>Tags</th>
-                            <th>Contenu</th>
-                            <th>Point</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    {% for article in articles %}
-                        <tr>
-                            <td><a href="{{ path('hetic_article_detail', {'id' : article.id }) }}">{{ article.id }}</a></td>
-                            <td><h5>
-                                 <a {% if article.id in app.session.get('stars') %}class="text-success"{% endif %} href="{{ path('hetic_article_detail', {'id' : article.id }) }}">{{ article.title|title }}</a>
-                                </h5></td>
-                            <td><h5><a href="{{ path('hetic_category_detail', {'id' : article.category.id }) }}">{{ article.category.name|title }}</a></h5></td>
-                            <td>
-                                {% for tag in article.tags %}
-                                    <div class="btn btn-small">
-                                        <i class="icon-tags"></i>
-                                        <a href="{{ path('hetic_site_articles_by_cat', { 'id' : article.category.id }) }}">
-                                            {{ tag.word|title }}
-                                        </a>
-                                    </div>
-                                {% else %}
-                                    <div class="alerting">
-                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                        <strong>Attention</strong> Aucun tags pour le moment
-                                    </div>
-                                {% endfor %}
-                            </td>
-                            <td><p class="content" style="font-size: 11px">{{ article.content|truncate(200,'...')|raw }}</p></td>
-                            <td><span class="badge badge-info">{{ article.point|default(0) }}</span></td>
-                            <td>
-                                <p class="">
-                                    <a class="remove" href="{{ path('hetic_site_remove', {"id": article.id }) }}">
-                                        <i class="icon-remove"></i>
-                                    </a>
-                                </p>
-                                <p class="">
-                                    {% if article.id not in app.session.get('stars') %}
-                                        <a class="star" href="{{ path('hetic_site_add_star', {"id": article.id }) }}">
-                                            <i class="icon-star"></i>
-                                        </a>
-                                    {% else %}
-                                        <a class="star" href="{{ path('hetic_site_remove_star', {"id": article.id }) }}">
-                                            <i class="icon-star-empty"></i>
-                                        </a>
-                                    {% endif %}
-                                </p>
-                                <p class="">
-                                    {% if article.isVisible == false %}
-                                        <a class="visible" href="{{ path('hetic_site_visible', {"id": article.id }) }}">
-                                            <i class="icon-ok"></i>
-                                        </a>
-                                    {% else %}
-                                        <a class="visible"  href="{{ path('hetic_site_invisible', {"id": article.id }) }}">
-                                            <i class="icon-ban-circle"></i>
-                                        </a>
-                                    {% endif %}
-                                </p>
-                                <p class="">
-                                    <a class="edit"  href="{{ path('hetic_site_edit', {"id": article.id }) }}">
-                                        <i class="icon-pencil"></i>
-                                    </a>
-                                </p>
-                                <p class="">
-                                    <a class="plus"  href="{{ path('hetic_article_more', {'id' : article.id }) }}">
-                                        <i class="icon-plus"></i>
-                                    </a>
-                                    <a class="less" href="{{ path('hetic_article_less', {'id' : article.id }) }}">
-                                        <i class="icon-minus"></i>
-                                    </a>
-                                </p>
-                            </td>
-                        </tr>
-                    {% endfor %}
 
-                    <tfoot>
-                    <tr>
-                        <th><a href="">#</a></th>
-                        <th>Titre</th>
-                        <th>Category</th>
-                        <th>Tags</th>
-                        <th>Contenu</th>
-                        <th>Point</th>
-                        <th>Actions</th>
-                    </tr>
-                    </tfoot>
-                </table>
-                {#<div class="navigation">#}
-                    {#{{ knp_pagination_render(articles) }}#}
-                {#</div>#}
+    <div class="" id="orders">
+        <h2><i class="glyphicon glyphicon-th-large"></i> Vos Dernières Commandes</h2>
+        {% for i in 1..4 %}
+            <div class="media">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+                        <i class="glyphicon glyphicon-plus"></i> Action <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a>Traiter</a></li>
+                        <li><a>Annuler</a></li>
+                    </ul>
+                </div>
+                <a class="pull-left" href="#">
+                    <img class="media-object" src="http://placekitten.com/g/150/75" alt="...">
+                </a>
+
+                <div class="media-body">
+                    <h4 class="media-heading"><a href="">Media heading</a></h4>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris accumsan est et sapien pretium
+                        pretium. Pellentesque et faucibus eros. Vivamus ut sem turpis.</p>
+
+                    <p>
+                        <a href="" class="btn-xs btn btn-danger pull-right"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Voir la commande</a>
+                    </p>
+                </div>
             </div>
-        </div>
+        {% endfor %}
+        <div class="clear"></div>
+    </div>
 {% endblock %}
 

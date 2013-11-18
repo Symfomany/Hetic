@@ -39,12 +39,6 @@ class ClassMetadataFactoryTest extends DoctrineTestCase
         $this->assertTrue($this->cmf->hasMetadataFor('stdClass'));
     }
 
-    public function testGetMetadataForAbsentClass()
-    {
-        $this->setExpectedException('Doctrine\Common\Persistence\Mapping\MappingException');
-        $this->cmf->getMetadataFor(__NAMESPACE__ . '\AbsentClass');
-    }
-
     public function testGetParentMetadata()
     {
         $metadata = $this->cmf->getMetadataFor(__NAMESPACE__ . '\ChildEntity');
@@ -96,7 +90,7 @@ class TestClassMetadataFactory extends AbstractClassMetadataFactory
         $this->metadata = $metadata;
     }
 
-    protected function doLoadMetadata($class, $parent, $rootEntityFound, array $nonSuperclassParents)
+    protected function doLoadMetadata($class, $parent, $rootEntityFound)
     {
 
     }
@@ -126,11 +120,6 @@ class TestClassMetadataFactory extends AbstractClassMetadataFactory
 
     protected function initializeReflection(ClassMetadata $class, ReflectionService $reflService)
     {
-    }
-
-    protected function isEntity(ClassMetadata $class)
-    {
-        return true;
     }
 }
 

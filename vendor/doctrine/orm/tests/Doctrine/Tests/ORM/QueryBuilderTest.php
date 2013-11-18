@@ -19,12 +19,8 @@
 
 namespace Doctrine\Tests\ORM;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 use Doctrine\ORM\QueryBuilder,
-    Doctrine\ORM\Query\Expr,
-    Doctrine\ORM\Query\Parameter,
-    Doctrine\ORM\Query\ParameterTypeInferer;
+    Doctrine\ORM\Query\Expr;
 
 require_once __DIR__ . '/../TestInit.php';
 
@@ -137,19 +133,6 @@ class QueryBuilderTest extends \Doctrine\Tests\OrmTestCase
             'SELECT u, a FROM Doctrine\Tests\Models\CMS\CmsUser u INNER JOIN u.articles a ON u.id = a.author_id'
         );
     }
-    
-    public function testComplexInnerJoinWithIndexBy()
-    {
-        $qb = $this->_em->createQueryBuilder()
-            ->select('u', 'a')
-            ->from('Doctrine\Tests\Models\CMS\CmsUser', 'u')
-            ->innerJoin('u.articles', 'a', 'ON', 'u.id = a.author_id', 'a.name');
-
-        $this->assertValidQueryBuilder(
-            $qb,
-            'SELECT u, a FROM Doctrine\Tests\Models\CMS\CmsUser u INNER JOIN u.articles a INDEX BY a.name ON u.id = a.author_id'
-        );
-    }    
 
     public function testLeftJoin()
     {
@@ -402,9 +385,7 @@ class QueryBuilderTest extends \Doctrine\Tests\OrmTestCase
             ->where('u.id = :id')
             ->setParameter('id', 1);
 
-        $parameter = new Parameter('id', 1, ParameterTypeInferer::inferType(1));
-
-        $this->assertEquals($parameter, $qb->getParameter('id'));
+        $this->assertEquals(array('id' => 1), $qb->getParameters());
     }
 
     public function testSetParameters()
@@ -414,13 +395,9 @@ class QueryBuilderTest extends \Doctrine\Tests\OrmTestCase
            ->from('Doctrine\Tests\Models\CMS\CmsUser', 'u')
            ->where($qb->expr()->orx('u.username = :username', 'u.username = :username2'));
 
-        $parameters = new ArrayCollection();
-        $parameters->add(new Parameter('username', 'jwage'));
-        $parameters->add(new Parameter('username2', 'jonwage'));
+        $qb->setParameters(array('username' => 'jwage', 'username2' => 'jonwage'));
 
-        $qb->setParameters($parameters);
-
-        $this->assertEquals($parameters, $qb->getQuery()->getParameters());
+        $this->assertEquals(array('username' => 'jwage', 'username2' => 'jonwage'), $qb->getQuery()->getParameters());
     }
 
 
@@ -431,12 +408,8 @@ class QueryBuilderTest extends \Doctrine\Tests\OrmTestCase
            ->from('Doctrine\Tests\Models\CMS\CmsUser', 'u')
            ->where('u.id = :id');
 
-        $parameters = new ArrayCollection();
-        $parameters->add(new Parameter('id', 1));
-
-        $qb->setParameters($parameters);
-
-        $this->assertEquals($parameters, $qb->getParameters());
+        $qb->setParameters(array('id' => 1));
+        $this->assertEquals(array('id' => 1), $qb->getParameters());
     }
 
     public function testGetParameter()
@@ -446,12 +419,8 @@ class QueryBuilderTest extends \Doctrine\Tests\OrmTestCase
             ->from('Doctrine\Tests\Models\CMS\CmsUser', 'u')
             ->where('u.id = :id');
 
-        $parameters = new ArrayCollection();
-        $parameters->add(new Parameter('id', 1));
-
-        $qb->setParameters($parameters);
-
-        $this->assertEquals($parameters->first(), $qb->getParameter('id'));
+        $qb->setParameters(array('id' => 1));
+        $this->assertEquals(1, $qb->getParameter('id'));
     }
 
     public function testMultipleWhere()
@@ -567,7 +536,6 @@ class QueryBuilderTest extends \Doctrine\Tests\OrmTestCase
         $qb->setParameter('name', 'romanb');
 
         $q1 = $qb->getQuery();
-
         $this->assertEquals('SELECT u FROM Doctrine\Tests\Models\CMS\CmsUser u WHERE u.name = :name', $q1->getDql());
         $this->assertEquals(1, count($q1->getParameters()));
 
@@ -675,23 +643,6 @@ class QueryBuilderTest extends \Doctrine\Tests\OrmTestCase
         $qb2->andWhere('u.name = ?3');
 
         $this->assertEquals(2, $expr->count(), "Modifying the second query should affect the first one.");
-    }
-
-    /**
-     * @group DDC-1933
-     */
-    public function testParametersAreCloned()
-    {
-        $originalQb = new QueryBuilder($this->_em);
-
-        $originalQb->setParameter('parameter1', 'value1');
-
-        $copy = clone $originalQb;
-        $copy->setParameter('parameter2', 'value2');
-
-        $this->assertCount(1, $originalQb->getParameters());
-        $this->assertSame('value1', $copy->getParameter('parameter1')->getValue());
-        $this->assertSame('value2', $copy->getParameter('parameter2')->getValue());
     }
 
     public function testGetRootAlias()

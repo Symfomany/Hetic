@@ -22,18 +22,18 @@ class MySqlPlatformTest extends AbstractPlatformTestCase
         $table->addColumn("Bar", "integer");
 
         $sql = $this->_platform->getCreateTableSQL($table);
-        $this->assertEquals('CREATE TABLE Foo (Bar INT NOT NULL) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB', array_shift($sql));
+        $this->assertEquals('CREATE TABLE Foo (Bar INT NOT NULL) ENGINE = InnoDB', array_shift($sql));
     }
 
     public function getGenerateTableSql()
     {
-        return 'CREATE TABLE test (id INT AUTO_INCREMENT NOT NULL, test VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB';
+        return 'CREATE TABLE test (id INT AUTO_INCREMENT NOT NULL, test VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) ENGINE = InnoDB';
     }
 
     public function getGenerateTableWithMultiColumnUniqueIndexSql()
     {
         return array(
-            'CREATE TABLE test (foo VARCHAR(255) DEFAULT NULL, bar VARCHAR(255) DEFAULT NULL, UNIQUE INDEX UNIQ_D87F7E0C8C73652176FF8CAA (foo, bar)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB'
+            'CREATE TABLE test (foo VARCHAR(255) DEFAULT NULL, bar VARCHAR(255) DEFAULT NULL, UNIQUE INDEX UNIQ_D87F7E0C8C73652176FF8CAA (foo, bar)) ENGINE = InnoDB'
         );
     }
 
@@ -197,7 +197,7 @@ class MySqlPlatformTest extends AbstractPlatformTestCase
 
     public function getCreateTableColumnCommentsSQL()
     {
-        return array("CREATE TABLE test (id INT NOT NULL COMMENT 'This is a comment', PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB");
+        return array("CREATE TABLE test (id INT NOT NULL COMMENT 'This is a comment', PRIMARY KEY(id)) ENGINE = InnoDB");
     }
 
     public function getAlterTableColumnCommentsSQL()
@@ -207,7 +207,7 @@ class MySqlPlatformTest extends AbstractPlatformTestCase
 
     public function getCreateTableColumnTypeCommentsSQL()
     {
-        return array("CREATE TABLE test (id INT NOT NULL, data LONGTEXT NOT NULL COMMENT '(DC2Type:array)', PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB");
+        return array("CREATE TABLE test (id INT NOT NULL, data LONGTEXT NOT NULL COMMENT '(DC2Type:array)', PRIMARY KEY(id)) ENGINE = InnoDB");
     }
 
     /**
@@ -225,19 +225,5 @@ class MySqlPlatformTest extends AbstractPlatformTestCase
         $diff = new TableDiff("test", array(), array(), array(), array($index), array(), array($unique));
         $sql = $this->_platform->getAlterTableSQL($diff);
         $this->assertEquals(array("ALTER TABLE test DROP INDEX uniq, ADD INDEX idx (col)"), $sql);
-    }
-
-    protected function getQuotedColumnInPrimaryKeySQL()
-    {
-        return array(
-            'CREATE TABLE `quoted` (`key` VARCHAR(255) NOT NULL, PRIMARY KEY(`key`)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB'
-        );
-    }
-
-    protected function getQuotedColumnInIndexSQL()
-    {
-        return array(
-            'CREATE TABLE `quoted` (`key` VARCHAR(255) NOT NULL, INDEX IDX_22660D028A90ABA9 (`key`)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB'
-        );
     }
 }

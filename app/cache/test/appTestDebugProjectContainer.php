@@ -116,6 +116,28 @@ class appTestDebugProjectContainer extends Container
             'form.type_extension.submit.validator' => 'getForm_TypeExtension_Submit_ValidatorService',
             'form.type_guesser.doctrine' => 'getForm_TypeGuesser_DoctrineService',
             'form.type_guesser.validator' => 'getForm_TypeGuesser_ValidatorService',
+            'fos_elastica.client.default' => 'getFosElastica_Client_DefaultService',
+            'fos_elastica.data_collector' => 'getFosElastica_DataCollectorService',
+            'fos_elastica.finder.website.article' => 'getFosElastica_Finder_Website_ArticleService',
+            'fos_elastica.finder.website.category' => 'getFosElastica_Finder_Website_CategoryService',
+            'fos_elastica.finder.website.tag' => 'getFosElastica_Finder_Website_TagService',
+            'fos_elastica.index.website' => 'getFosElastica_Index_WebsiteService',
+            'fos_elastica.index.website.article' => 'getFosElastica_Index_Website_ArticleService',
+            'fos_elastica.index.website.category' => 'getFosElastica_Index_Website_CategoryService',
+            'fos_elastica.index.website.tag' => 'getFosElastica_Index_Website_TagService',
+            'fos_elastica.index_manager' => 'getFosElastica_IndexManagerService',
+            'fos_elastica.logger' => 'getFosElastica_LoggerService',
+            'fos_elastica.manager.orm' => 'getFosElastica_Manager_OrmService',
+            'fos_elastica.object_persister.website.article' => 'getFosElastica_ObjectPersister_Website_ArticleService',
+            'fos_elastica.object_persister.website.category' => 'getFosElastica_ObjectPersister_Website_CategoryService',
+            'fos_elastica.object_persister.website.tag' => 'getFosElastica_ObjectPersister_Website_TagService',
+            'fos_elastica.paginator.subscriber' => 'getFosElastica_Paginator_SubscriberService',
+            'fos_elastica.property_accessor' => 'getFosElastica_PropertyAccessorService',
+            'fos_elastica.provider.website.article' => 'getFosElastica_Provider_Website_ArticleService',
+            'fos_elastica.provider.website.category' => 'getFosElastica_Provider_Website_CategoryService',
+            'fos_elastica.provider.website.tag' => 'getFosElastica_Provider_Website_TagService',
+            'fos_elastica.provider_registry' => 'getFosElastica_ProviderRegistryService',
+            'fos_elastica.resetter' => 'getFosElastica_ResetterService',
             'fos_rest.body_listener' => 'getFosRest_BodyListenerService',
             'fos_rest.decoder.json' => 'getFosRest_Decoder_JsonService',
             'fos_rest.decoder.jsontoform' => 'getFosRest_Decoder_JsontoformService',
@@ -181,6 +203,7 @@ class appTestDebugProjectContainer extends Container
             'monolog.handler.main' => 'getMonolog_Handler_MainService',
             'monolog.logger.deprecation' => 'getMonolog_Logger_DeprecationService',
             'monolog.logger.doctrine' => 'getMonolog_Logger_DoctrineService',
+            'monolog.logger.elastica' => 'getMonolog_Logger_ElasticaService',
             'monolog.logger.emergency' => 'getMonolog_Logger_EmergencyService',
             'monolog.logger.event' => 'getMonolog_Logger_EventService',
             'monolog.logger.profiler' => 'getMonolog_Logger_ProfilerService',
@@ -313,6 +336,9 @@ class appTestDebugProjectContainer extends Container
             'debug.templating.engine.twig' => 'templating',
             'doctrine.orm.entity_manager' => 'doctrine.orm.default_entity_manager',
             'event_dispatcher' => 'debug.event_dispatcher',
+            'fos_elastica.client' => 'fos_elastica.client.default',
+            'fos_elastica.index' => 'fos_elastica.index.website',
+            'fos_elastica.manager' => 'fos_elastica.manager.orm',
             'fos_rest.inflector' => 'fos_rest.inflector.doctrine',
             'fos_rest.router' => 'router',
             'fos_rest.serializer' => 'jms_serializer',
@@ -667,13 +693,14 @@ class appTestDebugProjectContainer extends Container
         $instance->addListenerService('knp_pager.before', array(0 => 'knp_paginator.subscriber.sortable', 1 => 'before'), 1);
         $instance->addListenerService('knp_pager.before', array(0 => 'knp_paginator.subscriber.filtration', 1 => 'before'), 1);
         $instance->addListenerService('knp_pager.pagination', array(0 => 'knp_paginator.subscriber.sliding_pagination', 1 => 'pagination'), 1);
+        $instance->addListenerService('knp_pager.items', array(0 => 'fos_elastica.paginator.subscriber', 1 => 'items'), 1);
         $instance->addListenerService('kernel.controller', array(0 => 'data_collector.router', 1 => 'onKernelController'), 0);
         $instance->addListenerService('kernel.response', array(0 => 'monolog.handler.firephp', 1 => 'onKernelResponse'), 0);
         $instance->addListenerService('kernel.response', array(0 => 'monolog.handler.chromephp', 1 => 'onKernelResponse'), 0);
         $instance->addListenerService('kernel.request', array(0 => 'assetic.request_listener', 1 => 'onKernelRequest'), 0);
         $instance->addListenerService('kernel.controller', array(0 => 'fos_rest.view_response_listener', 1 => 'onKernelController'), -10);
         $instance->addListenerService('kernel.view', array(0 => 'fos_rest.view_response_listener', 1 => 'onKernelView'), 100);
-        $instance->addListenerService('kernel.request', array(0 => 'fos_rest.body_listener', 1 => 'onKernelRequest'), 0);
+        $instance->addListenerService('kernel.request', array(0 => 'fos_rest.body_listener', 1 => 'onKernelRequest'), 10);
         $instance->addListenerService('kernel.controller', array(0 => 'fos_rest.param_fetcher_listener', 1 => 'onKernelController'), 5);
         $instance->addListenerService('kernel.request', array(0 => 'knp_paginator.subscriber.sliding_pagination', 1 => 'onKernelRequest'), 0);
         $instance->addSubscriberService('response_listener', 'Symfony\\Component\\HttpKernel\\EventListener\\ResponseListener');
@@ -772,7 +799,12 @@ class appTestDebugProjectContainer extends Container
         $b = new \Doctrine\DBAL\Configuration();
         $b->setSQLLogger($a);
 
-        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('dbname' => 'symfony', 'host' => '127.0.0.1', 'port' => NULL, 'user' => 'root', 'password' => 'djscrave', 'charset' => 'UTF8', 'driver' => 'pdo_mysql', 'driverOptions' => array()), $b, new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this), array());
+        $c = new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this);
+        $c->addEventSubscriber(new \FOS\ElasticaBundle\Doctrine\ORM\Listener($this->get('fos_elastica.object_persister.website.article'), 'Hetic\\SiteBundle\\Entity\\Article', array(0 => 'postPersist', 1 => 'postUpdate', 2 => 'postRemove', 3 => 'preRemove'), 'id', ''));
+        $c->addEventSubscriber(new \FOS\ElasticaBundle\Doctrine\ORM\Listener($this->get('fos_elastica.object_persister.website.category'), 'Hetic\\SiteBundle\\Entity\\Category', array(0 => 'postPersist', 1 => 'postUpdate', 2 => 'postRemove', 3 => 'preRemove'), 'id', ''));
+        $c->addEventSubscriber(new \FOS\ElasticaBundle\Doctrine\ORM\Listener($this->get('fos_elastica.object_persister.website.tag'), 'Hetic\\SiteBundle\\Entity\\Tag', array(0 => 'postPersist', 1 => 'postUpdate', 2 => 'postRemove', 3 => 'preRemove'), 'id', ''));
+
+        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('dbname' => 'symfony', 'host' => '127.0.0.1', 'port' => NULL, 'user' => 'root', 'password' => 'djscrave', 'charset' => 'UTF8', 'driver' => 'pdo_mysql', 'driverOptions' => array()), $b, $c, array());
     }
 
     /**
@@ -781,11 +813,11 @@ class appTestDebugProjectContainer extends Container
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return EntityManager5273a9b2c20bb_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager A EntityManager5273a9b2c20bb_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager instance.
+     * @return EntityManager527a8a2305c46_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager A EntityManager527a8a2305c46_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager instance.
      */
     protected function getDoctrine_Orm_DefaultEntityManagerService()
     {
-        require_once '/home/boyer/hetic/app/cache/test/jms_diextra/doctrine/EntityManager_5273a9b2c20bb.php';
+        require_once '/home/boyer/hetic/app/cache/test/jms_diextra/doctrine/EntityManager_527a8a2305c46.php';
 
         $a = new \Doctrine\Common\Cache\ArrayCache();
         $a->setNamespace('sf2orm_default_43c7af4339d871192484ab0181e23ab4608daf3c12dd725a4f161fff4441e2c3');
@@ -815,7 +847,7 @@ class appTestDebugProjectContainer extends Container
         $f = call_user_func(array('Doctrine\\ORM\\EntityManager', 'create'), $this->get('doctrine.dbal.default_connection'), $e);
         $this->get('doctrine.orm.default_manager_configurator')->configure($f);
 
-        return $this->services['doctrine.orm.default_entity_manager'] = new \EntityManager5273a9b2c20bb_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager($f, $this);
+        return $this->services['doctrine.orm.default_entity_manager'] = new \EntityManager527a8a2305c46_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager($f, $this);
     }
 
     /**
@@ -1469,6 +1501,329 @@ class appTestDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'fos_elastica.client.default' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return FOS\ElasticaBundle\Client A FOS\ElasticaBundle\Client instance.
+     */
+    protected function getFosElastica_Client_DefaultService()
+    {
+        $this->services['fos_elastica.client.default'] = $instance = new \FOS\ElasticaBundle\Client(array('servers' => array(0 => array('host' => 'localhost', 'port' => 9200))));
+
+        $instance->setLogger($this->get('fos_elastica.logger'));
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'fos_elastica.data_collector' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return FOS\ElasticaBundle\DataCollector\ElasticaDataCollector A FOS\ElasticaBundle\DataCollector\ElasticaDataCollector instance.
+     */
+    protected function getFosElastica_DataCollectorService()
+    {
+        return $this->services['fos_elastica.data_collector'] = new \FOS\ElasticaBundle\DataCollector\ElasticaDataCollector($this->get('fos_elastica.logger'));
+    }
+
+    /**
+     * Gets the 'fos_elastica.finder.website.article' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return FOS\ElasticaBundle\Finder\TransformedFinder A FOS\ElasticaBundle\Finder\TransformedFinder instance.
+     */
+    protected function getFosElastica_Finder_Website_ArticleService()
+    {
+        $a = new \FOS\ElasticaBundle\Doctrine\ORM\ElasticaToModelTransformer($this->get('doctrine'), 'Hetic\\SiteBundle\\Entity\\Article', array('hydrate' => true, 'identifier' => 'id', 'ignore_missing' => false));
+        $a->setPropertyAccessor($this->get('fos_elastica.property_accessor'));
+
+        return $this->services['fos_elastica.finder.website.article'] = new \FOS\ElasticaBundle\Finder\TransformedFinder($this->get('fos_elastica.index.website')->getType('article'), $a);
+    }
+
+    /**
+     * Gets the 'fos_elastica.finder.website.category' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return FOS\ElasticaBundle\Finder\TransformedFinder A FOS\ElasticaBundle\Finder\TransformedFinder instance.
+     */
+    protected function getFosElastica_Finder_Website_CategoryService()
+    {
+        $a = new \FOS\ElasticaBundle\Doctrine\ORM\ElasticaToModelTransformer($this->get('doctrine'), 'Hetic\\SiteBundle\\Entity\\Category', array('hydrate' => true, 'identifier' => 'id', 'ignore_missing' => false));
+        $a->setPropertyAccessor($this->get('fos_elastica.property_accessor'));
+
+        return $this->services['fos_elastica.finder.website.category'] = new \FOS\ElasticaBundle\Finder\TransformedFinder($this->get('fos_elastica.index.website')->getType('category'), $a);
+    }
+
+    /**
+     * Gets the 'fos_elastica.finder.website.tag' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return FOS\ElasticaBundle\Finder\TransformedFinder A FOS\ElasticaBundle\Finder\TransformedFinder instance.
+     */
+    protected function getFosElastica_Finder_Website_TagService()
+    {
+        $a = new \FOS\ElasticaBundle\Doctrine\ORM\ElasticaToModelTransformer($this->get('doctrine'), 'Hetic\\SiteBundle\\Entity\\Tag', array('hydrate' => true, 'identifier' => 'id', 'ignore_missing' => false));
+        $a->setPropertyAccessor($this->get('fos_elastica.property_accessor'));
+
+        return $this->services['fos_elastica.finder.website.tag'] = new \FOS\ElasticaBundle\Finder\TransformedFinder($this->get('fos_elastica.index.website')->getType('tag'), $a);
+    }
+
+    /**
+     * Gets the 'fos_elastica.index.website' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Elastica\Index A Elastica\Index instance.
+     */
+    protected function getFosElastica_Index_WebsiteService()
+    {
+        return $this->services['fos_elastica.index.website'] = $this->get('fos_elastica.client.default')->getIndex('website_qa');
+    }
+
+    /**
+     * Gets the 'fos_elastica.index.website.article' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Elastica\Type A Elastica\Type instance.
+     */
+    protected function getFosElastica_Index_Website_ArticleService()
+    {
+        return $this->services['fos_elastica.index.website.article'] = $this->get('fos_elastica.index.website')->getType('article');
+    }
+
+    /**
+     * Gets the 'fos_elastica.index.website.category' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Elastica\Type A Elastica\Type instance.
+     */
+    protected function getFosElastica_Index_Website_CategoryService()
+    {
+        return $this->services['fos_elastica.index.website.category'] = $this->get('fos_elastica.index.website')->getType('category');
+    }
+
+    /**
+     * Gets the 'fos_elastica.index.website.tag' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Elastica\Type A Elastica\Type instance.
+     */
+    protected function getFosElastica_Index_Website_TagService()
+    {
+        return $this->services['fos_elastica.index.website.tag'] = $this->get('fos_elastica.index.website')->getType('tag');
+    }
+
+    /**
+     * Gets the 'fos_elastica.index_manager' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return FOS\ElasticaBundle\IndexManager A FOS\ElasticaBundle\IndexManager instance.
+     */
+    protected function getFosElastica_IndexManagerService()
+    {
+        $a = $this->get('fos_elastica.index.website');
+
+        return $this->services['fos_elastica.index_manager'] = new \FOS\ElasticaBundle\IndexManager(array('website' => $a), $a);
+    }
+
+    /**
+     * Gets the 'fos_elastica.logger' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return FOS\ElasticaBundle\Logger\ElasticaLogger A FOS\ElasticaBundle\Logger\ElasticaLogger instance.
+     */
+    protected function getFosElastica_LoggerService()
+    {
+        return $this->services['fos_elastica.logger'] = new \FOS\ElasticaBundle\Logger\ElasticaLogger($this->get('monolog.logger.elastica', ContainerInterface::NULL_ON_INVALID_REFERENCE), true);
+    }
+
+    /**
+     * Gets the 'fos_elastica.manager.orm' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return FOS\ElasticaBundle\Doctrine\RepositoryManager A FOS\ElasticaBundle\Doctrine\RepositoryManager instance.
+     */
+    protected function getFosElastica_Manager_OrmService()
+    {
+        $this->services['fos_elastica.manager.orm'] = $instance = new \FOS\ElasticaBundle\Doctrine\RepositoryManager($this->get('doctrine'), $this->get('annotation_reader'));
+
+        $instance->addEntity('Hetic\\SiteBundle\\Entity\\Article', $this->get('fos_elastica.finder.website.article'), 'Hetic\\SiteBundle\\Entity\\ArticleRepository');
+        $instance->addEntity('Hetic\\SiteBundle\\Entity\\Category', $this->get('fos_elastica.finder.website.category'), 'Hetic\\SiteBundle\\Entity\\CategoryRepository');
+        $instance->addEntity('Hetic\\SiteBundle\\Entity\\Tag', $this->get('fos_elastica.finder.website.tag'), 'Hetic\\SiteBundle\\Entity\\CategoryRepository');
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'fos_elastica.object_persister.website.article' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return FOS\ElasticaBundle\Persister\ObjectPersister A FOS\ElasticaBundle\Persister\ObjectPersister instance.
+     */
+    protected function getFosElastica_ObjectPersister_Website_ArticleService()
+    {
+        $a = new \FOS\ElasticaBundle\Transformer\ModelToElasticaAutoTransformer(array('identifier' => 'id'));
+        $a->setPropertyAccessor($this->get('fos_elastica.property_accessor'));
+
+        return $this->services['fos_elastica.object_persister.website.article'] = new \FOS\ElasticaBundle\Persister\ObjectPersister($this->get('fos_elastica.index.website')->getType('article'), $a, 'Hetic\\SiteBundle\\Entity\\Article', array('title' => array('type' => 'string', 'include_in_all' => true), 'content' => array('type' => 'string', 'include_in_all' => true), 'nature' => array('type' => 'integer', 'include_in_all' => true), 'isVisible' => array('type' => 'boolean', 'include_in_all' => true), 'point' => array('type' => 'integer', 'include_in_all' => true), 'datePublication' => array('type' => 'date', 'include_in_all' => true)));
+    }
+
+    /**
+     * Gets the 'fos_elastica.object_persister.website.category' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return FOS\ElasticaBundle\Persister\ObjectPersister A FOS\ElasticaBundle\Persister\ObjectPersister instance.
+     */
+    protected function getFosElastica_ObjectPersister_Website_CategoryService()
+    {
+        $a = new \FOS\ElasticaBundle\Transformer\ModelToElasticaAutoTransformer(array('identifier' => 'id'));
+        $a->setPropertyAccessor($this->get('fos_elastica.property_accessor'));
+
+        return $this->services['fos_elastica.object_persister.website.category'] = new \FOS\ElasticaBundle\Persister\ObjectPersister($this->get('fos_elastica.index.website')->getType('category'), $a, 'Hetic\\SiteBundle\\Entity\\Category', array('name' => array('type' => 'string', 'include_in_all' => true), 'description' => array('type' => 'string', 'include_in_all' => true)));
+    }
+
+    /**
+     * Gets the 'fos_elastica.object_persister.website.tag' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return FOS\ElasticaBundle\Persister\ObjectPersister A FOS\ElasticaBundle\Persister\ObjectPersister instance.
+     */
+    protected function getFosElastica_ObjectPersister_Website_TagService()
+    {
+        $a = new \FOS\ElasticaBundle\Transformer\ModelToElasticaAutoTransformer(array('identifier' => 'id'));
+        $a->setPropertyAccessor($this->get('fos_elastica.property_accessor'));
+
+        return $this->services['fos_elastica.object_persister.website.tag'] = new \FOS\ElasticaBundle\Persister\ObjectPersister($this->get('fos_elastica.index.website')->getType('tag'), $a, 'Hetic\\SiteBundle\\Entity\\Tag', array('word' => array('type' => 'string', 'include_in_all' => true)));
+    }
+
+    /**
+     * Gets the 'fos_elastica.paginator.subscriber' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return FOS\ElasticaBundle\Subscriber\PaginateElasticaQuerySubscriber A FOS\ElasticaBundle\Subscriber\PaginateElasticaQuerySubscriber instance.
+     */
+    protected function getFosElastica_Paginator_SubscriberService()
+    {
+        return $this->services['fos_elastica.paginator.subscriber'] = new \FOS\ElasticaBundle\Subscriber\PaginateElasticaQuerySubscriber();
+    }
+
+    /**
+     * Gets the 'fos_elastica.property_accessor' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Symfony\Component\PropertyAccess\PropertyAccessor A Symfony\Component\PropertyAccess\PropertyAccessor instance.
+     */
+    protected function getFosElastica_PropertyAccessorService()
+    {
+        return $this->services['fos_elastica.property_accessor'] = new \Symfony\Component\PropertyAccess\PropertyAccessor();
+    }
+
+    /**
+     * Gets the 'fos_elastica.provider.website.article' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return FOS\ElasticaBundle\Doctrine\ORM\Provider A FOS\ElasticaBundle\Doctrine\ORM\Provider instance.
+     */
+    protected function getFosElastica_Provider_Website_ArticleService()
+    {
+        return $this->services['fos_elastica.provider.website.article'] = new \FOS\ElasticaBundle\Doctrine\ORM\Provider($this->get('fos_elastica.object_persister.website.article'), 'Hetic\\SiteBundle\\Entity\\Article', array('query_builder_method' => 'createIsActiveQueryBuilder', 'batch_size' => 100, 'clear_object_manager' => true), $this->get('doctrine'));
+    }
+
+    /**
+     * Gets the 'fos_elastica.provider.website.category' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return FOS\ElasticaBundle\Doctrine\ORM\Provider A FOS\ElasticaBundle\Doctrine\ORM\Provider instance.
+     */
+    protected function getFosElastica_Provider_Website_CategoryService()
+    {
+        return $this->services['fos_elastica.provider.website.category'] = new \FOS\ElasticaBundle\Doctrine\ORM\Provider($this->get('fos_elastica.object_persister.website.category'), 'Hetic\\SiteBundle\\Entity\\Category', array('query_builder_method' => 'getActiveCategoryQueryBuilder', 'batch_size' => 100, 'clear_object_manager' => true), $this->get('doctrine'));
+    }
+
+    /**
+     * Gets the 'fos_elastica.provider.website.tag' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return FOS\ElasticaBundle\Doctrine\ORM\Provider A FOS\ElasticaBundle\Doctrine\ORM\Provider instance.
+     */
+    protected function getFosElastica_Provider_Website_TagService()
+    {
+        return $this->services['fos_elastica.provider.website.tag'] = new \FOS\ElasticaBundle\Doctrine\ORM\Provider($this->get('fos_elastica.object_persister.website.tag'), 'Hetic\\SiteBundle\\Entity\\Tag', array('query_builder_method' => 'getTags', 'batch_size' => 100, 'clear_object_manager' => true), $this->get('doctrine'));
+    }
+
+    /**
+     * Gets the 'fos_elastica.provider_registry' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return FOS\ElasticaBundle\Provider\ProviderRegistry A FOS\ElasticaBundle\Provider\ProviderRegistry instance.
+     */
+    protected function getFosElastica_ProviderRegistryService()
+    {
+        $this->services['fos_elastica.provider_registry'] = $instance = new \FOS\ElasticaBundle\Provider\ProviderRegistry();
+
+        $instance->setContainer($this);
+        $instance->addProvider('website', 'article', 'fos_elastica.provider.website.article');
+        $instance->addProvider('website', 'category', 'fos_elastica.provider.website.category');
+        $instance->addProvider('website', 'tag', 'fos_elastica.provider.website.tag');
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'fos_elastica.resetter' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return FOS\ElasticaBundle\Resetter A FOS\ElasticaBundle\Resetter instance.
+     */
+    protected function getFosElastica_ResetterService()
+    {
+        return $this->services['fos_elastica.resetter'] = new \FOS\ElasticaBundle\Resetter(array('website' => array('index' => $this->get('fos_elastica.index.website'), 'config' => array('mappings' => array('article' => array('properties' => array('title' => array('type' => 'string', 'include_in_all' => true), 'content' => array('type' => 'string', 'include_in_all' => true), 'nature' => array('type' => 'integer', 'include_in_all' => true), 'isVisible' => array('type' => 'boolean', 'include_in_all' => true), 'point' => array('type' => 'integer', 'include_in_all' => true), 'datePublication' => array('type' => 'date', 'include_in_all' => true))), 'category' => array('properties' => array('name' => array('type' => 'string', 'include_in_all' => true), 'description' => array('type' => 'string', 'include_in_all' => true))), 'tag' => array('properties' => array('word' => array('type' => 'string', 'include_in_all' => true))))))));
+    }
+
+    /**
      * Gets the 'fos_rest.body_listener' service.
      *
      * This service is shared.
@@ -2031,7 +2386,7 @@ class appTestDebugProjectContainer extends Container
      */
     protected function getJmsSerializer_MetadataDriverService()
     {
-        $a = new \Metadata\Driver\FileLocator(array('Symfony\\Bundle\\FrameworkBundle' => '/home/boyer/hetic/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer', 'Symfony\\Bundle\\SecurityBundle' => '/home/boyer/hetic/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer', 'Symfony\\Bundle\\TwigBundle' => '/home/boyer/hetic/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer', 'Symfony\\Bundle\\MonologBundle' => '/home/boyer/hetic/vendor/symfony/monolog-bundle/Symfony/Bundle/MonologBundle/Resources/config/serializer', 'Symfony\\Bundle\\SwiftmailerBundle' => '/home/boyer/hetic/vendor/symfony/swiftmailer-bundle/Symfony/Bundle/SwiftmailerBundle/Resources/config/serializer', 'Symfony\\Bundle\\AsseticBundle' => '/home/boyer/hetic/vendor/symfony/assetic-bundle/Symfony/Bundle/AsseticBundle/Resources/config/serializer', 'Doctrine\\Bundle\\DoctrineBundle' => '/home/boyer/hetic/vendor/doctrine/doctrine-bundle/Doctrine/Bundle/DoctrineBundle/Resources/config/serializer', 'Sensio\\Bundle\\FrameworkExtraBundle' => '/home/boyer/hetic/vendor/sensio/framework-extra-bundle/Sensio/Bundle/FrameworkExtraBundle/Resources/config/serializer', 'Hetic\\SiteBundle' => '/home/boyer/hetic/src/Hetic/SiteBundle/Resources/config/serializer', 'JMS\\SerializerBundle' => '/home/boyer/hetic/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer', 'FOS\\RestBundle' => '/home/boyer/hetic/vendor/friendsofsymfony/rest-bundle/FOS/RestBundle/Resources/config/serializer', 'JMS\\AopBundle' => '/home/boyer/hetic/vendor/jms/aop-bundle/JMS/AopBundle/Resources/config/serializer', 'JMS\\SecurityExtraBundle' => '/home/boyer/hetic/vendor/jms/security-extra-bundle/JMS/SecurityExtraBundle/Resources/config/serializer', 'JMS\\DiExtraBundle' => '/home/boyer/hetic/vendor/jms/di-extra-bundle/JMS/DiExtraBundle/Resources/config/serializer', 'Knp\\Bundle\\PaginatorBundle' => '/home/boyer/hetic/vendor/knplabs/knp-paginator-bundle/Knp/Bundle/PaginatorBundle/Resources/config/serializer', 'Symfony\\Bundle\\WebProfilerBundle' => '/home/boyer/hetic/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer', 'Sensio\\Bundle\\DistributionBundle' => '/home/boyer/hetic/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/config/serializer', 'Sensio\\Bundle\\GeneratorBundle' => '/home/boyer/hetic/vendor/sensio/generator-bundle/Sensio/Bundle/GeneratorBundle/Resources/config/serializer'));
+        $a = new \Metadata\Driver\FileLocator(array('Symfony\\Bundle\\FrameworkBundle' => '/home/boyer/hetic/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer', 'Symfony\\Bundle\\SecurityBundle' => '/home/boyer/hetic/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer', 'Symfony\\Bundle\\TwigBundle' => '/home/boyer/hetic/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer', 'Symfony\\Bundle\\MonologBundle' => '/home/boyer/hetic/vendor/symfony/monolog-bundle/Symfony/Bundle/MonologBundle/Resources/config/serializer', 'Symfony\\Bundle\\SwiftmailerBundle' => '/home/boyer/hetic/vendor/symfony/swiftmailer-bundle/Symfony/Bundle/SwiftmailerBundle/Resources/config/serializer', 'Symfony\\Bundle\\AsseticBundle' => '/home/boyer/hetic/vendor/symfony/assetic-bundle/Symfony/Bundle/AsseticBundle/Resources/config/serializer', 'Doctrine\\Bundle\\DoctrineBundle' => '/home/boyer/hetic/vendor/doctrine/doctrine-bundle/Doctrine/Bundle/DoctrineBundle/Resources/config/serializer', 'Sensio\\Bundle\\FrameworkExtraBundle' => '/home/boyer/hetic/vendor/sensio/framework-extra-bundle/Sensio/Bundle/FrameworkExtraBundle/Resources/config/serializer', 'Hetic\\SiteBundle' => '/home/boyer/hetic/src/Hetic/SiteBundle/Resources/config/serializer', 'JMS\\SerializerBundle' => '/home/boyer/hetic/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer', 'FOS\\RestBundle' => '/home/boyer/hetic/vendor/friendsofsymfony/rest-bundle/FOS/RestBundle/Resources/config/serializer', 'JMS\\AopBundle' => '/home/boyer/hetic/vendor/jms/aop-bundle/JMS/AopBundle/Resources/config/serializer', 'JMS\\SecurityExtraBundle' => '/home/boyer/hetic/vendor/jms/security-extra-bundle/JMS/SecurityExtraBundle/Resources/config/serializer', 'JMS\\DiExtraBundle' => '/home/boyer/hetic/vendor/jms/di-extra-bundle/JMS/DiExtraBundle/Resources/config/serializer', 'Knp\\Bundle\\PaginatorBundle' => '/home/boyer/hetic/vendor/knplabs/knp-paginator-bundle/Knp/Bundle/PaginatorBundle/Resources/config/serializer', 'FOS\\ElasticaBundle' => '/home/boyer/hetic/vendor/friendsofsymfony/elastica-bundle/FOS/ElasticaBundle/Resources/config/serializer', 'Symfony\\Bundle\\WebProfilerBundle' => '/home/boyer/hetic/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer', 'Sensio\\Bundle\\DistributionBundle' => '/home/boyer/hetic/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/config/serializer', 'Sensio\\Bundle\\GeneratorBundle' => '/home/boyer/hetic/vendor/sensio/generator-bundle/Sensio/Bundle/GeneratorBundle/Resources/config/serializer'));
 
         return $this->services['jms_serializer.metadata_driver'] = new \JMS\Serializer\Metadata\Driver\DoctrineTypeDriver(new \Metadata\Driver\DriverChain(array(0 => new \JMS\Serializer\Metadata\Driver\YamlDriver($a), 1 => new \JMS\Serializer\Metadata\Driver\XmlDriver($a), 2 => new \JMS\Serializer\Metadata\Driver\PhpDriver($a), 3 => new \JMS\Serializer\Metadata\Driver\AnnotationDriver($this->get('annotation_reader')))), $this->get('doctrine'));
     }
@@ -2362,6 +2717,25 @@ class appTestDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'monolog.logger.elastica' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Symfony\Bridge\Monolog\Logger A Symfony\Bridge\Monolog\Logger instance.
+     */
+    protected function getMonolog_Logger_ElasticaService()
+    {
+        $this->services['monolog.logger.elastica'] = $instance = new \Symfony\Bridge\Monolog\Logger('elastica');
+
+        $instance->pushHandler($this->get('monolog.handler.chromephp'));
+        $instance->pushHandler($this->get('monolog.handler.firephp'));
+        $instance->pushHandler($this->get('monolog.handler.main'));
+
+        return $instance;
+    }
+
+    /**
      * Gets the 'monolog.logger.emergency' service.
      *
      * This service is shared.
@@ -2530,6 +2904,7 @@ class appTestDebugProjectContainer extends Container
         $instance->add(new \Symfony\Bundle\SecurityBundle\DataCollector\SecurityDataCollector($this->get('security.context', ContainerInterface::NULL_ON_INVALID_REFERENCE)));
         $instance->add(new \Symfony\Bundle\SwiftmailerBundle\DataCollector\MessageDataCollector($this));
         $instance->add($d);
+        $instance->add($this->get('fos_elastica.data_collector'));
 
         return $instance;
     }
@@ -3995,6 +4370,7 @@ class appTestDebugProjectContainer extends Container
         $instance->addPath('/home/boyer/hetic/vendor/doctrine/doctrine-bundle/Doctrine/Bundle/DoctrineBundle/Resources/views', 'Doctrine');
         $instance->addPath('/home/boyer/hetic/src/Hetic/SiteBundle/Resources/views', 'HeticSite');
         $instance->addPath('/home/boyer/hetic/vendor/knplabs/knp-paginator-bundle/Knp/Bundle/PaginatorBundle/Resources/views', 'KnpPaginator');
+        $instance->addPath('/home/boyer/hetic/vendor/friendsofsymfony/elastica-bundle/FOS/ElasticaBundle/Resources/views', 'FOSElastica');
         $instance->addPath('/home/boyer/hetic/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views', 'WebProfiler');
         $instance->addPath('/home/boyer/hetic/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/views', 'SensioDistribution');
         $instance->addPath('/home/boyer/hetic/app/Resources/views');
@@ -4078,7 +4454,7 @@ class appTestDebugProjectContainer extends Container
      */
     protected function getWebProfiler_Controller_ProfilerService()
     {
-        return $this->services['web_profiler.controller.profiler'] = new \Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController($this->get('router', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('profiler', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('twig'), array('data_collector.config' => array(0 => 'config', 1 => '@WebProfiler/Collector/config.html.twig'), 'data_collector.request' => array(0 => 'request', 1 => '@WebProfiler/Collector/request.html.twig'), 'data_collector.exception' => array(0 => 'exception', 1 => '@WebProfiler/Collector/exception.html.twig'), 'data_collector.events' => array(0 => 'events', 1 => '@WebProfiler/Collector/events.html.twig'), 'data_collector.logger' => array(0 => 'logger', 1 => '@WebProfiler/Collector/logger.html.twig'), 'data_collector.time' => array(0 => 'time', 1 => '@WebProfiler/Collector/time.html.twig'), 'data_collector.memory' => array(0 => 'memory', 1 => '@WebProfiler/Collector/memory.html.twig'), 'data_collector.router' => array(0 => 'router', 1 => '@WebProfiler/Collector/router.html.twig'), 'data_collector.form' => array(0 => 'form', 1 => '@WebProfiler/Collector/form.html.twig'), 'data_collector.security' => array(0 => 'security', 1 => '@Security/Collector/security.html.twig'), 'swiftmailer.data_collector' => array(0 => 'swiftmailer', 1 => '@Swiftmailer/Collector/swiftmailer.html.twig'), 'data_collector.doctrine' => array(0 => 'db', 1 => 'DoctrineBundle:Collector:db')), 'bottom');
+        return $this->services['web_profiler.controller.profiler'] = new \Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController($this->get('router', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('profiler', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('twig'), array('data_collector.config' => array(0 => 'config', 1 => '@WebProfiler/Collector/config.html.twig'), 'data_collector.request' => array(0 => 'request', 1 => '@WebProfiler/Collector/request.html.twig'), 'data_collector.exception' => array(0 => 'exception', 1 => '@WebProfiler/Collector/exception.html.twig'), 'data_collector.events' => array(0 => 'events', 1 => '@WebProfiler/Collector/events.html.twig'), 'data_collector.logger' => array(0 => 'logger', 1 => '@WebProfiler/Collector/logger.html.twig'), 'data_collector.time' => array(0 => 'time', 1 => '@WebProfiler/Collector/time.html.twig'), 'data_collector.memory' => array(0 => 'memory', 1 => '@WebProfiler/Collector/memory.html.twig'), 'data_collector.router' => array(0 => 'router', 1 => '@WebProfiler/Collector/router.html.twig'), 'data_collector.form' => array(0 => 'form', 1 => '@WebProfiler/Collector/form.html.twig'), 'data_collector.security' => array(0 => 'security', 1 => '@Security/Collector/security.html.twig'), 'swiftmailer.data_collector' => array(0 => 'swiftmailer', 1 => '@Swiftmailer/Collector/swiftmailer.html.twig'), 'data_collector.doctrine' => array(0 => 'db', 1 => 'DoctrineBundle:Collector:db'), 'fos_elastica.data_collector' => array(0 => 'elastica', 1 => 'FOSElasticaBundle:Collector:elastica')), 'bottom');
     }
 
     /**
@@ -4475,6 +4851,7 @@ class appTestDebugProjectContainer extends Container
                 'JMSSecurityExtraBundle' => 'JMS\\SecurityExtraBundle\\JMSSecurityExtraBundle',
                 'JMSDiExtraBundle' => 'JMS\\DiExtraBundle\\JMSDiExtraBundle',
                 'KnpPaginatorBundle' => 'Knp\\Bundle\\PaginatorBundle\\KnpPaginatorBundle',
+                'FOSElasticaBundle' => 'FOS\\ElasticaBundle\\FOSElasticaBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',
                 'SensioGeneratorBundle' => 'Sensio\\Bundle\\GeneratorBundle\\SensioGeneratorBundle',
@@ -5187,8 +5564,8 @@ class appTestDebugProjectContainer extends Container
             'jms_di_extra.cache_warmer.controller_file_blacklist' => array(
 
             ),
-            'jms_di_extra.doctrine_integration.entity_manager.file' => '/home/boyer/hetic/app/cache/test/jms_diextra/doctrine/EntityManager_5273a9b2c20bb.php',
-            'jms_di_extra.doctrine_integration.entity_manager.class' => 'EntityManager5273a9b2c20bb_546a8d27f194334ee012bfe64f629947b07e4919\\__CG__\\Doctrine\\ORM\\EntityManager',
+            'jms_di_extra.doctrine_integration.entity_manager.file' => '/home/boyer/hetic/app/cache/test/jms_diextra/doctrine/EntityManager_527a8a2305c46.php',
+            'jms_di_extra.doctrine_integration.entity_manager.class' => 'EntityManager527a8a2305c46_546a8d27f194334ee012bfe64f629947b07e4919\\__CG__\\Doctrine\\ORM\\EntityManager',
             'knp_paginator.class' => 'Knp\\Component\\Pager\\Paginator',
             'knp_paginator.templating.helper.pagination.class' => 'Knp\\Bundle\\PaginatorBundle\\Templating\\PaginationHelper',
             'knp_paginator.helper.processor.class' => 'Knp\\Bundle\\PaginatorBundle\\Helper\\Processor',
@@ -5196,6 +5573,15 @@ class appTestDebugProjectContainer extends Container
             'knp_paginator.template.filtration' => 'KnpPaginatorBundle:Pagination:filtration.html.twig',
             'knp_paginator.template.sortable' => 'KnpPaginatorBundle:Pagination:sortable_link.html.twig',
             'knp_paginator.page_range' => 5,
+            'fos_elastica.client.class' => 'FOS\\ElasticaBundle\\Client',
+            'fos_elastica.index.class' => 'Elastica\\Index',
+            'fos_elastica.type.class' => 'Elastica\\Type',
+            'fos_elastica.logger.class' => 'FOS\\ElasticaBundle\\Logger\\ElasticaLogger',
+            'fos_elastica.data_collector.class' => 'FOS\\ElasticaBundle\\DataCollector\\ElasticaDataCollector',
+            'fos_elastica.manager.class' => 'FOS\\ElasticaBundle\\Manager\\RepositoryManager',
+            'fos_elastica.elastica_to_model_transformer.collection.class' => 'FOS\\ElasticaBundle\\Transformer\\ElasticaToModelTransformerCollection',
+            'fos_elastica.provider_registry.class' => 'FOS\\ElasticaBundle\\Provider\\ProviderRegistry',
+            'fos_elastica.property_accessor.class' => 'Symfony\\Component\\PropertyAccess\\PropertyAccessor',
             'web_profiler.controller.profiler.class' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController',
             'web_profiler.controller.router.class' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\RouterController',
             'web_profiler.controller.exception.class' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\ExceptionController',
@@ -5249,6 +5635,10 @@ class appTestDebugProjectContainer extends Container
                 'data_collector.doctrine' => array(
                     0 => 'db',
                     1 => 'DoctrineBundle:Collector:db',
+                ),
+                'fos_elastica.data_collector' => array(
+                    0 => 'elastica',
+                    1 => 'FOSElasticaBundle:Collector:elastica',
                 ),
             ),
             'console.command.ids' => array(

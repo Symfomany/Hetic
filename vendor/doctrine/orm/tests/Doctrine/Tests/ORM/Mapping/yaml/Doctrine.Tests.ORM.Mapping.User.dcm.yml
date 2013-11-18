@@ -1,10 +1,6 @@
 Doctrine\Tests\ORM\Mapping\User:
   type: entity
   table: cms_users
-  options:
-    foo: bar
-    baz:
-      key: val
   namedQueries:
     all: SELECT u FROM __CLASS__ u
   id:
@@ -22,17 +18,10 @@ Doctrine\Tests\ORM\Mapping\User:
       length: 50
       nullable: true
       unique: true
-      options:
-        foo: bar
-        baz:
-          key: val
     email:
       type: string
       column: user_email
       columnDefinition: CHAR(32) NOT NULL
-    version:
-      type: integer
-      version: true
   oneToOne:
     address:
       targetEntity: Address

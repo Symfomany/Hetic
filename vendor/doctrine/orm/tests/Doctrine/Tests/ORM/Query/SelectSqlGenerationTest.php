@@ -135,27 +135,6 @@ class SelectSqlGenerationTest extends \Doctrine\Tests\OrmTestCase
         );
     }
 
-    public function testSupportsJoinOnMultipleComponents()
-    {
-        $this->assertSqlGeneration(
-            'SELECT u, p FROM Doctrine\Tests\Models\CMS\CmsUser u JOIN Doctrine\Tests\Models\CMS\CmsPhonenumber p WITH u = p.user',
-            'SELECT c0_.id AS id0, c0_.status AS status1, c0_.username AS username2, c0_.name AS name3, c1_.phonenumber AS phonenumber4 FROM cms_users c0_ INNER JOIN cms_phonenumbers c1_ ON (c0_.id = c1_.user_id)'
-        );
-    }
-
-    public function testSupportsJoinOnMultipleComponentsWithJoinedInheritanceType()
-    {
-        $this->assertSqlGeneration(
-            'SELECT e FROM Doctrine\Tests\Models\Company\CompanyEmployee e JOIN Doctrine\Tests\Models\Company\CompanyManager m WITH e.id = m.id',
-            'SELECT c0_.id AS id0, c0_.name AS name1, c1_.salary AS salary2, c1_.department AS department3, c1_.startDate AS startDate4, c0_.discr AS discr5 FROM company_employees c1_ INNER JOIN company_persons c0_ ON c1_.id = c0_.id INNER JOIN company_managers c2_ INNER JOIN company_employees c3_ ON c2_.id = c3_.id INNER JOIN company_persons c4_ ON c2_.id = c4_.id AND (c0_.id = c4_.id)'
-        );
-
-        $this->assertSqlGeneration(
-            'SELECT e FROM Doctrine\Tests\Models\Company\CompanyEmployee e LEFT JOIN Doctrine\Tests\Models\Company\CompanyManager m WITH e.id = m.id',
-            'SELECT c0_.id AS id0, c0_.name AS name1, c1_.salary AS salary2, c1_.department AS department3, c1_.startDate AS startDate4, c0_.discr AS discr5 FROM company_employees c1_ INNER JOIN company_persons c0_ ON c1_.id = c0_.id LEFT JOIN company_managers c2_ INNER JOIN company_employees c3_ ON c2_.id = c3_.id INNER JOIN company_persons c4_ ON c2_.id = c4_.id ON (c0_.id = c4_.id)'
-        );
-    }
-
     public function testSupportsSelectWithCollectionAssociationJoin()
     {
         $this->assertSqlGeneration(
@@ -395,17 +374,6 @@ class SelectSqlGenerationTest extends \Doctrine\Tests\OrmTestCase
         );
     }
 
-    /**
-     * @group DDC-1802
-     */
-    public function testSupportsNotBetweenForSizeFunction()
-    {
-        $this->assertSqlGeneration(
-            "SELECT m.name FROM Doctrine\Tests\Models\StockExchange\Market m WHERE SIZE(m.stocks) NOT BETWEEN ?1 AND ?2",
-            "SELECT e0_.name AS name0 FROM exchange_markets e0_ WHERE (SELECT COUNT(*) FROM exchange_stocks e1_ WHERE e1_.market_id = e0_.id) NOT BETWEEN ? AND ?"
-        );
-    }
-
     public function testSupportsFunctionalExpressionsInWherePart()
     {
         $this->assertSqlGeneration(
@@ -474,7 +442,7 @@ class SelectSqlGenerationTest extends \Doctrine\Tests\OrmTestCase
     {
         $this->assertSqlGeneration(
             "SELECT u FROM Doctrine\Tests\Models\Company\CompanyPerson u WHERE u INSTANCE OF ?1",
-            "SELECT c0_.id AS id0, c0_.name AS name1, c0_.discr AS discr2 FROM company_persons c0_ WHERE c0_.discr IN (?)",
+            "SELECT c0_.id AS id0, c0_.name AS name1, c0_.discr AS discr2 FROM company_persons c0_ WHERE c0_.discr IN ('employee')",
             array(), array(1 => $this->_em->getClassMetadata('Doctrine\Tests\Models\Company\CompanyEmployee'))
         );
     }
@@ -501,17 +469,6 @@ class SelectSqlGenerationTest extends \Doctrine\Tests\OrmTestCase
         $this->assertSqlGeneration(
             'SELECT u FROM Doctrine\Tests\Models\CMS\CmsUser u WHERE :id NOT IN (1)',
             'SELECT c0_.id AS id0, c0_.status AS status1, c0_.username AS username2, c0_.name AS name3 FROM cms_users c0_ WHERE ? NOT IN (1)'
-        );
-    }
-
-    /**
-     * @group DDC-1802
-     */
-    public function testSupportsNotInExpressionForModFunction()
-    {
-        $this->assertSqlGeneration(
-            "SELECT u.name FROM Doctrine\Tests\Models\CMS\CmsUser u WHERE MOD(u.id, 5) NOT IN(1,3,4)",
-            "SELECT c0_.name AS name0 FROM cms_users c0_ WHERE MOD(c0_.id, 5) NOT IN (1, 3, 4)"
         );
     }
 
@@ -865,7 +822,6 @@ class SelectSqlGenerationTest extends \Doctrine\Tests\OrmTestCase
 
     /**
      * @group DDC-339
-     * @group DDC-1572
      */
     public function testStringFunctionLikeExpression()
     {
@@ -880,40 +836,6 @@ class SelectSqlGenerationTest extends \Doctrine\Tests\OrmTestCase
         $this->assertSqlGeneration(
             "SELECT u.name FROM Doctrine\Tests\Models\CMS\CmsUser u WHERE CONCAT(UPPER(u.name), '_moo') LIKE :str",
             "SELECT c0_.name AS name0 FROM cms_users c0_ WHERE UPPER(c0_.name) || '_moo' LIKE ?"
-        );
-
-        // DDC-1572
-        $this->assertSqlGeneration(
-            "SELECT u.name FROM Doctrine\Tests\Models\CMS\CmsUser u WHERE UPPER(u.name) LIKE UPPER(:str)",
-            "SELECT c0_.name AS name0 FROM cms_users c0_ WHERE UPPER(c0_.name) LIKE UPPER(?)"
-        );
-        $this->assertSqlGeneration(
-            "SELECT u.name FROM Doctrine\Tests\Models\CMS\CmsUser u WHERE UPPER(LOWER(u.name)) LIKE UPPER(LOWER(:str))",
-            "SELECT c0_.name AS name0 FROM cms_users c0_ WHERE UPPER(LOWER(c0_.name)) LIKE UPPER(LOWER(?))"
-        );
-        $this->assertSqlGeneration(
-            "SELECT u FROM Doctrine\Tests\Models\CMS\CmsUser u LEFT JOIN u.articles a WITH a.topic LIKE u.name",
-            "SELECT c0_.id AS id0, c0_.status AS status1, c0_.username AS username2, c0_.name AS name3 FROM cms_users c0_ LEFT JOIN cms_articles c1_ ON c0_.id = c1_.user_id AND (c1_.topic LIKE c0_.name)"
-        );
-    }
-
-    /**
-     * @group DDC-1802
-     */
-    public function testStringFunctionNotLikeExpression()
-    {
-        $this->assertSqlGeneration(
-                "SELECT u.name FROM Doctrine\Tests\Models\CMS\CmsUser u WHERE LOWER(u.name) NOT LIKE '%foo OR bar%'",
-                "SELECT c0_.name AS name0 FROM cms_users c0_ WHERE LOWER(c0_.name) NOT LIKE '%foo OR bar%'"
-        );
-
-        $this->assertSqlGeneration(
-                "SELECT u.name FROM Doctrine\Tests\Models\CMS\CmsUser u WHERE UPPER(LOWER(u.name)) NOT LIKE UPPER(LOWER(:str))",
-                "SELECT c0_.name AS name0 FROM cms_users c0_ WHERE UPPER(LOWER(c0_.name)) NOT LIKE UPPER(LOWER(?))"
-        );
-        $this->assertSqlGeneration(
-                "SELECT u FROM Doctrine\Tests\Models\CMS\CmsUser u LEFT JOIN u.articles a WITH a.topic NOT LIKE u.name",
-                "SELECT c0_.id AS id0, c0_.status AS status1, c0_.username AS username2, c0_.name AS name3 FROM cms_users c0_ LEFT JOIN cms_articles c1_ ON c0_.id = c1_.user_id AND (c1_.topic NOT LIKE c0_.name)"
         );
     }
 
@@ -1175,7 +1097,7 @@ class SelectSqlGenerationTest extends \Doctrine\Tests\OrmTestCase
     {
         $this->assertSqlGeneration(
             "SELECT g FROM Doctrine\Tests\Models\CMS\CmsGroup g WHERE g.id = CASE g.name WHEN 'admin' THEN 1 ELSE 2 END",
-            "SELECT c0_.id AS id0, c0_.name AS name1 FROM cms_groups c0_ WHERE c0_.id = CASE c0_.name WHEN 'admin' THEN 1 ELSE 2 END"
+            "SELECT c0_.id AS id0, c0_.name AS name1 FROM cms_groups c0_ WHERE c0_.id = CASE c0_.name WHEN admin THEN 1 ELSE 2 END"
         );
     }
 
@@ -1183,7 +1105,7 @@ class SelectSqlGenerationTest extends \Doctrine\Tests\OrmTestCase
     {
         $this->assertSqlGeneration(
             "SELECT g FROM Doctrine\Tests\Models\CMS\CmsGroup g WHERE g.id = (CASE g.name WHEN 'admin' THEN 1 WHEN 'moderator' THEN 2 ELSE 3 END)",
-            "SELECT c0_.id AS id0, c0_.name AS name1 FROM cms_groups c0_ WHERE c0_.id = CASE c0_.name WHEN 'admin' THEN 1 WHEN 'moderator' THEN 2 ELSE 3 END"
+            "SELECT c0_.id AS id0, c0_.name AS name1 FROM cms_groups c0_ WHERE c0_.id = CASE c0_.name WHEN admin THEN 1 WHEN moderator THEN 2 ELSE 3 END"
         );
     }
 
@@ -1207,7 +1129,7 @@ class SelectSqlGenerationTest extends \Doctrine\Tests\OrmTestCase
     {
         $this->assertSqlGeneration(
             "SELECT g FROM Doctrine\Tests\Models\CMS\CmsGroup g WHERE g.id IN (SELECT CASE g2.name WHEN 'admin' THEN 1 ELSE 2 END FROM Doctrine\Tests\Models\CMS\CmsGroup g2)",
-            "SELECT c0_.id AS id0, c0_.name AS name1 FROM cms_groups c0_ WHERE c0_.id IN (SELECT CASE c1_.name WHEN 'admin' THEN 1 ELSE 2 END AS sclr2 FROM cms_groups c1_)"
+            "SELECT c0_.id AS id0, c0_.name AS name1 FROM cms_groups c0_ WHERE c0_.id IN (SELECT CASE c1_.name WHEN admin THEN 1 ELSE 2 END AS sclr2 FROM cms_groups c1_)"
         );
     }
 
@@ -1215,18 +1137,7 @@ class SelectSqlGenerationTest extends \Doctrine\Tests\OrmTestCase
     {
         $this->assertSqlGeneration(
             "SELECT g FROM Doctrine\Tests\Models\CMS\CmsGroup g WHERE g.id IN (SELECT CASE g2.name WHEN 'admin' THEN 1 WHEN 'moderator' THEN 2 ELSE 3 END FROM Doctrine\Tests\Models\CMS\CmsGroup g2)",
-            "SELECT c0_.id AS id0, c0_.name AS name1 FROM cms_groups c0_ WHERE c0_.id IN (SELECT CASE c1_.name WHEN 'admin' THEN 1 WHEN 'moderator' THEN 2 ELSE 3 END AS sclr2 FROM cms_groups c1_)"
-        );
-    }
-
-    /**
-     * @group DDC-1696
-     */
-    public function testSimpleCaseWithStringPrimary()
-    {
-        $this->assertSqlGeneration(
-            "SELECT g.id, CASE WHEN ((g.id / 2) > 18) THEN 'Foo' ELSE 'Bar' END AS test FROM Doctrine\Tests\Models\CMS\CmsGroup g",
-            "SELECT c0_.id AS id0, CASE WHEN (c0_.id / 2 > 18) THEN 'Foo' ELSE 'Bar' END AS sclr1 FROM cms_groups c0_"
+            "SELECT c0_.id AS id0, c0_.name AS name1 FROM cms_groups c0_ WHERE c0_.id IN (SELECT CASE c1_.name WHEN admin THEN 1 WHEN moderator THEN 2 ELSE 3 END AS sclr2 FROM cms_groups c1_)"
         );
     }
 
@@ -1537,37 +1448,6 @@ class SelectSqlGenerationTest extends \Doctrine\Tests\OrmTestCase
         );
     }
 
-    /**
-     * @group DDC-1557
-     */
-    public function testSupportsSubSqlFunction()
-    {
-        $this->assertSqlGeneration(
-            'SELECT u1 FROM Doctrine\Tests\Models\CMS\CmsUser u1 WHERE u1.name IN ( SELECT TRIM(u2.name) FROM Doctrine\Tests\Models\CMS\CmsUser u2 )',
-            'SELECT c0_.id AS id0, c0_.status AS status1, c0_.username AS username2, c0_.name AS name3 FROM cms_users c0_ WHERE c0_.name IN (SELECT TRIM(c1_.name) AS sclr4 FROM cms_users c1_)'
-        );
-        $this->assertSqlGeneration(
-            'SELECT u1 FROM Doctrine\Tests\Models\CMS\CmsUser u1 WHERE u1.name IN ( SELECT TRIM(u2.name) FROM Doctrine\Tests\Models\CMS\CmsUser u2  WHERE LOWER(u2.name) LIKE \'%fabio%\')',
-            'SELECT c0_.id AS id0, c0_.status AS status1, c0_.username AS username2, c0_.name AS name3 FROM cms_users c0_ WHERE c0_.name IN (SELECT TRIM(c1_.name) AS sclr4 FROM cms_users c1_ WHERE LOWER(c1_.name) LIKE \'%fabio%\')'
-        );
-        $this->assertSqlGeneration(
-            'SELECT u1 FROM Doctrine\Tests\Models\CMS\CmsUser u1 WHERE u1.email IN ( SELECT TRIM(IDENTITY(u2.email)) FROM Doctrine\Tests\Models\CMS\CmsUser u2 )',
-            'SELECT c0_.id AS id0, c0_.status AS status1, c0_.username AS username2, c0_.name AS name3 FROM cms_users c0_ WHERE c0_.email_id IN (SELECT TRIM(c1_.email_id) AS sclr4 FROM cms_users c1_)'
-        );
-        $this->assertSqlGeneration(
-            'SELECT u1 FROM Doctrine\Tests\Models\CMS\CmsUser u1 WHERE u1.email IN ( SELECT IDENTITY(u2.email) FROM Doctrine\Tests\Models\CMS\CmsUser u2 )',
-            'SELECT c0_.id AS id0, c0_.status AS status1, c0_.username AS username2, c0_.name AS name3 FROM cms_users c0_ WHERE c0_.email_id IN (SELECT c1_.email_id AS sclr4 FROM cms_users c1_)'
-        );
-        $this->assertSqlGeneration(
-            'SELECT u1 FROM Doctrine\Tests\Models\CMS\CmsUser u1 WHERE COUNT(u1.id) = ( SELECT SUM(u2.id) FROM Doctrine\Tests\Models\CMS\CmsUser u2 )',
-            'SELECT c0_.id AS id0, c0_.status AS status1, c0_.username AS username2, c0_.name AS name3 FROM cms_users c0_ WHERE COUNT(c0_.id) = (SELECT SUM(c1_.id) AS dctrn__1 FROM cms_users c1_)'
-        );
-        $this->assertSqlGeneration(
-            'SELECT u1 FROM Doctrine\Tests\Models\CMS\CmsUser u1 WHERE COUNT(u1.id) <= ( SELECT SUM(u2.id) + COUNT(u2.email) FROM Doctrine\Tests\Models\CMS\CmsUser u2 )',
-            'SELECT c0_.id AS id0, c0_.status AS status1, c0_.username AS username2, c0_.name AS name3 FROM cms_users c0_ WHERE COUNT(c0_.id) <= (SELECT SUM(c1_.id) + COUNT(c1_.email_id) AS sclr4 FROM cms_users c1_)'
-        );
-    }
-
     public function testCustomTypeValueSql()
     {
         if (DBALType::hasType('negative_to_positive')) {
@@ -1623,94 +1503,8 @@ class SelectSqlGenerationTest extends \Doctrine\Tests\OrmTestCase
             'SELECT c0_.id AS id0, -(c0_.customInteger) AS customInteger1 FROM customtype_parents c0_'
         );
     }
-
-    /**
-     * @group DDC-1529
-     */
-    public function testMultipleFromAndInheritanceCondition()
-    {
-        $this->assertSqlGeneration(
-            'SELECT fix, flex FROM Doctrine\Tests\Models\Company\CompanyFixContract fix, Doctrine\Tests\Models\Company\CompanyFlexContract flex',
-            "SELECT c0_.id AS id0, c0_.completed AS completed1, c0_.fixPrice AS fixPrice2, c1_.id AS id3, c1_.completed AS completed4, c1_.hoursWorked AS hoursWorked5, c1_.pricePerHour AS pricePerHour6, c1_.maxPrice AS maxPrice7, c0_.discr AS discr8, c1_.discr AS discr9 FROM company_contracts c0_, company_contracts c1_ WHERE (c0_.discr IN ('fix') AND c1_.discr IN ('flexible', 'flexultra'))"
-        );
-    }
-
-    /**
-     * @group DDC-775
-     */
-    public function testOrderByClauseSupportsSimpleArithmeticExpression()
-    {
-        $this->assertSqlGeneration(
-            'SELECT u FROM Doctrine\Tests\Models\CMS\CmsUser u ORDER BY u.id + 1 ',
-            'SELECT c0_.id AS id0, c0_.status AS status1, c0_.username AS username2, c0_.name AS name3 FROM cms_users c0_ ORDER BY c0_.id + 1 ASC'
-        );
-        $this->assertSqlGeneration(
-            'SELECT u FROM Doctrine\Tests\Models\CMS\CmsUser u ORDER BY ( ( (u.id + 1) * (u.id - 1) ) / 2)',
-            'SELECT c0_.id AS id0, c0_.status AS status1, c0_.username AS username2, c0_.name AS name3 FROM cms_users c0_ ORDER BY (c0_.id + 1) * (c0_.id - 1) / 2 ASC'
-        );
-        $this->assertSqlGeneration(
-            'SELECT u FROM Doctrine\Tests\Models\CMS\CmsUser u ORDER BY ((u.id + 5000) * u.id + 3) ',
-            'SELECT c0_.id AS id0, c0_.status AS status1, c0_.username AS username2, c0_.name AS name3 FROM cms_users c0_ ORDER BY (c0_.id + 5000) * c0_.id + 3 ASC'
-        );
-    }
-
-    /**
-     * @group DDC-1719
-     */
-    public function testStripNonAlphanumericCharactersFromAlias()
-    {
-        $this->assertSqlGeneration(
-            'SELECT e FROM Doctrine\Tests\Models\Quote\SimpleEntity e',
-            'SELECT d0_."simple-entity-id" AS simpleentityid0, d0_."simple-entity-value" AS simpleentityvalue1 FROM "ddc-1719-simple-entity" d0_'
-        );
-
-        $this->assertSqlGeneration(
-            'SELECT e.value FROM Doctrine\Tests\Models\Quote\SimpleEntity e ORDER BY e.value',
-            'SELECT d0_."simple-entity-value" AS simpleentityvalue0 FROM "ddc-1719-simple-entity" d0_ ORDER BY d0_."simple-entity-value" ASC'
-        );
-
-        $this->assertSqlGeneration(
-            'SELECT TRIM(e.value) FROM Doctrine\Tests\Models\Quote\SimpleEntity e ORDER BY e.value',
-            'SELECT TRIM(d0_."simple-entity-value") AS sclr0 FROM "ddc-1719-simple-entity" d0_ ORDER BY d0_."simple-entity-value" ASC'
-        );
-    }
-
-   /**
-    * @group DDC-1845
-    */
-    public function testQuotedWalkJoinVariableDeclaration()
-    {
-        $this->assertSqlGeneration(
-            'SELECT u, a FROM Doctrine\Tests\Models\Quote\User u JOIN u.address a',
-            'SELECT q0_."user-id" AS userid0, q0_."user-name" AS username1, q1_."address-id" AS addressid2, q1_."address-zip" AS addresszip3 FROM "quote-user" q0_ INNER JOIN "quote-address" q1_ ON q0_."address-id" = q1_."address-id"'
-        );
-
-        $this->assertSqlGeneration(
-            'SELECT u, p FROM Doctrine\Tests\Models\Quote\User u JOIN u.phones p',
-            'SELECT q0_."user-id" AS userid0, q0_."user-name" AS username1, q1_."phone-number" AS phonenumber2 FROM "quote-user" q0_ INNER JOIN "quote-phone" q1_ ON q0_."user-id" = q1_."user-id"'
-        );
-
-        $this->assertSqlGeneration(
-            'SELECT u, g FROM Doctrine\Tests\Models\Quote\User u JOIN u.groups g',
-            'SELECT q0_."user-id" AS userid0, q0_."user-name" AS username1, q1_."group-id" AS groupid2, q1_."group-name" AS groupname3 FROM "quote-user" q0_ INNER JOIN "quote-users-groups" q2_ ON q0_."user-id" = q2_."user-id" INNER JOIN "quote-group" q1_ ON q1_."group-id" = q2_."group-id"'
-        );
-
-        $this->assertSqlGeneration(
-            'SELECT a, u FROM Doctrine\Tests\Models\Quote\Address a JOIN a.user u',
-            'SELECT q0_."address-id" AS addressid0, q0_."address-zip" AS addresszip1, q1_."user-id" AS userid2, q1_."user-name" AS username3 FROM "quote-address" q0_ INNER JOIN "quote-user" q1_ ON q0_."user-id" = q1_."user-id"'
-        );
-
-        $this->assertSqlGeneration(
-            'SELECT g, u FROM Doctrine\Tests\Models\Quote\Group g JOIN g.users u',
-            'SELECT q0_."group-id" AS groupid0, q0_."group-name" AS groupname1, q1_."user-id" AS userid2, q1_."user-name" AS username3 FROM "quote-group" q0_ INNER JOIN "quote-users-groups" q2_ ON q0_."group-id" = q2_."group-id" INNER JOIN "quote-user" q1_ ON q1_."user-id" = q2_."user-id"'
-        );
-
-        $this->assertSqlGeneration(
-            'SELECT g, p FROM Doctrine\Tests\Models\Quote\Group g JOIN g.parent p',
-            'SELECT q0_."group-id" AS groupid0, q0_."group-name" AS groupname1, q1_."group-id" AS groupid2, q1_."group-name" AS groupname3 FROM "quote-group" q0_ INNER JOIN "quote-group" q1_ ON q0_."parent-id" = q1_."group-id"'
-        );
-    }
 }
+
 
 class MyAbsFunction extends \Doctrine\ORM\Query\AST\Functions\FunctionNode
 {

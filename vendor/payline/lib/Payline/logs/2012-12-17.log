@@ -1,0 +1,106 @@
+2012-12-17 0:03:33 - ----------------------------------------------------------
+2012-12-17 0:03:33 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 0:03:33 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2012-12-17 0:03:36 - response return (code 02500)
+2012-12-17 0:03:36 - ----------------------------------------------------------
+2012-12-17 0:03:36 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 0:03:36 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2012-12-17 0:03:37 - response return (code 02500)
+2012-12-17 0:03:47 - ----------------------------------------------------------
+2012-12-17 0:03:47 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 0:03:47 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2012-12-17 0:03:47 - response return (code 02500)
+2012-12-17 0:03:47 - ----------------------------------------------------------
+2012-12-17 0:03:47 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 0:03:47 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2012-12-17 0:03:48 - response return (code 02500)
+2012-12-17 0:04:08 - ----------------------------------------------------------
+2012-12-17 0:04:08 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 0:04:08 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2012-12-17 0:04:11 - response return (code 02500)
+2012-12-17 0:04:22 - ----------------------------------------------------------
+2012-12-17 0:04:22 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 0:04:22 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2012-12-17 0:04:22 - response return (code 02500)
+2012-12-17 0:04:22 - ----------------------------------------------------------
+2012-12-17 0:04:22 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 0:04:22 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2012-12-17 0:04:23 - response return (code 02500)
+2012-12-17 0:12:59 - ----------------------------------------------------------
+2012-12-17 0:12:59 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 0:12:59 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2012-12-17 0:12:59 - response return (code 02500)
+2012-12-17 0:13:16 - ----------------------------------------------------------
+2012-12-17 0:13:16 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 0:13:16 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2012-12-17 0:13:16 - response return (code 02500)
+2012-12-17 0:28:41 - ----------------------------------------------------------
+2012-12-17 0:28:41 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 0:28:41 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2012-12-17 0:28:44 - response return (code 02500)
+2012-12-17 0:28:44 - ----------------------------------------------------------
+2012-12-17 0:28:44 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 0:28:44 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2012-12-17 0:28:46 - response return (code 02500)
+2012-12-17 0:30:30 - ----------------------------------------------------------
+2012-12-17 0:30:30 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 0:30:30 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2012-12-17 0:30:32 - response return (code 02500)
+2012-12-17 13:45:20 - ----------------------------------------------------------
+2012-12-17 13:45:20 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 13:45:20 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2012-12-17 13:45:22 - response return (code 02500)
+2012-12-17 13:45:22 - ----------------------------------------------------------
+2012-12-17 13:45:22 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 13:45:22 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2012-12-17 13:45:26 - response return (code 02500)
+2012-12-17 13:46:12 - ----------------------------------------------------------
+2012-12-17 13:46:12 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 13:46:12 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2012-12-17 13:46:13 - response return (code 02503)
+2012-12-17 13:46:17 - ----------------------------------------------------------
+2012-12-17 13:46:17 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 13:46:17 - webServiceRequest(createWebWallet) - Location : https://homologation.payline.com/V4/services/WebPaymentAPI
+2012-12-17 13:46:18 - response return (code 00000)
+2012-12-17 13:46:36 - ----------------------------------------------------------
+2012-12-17 13:46:36 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 13:46:36 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2012-12-17 13:46:38 - response return (code 02500)
+2012-12-17 13:46:38 - ----------------------------------------------------------
+2012-12-17 13:46:38 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 13:46:38 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2012-12-17 13:46:39 - response return (code 02500)
+2012-12-17 15:41:22 - ----------------------------------------------------------
+2012-12-17 15:41:22 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 15:41:22 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2012-12-17 15:41:22 - response return (code 02503)
+2012-12-17 15:41:25 - ----------------------------------------------------------
+2012-12-17 15:41:25 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 15:41:25 - webServiceRequest(createWebWallet) - Location : https://homologation.payline.com/V4/services/WebPaymentAPI
+2012-12-17 15:41:29 - response return (code 00000)
+2012-12-17 18:22:52 - ----------------------------------------------------------
+2012-12-17 18:22:52 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 18:22:52 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2012-12-17 18:22:53 - response return (code 02503)
+2012-12-17 18:22:58 - ----------------------------------------------------------
+2012-12-17 18:22:58 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 18:22:58 - webServiceRequest(createWebWallet) - Location : https://homologation.payline.com/V4/services/WebPaymentAPI
+2012-12-17 18:22:59 - response return (code 00000)
+2012-12-17 18:25:38 - ----------------------------------------------------------
+2012-12-17 18:25:38 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 18:25:38 - webServiceRequest(createWebWallet) - Location : https://homologation.payline.com/V4/services/WebPaymentAPI
+2012-12-17 18:25:41 - response return (code 00000)
+2012-12-17 18:31:08 - ----------------------------------------------------------
+2012-12-17 18:31:08 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 18:31:17 - ----------------------------------------------------------
+2012-12-17 18:31:17 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 18:31:17 - webServiceRequest(createWebWallet) - Location : https://homologation.payline.com/V4/services/WebPaymentAPI
+2012-12-17 18:31:18 - response return (code 00000)
+2012-12-17 18:33:48 - ----------------------------------------------------------
+2012-12-17 18:33:48 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 18:33:48 - webServiceRequest(createWebWallet) - Location : https://homologation.payline.com/V4/services/WebPaymentAPI
+2012-12-17 18:33:49 - response return (code 00000)
+2012-12-17 18:35:19 - ----------------------------------------------------------
+2012-12-17 18:35:19 - paylineSDK::__construct(45487140921333, ep****************Yt, , , , , )
+2012-12-17 18:35:19 - webServiceRequest(createWebWallet) - Location : https://homologation.payline.com/V4/services/WebPaymentAPI
+2012-12-17 18:35:21 - response return (code 00000)

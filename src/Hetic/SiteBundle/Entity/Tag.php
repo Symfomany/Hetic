@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Article
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Hetic\SiteBundle\Repository\TagRepository")
  * @ORM\Table(name="tag")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -40,6 +40,12 @@ class Tag
      * @ORM\ManyToMany(targetEntity="Article", mappedBy="tags")
      */
     private $articles;
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Produit", mappedBy="tags")
+     */
+    private $produits;
 
 
     public function __toString(){

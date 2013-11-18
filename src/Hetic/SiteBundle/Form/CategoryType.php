@@ -14,7 +14,9 @@ class CategoryType extends AbstractType
     {
         $builder
                 ->add('name', 'text', array('attr' => array("class" => "input-xlarge" ,'placeholder' => 'Titre de la tâches')))
-                ->add('description')
+                ->add('cover', 'textarea', array('attr' => array("class" => "ckeditor", 'placeholder' => 'Résumé en quelques mots')))
+                ->add('description', 'textarea', array('attr' => array("class" => "ckeditor", 'placeholder' => 'Description complète')))
+                ->add('parent')
                 ->add('articles');
     }
 

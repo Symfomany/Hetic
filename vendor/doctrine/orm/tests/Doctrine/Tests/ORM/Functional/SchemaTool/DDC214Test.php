@@ -4,6 +4,9 @@ namespace Doctrine\Tests\ORM\Functional\SchemaTool;
 
 use Doctrine\ORM\Tools;
 
+
+require_once __DIR__ . '/../../../TestInit.php';
+
 /**
  * WARNING: This test should be run as last test! It can affect others very easily!
  */
@@ -12,8 +15,7 @@ class DDC214Test extends \Doctrine\Tests\OrmFunctionalTestCase
     private $classes = array();
     private $schemaTool = null;
 
-    public function setUp()
-    {
+    public function setUp() {
         parent::setUp();
 
         $conn = $this->_em->getConnection();
@@ -34,8 +36,7 @@ class DDC214Test extends \Doctrine\Tests\OrmFunctionalTestCase
             'Doctrine\Tests\Models\CMS\CmsPhonenumber',
             'Doctrine\Tests\Models\CMS\CmsAddress',
             'Doctrine\Tests\Models\CMS\CmsGroup',
-            'Doctrine\Tests\Models\CMS\CmsArticle',
-            'Doctrine\Tests\Models\CMS\CmsEmail',
+            'Doctrine\Tests\Models\CMS\CmsArticle'
         );
 
         $this->assertCreatedSchemaNeedsNoUpdates($this->classes);

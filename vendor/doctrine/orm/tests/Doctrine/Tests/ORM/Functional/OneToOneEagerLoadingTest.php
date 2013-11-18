@@ -21,7 +21,6 @@ class OneToOneEagerLoadingTest extends \Doctrine\Tests\OrmFunctionalTestCase
                 $this->_em->getClassMetadata('Doctrine\Tests\ORM\Functional\TrainDriver'),
                 $this->_em->getClassMetadata('Doctrine\Tests\ORM\Functional\TrainOwner'),
                 $this->_em->getClassMetadata('Doctrine\Tests\ORM\Functional\Waggon'),
-                $this->_em->getClassMetadata('Doctrine\Tests\ORM\Functional\TrainOrder'),
             ));
         } catch(\Exception $e) {}
     }
@@ -128,14 +127,14 @@ class OneToOneEagerLoadingTest extends \Doctrine\Tests\OrmFunctionalTestCase
         $this->_em->clear();
 
         $train = $this->_em->find(get_class($train), $train->id);
-        $this->assertEquals(
+        $this->assertSQLEquals(
             "SELECT t0.id AS id1, t0.driver_id AS driver_id2, t3.id AS id4, t3.name AS name5, t0.owner_id AS owner_id6, t7.id AS id8, t7.name AS name9 FROM Train t0 LEFT JOIN TrainDriver t3 ON t0.driver_id = t3.id INNER JOIN TrainOwner t7 ON t0.owner_id = t7.id WHERE t0.id = ?",
             $this->_sqlLoggerStack->queries[$this->_sqlLoggerStack->currentQuery]['sql']
         );
 
         $this->_em->clear();
         $driver = $this->_em->find(get_class($driver), $driver->id);
-        $this->assertEquals(
+        $this->assertSQLEquals(
             "SELECT t0.id AS id1, t0.name AS name2, t3.id AS id4, t3.driver_id AS driver_id5, t3.owner_id AS owner_id6 FROM TrainOwner t0 LEFT JOIN Train t3 ON t3.owner_id = t0.id WHERE t0.id IN (?)",
             $this->_sqlLoggerStack->queries[$this->_sqlLoggerStack->currentQuery]['sql']
         );
@@ -156,13 +155,13 @@ class OneToOneEagerLoadingTest extends \Doctrine\Tests\OrmFunctionalTestCase
         $waggon = $this->_em->find(get_class($waggon), $waggon->id);
 
         // The last query is the eager loading of the owner of the train
-        $this->assertEquals(
+        $this->assertSQLEquals(
             "SELECT t0.id AS id1, t0.name AS name2, t3.id AS id4, t3.driver_id AS driver_id5, t3.owner_id AS owner_id6 FROM TrainOwner t0 LEFT JOIN Train t3 ON t3.owner_id = t0.id WHERE t0.id IN (?)",
             $this->_sqlLoggerStack->queries[$this->_sqlLoggerStack->currentQuery]['sql']
         );
 
         // The one before is the fetching of the waggon and train
-        $this->assertEquals(
+        $this->assertSQLEquals(
             "SELECT t0.id AS id1, t0.train_id AS train_id2, t3.id AS id4, t3.driver_id AS driver_id5, t3.owner_id AS owner_id6 FROM Waggon t0 INNER JOIN Train t3 ON t0.train_id = t3.id WHERE t0.id = ?",
             $this->_sqlLoggerStack->queries[$this->_sqlLoggerStack->currentQuery - 1]['sql']
         );
@@ -177,28 +176,10 @@ class OneToOneEagerLoadingTest extends \Doctrine\Tests\OrmFunctionalTestCase
         $this->_em->clear();
 
         $waggon = $this->_em->find(get_class($owner), $owner->id);
-        $this->assertEquals(
+        $this->assertSQLEquals(
             "SELECT t0.id AS id1, t0.name AS name2, t3.id AS id4, t3.driver_id AS driver_id5, t3.owner_id AS owner_id6 FROM TrainOwner t0 LEFT JOIN Train t3 ON t3.owner_id = t0.id WHERE t0.id = ?",
             $this->_sqlLoggerStack->queries[$this->_sqlLoggerStack->currentQuery]['sql']
         );
-    }
-
-    /**
-     * @group DDC-1946
-     */
-    public function testEagerLoadingDoesNotBreakRefresh()
-    {
-        $train = new Train(new TrainOwner('Johannes'));
-        $order = new TrainOrder($train);
-        $this->_em->persist($train);
-        $this->_em->persist($order);
-        $this->_em->flush();
-
-        $this->_em->getConnection()->exec("UPDATE TrainOrder SET train_id = NULL");
-
-        $this->assertSame($train, $order->train);
-        $this->_em->refresh($order);
-        $this->assertTrue($order->train === null, "Train reference was not refreshed to NULL.");
     }
 }
 
@@ -320,23 +301,6 @@ class Waggon
     public $train;
 
     public function setTrain($train)
-    {
-        $this->train = $train;
-    }
-}
-
-/**
- * @Entity
- */
-class TrainOrder
-{
-    /** @id @generatedValue @column(type="integer") */
-    public $id;
-
-    /** @OneToOne(targetEntity = "Train", fetch = "EAGER") */
-    public $train;
-
-    public function __construct(Train $train)
     {
         $this->train = $train;
     }

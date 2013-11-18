@@ -9,6 +9,7 @@ public static function getSubscribedEvents();
 namespace Symfony\Bundle\FrameworkBundle\EventListener
 {
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -21,7 +22,7 @@ $this->container = $container;
 }
 public function onKernelRequest(GetResponseEvent $event)
 {
-if (!$event->isMasterRequest()) {
+if (HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType()) {
 return;
 }
 $request = $event->getRequest();
@@ -625,7 +626,6 @@ public function set($name, $value);
 public function get($name);
 public function getPath();
 public function getLogicalName();
-public function __toString();
 }
 }
 namespace Symfony\Component\Templating
@@ -770,7 +770,7 @@ return $template->getLogicalName();
 public function locate($template, $currentPath = null, $first = true)
 {
 if (!$template instanceof TemplateReferenceInterface) {
-throw new \InvalidArgumentException('The template must be an instance of TemplateReferenceInterface.');
+throw new \InvalidArgumentException("The template must be an instance of TemplateReferenceInterface.");
 }
 $key = $this->getCacheKey($template);
 if (isset($this->cache[$key])) {
@@ -1129,9 +1129,7 @@ use Symfony\Component\Config\ConfigCache;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Routing\Generator\ConfigurableRequirementsInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Routing\Generator\Dumper\GeneratorDumperInterface;
 use Symfony\Component\Routing\Matcher\UrlMatcherInterface;
-use Symfony\Component\Routing\Matcher\Dumper\MatcherDumperInterface;
 class Router implements RouterInterface
 {
 protected $matcher;
@@ -1220,7 +1218,7 @@ return $this->matcher = new $this->options['matcher_class']($this->getRouteColle
 $class = $this->options['matcher_cache_class'];
 $cache = new ConfigCache($this->options['cache_dir'].'/'.$class.'.php', $this->options['debug']);
 if (!$cache->isFresh()) {
-$dumper = $this->getMatcherDumperInstance();
+$dumper = new $this->options['matcher_dumper_class']($this->getRouteCollection());
 $options = array('class'=> $class,'base_class'=> $this->options['matcher_base_class'],
 );
 $cache->write($dumper->dump($options), $this->getRouteCollection()->getResources());
@@ -1239,7 +1237,7 @@ $this->generator = new $this->options['generator_class']($this->getRouteCollecti
 $class = $this->options['generator_cache_class'];
 $cache = new ConfigCache($this->options['cache_dir'].'/'.$class.'.php', $this->options['debug']);
 if (!$cache->isFresh()) {
-$dumper = $this->getGeneratorDumperInstance();
+$dumper = new $this->options['generator_dumper_class']($this->getRouteCollection());
 $options = array('class'=> $class,'base_class'=> $this->options['generator_base_class'],
 );
 $cache->write($dumper->dump($options), $this->getRouteCollection()->getResources());
@@ -1252,14 +1250,6 @@ $this->generator->setStrictRequirements($this->options['strict_requirements']);
 }
 return $this->generator;
 }
-protected function getGeneratorDumperInstance()
-{
-return new $this->options['generator_dumper_class']($this->getRouteCollection());
-}
-protected function getMatcherDumperInstance()
-{
-return new $this->options['matcher_dumper_class']($this->getRouteCollection());
-}
 }
 }
 namespace Symfony\Component\Routing\Matcher
@@ -1271,24 +1261,12 @@ public function redirect($path, $route, $scheme = null);
 }
 namespace Symfony\Component\Routing\Matcher
 {
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Exception\ResourceNotFoundException;
-use Symfony\Component\Routing\Exception\MethodNotAllowedException;
-interface RequestMatcherInterface
-{
-public function matchRequest(Request $request);
-}
-}
-namespace Symfony\Component\Routing\Matcher
-{
 use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
-class UrlMatcher implements UrlMatcherInterface, RequestMatcherInterface
+class UrlMatcher implements UrlMatcherInterface
 {
 const REQUIREMENT_MATCH = 0;
 const REQUIREMENT_MISMATCH = 1;
@@ -1296,8 +1274,6 @@ const ROUTE_MATCH = 2;
 protected $context;
 protected $allow = array();
 protected $routes;
-protected $request;
-protected $expressionLanguage;
 public function __construct(RouteCollection $routes, RequestContext $context)
 {
 $this->routes = $routes;
@@ -1320,13 +1296,6 @@ return $ret;
 throw 0 < count($this->allow)
 ? new MethodNotAllowedException(array_unique(array_map('strtoupper', $this->allow)))
 : new ResourceNotFoundException();
-}
-public function matchRequest(Request $request)
-{
-$this->request = $request;
-$ret = $this->match($request->getPathInfo());
-$this->request = null;
-return $ret;
 }
 protected function matchCollection($pathinfo, RouteCollection $routes)
 {
@@ -1368,14 +1337,9 @@ return $this->mergeDefaults($attributes, $route->getDefaults());
 }
 protected function handleRouteRequirements($pathinfo, $name, Route $route)
 {
-if ($route->getCondition() && !$this->getExpressionLanguage()->evaluate($route->getCondition(), array('context'=> $this->context,'request'=> $this->request))) {
-return array(self::REQUIREMENT_MISMATCH, null);
-}
 $scheme = $route->getRequirement('_scheme');
-if ($scheme && $scheme !== $this->context->getScheme()) {
-return array(self::REQUIREMENT_MISMATCH, null);
-}
-return array(self::REQUIREMENT_MATCH, null);
+$status = $scheme && $scheme !== $this->context->getScheme() ? self::REQUIREMENT_MISMATCH : self::REQUIREMENT_MATCH;
+return array($status, null);
 }
 protected function mergeDefaults($params, $defaults)
 {
@@ -1385,16 +1349,6 @@ $defaults[$key] = $value;
 }
 }
 return $defaults;
-}
-protected function getExpressionLanguage()
-{
-if (null === $this->expressionLanguage) {
-if (!class_exists('Symfony\Component\ExpressionLanguage\ExpressionLanguage')) {
-throw new \RuntimeException('Unable to use expressions as the Symfony ExpressionLanguage component is not installed.');
-}
-$this->expressionLanguage = new ExpressionLanguage();
-}
-return $this->expressionLanguage;
 }
 }
 }
@@ -1423,9 +1377,6 @@ return $parameters;
 }
 protected function handleRouteRequirements($pathinfo, $name, Route $route)
 {
-if ($route->getCondition() && !$this->getExpressionLanguage()->evaluate($route->getCondition(), array('context'=> $this->context,'request'=> $this->request))) {
-return array(self::REQUIREMENT_MISMATCH, null);
-}
 $scheme = $route->getRequirement('_scheme');
 if ($scheme && $this->context->getScheme() !== $scheme) {
 return array(self::ROUTE_MATCH, $this->redirect($pathinfo, $name, $scheme));
@@ -1513,22 +1464,19 @@ if (!is_string($value)) {
 return $value;
 }
 $container = $this->container;
-$escapedValue = preg_replace_callback('/%%|%([^%\s]+)%/', function ($match) use ($container, $value) {
+$escapedValue = preg_replace_callback('/%%|%([^%\s]++)%/', function ($match) use ($container, $value) {
 if (!isset($match[1])) {
 return'%%';
 }
-$key = strtolower($match[1]);
-if (!$container->hasParameter($key)) {
-throw new ParameterNotFoundException($key);
-}
-$resolved = $container->getParameter($key);
+$resolved = $container->getParameter($match[1]);
 if (is_string($resolved) || is_numeric($resolved)) {
 return (string) $resolved;
 }
-throw new RuntimeException(sprintf('A string value must be composed of strings and/or numbers,'.'but found parameter "%s" of type %s inside string value "%s".',
-$key,
-gettype($resolved),
-$value)
+throw new RuntimeException(sprintf('The container parameter "%s", used in the route configuration value "%s", '.'must be a string or numeric, but it is of type %s.',
+$match[1],
+$value,
+gettype($resolved)
+)
 );
 }, $value);
 return str_replace('%%','%', $escapedValue);
@@ -1714,7 +1662,7 @@ $this->removeListener($eventName, array($subscriber, is_string($params) ? $param
 protected function doDispatch($listeners, $eventName, Event $event)
 {
 foreach ($listeners as $listener) {
-call_user_func($listener, $event, $eventName, $this);
+call_user_func($listener, $event);
 if ($event->isPropagationStopped()) {
 break;
 }
@@ -1839,6 +1787,7 @@ $this->listeners[$eventName][$key] = $listener;
 namespace Symfony\Component\HttpKernel\EventListener
 {
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class ResponseListener implements EventSubscriberInterface
@@ -1850,7 +1799,7 @@ $this->charset = $charset;
 }
 public function onKernelResponse(FilterResponseEvent $event)
 {
-if (!$event->isMasterRequest()) {
+if (HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType()) {
 return;
 }
 $response = $event->getResponse();
@@ -1871,11 +1820,9 @@ namespace Symfony\Component\HttpKernel\EventListener
 {
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\HttpKernel\Event\FinishRequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Matcher\UrlMatcherInterface;
@@ -1890,8 +1837,7 @@ private $matcher;
 private $context;
 private $logger;
 private $request;
-private $requestStack;
-public function __construct($matcher, RequestContext $context = null, LoggerInterface $logger = null, RequestStack $requestStack = null)
+public function __construct($matcher, RequestContext $context = null, LoggerInterface $logger = null)
 {
 if (!$matcher instanceof UrlMatcherInterface && !$matcher instanceof RequestMatcherInterface) {
 throw new \InvalidArgumentException('Matcher must either implement UrlMatcherInterface or RequestMatcherInterface.');
@@ -1901,7 +1847,6 @@ throw new \InvalidArgumentException('You must either pass a RequestContext or th
 }
 $this->matcher = $matcher;
 $this->context = $context ?: $matcher->getContext();
-$this->requestStack = $requestStack;
 $this->logger = $logger;
 }
 public function setRequest(Request $request = null)
@@ -1911,18 +1856,10 @@ $this->context->fromRequest($request);
 }
 $this->request = $request;
 }
-public function onKernelFinishRequest(FinishRequestEvent $event)
-{
-if (null === $this->requestStack) {
-return; }
-$this->setRequest($this->requestStack->getParentRequest());
-}
 public function onKernelRequest(GetResponseEvent $event)
 {
 $request = $event->getRequest();
-if (null !== $this->requestStack) {
 $this->setRequest($request);
-}
 if ($request->attributes->has('_controller')) {
 return;
 }
@@ -1941,9 +1878,6 @@ unset($parameters['_controller']);
 $request->attributes->set('_route_params', $parameters);
 } catch (ResourceNotFoundException $e) {
 $message = sprintf('No route found for "%s %s"', $request->getMethod(), $request->getPathInfo());
-if ($referer = $request->headers->get('referer')) {
-$message .= sprintf(' (from "%s")', $referer);
-}
 throw new NotFoundHttpException($message, $e);
 } catch (MethodNotAllowedException $e) {
 $message = sprintf('No route found for "%s %s": Method Not Allowed (Allow: %s)', $request->getMethod(), $request->getPathInfo(), implode(', ', $e->getAllowedMethods()));
@@ -1962,7 +1896,6 @@ public static function getSubscribedEvents()
 {
 return array(
 KernelEvents::REQUEST => array(array('onKernelRequest', 32)),
-KernelEvents::FINISH_REQUEST => array(array('onKernelFinishRequest', 0)),
 );
 }
 }
@@ -2087,10 +2020,6 @@ return $this->request;
 public function getRequestType()
 {
 return $this->requestType;
-}
-public function isMasterRequest()
-{
-return HttpKernelInterface::MASTER_REQUEST === $this->requestType;
 }
 }
 }
@@ -2243,7 +2172,6 @@ const VIEW ='kernel.view';
 const CONTROLLER ='kernel.controller';
 const RESPONSE ='kernel.response';
 const TERMINATE ='kernel.terminate';
-const FINISH_REQUEST ='kernel.finish_request';
 }
 }
 namespace Symfony\Component\HttpKernel\Config
@@ -2378,9 +2306,9 @@ use Symfony\Component\HttpFoundation\Request;
 class AccessMap implements AccessMapInterface
 {
 private $map = array();
-public function add(RequestMatcherInterface $requestMatcher, array $attributes = array(), $channel = null)
+public function add(RequestMatcherInterface $requestMatcher, array $roles = array(), $channel = null)
 {
-$this->map[] = array($requestMatcher, $attributes, $channel);
+$this->map[] = array($requestMatcher, $roles, $channel);
 }
 public function getPatterns(Request $request)
 {
@@ -2395,30 +2323,27 @@ return array(null, null);
 }
 namespace Symfony\Component\Security\Http
 {
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\HttpKernel\Event\FinishRequestEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class Firewall implements EventSubscriberInterface
 {
 private $map;
 private $dispatcher;
-private $exceptionListeners;
 public function __construct(FirewallMapInterface $map, EventDispatcherInterface $dispatcher)
 {
 $this->map = $map;
 $this->dispatcher = $dispatcher;
-$this->exceptionListeners = new \SplObjectStorage();
 }
 public function onKernelRequest(GetResponseEvent $event)
 {
-if (!$event->isMasterRequest()) {
+if (HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType()) {
 return;
 }
 list($listeners, $exception) = $this->map->getListeners($event->getRequest());
 if (null !== $exception) {
-$this->exceptionListeners[$event->getRequest()] = $exception;
 $exception->register($this->dispatcher);
 }
 foreach ($listeners as $listener) {
@@ -2428,20 +2353,9 @@ break;
 }
 }
 }
-public function onKernelFinishRequest(FinishRequestEvent $event)
-{
-$request = $event->getRequest();
-if (isset($this->exceptionListeners[$request])) {
-$this->exceptionListeners[$request]->unregister($this->dispatcher);
-unset($this->exceptionListeners[$request]);
-}
-}
 public static function getSubscribedEvents()
 {
-return array(
-KernelEvents::REQUEST => array('onKernelRequest', 8),
-KernelEvents::FINISH_REQUEST =>'onKernelFinishRequest',
-);
+return array(KernelEvents::REQUEST => array('onKernelRequest', 8));
 }
 }
 }
@@ -2612,12 +2526,8 @@ public function __construct(array $voters, $strategy ='affirmative', $allowIfAll
 if (!$voters) {
 throw new \InvalidArgumentException('You must at least add one voter.');
 }
-$strategyMethod ='decide'.ucfirst($strategy);
-if (!is_callable(array($this, $strategyMethod))) {
-throw new \InvalidArgumentException(sprintf('The strategy "%s" is not supported.', $strategy));
-}
 $this->voters = $voters;
-$this->strategy = $strategyMethod;
+$this->strategy ='decide'.ucfirst($strategy);
 $this->allowIfAllAbstainDecisions = (Boolean) $allowIfAllAbstainDecisions;
 $this->allowIfEqualGrantedDeniedDecisions = (Boolean) $allowIfEqualGrantedDeniedDecisions;
 }
@@ -4730,7 +4640,9 @@ unset($vars['extra'][$var]);
 }
 }
 foreach ($vars as $var => $val) {
+if (false !== strpos($output,'%'.$var.'%')) {
 $output = str_replace('%'.$var.'%', $this->convertToString($val), $output);
+}
 }
 return $output;
 }
@@ -4765,9 +4677,9 @@ return (string) $data;
 }
 $data = $this->normalize($data);
 if (version_compare(PHP_VERSION,'5.4.0','>=')) {
-return $this->toJson($data);
+return $this->toJson($data, true);
 }
-return str_replace('\\/','/', json_encode($data));
+return str_replace('\\/','/', @json_encode($data));
 }
 }
 }
@@ -4793,7 +4705,7 @@ use Monolog\Formatter\LineFormatter;
 abstract class AbstractHandler implements HandlerInterface
 {
 protected $level = Logger::DEBUG;
-protected $bubble = false;
+protected $bubble = true;
 protected $formatter;
 protected $processors = array();
 public function __construct($level = Logger::DEBUG, $bubble = true)
@@ -4820,6 +4732,7 @@ if (!is_callable($callback)) {
 throw new \InvalidArgumentException('Processors must be valid callables (callback or object with an __invoke method), '.var_export($callback, true).' given');
 }
 array_unshift($this->processors, $callback);
+return $this;
 }
 public function popProcessor()
 {
@@ -4831,6 +4744,7 @@ return array_shift($this->processors);
 public function setFormatter(FormatterInterface $formatter)
 {
 $this->formatter = $formatter;
+return $this;
 }
 public function getFormatter()
 {
@@ -4842,6 +4756,7 @@ return $this->formatter;
 public function setLevel($level)
 {
 $this->level = $level;
+return $this;
 }
 public function getLevel()
 {
@@ -4850,6 +4765,7 @@ return $this->level;
 public function setBubble($bubble)
 {
 $this->bubble = $bubble;
+return $this;
 }
 public function getBubble()
 {
@@ -4874,7 +4790,7 @@ abstract class AbstractProcessingHandler extends AbstractHandler
 {
 public function handle(array $record)
 {
-if ($record['level'] < $this->level) {
+if (!$this->isHandling($record)) {
 return false;
 }
 $record = $this->processRecord($record);
@@ -4901,6 +4817,7 @@ class StreamHandler extends AbstractProcessingHandler
 {
 protected $stream;
 protected $url;
+private $errorMessage;
 public function __construct($stream, $level = Logger::DEBUG, $bubble = true)
 {
 parent::__construct($level, $bubble);
@@ -4923,18 +4840,19 @@ if (null === $this->stream) {
 if (!$this->url) {
 throw new \LogicException('Missing stream url, the stream can not be opened. This may be caused by a premature call to close().');
 }
-$errorMessage = null;
-set_error_handler(function ($code, $msg) use (&$errorMessage) {
-$errorMessage = preg_replace('{^fopen\(.*?\): }','', $msg);
-});
+$this->errorMessage = null;
+set_error_handler(array($this,'customErrorHandler'));
 $this->stream = fopen($this->url,'a');
 restore_error_handler();
 if (!is_resource($this->stream)) {
 $this->stream = null;
-throw new \UnexpectedValueException(sprintf('The stream or file "%s" could not be opened: '.$errorMessage, $this->url));
+throw new \UnexpectedValueException(sprintf('The stream or file "%s" could not be opened: '.$this->errorMessage, $this->url));
 }
 }
 fwrite($this->stream, (string) $record['formatted']);
+}
+private function customErrorHandler($code, $msg) {
+$this->errorMessage = preg_replace('{^fopen\(.*?\): }','', $msg);
 }
 }
 }

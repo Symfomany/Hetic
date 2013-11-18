@@ -13,7 +13,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * This software consists of voluntary contributions made by many individuals
- * and is licensed under the MIT license. For more information, see
+ * and is licensed under the LGPL. For more information, see
  * <http://www.doctrine-project.org>.
  */
 
@@ -26,12 +26,13 @@ use Doctrine\Common\Persistence\Mapping\MappingException;
  * The StaticPHPDriver calls a static loadMetadata() method on your entity
  * classes where you can manually populate the ClassMetadata instance.
  *
- * @link   www.doctrine-project.org
- * @since  2.2
- * @author Benjamin Eberlei <kontakt@beberlei.de>
- * @author Guilherme Blanco <guilhermeblanco@hotmail.com>
- * @author Jonathan H. Wage <jonwage@gmail.com>
- * @author Roman Borschel <roman@code-factory.org>
+ * @license 	http://www.opensource.org/licenses/lgpl-license.php LGPL
+ * @link    	www.doctrine-project.org
+ * @since   	2.2
+ * @author      Benjamin Eberlei <kontakt@beberlei.de>
+ * @author      Guilherme Blanco <guilhermeblanco@hotmail.com>
+ * @author      Jonathan H. Wage <jonwage@gmail.com>
+ * @author      Roman Borschel <roman@code-factory.org>
  */
 class StaticPHPDriver implements MappingDriver
 {
@@ -49,23 +50,11 @@ class StaticPHPDriver implements MappingDriver
      */
     private $classNames;
 
-    /**
-     * Constructor.
-     *
-     * @param array|string $paths
-     */
     public function __construct($paths)
     {
         $this->addPaths((array) $paths);
     }
 
-    /**
-     * Adds paths.
-     *
-     * @param array $paths
-     *
-     * @return void
-     */
     public function addPaths(array $paths)
     {
         $this->paths = array_unique(array_merge($this->paths, $paths));

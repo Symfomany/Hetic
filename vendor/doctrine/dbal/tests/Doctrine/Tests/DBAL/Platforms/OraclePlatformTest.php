@@ -9,51 +9,6 @@ require_once __DIR__ . '/../../TestInit.php';
 
 class OraclePlatformTest extends AbstractPlatformTestCase
 {
-    static public function dataValidIdentifiers()
-    {
-        return array(
-            array('a'),
-            array('foo'),
-            array('Foo'),
-            array('Foo123'),
-            array('Foo#bar_baz$'),
-            array('"a"'),
-            array('"1"'),
-            array('"foo_bar"'),
-            array('"@$%&!"'),
-        );
-    }
-
-    /**
-     * @dataProvider dataValidIdentifiers
-     */
-    public function testValidIdentifiers($identifier)
-    {
-        $platform = $this->createPlatform();
-        $platform->assertValidIdentifier($identifier);
-    }
-
-    static public function dataInvalidIdentifiers()
-    {
-        return array(
-            array('1'),
-            array('abc&'),
-            array('abc-def'),
-            array('"'),
-            array('"foo"bar"'),
-        );
-    }
-
-    /**
-     * @dataProvider dataInvalidIdentifiers
-     */
-    public function testInvalidIdentifiers($identifier)
-    {
-        $this->setExpectedException('Doctrine\DBAL\DBALException');
-        $platform = $this->createPlatform();
-        $platform->assertValidIdentifier($identifier);
-    }
-
     public function createPlatform()
     {
         return new OraclePlatform;
@@ -268,18 +223,5 @@ class OraclePlatformTest extends AbstractPlatformTestCase
         return '(' . $value1 . '-' .
                 $this->getBitAndComparisonExpressionSql($value1, $value2)
                 . '+' . $value2 . ')';
-    }
-
-    protected function getQuotedColumnInPrimaryKeySQL()
-    {
-        return array('CREATE TABLE "quoted" ("key" VARCHAR2(255) NOT NULL, PRIMARY KEY("key"))');
-    }
-
-    protected function getQuotedColumnInIndexSQL()
-    {
-        return array(
-            'CREATE TABLE "quoted" ("key" VARCHAR2(255) NOT NULL)',
-            'CREATE INDEX IDX_22660D028A90ABA9 ON "quoted" ("key")',
-        );
     }
 }

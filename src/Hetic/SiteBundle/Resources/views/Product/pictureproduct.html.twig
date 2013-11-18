@@ -1,0 +1,44 @@
+{% extends 'HeticSiteBundle::layout.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block content %}
+
+    <div id="createproduct">
+    <a class="btn btn-danger pull-right" href="{{ path('hetic_site_products') }}">&larr; Revenir à la liste de
+        produit</a>
+
+    <h1><i class="glyphicon glyphicon-camera"></i> Photos "{{ produit.title|title }}"</h1>
+    <hr class="clear fancy-line">
+    <h3>Les photos</h3>
+        {% for image in produit.images %}
+            {{ image.title }}
+            <a onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette photo?'));"  href="{{ path('hetic_site_remove_image_product', {'id' : image.id}) }}"><i class="glyphicon glyphicon-remove"></i></a>
+            <a onclick="return(confirm('Etes-vous sûr de vouloir mettre en avant cette photo?'));"  href="{{ path('hetic_site_cover_image_product', {'id' : image.id}) }}"><i class="glyphicon glyphicon-heart"></i></a>
+            <img class="img-thumbnail" src="{{ imgproducts ~  produit.id ~ '/' ~ image.path }}">
+
+            {% if image.cover %}
+                <span class="label label-success">Cette photo a été mise en avant</span>
+            {% endif %}
+
+        {% else %}
+            <div class="alert alert-dismissable alert-warning">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <i class="glyphicon glyphicon-warning-sign"></i> Aucune accessoires pour le moment
+            </div>
+        {% endfor %}
+    <h3>Ajouter une photo</h3>
+    <form enctype='multipart/form-data' action="{{ path('hetic_site_edit_pictures_product', {'id' : produit.id}) }}" method="post">
+    <label for="title">Légende</label>
+    {{ form_widget(form.title) }}
+    <label for="file">Fichier</label>
+    {{ form_widget(form.file) }}
+    <button class="btn btn-primary btn-large" type="submit"><i class="glyphicon glyphicon-ok"></i> Valider
+    </button>
+    </form>
+    </div>
+{% endblock %}
+

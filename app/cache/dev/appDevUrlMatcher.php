@@ -24,82 +24,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
     {
         $allow = array();
         $pathinfo = rawurldecode($pathinfo);
-        $context = $this->context;
-        $request = $this->request;
-
-        if (0 === strpos($pathinfo, '/js')) {
-            if (0 === strpos($pathinfo, '/js/cf7b8d6')) {
-                // _assetic_cf7b8d6
-                if ($pathinfo === '/js/cf7b8d6.js') {
-                    return array (  '_controller' => 'assetic.controller:render',  'name' => 'cf7b8d6',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_cf7b8d6',);
-                }
-
-                // _assetic_cf7b8d6_0
-                if ($pathinfo === '/js/cf7b8d6_index_1.js') {
-                    return array (  '_controller' => 'assetic.controller:render',  'name' => 'cf7b8d6',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_cf7b8d6_0',);
-                }
-
-            }
-
-            if (0 === strpos($pathinfo, '/js/aee4d46')) {
-                // _assetic_aee4d46
-                if ($pathinfo === '/js/aee4d46.js') {
-                    return array (  '_controller' => 'assetic.controller:render',  'name' => 'aee4d46',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_aee4d46',);
-                }
-
-                // _assetic_aee4d46_0
-                if ($pathinfo === '/js/aee4d46_index_1.js') {
-                    return array (  '_controller' => 'assetic.controller:render',  'name' => 'aee4d46',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_aee4d46_0',);
-                }
-
-            }
-
-        }
-
-        if (0 === strpos($pathinfo, '/css')) {
-            if (0 === strpos($pathinfo, '/css/78712cb')) {
-                // _assetic_78712cb
-                if ($pathinfo === '/css/78712cb.css') {
-                    return array (  '_controller' => 'assetic.controller:render',  'name' => '78712cb',  'pos' => NULL,  '_format' => 'css',  '_route' => '_assetic_78712cb',);
-                }
-
-                // _assetic_78712cb_0
-                if ($pathinfo === '/css/78712cb_index_1.css') {
-                    return array (  '_controller' => 'assetic.controller:render',  'name' => '78712cb',  'pos' => 0,  '_format' => 'css',  '_route' => '_assetic_78712cb_0',);
-                }
-
-            }
-
-            if (0 === strpos($pathinfo, '/css/4')) {
-                if (0 === strpos($pathinfo, '/css/4dbc7ea')) {
-                    // _assetic_4dbc7ea
-                    if ($pathinfo === '/css/4dbc7ea.css') {
-                        return array (  '_controller' => 'assetic.controller:render',  'name' => '4dbc7ea',  'pos' => NULL,  '_format' => 'css',  '_route' => '_assetic_4dbc7ea',);
-                    }
-
-                    // _assetic_4dbc7ea_0
-                    if ($pathinfo === '/css/4dbc7ea_test_1.css') {
-                        return array (  '_controller' => 'assetic.controller:render',  'name' => '4dbc7ea',  'pos' => 0,  '_format' => 'css',  '_route' => '_assetic_4dbc7ea_0',);
-                    }
-
-                }
-
-                if (0 === strpos($pathinfo, '/css/446f6d5')) {
-                    // _assetic_446f6d5
-                    if ($pathinfo === '/css/446f6d5.css') {
-                        return array (  '_controller' => 'assetic.controller:render',  'name' => '446f6d5',  'pos' => NULL,  '_format' => 'css',  '_route' => '_assetic_446f6d5',);
-                    }
-
-                    // _assetic_446f6d5_0
-                    if ($pathinfo === '/css/446f6d5_main_1.css') {
-                        return array (  '_controller' => 'assetic.controller:render',  'name' => '446f6d5',  'pos' => 0,  '_format' => 'css',  '_route' => '_assetic_446f6d5_0',);
-                    }
-
-                }
-
-            }
-
-        }
 
         if (0 === strpos($pathinfo, '/_')) {
             // _wdt
@@ -209,121 +133,222 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // hetic_site_hello
-        if (rtrim($pathinfo, '/') === '') {
+        // hetic_site_main
+        if (rtrim($pathinfo, '/') === '/backend') {
             if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'hetic_site_hello');
+                return $this->redirect($pathinfo.'/', 'hetic_site_main');
             }
 
-            return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::indexAction',  '_route' => 'hetic_site_hello',);
+            return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\MainController::indexAction',  '_route' => 'hetic_site_main',);
+        }
+
+        // hetic_site_root
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'hetic_site_root');
+            }
+
+            return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\AdministrateurController::loginAction',  '_route' => 'hetic_site_root',);
+        }
+
+        if (0 === strpos($pathinfo, '/backend')) {
+            // hetic_site_dashboard
+            if ($pathinfo === '/backend/dashboard') {
+                return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\MainController::dashboardAction',  '_route' => 'hetic_site_dashboard',);
+            }
+
+            if (0 === strpos($pathinfo, '/backend/produit')) {
+                // hetic_site_products
+                if ($pathinfo === '/backend/produits') {
+                    return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\ProductController::productsAction',  '_route' => 'hetic_site_products',);
+                }
+
+                // hetic_site_remove_product
+                if (0 === strpos($pathinfo, '/backend/produit/suppression') && preg_match('#^/backend/produit/suppression/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_remove_product')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\ProductController::removeproductAction',));
+                }
+
+                if (0 === strpos($pathinfo, '/backend/produit-image')) {
+                    // hetic_site_remove_image_product
+                    if (0 === strpos($pathinfo, '/backend/produit-image/suppression') && preg_match('#^/backend/produit\\-image/suppression/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_remove_image_product')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\ProductController::removeimageproductAction',));
+                    }
+
+                    // hetic_site_cover_image_product
+                    if (0 === strpos($pathinfo, '/backend/produit-image/cover') && preg_match('#^/backend/produit\\-image/cover/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_cover_image_product')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\ProductController::coverimageproductAction',));
+                    }
+
+                }
+
+                // hetic_site_active_product
+                if (0 === strpos($pathinfo, '/backend/produit/activation') && preg_match('#^/backend/produit/activation/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_active_product')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\ProductController::activeproductAction',));
+                }
+
+                // hetic_site_desactive_product
+                if (0 === strpos($pathinfo, '/backend/produit/desactivation') && preg_match('#^/backend/produit/desactivation/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_desactive_product')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\ProductController::desactiveproductAction',));
+                }
+
+            }
+
+            // hetic_site_create_product
+            if ($pathinfo === '/backend/creer-un-produit') {
+                return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\ProductController::createproductAction',  '_route' => 'hetic_site_create_product',);
+            }
+
+            // hetic_site_edit_product
+            if (0 === strpos($pathinfo, '/backend/editer-un-produit') && preg_match('#^/backend/editer\\-un\\-produit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_edit_product')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\ProductController::editproductAction',));
+            }
+
+            // hetic_site_visualize_product
+            if (0 === strpos($pathinfo, '/backend/voir-un-produit') && preg_match('#^/backend/voir\\-un\\-produit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_visualize_product')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\ProductController::visualizeproductAction',));
+            }
+
+            // hetic_site_edit_pictures_product
+            if (0 === strpos($pathinfo, '/backend/photo-du-produit') && preg_match('#^/backend/photo\\-du\\-produit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_edit_pictures_product')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\ProductController::pictureproductAction',));
+            }
+
+            // hetic_site_commands
+            if ($pathinfo === '/backend/commandes') {
+                return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\MainController::commandsAction',  '_route' => 'hetic_site_commands',);
+            }
+
+            if (0 === strpos($pathinfo, '/backend/famille')) {
+                // hetic_site_familles
+                if ($pathinfo === '/backend/familles') {
+                    return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\CategoryController::famillesAction',  '_route' => 'hetic_site_familles',);
+                }
+
+                // hetic_site_add_famille
+                if ($pathinfo === '/backend/famille/ajouter') {
+                    return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\CategoryController::createfamilleAction',  '_route' => 'hetic_site_add_famille',);
+                }
+
+                // hetic_site_remove_famille
+                if (0 === strpos($pathinfo, '/backend/famille/supprimer') && preg_match('#^/backend/famille/supprimer/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_remove_famille')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\CategoryController::removefamilleAction',));
+                }
+
+                // hetic_site_edit_famille
+                if (0 === strpos($pathinfo, '/backend/famille/editer') && preg_match('#^/backend/famille/editer/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_edit_famille')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\CategoryController::editfamilleAction',));
+                }
+
+            }
+
+            if (0 === strpos($pathinfo, '/backend/categor')) {
+                // hetic_site_categories
+                if ($pathinfo === '/backend/categories') {
+                    return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\CategoryController::categoriesAction',  '_route' => 'hetic_site_categories',);
+                }
+
+                // hetic_site_add_category
+                if ($pathinfo === '/backend/category/ajouter') {
+                    return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\CategoryController::createcategoryAction',  '_route' => 'hetic_site_add_category',);
+                }
+
+            }
+
+            // hetic_site_edit_image_category
+            if (0 === strpos($pathinfo, '/backend/photo-de-category') && preg_match('#^/backend/photo\\-de\\-category/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_edit_image_category')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\CategoryController::picturecategoryAction',));
+            }
+
+            if (0 === strpos($pathinfo, '/backend/category')) {
+                // hetic_site_category
+                if (preg_match('#^/backend/category/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_category')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\CategoryController::categoryAction',));
+                }
+
+                // hetic_site_cover_image_category
+                if (0 === strpos($pathinfo, '/backend/category-image/cover') && preg_match('#^/backend/category\\-image/cover/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_cover_image_category')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\CategoryController::coverimagecategoryAction',));
+                }
+
+            }
+
+            // hetic_site_remove_image_category
+            if (0 === strpos($pathinfo, '/backend/photo-de-category/suppression') && preg_match('#^/backend/photo\\-de\\-category/suppression/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_remove_image_category')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\CategoryController::removeimagecategoryAction',));
+            }
+
+            if (0 === strpos($pathinfo, '/backend/category')) {
+                // hetic_site_remove_category
+                if (0 === strpos($pathinfo, '/backend/category/supprimer') && preg_match('#^/backend/category/supprimer/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_remove_category')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\CategoryController::removecategoryAction',));
+                }
+
+                // hetic_site_edit_category
+                if (0 === strpos($pathinfo, '/backend/category/editer') && preg_match('#^/backend/category/editer/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_edit_category')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\CategoryController::editcategoryAction',));
+                }
+
+                // hetic_site_active_category
+                if (0 === strpos($pathinfo, '/backend/category/activation') && preg_match('#^/backend/category/activation/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_active_category')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\CategoryController::activecategoryAction',));
+                }
+
+                // hetic_site_desactive_category
+                if (0 === strpos($pathinfo, '/backend/category/desactivation') && preg_match('#^/backend/category/desactivation/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_desactive_category')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\CategoryController::desactivecategoryAction',));
+                }
+
+            }
+
         }
 
         // hetic_about
         if ($pathinfo === '/about') {
-            return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::aboutAction',  '_route' => 'hetic_about',);
+            return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\MainController::aboutAction',  '_route' => 'hetic_about',);
         }
 
         // hetic_contact
         if ($pathinfo === '/contact') {
-            return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::contactAction',  '_route' => 'hetic_contact',);
+            return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\MainController::contactAction',  '_route' => 'hetic_contact',);
         }
 
-        // hetic_site_remove
-        if (0 === strpos($pathinfo, '/remove/article') && preg_match('#^/remove/article/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_remove')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::removeArticleAction',));
-        }
-
-        if (0 === strpos($pathinfo, '/a')) {
-            // hetic_site_add_star
-            if (0 === strpos($pathinfo, '/addfavoris/addstar') && preg_match('#^/addfavoris/addstar/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_add_star')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::putInStarAction',));
-            }
-
-            if (0 === strpos($pathinfo, '/articles')) {
-                // hetic_site_remove_star
-                if (0 === strpos($pathinfo, '/articles/removestar') && preg_match('#^/articles/removestar/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_remove_star')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::pullInStarAction',));
-                }
-
-                // hetic_site_articles_by_cat
-                if (0 === strpos($pathinfo, '/articles/sortbycategory') && preg_match('#^/articles/sortbycategory/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_articles_by_cat')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::getArticlesByCategoryAction',));
-                }
-
-                // hetic_site_articles_by_tags
-                if (preg_match('#^/articles/(?P<tag>[^/]++)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_articles_by_tags')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::getArticlesByTagsAction',));
-                }
-
-            }
-
-        }
-
-        // hetic_site_visible
-        if (0 === strpos($pathinfo, '/visible') && preg_match('#^/visible/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_visible')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::visibleAction',));
-        }
-
-        // hetic_site_invisible
-        if (0 === strpos($pathinfo, '/invisible') && preg_match('#^/invisible/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_invisible')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::invisibleAction',));
-        }
-
-        // hetic_site_edit
-        if (0 === strpos($pathinfo, '/editable') && preg_match('#^/editable/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_edit')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::editableAction',));
-        }
-
-        // hetic_article_see
-        if (0 === strpos($pathinfo, '/article') && preg_match('#^/article/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_article_see')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::seearticleAction',));
-        }
-
-        // hetic_article_more
-        if (0 === strpos($pathinfo, '/bonus-article') && preg_match('#^/bonus\\-article/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_article_more')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::bonusarticleAction',));
-        }
-
-        // hetic_article_less
-        if (0 === strpos($pathinfo, '/malus-article') && preg_match('#^/malus\\-article/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_article_less')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::malusarticleAction',));
-        }
-
-        // hetic_category_detail
-        if (0 === strpos($pathinfo, '/category') && preg_match('#^/category/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_category_detail')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::categorydetailAction',));
-        }
-
-        // hetic_category_sorted
-        if (0 === strpos($pathinfo, '/sort-by-category') && preg_match('#^/sort\\-by\\-category/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_category_sorted')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::categorysortAction',));
-        }
-
-        // hetic_article_detail
-        if (0 === strpos($pathinfo, '/article-single') && preg_match('#^/article\\-single/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_article_detail')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::articledetailAction',));
-        }
-
-        if (0 === strpos($pathinfo, '/category-')) {
-            // hetic_category_create
-            if (rtrim($pathinfo, '/') === '/category-add') {
+        if (0 === strpos($pathinfo, '/recherche')) {
+            // hetic_search
+            if (rtrim($pathinfo, '/') === '/recherche') {
                 if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'hetic_category_create');
+                    return $this->redirect($pathinfo.'/', 'hetic_search');
                 }
 
-                return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::categorycreateAction',  '_route' => 'hetic_category_create',);
+                return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\MainController::searchAction',  '_route' => 'hetic_search',);
             }
 
-            // hetic_category_edit
-            if (0 === strpos($pathinfo, '/category-edit') && preg_match('#^/category\\-edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_category_edit')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::categoryeditAction',));
+            // hetic_search_avanced
+            if (rtrim($pathinfo, '/') === '/recherche-avancee') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'hetic_search_avanced');
+                }
+
+                return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\MainController::advancedsearchAction',  '_route' => 'hetic_search_avanced',);
             }
 
         }
 
-        // hetic_tag_remove
-        if (0 === strpos($pathinfo, '/tag-remove') && preg_match('#^/tag\\-remove/(?P<id>[^/]++)/(?P<aid>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_tag_remove')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\DefaultController::tagremoveAction',));
+        // login
+        if ($pathinfo === '/login') {
+            return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\AdministrateurController::loginAction',  '_route' => 'login',);
+        }
+
+        if (0 === strpos($pathinfo, '/backend/log')) {
+            // login_check
+            if ($pathinfo === '/backend/login_check') {
+                return array('_route' => 'login_check');
+            }
+
+            // logout
+            if ($pathinfo === '/backend/logout') {
+                return array('_route' => 'logout');
+            }
+
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

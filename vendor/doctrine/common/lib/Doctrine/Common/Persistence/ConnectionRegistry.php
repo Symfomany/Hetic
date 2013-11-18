@@ -13,7 +13,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * This software consists of voluntary contributions made by many individuals
- * and is licensed under the MIT license. For more information, see
+ * and is licensed under the LGPL. For more information, see
  * <http://www.doctrine-project.org>.
  */
 
@@ -22,41 +22,42 @@ namespace Doctrine\Common\Persistence;
 /**
  * Contract covering connection for a Doctrine persistence layer ManagerRegistry class to implement.
  *
- * @link   www.doctrine-project.org
- * @since  2.2
- * @author Fabien Potencier <fabien@symfony.com>
- * @author Benjamin Eberlei <kontakt@beberlei.de>
- * @author Lukas Kahwe Smith <smith@pooteeweet.org>
+ * @license http://www.opensource.org/licenses/lgpl-license.php LGPL
+ * @link    www.doctrine-project.org
+ * @since   2.2
+ * @author  Fabien Potencier <fabien@symfony.com>
+ * @author  Benjamin Eberlei <kontakt@beberlei.de>
+ * @author  Lukas Kahwe Smith <smith@pooteeweet.org>
  */
 interface ConnectionRegistry
 {
     /**
      * Gets the default connection name.
      *
-     * @return string The default connection name.
+     * @return string The default connection name
      */
-    public function getDefaultConnectionName();
+    function getDefaultConnectionName();
 
     /**
      * Gets the named connection.
      *
-     * @param string $name The connection name (null for the default one).
+     * @param string $name The connection name (null for the default one)
      *
-     * @return object
+     * @return Connection
      */
-    public function getConnection($name = null);
+    function getConnection($name = null);
 
     /**
-     * Gets an array of all registered connections.
+     * Gets an array of all registered connections
      *
-     * @return array An array of Connection instances.
+     * @return array An array of Connection instances
      */
-    public function getConnections();
+    function getConnections();
 
     /**
      * Gets all connection names.
      *
-     * @return array An array of connection names.
+     * @return array An array of connection names
      */
-    public function getConnectionNames();
+    function getConnectionNames();
 }

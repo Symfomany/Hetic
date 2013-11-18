@@ -18,5 +18,16 @@ class CategoryRepository extends EntityRepository
         return $query->getResult();
     }
 
+    public function getActiveCategoryQueryBuilder()
+    {
+        $queryBuilder = $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('m')
+            ->from('Hetic\SiteBundle\Entity\Category', 'm')
+            ->orderBy('m.id', 'DESC');
+        return $queryBuilder;
+    }
+
+
 
 }

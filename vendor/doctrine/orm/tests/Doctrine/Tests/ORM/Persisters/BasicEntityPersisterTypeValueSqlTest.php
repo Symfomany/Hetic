@@ -1,13 +1,12 @@
 <?php
 
-namespace Doctrine\Tests\ORM\Persisters;
+namespace Doctrine\Tests\ORM\Functional;
 
 use Doctrine\DBAL\Types\Type as DBALType;
 use Doctrine\ORM\Persisters\BasicEntityPersister;
 use Doctrine\Tests\Models\CustomType\CustomTypeParent;
 use Doctrine\Tests\Models\CustomType\CustomTypeChild;
 use Doctrine\Tests\Models\CustomType\CustomTypeFriend;
-use Doctrine\Common\Collections\Expr\Comparison;
 
 require_once __DIR__ . '/../../TestInit.php';
 
@@ -76,26 +75,5 @@ class BasicEntityPersisterTypeValueSqlTest extends \Doctrine\Tests\OrmTestCase
         $sql = $method->invoke($this->_persister,  array('customInteger' => 1, 'child' => 1));
 
         $this->assertEquals('t0.customInteger = ABS(?) AND t0.child_id = ?', $sql);
-    }
-
-    /**
-     * @group DDC-1719
-     */
-    public function testStripNonAlphanumericCharactersFromSelectColumnListSQL()
-    {
-        $persister  = new BasicEntityPersister($this->_em, $this->_em->getClassMetadata('Doctrine\Tests\Models\Quote\SimpleEntity'));
-        $method     = new \ReflectionMethod($persister, '_getSelectColumnListSQL');
-        $method->setAccessible(true);
-
-        $this->assertEquals('t0."simple-entity-id" AS simpleentityid1, t0."simple-entity-value" AS simpleentityvalue2', $method->invoke($persister));
-    }
-
-    /**
-     * @group DDC-2073
-     */
-    public function testSelectConditionStatementIsNull()
-    {
-        $statement = $this->_persister->getSelectConditionStatementSQL('test', null, array(), Comparison::IS);
-        $this->assertEquals('test IS ?', $statement);
     }
 }

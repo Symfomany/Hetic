@@ -3,8 +3,10 @@ namespace Codeception\Module;
 
 use Codeception\Exception\ElementNotFound;
 use Codeception\Exception\TestRuntime;
+use Codeception\Util\Debug;
 use Codeception\Util\Locator;
 use Codeception\Util\WebInterface;
+use Codeception\Util\RemoteInterface;
 use Symfony\Component\DomCrawler\Crawler;
 use Codeception\PHPUnit\Constraint\WebDriver as WebDriverConstraint;
 use Codeception\PHPUnit\Constraint\WebDriverNot as WebDriverConstraintNot;
@@ -58,7 +60,7 @@ use Codeception\PHPUnit\Constraint\Page as PageConstraint;
  * Class WebDriver
  * @package Codeception\Module
  */
-class WebDriver extends \Codeception\Module implements WebInterface {
+class WebDriver extends \Codeception\Module implements WebInterface, RemoteInterface {
 
     protected $requiredFields = array('browser', 'url');
     protected $config = array(
@@ -71,6 +73,7 @@ class WebDriver extends \Codeception\Module implements WebInterface {
     
     protected $wd_host;
     protected $capabilities;
+    protected $test;
 
     /**
      * @var \RemoteWebDriver
@@ -91,6 +94,7 @@ class WebDriver extends \Codeception\Module implements WebInterface {
         if (!isset($this->webDriver)) {
             $this->_initialize();
         }
+        $this->test = $test;
         $size = $this->webDriver->manage()->window()->getSize();
         $this->debugSection("Window", $size->getWidth().'x'.$size->getHeight());
     }
@@ -99,7 +103,7 @@ class WebDriver extends \Codeception\Module implements WebInterface {
     {
         if ($this->config['restart'] && isset($this->webDriver)) {
             $this->webDriver->quit();
-            // \RemoteWebDriver consists of three parts, executor, mouse and keyboard, quit only set executor to null,
+            // \RemoteWebDriver consists of four parts, executor, mouse, keyboard and touch, quit only set executor to null,
             // but \RemoteWebDriver doesn't provide public access to check on executor
             // so we need to unset $this->webDriver here to shut it down completely
             $this->webDriver = null;
@@ -120,6 +124,10 @@ class WebDriver extends \Codeception\Module implements WebInterface {
             unset($this->webDriver);
         }
     }
+    
+    public function _getResponseCode() {}
+
+    public function _sendRequest($url) {}
 
     public function amOnSubdomain($subdomain)
     {
@@ -871,6 +879,57 @@ class WebDriver extends \Codeception\Module implements WebInterface {
 
         $this->webDriver->wait($timeout)->until($condition);
     }
+    
+    /**
+     * Waits for element to be visible on the page for $timeout seconds to pass.
+     * If element doesn't appear, timeout exception is thrown.
+     *
+     * ``` php
+     * <?php
+     * $I->waitForElementVisible('#agree_button', 30); // secs
+     * $I->click('#agree_button');
+     * ?>
+     * ```
+     *
+     * @param $element
+     * @param int $timeout seconds
+     * @throws \Exception
+     */
+    public function waitForElementVisible($element, $timeout = 10)
+    {
+        $condition = null;
+        if (Locator::isID($element)) $condition = \WebDriverExpectedCondition::visibilityOfElementLocated(\WebDriverBy::id(substr($element, 1)));
+        if (!$condition and Locator::isCSS($element)) $condition = \WebDriverExpectedCondition::visibilityOfElementLocated(\WebDriverBy::cssSelector($element));
+        if (Locator::isXPath($element)) $condition = \WebDriverExpectedCondition::visibilityOfElementLocated(\WebDriverBy::xpath($element));
+        if (!$condition) throw new \Exception("Only CSS or XPath allowed");
+
+        $this->webDriver->wait($timeout)->until($condition);
+    }
+
+    /**
+     * Waits for element to not be visible on the page for $timeout seconds to pass.
+     * If element stays visible, timeout exception is thrown.
+     *
+     * ``` php
+     * <?php
+     * $I->waitForElementNotVisible('#agree_button', 30); // secs
+     * ?>
+     * ```
+     *
+     * @param $element
+     * @param int $timeout seconds
+     * @throws \Exception
+     */
+    public function waitForElementNotVisible($element, $timeout = 10)
+    {
+        $condition = null;
+        if (Locator::isID($element)) $condition = \WebDriverExpectedCondition::invisibilityOfElementLocated(\WebDriverBy::id(substr($element, 1)));
+        if (!$condition and Locator::isCSS($element)) $condition = \WebDriverExpectedCondition::invisibilityOfElementLocated(\WebDriverBy::cssSelector($element));
+        if (Locator::isXPath($element)) $condition = \WebDriverExpectedCondition::invisibilityOfElementLocated(\WebDriverBy::xpath($element));
+        if (!$condition) throw new \Exception("Only CSS or XPath allowed");
+
+        $this->webDriver->wait($timeout)->until($condition);
+    }
 
     /**
      * Waits for text to appear on the page for a specific amount of time.
@@ -1096,6 +1155,17 @@ class WebDriver extends \Codeception\Module implements WebInterface {
     }
 
     /**
+     * Pauses test execution in debug mode.
+     * To proceed test press "ENTER" in console.
+     *
+     * This method is recommended to use in test development, for additional page analysis, locator searing, etc.
+     */
+    public function pauseExecution()
+    {
+        Debug::pause();
+    }
+
+    /**
      * Performs a double click on element matched by CSS or XPath.
      *
      * @param $cssOrXPath
@@ -1210,5 +1280,71 @@ class WebDriver extends \Codeception\Module implements WebInterface {
     protected function assertPageNotContains($needle, $message = '')
     {
         $this->assertThatItsNot($this->webDriver->getPageSource(), new PageConstraint($needle, $this->_getCurrentUri()),$message);
+    }
+    
+    /**
+     * Append text to an element
+     * Can add another selection to a select box
+     *
+     * ``` php
+     * <?php
+     * $I->appendField('#mySelectbox', 'SelectValue');
+     * $I->appendField('#myTextField', 'appended');
+     * ?>
+     * ```
+     *
+     * @param string $field
+     * @param string $value
+     */
+    public function appendField($field, $value)
+    {
+        $el = $this->findField($field);
+
+        switch($el->getTagName()) {
+
+             //Multiple select
+            case "select":
+                $matched = false;
+                $wdSelect = new \WebDriverSelect($el);
+                try {
+                    $wdSelect->selectByVisibleText($value);
+                    $matched = true;
+                } catch (\NoSuchElementWebDriverError $e) {}
+
+                 try {
+                    $wdSelect->selectByValue($value);
+                    $matched = true;
+                } catch (\NoSuchElementWebDriverError $e) {}
+                if ($matched) return;
+
+                throw new ElementNotFound(json_encode($value), "Option inside $field matched by name or value");
+                break;
+            case "textarea":
+                    $el->sendKeys($value);
+                    return;
+                break;
+            //Text, Checkbox, Radio
+            case "input":
+                $type = $el->getAttribute('type');
+
+                if ($type == 'checkbox') {
+                    //Find by value or css,id,xpath
+                    $field = $this->findCheckable($this->webDriver, $value, true);
+                    if (!$field) throw new ElementNotFound($value, "Checkbox or Radio by Label or CSS or XPath");
+                    if ($field->isSelected()) return;
+                    $field->click();
+                    return;
+                } elseif ($type == 'radio') {
+                    $this->selectOption($field, $value);
+                    return;
+                } else {
+                    $el->sendKeys($value);
+                    return;
+                }
+                break;
+            default:
+        }
+
+        throw new ElementNotFound($field, "Field by name, label, CSS or XPath");
     }
 }

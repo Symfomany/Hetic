@@ -27,7 +27,7 @@ class YamlMappingDriverTest extends AbstractMappingDriverTest
     public function testJoinTablesWithMappedSuperclassForYamlDriver()
     {
         $yamlDriver = $this->_loadDriver();
-        $yamlDriver->getLocator()->addPaths(array(__DIR__ . DIRECTORY_SEPARATOR . 'yaml'));
+        $yamlDriver->addPaths(array(__DIR__ . DIRECTORY_SEPARATOR . 'yaml'));
 
         $em = $this->_getTestEntityManager();
         $em->getConfiguration()->setMetadataDriverImpl($yamlDriver);
@@ -46,7 +46,7 @@ class YamlMappingDriverTest extends AbstractMappingDriverTest
     /**
      * @group DDC-1468
      *
-     * @expectedException Doctrine\Common\Persistence\Mapping\MappingException
+     * @expectedException Doctrine\ORM\Mapping\MappingException
      * @expectedExceptionMessage Invalid mapping file 'Doctrine.Tests.Models.Generic.SerializationModel.dcm.yml' for class 'Doctrine\Tests\Models\Generic\SerializationModel'.
      */
     public function testInvalidMappingFileException()
@@ -54,35 +54,4 @@ class YamlMappingDriverTest extends AbstractMappingDriverTest
         $this->createClassMetadata('Doctrine\Tests\Models\Generic\SerializationModel');
     }
 
-    /**
-     * @group DDC-2069
-     */
-    public function testSpacesShouldBeIgnoredWhenUseExplode()
-    {
-        $metadata = $this->createClassMetadata(__NAMESPACE__.'\DDC2069Entity');
-        $unique   = $metadata->table['uniqueConstraints'][0]['columns'];
-        $indexes  = $metadata->table['indexes'][0]['columns'];
-
-        $nameField  = $metadata->fieldMappings['name'];
-        $valueField = $metadata->fieldMappings['value'];
-
-        $this->assertEquals('name', $unique[0]);
-        $this->assertEquals('value', $unique[1]);
-
-        $this->assertEquals('value', $indexes[0]);
-        $this->assertEquals('name', $indexes[1]);
-
-        $this->assertEquals(255, $nameField['length']);
-        $this->assertEquals(255, $valueField['length']);
-    }
-
-}
-
-class DDC2069Entity
-{
-    public $id;
-
-    public $name;
-
-    public $value;
 }

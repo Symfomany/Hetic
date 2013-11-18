@@ -1,27 +1,76 @@
 {% block topmenu %}
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="../" class="navbar-brand">Horus CMF</a>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="brand" href="{{ path('hetic_site_hello') }}">Hetic</a>
-                <div class="nav-collapse collapse">
-                    <p class="navbar-text pull-right">
-                       Copyrights @Hetic Symfony 2
-                    </p>
-                    <ul class="nav">
-                        <li {% if app.request.attributes.get('_route') == 'hetic_site_hello' %}class="active"{% endif %}><a href="{{ path('hetic_site_hello') }}"><i class="icon-home"></i> Home</a></li>
-                        <li {% if app.request.attributes.get('_route') == 'hetic_about' %}class="active"{% endif %}><a href="{{ path('hetic_about') }}"><i class="icon-question-sign"></i> About</a></li>
-                        <li {% if app.request.attributes.get('_route') == 'hetic_contact' %}class="active"{% endif %}><a href="{{ path('hetic_contact') }}"><i class="icon-envelope"></i> Contact</a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown {% if   app.request.attributes.get('_route') == 'hetic_site_products' or app.request.attributes.get('_route') == 'hetic_site_create_product' %}active{% endif %}">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes"><i class="glyphicon glyphicon-gift"></i>  Produits <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="themes">
+                            <li><a tabindex="-1" href="{{ path('hetic_site_products') }}"><i class="glyphicon glyphicon-list"></i> Mes produits</a></li>
+                            <li><a tabindex="-1" href="{{ path('hetic_site_create_product') }}"><i class="glyphicon glyphicon-plus-sign"></i> Créer un produit</a></li>
+                         </ul>
+                    </li>
+                    <li class="dropdown {% if app.request.attributes.get('_route') == 'hetic_site_add_famille' or  app.request.attributes.get('_route') == 'hetic_site_familles' or app.request.attributes.get('_route') == 'hetic_site_categories' or app.request.attributes.get('_route') == 'hetic_site_add_category' %}active{% endif %}">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><i class="glyphicon glyphicon-folder-open"></i>  Catégories<span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="download">
+                            <li><a tabindex="-1" href="{{ path('hetic_site_categories') }}"><i class="glyphicon glyphicon-list"></i> Gérer les catégories</a></li>
+                            <li><a tabindex="-1" href="{{ path('hetic_site_add_category') }}"><i class="glyphicon glyphicon-plus-sign"></i> Créer une catégorie</a></li>
+                            <li><a tabindex="-1" href="{{ path('hetic_site_familles') }}"><i class="glyphicon glyphicon-list"></i> Mes familles</a></li>
+                            <li><a tabindex="-1" href="{{ path('hetic_site_add_famille') }}"><i class="glyphicon glyphicon-plus-sign"></i> Créer une famille</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes"><i class="glyphicon glyphicon-list-alt"></i>  Pages <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="themes">
+                            <li><a tabindex="-1" href="{{ path('hetic_site_products') }}"><i class="glyphicon glyphicon-list"></i> Mes produits</a></li>
+                            <li><a tabindex="-1" href="{{ path('hetic_site_create_product') }}"><i class="glyphicon glyphicon-plus-sign"></i> Créer un produit</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><i class="glyphicon glyphicon-shopping-cart"></i>  Commandes<span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="download">
+                            <li><a tabindex="-1" href="./bootstrap.min.css"><i class="glyphicon glyphicon-list"></i> Gérer les catégories</a></li>
+                            <li><a tabindex="-1" href="./bootstrap.min.css"><i class="glyphicon glyphicon-plus-sign"></i> Créer une catégorie</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><i class="glyphicon glyphicon-picture"></i> Medias<span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="download">
+                            <li><a tabindex="-1" href="./bootstrap.min.css"><i class="glyphicon glyphicon-list"></i> Gérer les médias</a></li>
+                            <li><a tabindex="-1" href="./bootstrap.min.css"><i class="glyphicon glyphicon-plus-sign"></i> Créer un média</a></li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="configuration"><i class="glyphicon glyphicon-cog"></i> Configuration<span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="download">
+                            <li><a tabindex="-1" href="./bootstrap.min.css">Ma Boutique</a></li>
+                            <li><a tabindex="-1" href="./bootstrap.css">Mon Compte</a></li>
+                            <li class="divider"></li>
+                            <li><a tabindex="-1" href="./variables.less">Mon Catalogue</a></li>
+                            <li><a tabindex="-1" href="./variables.less">Mon Contrat VAD</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a  href="{{ path('logout') }}" id="customisation"><i class="glyphicon glyphicon-off"></i> Deconnexion</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-    <br /><br />
-    <br /><br />
+
 {% endblock %}
 

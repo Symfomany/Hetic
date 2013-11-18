@@ -42,11 +42,18 @@ class Article
      */
     private $title;
 
+
     /**
      * @Assert\Choice(choices = {"1","2", "3"}, message = "Choisissez un genre valide.")
      * @ORM\Column(name="nature", type="integer", length=200, nullable=true)
      */
     private $nature;
+
+    /**
+     * @Assert\NotBlank(message = "Votre contenu est vide :(")
+     * @ORM\Column(name="cover", type="text", nullable=true)
+     */
+    private $cover;
 
     /**
      * @Assert\NotBlank(message = "Votre contenu est vide :(")
@@ -85,6 +92,11 @@ class Article
      * @ORM\JoinTable(name="article_tags")
      */
     private $tags;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Produit", mappedBy="articles")
+     */
+    private $produits;
 
     /**
      * @var integer
@@ -344,5 +356,59 @@ class Article
     public function getNature()
     {
         return $this->nature;
+    }
+
+    /**
+     * Set cover
+     *
+     * @param text $cover
+     * @return Article
+     */
+    public function setCover($cover)
+    {
+        $this->cover = $cover;
+        return $this;
+    }
+
+    /**
+     * Get cover
+     *
+     * @return text 
+     */
+    public function getCover()
+    {
+        return $this->cover;
+    }
+
+    /**
+     * Add produits
+     *
+     * @param Hetic\SiteBundle\Entity\Produit $produits
+     * @return Article
+     */
+    public function addProduit(\Hetic\SiteBundle\Entity\Produit $produits)
+    {
+        $this->produits[] = $produits;
+        return $this;
+    }
+
+    /**
+     * Remove produits
+     *
+     * @param Hetic\SiteBundle\Entity\Produit $produits
+     */
+    public function removeProduit(\Hetic\SiteBundle\Entity\Produit $produits)
+    {
+        $this->produits->removeElement($produits);
+    }
+
+    /**
+     * Get produits
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getProduits()
+    {
+        return $this->produits;
     }
 }

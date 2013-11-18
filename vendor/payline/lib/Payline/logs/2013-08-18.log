@@ -1,0 +1,4 @@
+2013-08-18 19:48:21 - ----------------------------------------------------------
+2013-08-18 19:48:21 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-08-18 19:48:21 - webServiceRequest(doWebPayment) - Location : https://homologation.payline.com/V4/services/WebPaymentAPI
+2013-08-18 19:48:22 - response return (code 00000)

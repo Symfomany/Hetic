@@ -13,40 +13,38 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * This software consists of voluntary contributions made by many individuals
- * and is licensed under the MIT license. For more information, see
+ * and is licensed under the LGPL. For more information, see
  * <http://www.doctrine-project.org>.
  */
 
 namespace Doctrine\Common\Persistence\Event;
 
-use Doctrine\Common\EventArgs;
-use Doctrine\Common\Persistence\ObjectManager;
-
 /**
  * Provides event arguments for the onClear event.
  *
- * @link   www.doctrine-project.org
- * @since  2.2
- * @author Roman Borschel <roman@code-factory.de>
- * @author Benjamin Eberlei <kontakt@beberlei.de>
+ * @license     http://www.opensource.org/licenses/lgpl-license.php LGPL
+ * @link        www.doctrine-project.org
+ * @since       2.2
+ * @author      Roman Borschel <roman@code-factory.de>
+ * @author      Benjamin Eberlei <kontakt@beberlei.de>
  */
-class OnClearEventArgs extends EventArgs
+class OnClearEventArgs extends \Doctrine\Common\EventArgs
 {
     /**
-     * @var \Doctrine\Common\Persistence\ObjectManager
+     * @var ObjectManager
      */
     private $objectManager;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $entityClass;
 
     /**
      * Constructor.
      *
-     * @param ObjectManager $objectManager The object manager.
-     * @param string|null   $entityClass   The optional entity class.
+     * @param ObjectManager $objectManager
+     * @param string $entityClass Optional entity class
      */
     public function __construct($objectManager, $entityClass = null)
     {
@@ -55,9 +53,9 @@ class OnClearEventArgs extends EventArgs
     }
 
     /**
-     * Retrieves the associated ObjectManager.
+     * Retrieve associated ObjectManager.
      *
-     * @return \Doctrine\Common\Persistence\ObjectManager
+     * @return ObjectManager
      */
     public function getObjectManager()
     {
@@ -65,9 +63,9 @@ class OnClearEventArgs extends EventArgs
     }
 
     /**
-     * Returns the name of the entity class that is cleared, or null if all are cleared.
+     * Name of the entity class that is cleared, or empty if all are cleared.
      *
-     * @return string|null
+     * @return string
      */
     public function getEntityClass()
     {
@@ -75,7 +73,7 @@ class OnClearEventArgs extends EventArgs
     }
 
     /**
-     * Returns whether this event clears all entities.
+     * Check if event clears all entities.
      *
      * @return bool
      */

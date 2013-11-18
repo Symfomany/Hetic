@@ -1,0 +1,48 @@
+2013-07-27 0:12:49 - ----------------------------------------------------------
+2013-07-27 0:12:49 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-27 0:12:49 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2013-07-27 0:12:49 - response return (code 02503)
+2013-07-27 0:17:18 - ----------------------------------------------------------
+2013-07-27 0:17:18 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-27 0:17:18 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2013-07-27 0:17:18 - response return (code 02503)
+2013-07-27 0:17:24 - ----------------------------------------------------------
+2013-07-27 0:17:24 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-27 0:17:24 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2013-07-27 0:17:24 - response return (code 02503)
+2013-07-27 0:19:04 - ----------------------------------------------------------
+2013-07-27 0:19:04 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-27 0:19:04 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2013-07-27 0:19:04 - response return (code 02503)
+2013-07-27 0:53:34 - ----------------------------------------------------------
+2013-07-27 0:53:34 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-27 0:53:34 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2013-07-27 0:53:34 - response return (code 02503)
+2013-07-27 0:55:33 - ----------------------------------------------------------
+2013-07-27 0:55:33 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-27 0:55:33 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2013-07-27 0:55:33 - response return (code 02503)
+2013-07-27 0:57:13 - ----------------------------------------------------------
+2013-07-27 0:57:13 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-27 0:57:13 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2013-07-27 0:57:13 - response return (code 02503)
+2013-07-27 0:57:26 - ----------------------------------------------------------
+2013-07-27 0:57:26 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-27 0:57:26 - webServiceRequest(createWebWallet) - Location : https://homologation.payline.com/V4/services/WebPaymentAPI
+2013-07-27 0:57:26 - response return (code 00000)
+2013-07-27 9:08:23 - ----------------------------------------------------------
+2013-07-27 9:08:23 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-27 9:08:23 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2013-07-27 9:08:23 - response return (code 02503)
+2013-07-27 9:09:14 - ----------------------------------------------------------
+2013-07-27 9:09:14 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-27 9:09:14 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2013-07-27 9:09:14 - response return (code 02503)
+2013-07-27 10:32:45 - ----------------------------------------------------------
+2013-07-27 10:32:45 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-27 10:32:45 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2013-07-27 10:32:45 - response return (code 02503)
+2013-07-27 13:07:18 - ----------------------------------------------------------
+2013-07-27 13:07:18 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-27 13:07:18 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2013-07-27 13:07:19 - response return (code 02503)

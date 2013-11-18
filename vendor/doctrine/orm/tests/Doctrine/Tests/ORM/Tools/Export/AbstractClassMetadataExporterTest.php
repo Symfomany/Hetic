@@ -68,14 +68,15 @@ abstract class AbstractClassMetadataExporterTest extends \Doctrine\Tests\OrmTest
     protected function _createMetadataDriver($type, $path)
     {
         $mappingDriver = array(
-            'php'        => 'Doctrine\Common\Persistence\Mapping\Driver\PHPDriver',
-            'annotation' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-            'xml'        => 'Doctrine\ORM\Mapping\Driver\XmlDriver',
-            'yaml'       => 'Doctrine\ORM\Mapping\Driver\YamlDriver',
+            'php'        => 'PHPDriver',
+            'annotation' => 'AnnotationDriver',
+            'xml'        => 'XmlDriver',
+            'yaml'       => 'YamlDriver',
         );
         $this->assertArrayHasKey($type, $mappingDriver, "There is no metadata driver for the type '" . $type . "'.");
-        $class = $mappingDriver[$type];
+        $driverName = $mappingDriver[$type];
 
+        $class = 'Doctrine\ORM\Mapping\Driver\\' . $driverName;
         if ($type === 'annotation') {
             $driver = $this->createAnnotationDriver(array($path));
         } else {
@@ -387,5 +388,5 @@ class Phonenumber
 }
 class Group
 {
-
+    
 }

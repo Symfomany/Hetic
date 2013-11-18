@@ -1,0 +1,12 @@
+2013-07-22 22:34:36 - ----------------------------------------------------------
+2013-07-22 22:34:36 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-22 22:34:36 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2013-07-22 22:34:36 - response return (code 02500)
+2013-07-22 22:34:40 - ----------------------------------------------------------
+2013-07-22 22:34:40 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-22 22:34:40 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2013-07-22 22:34:41 - response return (code 02500)
+2013-07-22 22:46:28 - ----------------------------------------------------------
+2013-07-22 22:46:28 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-22 22:46:28 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2013-07-22 22:46:28 - response return (code 02500)

@@ -81,35 +81,4 @@ class IndexTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($idx1->isFullfilledBy($pri));
         $this->assertTrue($idx1->isFullfilledBy($uniq));
     }
-
-    /**
-     * @group DBAL-220
-     */
-    public function testFlags()
-    {
-        $idx1 = $this->createIndex();
-        $this->assertFalse($idx1->hasFlag('clustered'));
-
-        $idx1->addFlag('clustered');
-        $this->assertTrue($idx1->hasFlag('clustered'));
-        $this->assertTrue($idx1->hasFlag('CLUSTERED'));
-
-        $idx1->removeFlag('clustered');
-        $this->assertFalse($idx1->hasFlag('clustered'));
-    }
-
-    /**
-     * @group DBAL-285
-     */
-    public function testIndexQuotes()
-    {
-        $index = new Index("foo", array("`bar`", "`baz`"));
-
-        $this->assertTrue($index->spansColumns(array("bar", "baz")));
-        $this->assertTrue($index->hasColumnAtPosition("bar", 0));
-        $this->assertTrue($index->hasColumnAtPosition("baz", 1));
-
-        $this->assertFalse($index->hasColumnAtPosition("bar", 1));
-        $this->assertFalse($index->hasColumnAtPosition("baz", 0));
-    }
 }

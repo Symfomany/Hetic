@@ -23,6 +23,9 @@
       <parameter key="JMSSecurityExtraBundle">JMS\SecurityExtraBundle\JMSSecurityExtraBundle</parameter>
       <parameter key="JMSDiExtraBundle">JMS\DiExtraBundle\JMSDiExtraBundle</parameter>
       <parameter key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</parameter>
+      <parameter key="FOSElasticaBundle">FOS\ElasticaBundle\FOSElasticaBundle</parameter>
+      <parameter key="DoctrineMongoDBBundle">Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle</parameter>
+      <parameter key="KnpMenuBundle">Knp\Bundle\MenuBundle\KnpMenuBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
       <parameter key="SensioGeneratorBundle">Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle</parameter>
@@ -41,6 +44,68 @@
     <parameter key="mailer_password">null</parameter>
     <parameter key="locale">en</parameter>
     <parameter key="secret">a66379eb392e48f6265be2a41049a404c</parameter>
+    <parameter key="carte_1">4970101122334455</parameter>
+    <parameter key="carte_2">4970101122334463</parameter>
+    <parameter key="carte_3">4970101122334471</parameter>
+    <parameter key="expiry">1212</parameter>
+    <parameter key="cvv">123</parameter>
+    <parameter key="password">secret3</parameter>
+    <parameter key="url_base">http://www.weekinsport.fr/</parameter>
+    <parameter key="key_autoloading">5ghfjhgsddf6aad9gx55sdq12gffh395d2w1gim2ool4yu9idf5595hjgf9552649jyt49r6fdgdf616mv51sf132</parameter>
+    <parameter key="key_regenerate_password">s6d4gdh8d6fg54hg864dg64f64hdg48h6f8hdsd1561dsq6dqs46d135s1g6h6879y4163535sdfsd65965sdghj</parameter>
+    <parameter key="facebookappid">552592408160039</parameter>
+    <parameter key="facebookappsecret">befaf20ca0324ef67028b564463f4ccc</parameter>
+    <parameter key="email_administrateur">contact@myfuckinjob.com</parameter>
+    <parameter key="email_membre">contact@myfuckinjob.com</parameter>
+    <parameter key="email_pro">contact@myfuckinjob.com</parameter>
+    <parameter key="sujet_mail" type="collection">
+      <parameter key="0">Une question / Un renseignement</parameter>
+      <parameter key="1">Mise à jour de mes coordonnées</parameter>
+      <parameter key="2">Demande de partenariat</parameter>
+      <parameter key="4">Devenir Partenaire</parameter>
+      <parameter key="6">Création d'une publicité</parameter>
+      <parameter key="7">Un problème technique</parameter>
+      <parameter key="8">Autre</parameter>
+    </parameter>
+    <parameter key="contact_0_7">&lt;h2&gt;Votre message a bien été envoyé.&lt;/h2&gt; &lt;p&gt;Et pendant le temps que vous mettez à lire cette phrase, sachez que l'équipe se chamaille déjà pour désigner le chanceux&lt;br&gt; qui aura l'honneur de vous répondre. Attendez-vous à une réponse rapide et enthousiaste !&lt;/p&gt;
+</parameter>
+    <parameter key="contact_8">&lt;h2&gt;Votre souhait de ne pas nous contacter nous est bien parvenu.&lt;/h2&gt; &lt;p&gt;Vous ne recevrez rien dans les plus brefs délais.&lt;/p&gt; &lt;p&gt;:)&lt;/p&gt;      
+</parameter>
+    <parameter key="payline" type="collection">
+      <parameter key="MERCHANT_ID">74523340176234</parameter>
+      <parameter key="ACCESS_KEY">q52K10EEPaoEBgS51M7K</parameter>
+      <parameter key="PROXY_HOST">null</parameter>
+      <parameter key="PROXY_PORT">null</parameter>
+      <parameter key="PROXY_LOGIN"></parameter>
+      <parameter key="PROXY_PASSWORD"></parameter>
+      <parameter key="PRODUCTION">false</parameter>
+      <parameter key="PAYMENT_CURRENCY">978</parameter>
+      <parameter key="ORDER_CURRENCY">978</parameter>
+      <parameter key="SECURITY_MODE"></parameter>
+      <parameter key="LANGUAGE_CODE"></parameter>
+      <parameter key="PAYMENT_ACTION">101</parameter>
+      <parameter key="PAYMENT_MODE">CPT</parameter>
+      <parameter key="CUSTOM_PAYMENT_TEMPLATE_URL"></parameter>
+      <parameter key="CUSTOM_PAYMENT_PAGE_CODE"></parameter>
+      <parameter key="CONTRACT_NUMBER">1234567</parameter>
+      <parameter key="CONTRACT_NUMBER_LIST"></parameter>
+      <parameter key="SECOND_CONTRACT_NUMBER_LIST"></parameter>
+      <parameter key="WSDL_PATH">../../wsdl/</parameter>
+      <parameter key="SECONDARY_CALL_TIMEOUT">15</parameter>
+      <parameter key="SECONDARY_MAX_FAIL_RETRY">2</parameter>
+      <parameter key="SECONDARY_REPLAY_TIMER">15</parameter>
+      <parameter key="PAYLINE_ERR_CODE">02101,02102,02103</parameter>
+      <parameter key="PAYLINE_WS_SWITCH_ENABLE"></parameter>
+      <parameter key="PAYLINE_SWITCH_BACK_TIMER">600</parameter>
+      <parameter key="PRIMARY_TOKEN_PREFIX">1</parameter>
+      <parameter key="SECONDARY_TOKEN_PREFIX">2</parameter>
+      <parameter key="INI_FILE">../../properties/HighDefinition.ini</parameter>
+      <parameter key="PAYLINE_ERR_TOKEN">02317,02318</parameter>
+      <parameter key="PAYLINE_AUTORIZE_WALLET_CARD">CB,VISA,MASTERCARD</parameter>
+    </parameter>
+    <parameter key="mailer.username">foo</parameter>
+    <parameter key="mailer.password">bar</parameter>
+    <parameter key="mailer.class">Zend_Mail</parameter>
     <parameter key="controller_resolver.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver</parameter>
     <parameter key="controller_name_converter.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser</parameter>
     <parameter key="response_listener.class">Symfony\Component\HttpKernel\EventListener\ResponseListener</parameter>
@@ -53,12 +118,10 @@
     <parameter key="cache_clearer.class">Symfony\Component\HttpKernel\CacheClearer\ChainCacheClearer</parameter>
     <parameter key="file_locator.class">Symfony\Component\HttpKernel\Config\FileLocator</parameter>
     <parameter key="uri_signer.class">Symfony\Component\HttpKernel\UriSigner</parameter>
-    <parameter key="request_stack.class">Symfony\Component\HttpFoundation\RequestStack</parameter>
     <parameter key="fragment.handler.class">Symfony\Component\HttpKernel\Fragment\FragmentHandler</parameter>
     <parameter key="fragment.renderer.inline.class">Symfony\Component\HttpKernel\Fragment\InlineFragmentRenderer</parameter>
     <parameter key="fragment.renderer.hinclude.class">Symfony\Bundle\FrameworkBundle\Fragment\ContainerAwareHIncludeFragmentRenderer</parameter>
     <parameter key="fragment.renderer.hinclude.global_template">null</parameter>
-    <parameter key="fragment.renderer.esi.class">Symfony\Component\HttpKernel\Fragment\EsiFragmentRenderer</parameter>
     <parameter key="fragment.path">/_fragment</parameter>
     <parameter key="translator.class">Symfony\Bundle\FrameworkBundle\Translation\Translator</parameter>
     <parameter key="translator.identity.class">Symfony\Component\Translation\IdentityTranslator</parameter>
@@ -73,7 +136,6 @@
     <parameter key="translation.loader.res.class">Symfony\Component\Translation\Loader\IcuResFileLoader</parameter>
     <parameter key="translation.loader.dat.class">Symfony\Component\Translation\Loader\IcuDatFileLoader</parameter>
     <parameter key="translation.loader.ini.class">Symfony\Component\Translation\Loader\IniFileLoader</parameter>
-    <parameter key="translation.loader.json.class">Symfony\Component\Translation\Loader\JsonFileLoader</parameter>
     <parameter key="translation.dumper.php.class">Symfony\Component\Translation\Dumper\PhpFileDumper</parameter>
     <parameter key="translation.dumper.xliff.class">Symfony\Component\Translation\Dumper\XliffFileDumper</parameter>
     <parameter key="translation.dumper.po.class">Symfony\Component\Translation\Dumper\PoFileDumper</parameter>
@@ -82,13 +144,11 @@
     <parameter key="translation.dumper.qt.class">Symfony\Component\Translation\Dumper\QtFileDumper</parameter>
     <parameter key="translation.dumper.csv.class">Symfony\Component\Translation\Dumper\CsvFileDumper</parameter>
     <parameter key="translation.dumper.ini.class">Symfony\Component\Translation\Dumper\IniFileDumper</parameter>
-    <parameter key="translation.dumper.json.class">Symfony\Component\Translation\Dumper\JsonFileDumper</parameter>
     <parameter key="translation.dumper.res.class">Symfony\Component\Translation\Dumper\IcuResFileDumper</parameter>
     <parameter key="translation.extractor.php.class">Symfony\Bundle\FrameworkBundle\Translation\PhpExtractor</parameter>
     <parameter key="translation.loader.class">Symfony\Bundle\FrameworkBundle\Translation\TranslationLoader</parameter>
     <parameter key="translation.extractor.class">Symfony\Component\Translation\Extractor\ChainExtractor</parameter>
     <parameter key="translation.writer.class">Symfony\Component\Translation\Writer\TranslationWriter</parameter>
-    <parameter key="property_accessor.class">Symfony\Component\PropertyAccess\PropertyAccessor</parameter>
     <parameter key="debug.errors_logger_listener.class">Symfony\Component\HttpKernel\EventListener\ErrorsLoggerListener</parameter>
     <parameter key="debug.event_dispatcher.class">Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher</parameter>
     <parameter key="debug.stopwatch.class">Symfony\Component\Stopwatch\Stopwatch</parameter>
@@ -102,26 +162,20 @@
     <parameter key="session.class">Symfony\Component\HttpFoundation\Session\Session</parameter>
     <parameter key="session.flashbag.class">Symfony\Component\HttpFoundation\Session\Flash\FlashBag</parameter>
     <parameter key="session.attribute_bag.class">Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag</parameter>
-    <parameter key="session.storage.metadata_bag.class">Symfony\Component\HttpFoundation\Session\Storage\MetadataBag</parameter>
-    <parameter key="session.metadata.storage_key">_sf2_meta</parameter>
     <parameter key="session.storage.native.class">Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage</parameter>
     <parameter key="session.storage.php_bridge.class">Symfony\Component\HttpFoundation\Session\Storage\PhpBridgeSessionStorage</parameter>
     <parameter key="session.storage.mock_file.class">Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage</parameter>
     <parameter key="session.handler.native_file.class">Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler</parameter>
-    <parameter key="session.handler.write_check.class">Symfony\Component\HttpFoundation\Session\Storage\Handler\WriteCheckSessionHandler</parameter>
     <parameter key="session_listener.class">Symfony\Bundle\FrameworkBundle\EventListener\SessionListener</parameter>
     <parameter key="session.storage.options" type="collection"/>
     <parameter key="session.save_path">/home/boyer/hetic/app/cache/dev/sessions</parameter>
-    <parameter key="session.metadata.update_threshold">0</parameter>
-    <parameter key="security.secure_random.class">Symfony\Component\Security\Core\Util\SecureRandom</parameter>
-    <parameter key="security.csrf.token_generator.class">Symfony\Component\Security\Csrf\TokenGenerator\UriSafeTokenGenerator</parameter>
-    <parameter key="security.csrf.token_storage.class">Symfony\Component\Security\Csrf\TokenStorage\SessionTokenStorage</parameter>
-    <parameter key="security.csrf.token_manager.class">Symfony\Component\Security\Csrf\CsrfTokenManager</parameter>
     <parameter key="form.resolved_type_factory.class">Symfony\Component\Form\ResolvedFormTypeFactory</parameter>
     <parameter key="form.registry.class">Symfony\Component\Form\FormRegistry</parameter>
     <parameter key="form.factory.class">Symfony\Component\Form\FormFactory</parameter>
     <parameter key="form.extension.class">Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension</parameter>
     <parameter key="form.type_guesser.validator.class">Symfony\Component\Form\Extension\Validator\ValidatorTypeGuesser</parameter>
+    <parameter key="property_accessor.class">Symfony\Component\PropertyAccess\PropertyAccessor</parameter>
+    <parameter key="form.csrf_provider.class">Symfony\Component\Form\Extension\Csrf\CsrfProvider\SessionCsrfProvider</parameter>
     <parameter key="form.type_extension.csrf.enabled">true</parameter>
     <parameter key="form.type_extension.csrf.field_name">_token</parameter>
     <parameter key="templating.engine.delegating.class">Symfony\Bundle\FrameworkBundle\Templating\DelegatingEngine</parameter>
@@ -143,7 +197,6 @@
     <parameter key="templating.helper.code.class">Symfony\Bundle\FrameworkBundle\Templating\Helper\CodeHelper</parameter>
     <parameter key="templating.helper.translator.class">Symfony\Bundle\FrameworkBundle\Templating\Helper\TranslatorHelper</parameter>
     <parameter key="templating.helper.form.class">Symfony\Bundle\FrameworkBundle\Templating\Helper\FormHelper</parameter>
-    <parameter key="templating.helper.stopwatch.class">Symfony\Bundle\FrameworkBundle\Templating\Helper\StopwatchHelper</parameter>
     <parameter key="templating.form.engine.class">Symfony\Component\Form\Extension\Templating\TemplatingRendererEngine</parameter>
     <parameter key="templating.form.renderer.class">Symfony\Component\Form\FormRenderer</parameter>
     <parameter key="templating.globals.class">Symfony\Bundle\FrameworkBundle\Templating\GlobalVariables</parameter>
@@ -154,6 +207,7 @@
     <parameter key="templating.helper.form.resources" type="collection">
       <parameter>FrameworkBundle:Form</parameter>
     </parameter>
+    <parameter key="templating.debugger.class">Symfony\Bundle\FrameworkBundle\Templating\Debugger</parameter>
     <parameter key="debug.templating.engine.php.class">Symfony\Bundle\FrameworkBundle\Templating\TimedPhpEngine</parameter>
     <parameter key="templating.loader.cache.path">null</parameter>
     <parameter key="templating.engines" type="collection">
@@ -173,13 +227,11 @@
       <parameter>/home/boyer/hetic/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml</parameter>
     </parameter>
     <parameter key="validator.mapping.loader.yaml_files_loader.mapping_files" type="collection"/>
-    <parameter key="validator.expression.class">Symfony\Component\Validator\Constraints\ExpressionValidator</parameter>
     <parameter key="validator.translation_domain">validators</parameter>
     <parameter key="esi.class">Symfony\Component\HttpKernel\HttpCache\Esi</parameter>
     <parameter key="esi_listener.class">Symfony\Component\HttpKernel\EventListener\EsiListener</parameter>
+    <parameter key="fragment.renderer.esi.class">Symfony\Component\HttpKernel\Fragment\EsiFragmentRenderer</parameter>
     <parameter key="fragment.listener.class">Symfony\Component\HttpKernel\EventListener\FragmentListener</parameter>
-    <parameter key="form.resolved_type_factory.data_collector_proxy.class">Symfony\Component\Form\Extension\DataCollector\Proxy\ResolvedTypeFactoryDataCollectorProxy</parameter>
-    <parameter key="form.type_extension.form.data_collector.class">Symfony\Component\Form\Extension\DataCollector\Type\DataCollectorTypeExtension</parameter>
     <parameter key="profiler.class">Symfony\Component\HttpKernel\Profiler\Profiler</parameter>
     <parameter key="profiler_listener.class">Symfony\Component\HttpKernel\EventListener\ProfilerListener</parameter>
     <parameter key="data_collector.config.class">Symfony\Component\HttpKernel\DataCollector\ConfigDataCollector</parameter>
@@ -190,8 +242,6 @@
     <parameter key="data_collector.time.class">Symfony\Component\HttpKernel\DataCollector\TimeDataCollector</parameter>
     <parameter key="data_collector.memory.class">Symfony\Component\HttpKernel\DataCollector\MemoryDataCollector</parameter>
     <parameter key="data_collector.router.class">Symfony\Bundle\FrameworkBundle\DataCollector\RouterDataCollector</parameter>
-    <parameter key="data_collector.form.class">Symfony\Component\Form\Extension\DataCollector\FormDataCollector</parameter>
-    <parameter key="data_collector.form.extractor.class">Symfony\Component\Form\Extension\DataCollector\FormDataExtractor</parameter>
     <parameter key="profiler_listener.only_exceptions">false</parameter>
     <parameter key="profiler_listener.only_master_requests">false</parameter>
     <parameter key="profiler.storage.dsn">file:/home/boyer/hetic/app/cache/dev/profiler</parameter>
@@ -218,7 +268,7 @@
     <parameter key="router.request_context.host">localhost</parameter>
     <parameter key="router.request_context.scheme">http</parameter>
     <parameter key="router.request_context.base_url"></parameter>
-    <parameter key="router.resource">/home/boyer/hetic/app/cache/dev/assetic/routing.yml</parameter>
+    <parameter key="router.resource">/home/boyer/hetic/app/config/routing_dev.yml</parameter>
     <parameter key="router.cache_class_prefix">appDev</parameter>
     <parameter key="request_listener.http_port">80</parameter>
     <parameter key="request_listener.https_port">443</parameter>
@@ -244,22 +294,17 @@
     <parameter key="security.access.simple_role_voter.class">Symfony\Component\Security\Core\Authorization\Voter\RoleVoter</parameter>
     <parameter key="security.access.authenticated_voter.class">Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter</parameter>
     <parameter key="security.access.role_hierarchy_voter.class">Symfony\Component\Security\Core\Authorization\Voter\RoleHierarchyVoter</parameter>
-    <parameter key="security.access.expression_voter.class">Symfony\Component\Security\Core\Authorization\Voter\ExpressionVoter</parameter>
     <parameter key="security.firewall.class">Symfony\Component\Security\Http\Firewall</parameter>
     <parameter key="security.firewall.map.class">Symfony\Bundle\SecurityBundle\Security\FirewallMap</parameter>
     <parameter key="security.firewall.context.class">Symfony\Bundle\SecurityBundle\Security\FirewallContext</parameter>
     <parameter key="security.matcher.class">Symfony\Component\HttpFoundation\RequestMatcher</parameter>
-    <parameter key="security.expression_matcher.class">Symfony\Component\HttpFoundation\ExpressionRequestMatcher</parameter>
     <parameter key="security.role_hierarchy.class">Symfony\Component\Security\Core\Role\RoleHierarchy</parameter>
     <parameter key="security.http_utils.class">Symfony\Component\Security\Http\HttpUtils</parameter>
     <parameter key="security.validator.user_password.class">Symfony\Component\Security\Core\Validator\Constraints\UserPasswordValidator</parameter>
-    <parameter key="security.expression_language.class">Symfony\Component\Security\Core\Authorization\ExpressionLanguage</parameter>
     <parameter key="security.authentication.retry_entry_point.class">Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint</parameter>
     <parameter key="security.channel_listener.class">Symfony\Component\Security\Http\Firewall\ChannelListener</parameter>
     <parameter key="security.authentication.form_entry_point.class">Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint</parameter>
     <parameter key="security.authentication.listener.form.class">Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener</parameter>
-    <parameter key="security.authentication.listener.simple_form.class">Symfony\Component\Security\Http\Firewall\SimpleFormAuthenticationListener</parameter>
-    <parameter key="security.authentication.listener.simple_preauth.class">Symfony\Component\Security\Http\Firewall\SimplePreAuthenticationListener</parameter>
     <parameter key="security.authentication.listener.basic.class">Symfony\Component\Security\Http\Firewall\BasicAuthenticationListener</parameter>
     <parameter key="security.authentication.basic_entry_point.class">Symfony\Component\Security\Http\EntryPoint\BasicAuthenticationEntryPoint</parameter>
     <parameter key="security.authentication.listener.digest.class">Symfony\Component\Security\Http\Firewall\DigestAuthenticationListener</parameter>
@@ -276,12 +321,10 @@
     <parameter key="security.exception_listener.class">Symfony\Component\Security\Http\Firewall\ExceptionListener</parameter>
     <parameter key="security.context_listener.class">Symfony\Component\Security\Http\Firewall\ContextListener</parameter>
     <parameter key="security.authentication.provider.dao.class">Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider</parameter>
-    <parameter key="security.authentication.provider.simple.class">Symfony\Component\Security\Core\Authentication\Provider\SimpleAuthenticationProvider</parameter>
     <parameter key="security.authentication.provider.pre_authenticated.class">Symfony\Component\Security\Core\Authentication\Provider\PreAuthenticatedAuthenticationProvider</parameter>
     <parameter key="security.authentication.provider.anonymous.class">Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider</parameter>
     <parameter key="security.authentication.success_handler.class">Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler</parameter>
     <parameter key="security.authentication.failure_handler.class">Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler</parameter>
-    <parameter key="security.authentication.simple_success_failure_handler.class">Symfony\Component\Security\Http\Authentication\SimpleAuthenticationHandler</parameter>
     <parameter key="security.authentication.provider.rememberme.class">Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider</parameter>
     <parameter key="security.authentication.listener.rememberme.class">Symfony\Component\Security\Http\Firewall\RememberMeListener</parameter>
     <parameter key="security.rememberme.token.provider.in_memory.class">Symfony\Component\Security\Core\Authentication\RememberMe\InMemoryTokenProvider</parameter>
@@ -293,19 +336,18 @@
     <parameter key="twig.extension.logout_url.class">Symfony\Bundle\SecurityBundle\Twig\Extension\LogoutUrlExtension</parameter>
     <parameter key="twig.extension.security.class">Symfony\Bridge\Twig\Extension\SecurityExtension</parameter>
     <parameter key="data_collector.security.class">Symfony\Bundle\SecurityBundle\DataCollector\SecurityDataCollector</parameter>
-    <parameter key="security.access.denied_url">null</parameter>
+    <parameter key="security.access.denied_url">/access-denied</parameter>
     <parameter key="security.authentication.manager.erase_credentials">true</parameter>
     <parameter key="security.authentication.session_strategy.strategy">migrate</parameter>
     <parameter key="security.access.always_authenticate_before_granting">false</parameter>
     <parameter key="security.authentication.hide_user_not_found">true</parameter>
     <parameter key="security.role_hierarchy.roles" type="collection">
-      <parameter key="ROLE_ADMIN" type="collection">
+      <parameter key="ROLE_USER" type="collection">
         <parameter>ROLE_USER</parameter>
       </parameter>
-      <parameter key="ROLE_SUPER_ADMIN" type="collection">
-        <parameter>ROLE_USER</parameter>
-        <parameter>ROLE_ANONYM</parameter>
+      <parameter key="ROLE_ADMIN" type="collection">
         <parameter>ROLE_ADMIN</parameter>
+        <parameter>ROLE_USER</parameter>
         <parameter>ROLE_ALLOWED_TO_SWITCH</parameter>
       </parameter>
     </parameter>
@@ -322,8 +364,6 @@
     <parameter key="twig.extension.yaml.class">Symfony\Bridge\Twig\Extension\YamlExtension</parameter>
     <parameter key="twig.extension.form.class">Symfony\Bridge\Twig\Extension\FormExtension</parameter>
     <parameter key="twig.extension.httpkernel.class">Symfony\Bridge\Twig\Extension\HttpKernelExtension</parameter>
-    <parameter key="twig.extension.debug.stopwatch.class">Symfony\Bridge\Twig\Extension\StopwatchExtension</parameter>
-    <parameter key="twig.extension.expression.class">Symfony\Bridge\Twig\Extension\ExpressionExtension</parameter>
     <parameter key="twig.form.engine.class">Symfony\Bridge\Twig\Form\TwigRendererEngine</parameter>
     <parameter key="twig.form.renderer.class">Symfony\Bridge\Twig\Form\TwigRenderer</parameter>
     <parameter key="twig.translation.extractor.class">Symfony\Bridge\Twig\Translation\TwigExtractor</parameter>
@@ -332,7 +372,7 @@
     <parameter key="twig.exception_listener.controller">twig.controller.exception:showAction</parameter>
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
-      <parameter>HeticSiteBundle:Form:fields.html.twig</parameter>
+      <parameter>HeticSiteBundle:Default:forms.html.twig</parameter>
     </parameter>
     <parameter key="debug.templating.engine.twig.class">Symfony\Bundle\TwigBundle\Debug\TimedTwigEngine</parameter>
     <parameter key="twig.options" type="collection">
@@ -427,19 +467,19 @@
     <parameter key="assetic.helper.static.class">Symfony\Bundle\AsseticBundle\Templating\StaticAsseticHelper</parameter>
     <parameter key="assetic.php_formula_loader.class">Symfony\Bundle\AsseticBundle\Factory\Loader\AsseticHelperFormulaLoader</parameter>
     <parameter key="assetic.debug">true</parameter>
-    <parameter key="assetic.use_controller">true</parameter>
+    <parameter key="assetic.use_controller">false</parameter>
     <parameter key="assetic.enable_profiler">false</parameter>
     <parameter key="assetic.read_from">/home/boyer/hetic/app/../web</parameter>
     <parameter key="assetic.write_to">/home/boyer/hetic/app/../web</parameter>
     <parameter key="assetic.variables" type="collection"/>
     <parameter key="assetic.java.bin">/usr/bin/java</parameter>
-    <parameter key="assetic.node.bin">/usr/sbin/node</parameter>
+    <parameter key="assetic.node.bin">/usr/bin/node</parameter>
     <parameter key="assetic.ruby.bin">/usr/bin/ruby</parameter>
     <parameter key="assetic.sass.bin">/usr/local/bin/sass</parameter>
     <parameter key="assetic.filter.cssrewrite.class">Assetic\Filter\CssRewriteFilter</parameter>
     <parameter key="assetic.filter.uglifyjs.class">Assetic\Filter\UglifyJsFilter</parameter>
     <parameter key="assetic.filter.uglifyjs.bin">/usr/bin/uglifyjs</parameter>
-    <parameter key="assetic.filter.uglifyjs.node">/usr/sbin/node</parameter>
+    <parameter key="assetic.filter.uglifyjs.node">/usr/bin/node</parameter>
     <parameter key="assetic.filter.uglifyjs.timeout">null</parameter>
     <parameter key="assetic.filter.uglifyjs.node_paths" type="collection"/>
     <parameter key="assetic.filter.uglifyjs.beautify">false</parameter>
@@ -481,12 +521,13 @@
     <parameter key="assetic.filter.yui_css.charset">UTF-8</parameter>
     <parameter key="assetic.filter.yui_css.stacksize">null</parameter>
     <parameter key="assetic.filter.yui_css.timeout">null</parameter>
+    <parameter key="assetic.filter.closure.api.class">Assetic\Filter\GoogleClosure\CompilerApiFilter</parameter>
+    <parameter key="assetic.filter.closure.jar.class">Assetic\Filter\GoogleClosure\CompilerJarFilter</parameter>
+    <parameter key="assetic.filter.closure.java">/usr/bin/java</parameter>
+    <parameter key="assetic.filter.closure.timeout">null</parameter>
+    <parameter key="assetic.filter.closure.compilation_level">null</parameter>
+    <parameter key="assetic.filter.closure.jar">/home/boyer/hetic/app/Resources/java/googleclosure.jar</parameter>
     <parameter key="assetic.twig_extension.functions" type="collection"/>
-    <parameter key="assetic.controller.class">Symfony\Bundle\AsseticBundle\Controller\AsseticController</parameter>
-    <parameter key="assetic.routing_loader.class">Symfony\Bundle\AsseticBundle\Routing\AsseticLoader</parameter>
-    <parameter key="assetic.cache.class">Assetic\Cache\FilesystemCache</parameter>
-    <parameter key="assetic.use_controller_worker.class">Symfony\Bundle\AsseticBundle\Factory\Worker\UseControllerWorker</parameter>
-    <parameter key="assetic.request_listener.class">Symfony\Bundle\AsseticBundle\EventListener\RequestListener</parameter>
     <parameter key="doctrine.dbal.logger.chain.class">Doctrine\DBAL\Logging\LoggerChain</parameter>
     <parameter key="doctrine.dbal.logger.profiling.class">Doctrine\DBAL\Logging\DebugStack</parameter>
     <parameter key="doctrine.dbal.logger.class">Symfony\Bridge\Doctrine\Logger\DbalLogger</parameter>
@@ -682,8 +723,8 @@
     <parameter key="jms_di_extra.disable_grep">false</parameter>
     <parameter key="jms_di_extra.doctrine_integration">true</parameter>
     <parameter key="jms_di_extra.cache_warmer.controller_file_blacklist" type="collection"/>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/home/boyer/hetic/app/cache/dev/jms_diextra/doctrine/EntityManager_5273a64836ed2.php</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager5273a64836ed2_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/home/boyer/hetic/app/cache/dev/jms_diextra/doctrine/EntityManager_528954d1bfb48.php</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager528954d1bfb48_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
     <parameter key="knp_paginator.class">Knp\Component\Pager\Paginator</parameter>
     <parameter key="knp_paginator.templating.helper.pagination.class">Knp\Bundle\PaginatorBundle\Templating\PaginationHelper</parameter>
     <parameter key="knp_paginator.helper.processor.class">Knp\Bundle\PaginatorBundle\Helper\Processor</parameter>
@@ -691,13 +732,87 @@
     <parameter key="knp_paginator.template.filtration">KnpPaginatorBundle:Pagination:filtration.html.twig</parameter>
     <parameter key="knp_paginator.template.sortable">KnpPaginatorBundle:Pagination:sortable_link.html.twig</parameter>
     <parameter key="knp_paginator.page_range">5</parameter>
+    <parameter key="fos_elastica.client.class">FOS\ElasticaBundle\Client</parameter>
+    <parameter key="fos_elastica.index.class">Elastica\Index</parameter>
+    <parameter key="fos_elastica.type.class">Elastica\Type</parameter>
+    <parameter key="fos_elastica.logger.class">FOS\ElasticaBundle\Logger\ElasticaLogger</parameter>
+    <parameter key="fos_elastica.data_collector.class">FOS\ElasticaBundle\DataCollector\ElasticaDataCollector</parameter>
+    <parameter key="fos_elastica.manager.class">FOS\ElasticaBundle\Manager\RepositoryManager</parameter>
+    <parameter key="fos_elastica.elastica_to_model_transformer.collection.class">FOS\ElasticaBundle\Transformer\ElasticaToModelTransformerCollection</parameter>
+    <parameter key="fos_elastica.provider_registry.class">FOS\ElasticaBundle\Provider\ProviderRegistry</parameter>
+    <parameter key="fos_elastica.property_accessor.class">Symfony\Component\PropertyAccess\PropertyAccessor</parameter>
+    <parameter key="doctrine_mongodb.odm.connection.class">Doctrine\MongoDB\Connection</parameter>
+    <parameter key="doctrine_mongodb.odm.configuration.class">Doctrine\ODM\MongoDB\Configuration</parameter>
+    <parameter key="doctrine_mongodb.odm.document_manager.class">Doctrine\ODM\MongoDB\DocumentManager</parameter>
+    <parameter key="doctrine_mongodb.odm.manager_configurator.class">Doctrine\Bundle\MongoDBBundle\ManagerConfigurator</parameter>
+    <parameter key="doctrine_mongodb.odm.logger.class">Doctrine\Bundle\MongoDBBundle\Logger\Logger</parameter>
+    <parameter key="doctrine_mongodb.odm.logger.aggregate.class">Doctrine\Bundle\MongoDBBundle\Logger\AggregateLogger</parameter>
+    <parameter key="doctrine_mongodb.odm.data_collector.standard.class">Doctrine\Bundle\MongoDBBundle\DataCollector\StandardDataCollector</parameter>
+    <parameter key="doctrine_mongodb.odm.data_collector.pretty.class">Doctrine\Bundle\MongoDBBundle\DataCollector\PrettyDataCollector</parameter>
+    <parameter key="doctrine_mongodb.odm.event_manager.class">Symfony\Bridge\Doctrine\ContainerAwareEventManager</parameter>
+    <parameter key="doctrine_odm.mongodb.validator_initializer.class">Symfony\Bridge\Doctrine\Validator\DoctrineInitializer</parameter>
+    <parameter key="doctrine_odm.mongodb.validator.unique.class">Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntityValidator</parameter>
+    <parameter key="doctrine_mongodb.odm.class">Doctrine\Bundle\MongoDBBundle\ManagerRegistry</parameter>
+    <parameter key="doctrine_mongodb.odm.security.user.provider.class">Symfony\Bridge\Doctrine\Security\User\EntityUserProvider</parameter>
+    <parameter key="doctrine_mongodb.odm.proxy_cache_warmer.class">Doctrine\Bundle\MongoDBBundle\CacheWarmer\ProxyCacheWarmer</parameter>
+    <parameter key="doctrine_mongodb.odm.hydrator_cache_warmer.class">Doctrine\Bundle\MongoDBBundle\CacheWarmer\HydratorCacheWarmer</parameter>
+    <parameter key="doctrine_mongodb.odm.cache.array.class">Doctrine\Common\Cache\ArrayCache</parameter>
+    <parameter key="doctrine_mongodb.odm.cache.apc.class">Doctrine\Common\Cache\ApcCache</parameter>
+    <parameter key="doctrine_mongodb.odm.cache.memcache.class">Doctrine\Common\Cache\MemcacheCache</parameter>
+    <parameter key="doctrine_mongodb.odm.cache.memcache_host">localhost</parameter>
+    <parameter key="doctrine_mongodb.odm.cache.memcache_port">11211</parameter>
+    <parameter key="doctrine_mongodb.odm.cache.memcache_instance.class">Memcache</parameter>
+    <parameter key="doctrine_mongodb.odm.cache.xcache.class">Doctrine\Common\Cache\XcacheCache</parameter>
+    <parameter key="doctrine_mongodb.odm.metadata.driver_chain.class">Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain</parameter>
+    <parameter key="doctrine_mongodb.odm.metadata.annotation.class">Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver</parameter>
+    <parameter key="doctrine_mongodb.odm.metadata.xml.class">Doctrine\Bundle\MongoDBBundle\Mapping\Driver\XmlDriver</parameter>
+    <parameter key="doctrine_mongodb.odm.metadata.yml.class">Doctrine\Bundle\MongoDBBundle\Mapping\Driver\YamlDriver</parameter>
+    <parameter key="doctrine_mongodb.odm.mapping_dirs" type="collection"/>
+    <parameter key="doctrine_mongodb.odm.xml_mapping_dirs" type="collection"/>
+    <parameter key="doctrine_mongodb.odm.yml_mapping_dirs" type="collection"/>
+    <parameter key="doctrine_mongodb.odm.document_dirs" type="collection"/>
+    <parameter key="doctrine_mongodb.odm.logger.batch_insert_threshold">4</parameter>
+    <parameter key="doctrine_mongodb.odm.default_connection">default</parameter>
+    <parameter key="doctrine_mongodb.odm.default_document_manager">default</parameter>
+    <parameter key="doctrine_mongodb.odm.proxy_namespace">MongoDBODMProxies</parameter>
+    <parameter key="doctrine_mongodb.odm.proxy_dir">/home/boyer/hetic/app/cache/dev/doctrine/odm/mongodb/Proxies</parameter>
+    <parameter key="doctrine_mongodb.odm.auto_generate_proxy_classes">false</parameter>
+    <parameter key="doctrine_mongodb.odm.hydrator_namespace">Hydrators</parameter>
+    <parameter key="doctrine_mongodb.odm.hydrator_dir">/home/boyer/hetic/app/cache/dev/doctrine/odm/mongodb/Hydrators</parameter>
+    <parameter key="doctrine_mongodb.odm.auto_generate_hydrator_classes">false</parameter>
+    <parameter key="doctrine_mongodb.odm.default_commit_options" type="collection">
+      <parameter key="safe">true</parameter>
+      <parameter key="fsync">false</parameter>
+      <parameter key="timeout">30000</parameter>
+    </parameter>
+    <parameter key="doctrine_mongodb.odm.connections" type="collection">
+      <parameter key="default">doctrine_mongodb.odm.default_connection</parameter>
+    </parameter>
+    <parameter key="doctrine_mongodb.odm.document_managers" type="collection">
+      <parameter key="default">doctrine_mongodb.odm.default_document_manager</parameter>
+    </parameter>
+    <parameter key="knp_menu.factory.class">Knp\Menu\MenuFactory</parameter>
+    <parameter key="knp_menu.factory_extension.routing.class">Knp\Menu\Silex\RoutingExtension</parameter>
+    <parameter key="knp_menu.helper.class">Knp\Menu\Twig\Helper</parameter>
+    <parameter key="knp_menu.matcher.class">Knp\Menu\Matcher\Matcher</parameter>
+    <parameter key="knp_menu.menu_provider.chain.class">Knp\Menu\Provider\ChainProvider</parameter>
+    <parameter key="knp_menu.menu_provider.container_aware.class">Knp\Bundle\MenuBundle\Provider\ContainerAwareProvider</parameter>
+    <parameter key="knp_menu.menu_provider.builder_alias.class">Knp\Bundle\MenuBundle\Provider\BuilderAliasProvider</parameter>
+    <parameter key="knp_menu.renderer_provider.class">Knp\Bundle\MenuBundle\Renderer\ContainerAwareProvider</parameter>
+    <parameter key="knp_menu.renderer.list.class">Knp\Menu\Renderer\ListRenderer</parameter>
+    <parameter key="knp_menu.renderer.list.options" type="collection"/>
+    <parameter key="knp_menu.twig.extension.class">Knp\Menu\Twig\MenuExtension</parameter>
+    <parameter key="knp_menu.renderer.twig.class">Knp\Menu\Renderer\TwigRenderer</parameter>
+    <parameter key="knp_menu.renderer.twig.options" type="collection"/>
+    <parameter key="knp_menu.renderer.twig.template">HeticSiteBundle:Default:menu.html.twig</parameter>
+    <parameter key="knp_menu.default_renderer">twig</parameter>
     <parameter key="web_profiler.controller.profiler.class">Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController</parameter>
     <parameter key="web_profiler.controller.router.class">Symfony\Bundle\WebProfilerBundle\Controller\RouterController</parameter>
     <parameter key="web_profiler.controller.exception.class">Symfony\Bundle\WebProfilerBundle\Controller\ExceptionController</parameter>
-    <parameter key="web_profiler.debug_toolbar.position">bottom</parameter>
     <parameter key="web_profiler.debug_toolbar.class">Symfony\Bundle\WebProfilerBundle\EventListener\WebDebugToolbarListener</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
     <parameter key="web_profiler.debug_toolbar.mode">2</parameter>
+    <parameter key="web_profiler.debug_toolbar.position">bottom</parameter>
     <parameter key="sensio_distribution.webconfigurator.class">Sensio\Bundle\DistributionBundle\Configurator\Configurator</parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.config" type="collection">
@@ -732,13 +847,9 @@
         <parameter>router</parameter>
         <parameter>@WebProfiler/Collector/router.html.twig</parameter>
       </parameter>
-      <parameter key="data_collector.form" type="collection">
-        <parameter>form</parameter>
-        <parameter>@WebProfiler/Collector/form.html.twig</parameter>
-      </parameter>
       <parameter key="data_collector.security" type="collection">
         <parameter>security</parameter>
-        <parameter>@Security/Collector/security.html.twig</parameter>
+        <parameter>SecurityBundle:Collector:security</parameter>
       </parameter>
       <parameter key="swiftmailer.data_collector" type="collection">
         <parameter>swiftmailer</parameter>
@@ -748,8 +859,15 @@
         <parameter>db</parameter>
         <parameter>DoctrineBundle:Collector:db</parameter>
       </parameter>
+      <parameter key="fos_elastica.data_collector" type="collection">
+        <parameter>elastica</parameter>
+        <parameter>FOSElasticaBundle:Collector:elastica</parameter>
+      </parameter>
+      <parameter key="doctrine_mongodb.odm.data_collector.pretty" type="collection">
+        <parameter>mongodb</parameter>
+        <parameter>DoctrineMongoDBBundle:Collector:mongodb</parameter>
+      </parameter>
     </parameter>
-    <parameter key="console.command.ids" type="collection"/>
   </parameters>
   <services>
     <service id="twig.extension.text" class="Twig_Extensions_Extension_Text">
@@ -770,357 +888,12 @@
       <tag name="kernel.event_subscriber"/>
       <argument>en</argument>
       <argument type="service" id="router" on-invalid="ignore"/>
-      <argument type="service" id="request_stack"/>
+      <call method="setRequest">
+        <argument type="service" id="request" on-invalid="null" strict="false"/>
+      </call>
     </service>
-    <service id="http_kernel" class="Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel">
-      <argument type="service" id="debug.event_dispatcher"/>
+    <service id="event_dispatcher" class="Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher">
       <argument type="service" id="service_container"/>
-      <argument type="service" id="debug.controller_resolver"/>
-      <argument type="service" id="request_stack"/>
-    </service>
-    <service id="request_stack" class="Symfony\Component\HttpFoundation\RequestStack"/>
-    <service id="cache_warmer" class="Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerAggregate">
-      <argument type="collection">
-        <argument type="service">
-          <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplatePathsCacheWarmer" public="false">
-            <tag name="kernel.cache_warmer" priority="20"/>
-            <argument type="service">
-              <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder" public="false">
-                <argument type="service" id="kernel"/>
-                <argument type="service" id="templating.filename_parser"/>
-                <argument>/home/boyer/hetic/app/Resources</argument>
-              </service>
-            </argument>
-            <argument type="service" id="templating.locator"/>
-          </service>
-        </argument>
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\CacheWarmer\AssetManagerCacheWarmer" public="false">
-            <tag name="kernel.cache_warmer" priority="10"/>
-            <argument type="service" id="service_container"/>
-          </service>
-        </argument>
-        <argument type="service">
-          <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\RouterCacheWarmer" public="false">
-            <tag name="kernel.cache_warmer"/>
-            <argument type="service" id="router"/>
-          </service>
-        </argument>
-        <argument type="service">
-          <service class="Symfony\Bundle\TwigBundle\CacheWarmer\TemplateCacheCacheWarmer" public="false">
-            <tag name="kernel.cache_warmer"/>
-            <argument type="service" id="service_container"/>
-            <argument type="service">
-              <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder" public="false">
-                <argument type="service" id="kernel"/>
-                <argument type="service" id="templating.filename_parser"/>
-                <argument>/home/boyer/hetic/app/Resources</argument>
-              </service>
-            </argument>
-          </service>
-        </argument>
-        <argument type="service">
-          <service class="Symfony\Bridge\Doctrine\CacheWarmer\ProxyCacheWarmer" public="false">
-            <tag name="kernel.cache_warmer"/>
-            <argument type="service" id="doctrine"/>
-          </service>
-        </argument>
-        <argument type="service">
-          <service class="JMS\DiExtraBundle\HttpKernel\ControllerInjectorsWarmer" public="false">
-            <tag name="kernel.cache_warmer"/>
-            <argument type="service" id="kernel"/>
-            <argument type="service" id="jms_di_extra.controller_resolver"/>
-            <argument type="collection"/>
-          </service>
-        </argument>
-      </argument>
-    </service>
-    <service id="cache_clearer" class="Symfony\Component\HttpKernel\CacheClearer\ChainCacheClearer">
-      <argument type="collection"/>
-    </service>
-    <service id="request" scope="request" synthetic="true" synchronized="true"/>
-    <service id="service_container" synthetic="true"/>
-    <service id="kernel" synthetic="true"/>
-    <service id="filesystem" class="Symfony\Component\Filesystem\Filesystem"/>
-    <service id="file_locator" class="Symfony\Component\HttpKernel\Config\FileLocator">
-      <argument type="service" id="kernel"/>
-      <argument>/home/boyer/hetic/app/Resources</argument>
-    </service>
-    <service id="uri_signer" class="Symfony\Component\HttpKernel\UriSigner">
-      <argument>a66379eb392e48f6265be2a41049a404c</argument>
-    </service>
-    <service id="fragment.handler" class="Symfony\Component\HttpKernel\Fragment\FragmentHandler">
-      <argument type="collection"/>
-      <argument>true</argument>
-      <argument type="service" id="request_stack"/>
-      <call method="addRenderer">
-        <argument type="service" id="fragment.renderer.inline"/>
-      </call>
-      <call method="addRenderer">
-        <argument type="service" id="fragment.renderer.hinclude"/>
-      </call>
-      <call method="addRenderer">
-        <argument type="service" id="fragment.renderer.esi"/>
-      </call>
-    </service>
-    <service id="fragment.renderer.inline" class="Symfony\Component\HttpKernel\Fragment\InlineFragmentRenderer">
-      <tag name="kernel.fragment_renderer"/>
-      <argument type="service" id="http_kernel"/>
-      <argument type="service" id="debug.event_dispatcher"/>
-      <call method="setFragmentPath">
-        <argument>/_fragment</argument>
-      </call>
-    </service>
-    <service id="fragment.renderer.hinclude" class="Symfony\Bundle\FrameworkBundle\Fragment\ContainerAwareHIncludeFragmentRenderer">
-      <tag name="kernel.fragment_renderer"/>
-      <argument type="service" id="service_container"/>
-      <argument type="service" id="uri_signer"/>
-      <argument>null</argument>
-      <call method="setFragmentPath">
-        <argument>/_fragment</argument>
-      </call>
-    </service>
-    <service id="fragment.renderer.esi" class="Symfony\Component\HttpKernel\Fragment\EsiFragmentRenderer">
-      <tag name="kernel.fragment_renderer"/>
-      <argument type="service" id="esi" on-invalid="null"/>
-      <argument type="service" id="fragment.renderer.inline"/>
-      <call method="setFragmentPath">
-        <argument>/_fragment</argument>
-      </call>
-    </service>
-    <service id="translator.default" class="Symfony\Bundle\FrameworkBundle\Translation\Translator">
-      <argument type="service" id="service_container"/>
-      <argument type="service" id="translator.selector"/>
-      <argument type="collection">
-        <argument key="translation.loader.php" type="collection">
-          <argument>php</argument>
-        </argument>
-        <argument key="translation.loader.yml" type="collection">
-          <argument>yml</argument>
-        </argument>
-        <argument key="translation.loader.xliff" type="collection">
-          <argument>xlf</argument>
-          <argument>xliff</argument>
-        </argument>
-        <argument key="translation.loader.po" type="collection">
-          <argument>po</argument>
-        </argument>
-        <argument key="translation.loader.mo" type="collection">
-          <argument>mo</argument>
-        </argument>
-        <argument key="translation.loader.qt" type="collection">
-          <argument>ts</argument>
-        </argument>
-        <argument key="translation.loader.csv" type="collection">
-          <argument>csv</argument>
-        </argument>
-        <argument key="translation.loader.res" type="collection">
-          <argument>res</argument>
-        </argument>
-        <argument key="translation.loader.dat" type="collection">
-          <argument>dat</argument>
-        </argument>
-        <argument key="translation.loader.ini" type="collection">
-          <argument>ini</argument>
-        </argument>
-        <argument key="translation.loader.json" type="collection">
-          <argument>json</argument>
-        </argument>
-      </argument>
-      <argument type="collection">
-        <argument key="cache_dir">/home/boyer/hetic/app/cache/dev/translations</argument>
-        <argument key="debug">true</argument>
-      </argument>
-    </service>
-    <service id="translator" class="Symfony\Component\Translation\IdentityTranslator">
-      <argument type="service" id="translator.selector"/>
-    </service>
-    <service id="translator.selector" class="Symfony\Component\Translation\MessageSelector" public="false"/>
-    <service id="translation.loader.php" class="Symfony\Component\Translation\Loader\PhpFileLoader">
-      <tag name="translation.loader" alias="php"/>
-    </service>
-    <service id="translation.loader.yml" class="Symfony\Component\Translation\Loader\YamlFileLoader">
-      <tag name="translation.loader" alias="yml"/>
-    </service>
-    <service id="translation.loader.xliff" class="Symfony\Component\Translation\Loader\XliffFileLoader">
-      <tag name="translation.loader" alias="xlf" legacy-alias="xliff"/>
-    </service>
-    <service id="translation.loader.po" class="Symfony\Component\Translation\Loader\PoFileLoader">
-      <tag name="translation.loader" alias="po"/>
-    </service>
-    <service id="translation.loader.mo" class="Symfony\Component\Translation\Loader\MoFileLoader">
-      <tag name="translation.loader" alias="mo"/>
-    </service>
-    <service id="translation.loader.qt" class="Symfony\Component\Translation\Loader\QtFileLoader">
-      <tag name="translation.loader" alias="ts"/>
-    </service>
-    <service id="translation.loader.csv" class="Symfony\Component\Translation\Loader\CsvFileLoader">
-      <tag name="translation.loader" alias="csv"/>
-    </service>
-    <service id="translation.loader.res" class="Symfony\Component\Translation\Loader\IcuResFileLoader">
-      <tag name="translation.loader" alias="res"/>
-    </service>
-    <service id="translation.loader.dat" class="Symfony\Component\Translation\Loader\IcuResFileLoader">
-      <tag name="translation.loader" alias="dat"/>
-    </service>
-    <service id="translation.loader.ini" class="Symfony\Component\Translation\Loader\IniFileLoader">
-      <tag name="translation.loader" alias="ini"/>
-    </service>
-    <service id="translation.loader.json" class="Symfony\Component\Translation\Loader\JsonFileLoader">
-      <tag name="translation.loader" alias="json"/>
-    </service>
-    <service id="translation.dumper.php" class="Symfony\Component\Translation\Dumper\PhpFileDumper">
-      <tag name="translation.dumper" alias="php"/>
-    </service>
-    <service id="translation.dumper.xliff" class="Symfony\Component\Translation\Dumper\XliffFileDumper">
-      <tag name="translation.dumper" alias="xlf"/>
-    </service>
-    <service id="translation.dumper.po" class="Symfony\Component\Translation\Dumper\PoFileDumper">
-      <tag name="translation.dumper" alias="po"/>
-    </service>
-    <service id="translation.dumper.mo" class="Symfony\Component\Translation\Dumper\MoFileDumper">
-      <tag name="translation.dumper" alias="mo"/>
-    </service>
-    <service id="translation.dumper.yml" class="Symfony\Component\Translation\Dumper\YamlFileDumper">
-      <tag name="translation.dumper" alias="yml"/>
-    </service>
-    <service id="translation.dumper.qt" class="Symfony\Component\Translation\Dumper\QtFileDumper">
-      <tag name="translation.dumper" alias="ts"/>
-    </service>
-    <service id="translation.dumper.csv" class="Symfony\Component\Translation\Dumper\CsvFileDumper">
-      <tag name="translation.dumper" alias="csv"/>
-    </service>
-    <service id="translation.dumper.ini" class="Symfony\Component\Translation\Dumper\IniFileDumper">
-      <tag name="translation.dumper" alias="ini"/>
-    </service>
-    <service id="translation.dumper.json" class="Symfony\Component\Translation\Dumper\JsonFileDumper">
-      <tag name="translation.dumper" alias="json"/>
-    </service>
-    <service id="translation.dumper.res" class="Symfony\Component\Translation\Dumper\IcuResFileDumper">
-      <tag name="translation.dumper" alias="res"/>
-    </service>
-    <service id="translation.extractor.php" class="Symfony\Bundle\FrameworkBundle\Translation\PhpExtractor">
-      <tag name="translation.extractor" alias="php"/>
-    </service>
-    <service id="translation.loader" class="Symfony\Bundle\FrameworkBundle\Translation\TranslationLoader">
-      <call method="addLoader">
-        <argument>php</argument>
-        <argument type="service" id="translation.loader.php"/>
-      </call>
-      <call method="addLoader">
-        <argument>yml</argument>
-        <argument type="service" id="translation.loader.yml"/>
-      </call>
-      <call method="addLoader">
-        <argument>xlf</argument>
-        <argument type="service" id="translation.loader.xliff"/>
-      </call>
-      <call method="addLoader">
-        <argument>xliff</argument>
-        <argument type="service" id="translation.loader.xliff"/>
-      </call>
-      <call method="addLoader">
-        <argument>po</argument>
-        <argument type="service" id="translation.loader.po"/>
-      </call>
-      <call method="addLoader">
-        <argument>mo</argument>
-        <argument type="service" id="translation.loader.mo"/>
-      </call>
-      <call method="addLoader">
-        <argument>ts</argument>
-        <argument type="service" id="translation.loader.qt"/>
-      </call>
-      <call method="addLoader">
-        <argument>csv</argument>
-        <argument type="service" id="translation.loader.csv"/>
-      </call>
-      <call method="addLoader">
-        <argument>res</argument>
-        <argument type="service" id="translation.loader.res"/>
-      </call>
-      <call method="addLoader">
-        <argument>dat</argument>
-        <argument type="service" id="translation.loader.dat"/>
-      </call>
-      <call method="addLoader">
-        <argument>ini</argument>
-        <argument type="service" id="translation.loader.ini"/>
-      </call>
-      <call method="addLoader">
-        <argument>json</argument>
-        <argument type="service" id="translation.loader.json"/>
-      </call>
-    </service>
-    <service id="translation.extractor" class="Symfony\Component\Translation\Extractor\ChainExtractor">
-      <call method="addExtractor">
-        <argument>php</argument>
-        <argument type="service" id="translation.extractor.php"/>
-      </call>
-      <call method="addExtractor">
-        <argument>twig</argument>
-        <argument type="service" id="twig.translation.extractor"/>
-      </call>
-    </service>
-    <service id="translation.writer" class="Symfony\Component\Translation\Writer\TranslationWriter">
-      <call method="addDumper">
-        <argument>php</argument>
-        <argument type="service" id="translation.dumper.php"/>
-      </call>
-      <call method="addDumper">
-        <argument>xlf</argument>
-        <argument type="service" id="translation.dumper.xliff"/>
-      </call>
-      <call method="addDumper">
-        <argument>po</argument>
-        <argument type="service" id="translation.dumper.po"/>
-      </call>
-      <call method="addDumper">
-        <argument>mo</argument>
-        <argument type="service" id="translation.dumper.mo"/>
-      </call>
-      <call method="addDumper">
-        <argument>yml</argument>
-        <argument type="service" id="translation.dumper.yml"/>
-      </call>
-      <call method="addDumper">
-        <argument>ts</argument>
-        <argument type="service" id="translation.dumper.qt"/>
-      </call>
-      <call method="addDumper">
-        <argument>csv</argument>
-        <argument type="service" id="translation.dumper.csv"/>
-      </call>
-      <call method="addDumper">
-        <argument>ini</argument>
-        <argument type="service" id="translation.dumper.ini"/>
-      </call>
-      <call method="addDumper">
-        <argument>json</argument>
-        <argument type="service" id="translation.dumper.json"/>
-      </call>
-      <call method="addDumper">
-        <argument>res</argument>
-        <argument type="service" id="translation.dumper.res"/>
-      </call>
-    </service>
-    <service id="property_accessor" class="Symfony\Component\PropertyAccess\PropertyAccessor"/>
-    <service id="debug.emergency_logger_listener" class="Symfony\Component\HttpKernel\EventListener\ErrorsLoggerListener">
-      <tag name="kernel.event_subscriber"/>
-      <tag name="monolog.logger" channel="emergency"/>
-      <argument>emergency</argument>
-      <argument type="service" id="monolog.logger.emergency" on-invalid="null"/>
-    </service>
-    <service id="debug.stopwatch" class="Symfony\Component\Stopwatch\Stopwatch"/>
-    <service id="debug.event_dispatcher" class="Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher">
-      <tag name="monolog.logger" channel="event"/>
-      <argument type="service">
-        <service class="Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher" public="false">
-          <argument type="service" id="service_container"/>
-        </service>
-      </argument>
-      <argument type="service" id="debug.stopwatch"/>
-      <argument type="service" id="monolog.logger.event" on-invalid="null"/>
       <call method="addListenerService">
         <argument>knp_pager.before</argument>
         <argument type="collection">
@@ -1162,6 +935,14 @@
         <argument>1</argument>
       </call>
       <call method="addListenerService">
+        <argument>knp_pager.items</argument>
+        <argument type="collection">
+          <argument>fos_elastica.paginator.subscriber</argument>
+          <argument>items</argument>
+        </argument>
+        <argument>1</argument>
+      </call>
+      <call method="addListenerService">
         <argument>kernel.controller</argument>
         <argument type="collection">
           <argument>data_collector.router</argument>
@@ -1182,14 +963,6 @@
         <argument type="collection">
           <argument>monolog.handler.chromephp</argument>
           <argument>onKernelResponse</argument>
-        </argument>
-        <argument>0</argument>
-      </call>
-      <call method="addListenerService">
-        <argument>kernel.request</argument>
-        <argument type="collection">
-          <argument>assetic.request_listener</argument>
-          <argument>onKernelRequest</argument>
         </argument>
         <argument>0</argument>
       </call>
@@ -1215,7 +988,7 @@
           <argument>fos_rest.body_listener</argument>
           <argument>onKernelRequest</argument>
         </argument>
-        <argument>0</argument>
+        <argument>10</argument>
       </call>
       <call method="addListenerService">
         <argument>kernel.controller</argument>
@@ -1229,6 +1002,14 @@
         <argument>kernel.request</argument>
         <argument type="collection">
           <argument>knp_paginator.subscriber.sliding_pagination</argument>
+          <argument>onKernelRequest</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListenerService">
+        <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument>knp_menu.listener.voters</argument>
           <argument>onKernelRequest</argument>
         </argument>
         <argument>0</argument>
@@ -1310,6 +1091,341 @@
         <argument>Symfony\Bundle\WebProfilerBundle\EventListener\WebDebugToolbarListener</argument>
       </call>
     </service>
+    <service id="http_kernel" class="Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel">
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="service_container"/>
+      <argument type="service" id="debug.controller_resolver"/>
+    </service>
+    <service id="cache_warmer" class="Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerAggregate">
+      <argument type="collection">
+        <argument type="service">
+          <service class="Doctrine\Bundle\MongoDBBundle\CacheWarmer\ProxyCacheWarmer" public="false">
+            <tag name="kernel.cache_warmer" priority="25"/>
+            <argument type="service" id="service_container"/>
+          </service>
+        </argument>
+        <argument type="service">
+          <service class="Doctrine\Bundle\MongoDBBundle\CacheWarmer\HydratorCacheWarmer" public="false">
+            <tag name="kernel.cache_warmer" priority="25"/>
+            <argument type="service" id="service_container"/>
+          </service>
+        </argument>
+        <argument type="service">
+          <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplatePathsCacheWarmer" public="false">
+            <tag name="kernel.cache_warmer" priority="20"/>
+            <argument type="service">
+              <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder" public="false">
+                <argument type="service" id="kernel"/>
+                <argument type="service" id="templating.filename_parser"/>
+                <argument>/home/boyer/hetic/app/Resources</argument>
+              </service>
+            </argument>
+            <argument type="service" id="templating.locator"/>
+          </service>
+        </argument>
+        <argument type="service">
+          <service class="Symfony\Bundle\AsseticBundle\CacheWarmer\AssetManagerCacheWarmer" public="false">
+            <tag name="kernel.cache_warmer" priority="10"/>
+            <argument type="service" id="service_container"/>
+          </service>
+        </argument>
+        <argument type="service">
+          <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\RouterCacheWarmer" public="false">
+            <tag name="kernel.cache_warmer"/>
+            <argument type="service" id="router"/>
+          </service>
+        </argument>
+        <argument type="service">
+          <service class="Symfony\Bundle\TwigBundle\CacheWarmer\TemplateCacheCacheWarmer" public="false">
+            <tag name="kernel.cache_warmer"/>
+            <argument type="service" id="service_container"/>
+            <argument type="service">
+              <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder" public="false">
+                <argument type="service" id="kernel"/>
+                <argument type="service" id="templating.filename_parser"/>
+                <argument>/home/boyer/hetic/app/Resources</argument>
+              </service>
+            </argument>
+          </service>
+        </argument>
+        <argument type="service">
+          <service class="Symfony\Bridge\Doctrine\CacheWarmer\ProxyCacheWarmer" public="false">
+            <tag name="kernel.cache_warmer"/>
+            <argument type="service" id="doctrine"/>
+          </service>
+        </argument>
+        <argument type="service">
+          <service class="JMS\DiExtraBundle\HttpKernel\ControllerInjectorsWarmer" public="false">
+            <tag name="kernel.cache_warmer"/>
+            <argument type="service" id="kernel"/>
+            <argument type="service" id="jms_di_extra.controller_resolver"/>
+            <argument type="collection"/>
+          </service>
+        </argument>
+      </argument>
+    </service>
+    <service id="cache_clearer" class="Symfony\Component\HttpKernel\CacheClearer\ChainCacheClearer">
+      <argument type="collection"/>
+    </service>
+    <service id="request" scope="request" synthetic="true" synchronized="true"/>
+    <service id="service_container" synthetic="true"/>
+    <service id="kernel" synthetic="true"/>
+    <service id="filesystem" class="Symfony\Component\Filesystem\Filesystem"/>
+    <service id="file_locator" class="Symfony\Component\HttpKernel\Config\FileLocator">
+      <argument type="service" id="kernel"/>
+      <argument>/home/boyer/hetic/app/Resources</argument>
+    </service>
+    <service id="uri_signer" class="Symfony\Component\HttpKernel\UriSigner">
+      <argument>a66379eb392e48f6265be2a41049a404c</argument>
+    </service>
+    <service id="fragment.handler" class="Symfony\Component\HttpKernel\Fragment\FragmentHandler">
+      <argument type="collection"/>
+      <argument>true</argument>
+      <call method="setRequest">
+        <argument type="service" id="request" on-invalid="null" strict="false"/>
+      </call>
+      <call method="addRenderer">
+        <argument type="service" id="fragment.renderer.inline"/>
+      </call>
+      <call method="addRenderer">
+        <argument type="service" id="fragment.renderer.hinclude"/>
+      </call>
+      <call method="addRenderer">
+        <argument type="service" id="fragment.renderer.esi"/>
+      </call>
+    </service>
+    <service id="fragment.renderer.inline" class="Symfony\Component\HttpKernel\Fragment\InlineFragmentRenderer">
+      <tag name="kernel.fragment_renderer"/>
+      <argument type="service" id="http_kernel"/>
+      <argument type="service" id="event_dispatcher"/>
+      <call method="setFragmentPath">
+        <argument>/_fragment</argument>
+      </call>
+    </service>
+    <service id="fragment.renderer.hinclude" class="Symfony\Bundle\FrameworkBundle\Fragment\ContainerAwareHIncludeFragmentRenderer">
+      <tag name="kernel.fragment_renderer"/>
+      <argument type="service" id="service_container"/>
+      <argument type="service" id="uri_signer"/>
+      <argument>null</argument>
+      <call method="setFragmentPath">
+        <argument>/_fragment</argument>
+      </call>
+    </service>
+    <service id="translator.default" class="Symfony\Bundle\FrameworkBundle\Translation\Translator">
+      <argument type="service" id="service_container"/>
+      <argument type="service" id="translator.selector"/>
+      <argument type="collection">
+        <argument key="translation.loader.php" type="collection">
+          <argument>php</argument>
+        </argument>
+        <argument key="translation.loader.yml" type="collection">
+          <argument>yml</argument>
+        </argument>
+        <argument key="translation.loader.xliff" type="collection">
+          <argument>xlf</argument>
+          <argument>xliff</argument>
+        </argument>
+        <argument key="translation.loader.po" type="collection">
+          <argument>po</argument>
+        </argument>
+        <argument key="translation.loader.mo" type="collection">
+          <argument>mo</argument>
+        </argument>
+        <argument key="translation.loader.qt" type="collection">
+          <argument>ts</argument>
+        </argument>
+        <argument key="translation.loader.csv" type="collection">
+          <argument>csv</argument>
+        </argument>
+        <argument key="translation.loader.res" type="collection">
+          <argument>res</argument>
+        </argument>
+        <argument key="translation.loader.dat" type="collection">
+          <argument>dat</argument>
+        </argument>
+        <argument key="translation.loader.ini" type="collection">
+          <argument>ini</argument>
+        </argument>
+      </argument>
+      <argument type="collection">
+        <argument key="cache_dir">/home/boyer/hetic/app/cache/dev/translations</argument>
+        <argument key="debug">true</argument>
+      </argument>
+    </service>
+    <service id="translator" class="Symfony\Component\Translation\IdentityTranslator">
+      <argument type="service" id="translator.selector"/>
+    </service>
+    <service id="translator.selector" class="Symfony\Component\Translation\MessageSelector" public="false"/>
+    <service id="translation.loader.php" class="Symfony\Component\Translation\Loader\PhpFileLoader">
+      <tag name="translation.loader" alias="php"/>
+    </service>
+    <service id="translation.loader.yml" class="Symfony\Component\Translation\Loader\YamlFileLoader">
+      <tag name="translation.loader" alias="yml"/>
+    </service>
+    <service id="translation.loader.xliff" class="Symfony\Component\Translation\Loader\XliffFileLoader">
+      <tag name="translation.loader" alias="xlf" legacy-alias="xliff"/>
+    </service>
+    <service id="translation.loader.po" class="Symfony\Component\Translation\Loader\PoFileLoader">
+      <tag name="translation.loader" alias="po"/>
+    </service>
+    <service id="translation.loader.mo" class="Symfony\Component\Translation\Loader\MoFileLoader">
+      <tag name="translation.loader" alias="mo"/>
+    </service>
+    <service id="translation.loader.qt" class="Symfony\Component\Translation\Loader\QtFileLoader">
+      <tag name="translation.loader" alias="ts"/>
+    </service>
+    <service id="translation.loader.csv" class="Symfony\Component\Translation\Loader\CsvFileLoader">
+      <tag name="translation.loader" alias="csv"/>
+    </service>
+    <service id="translation.loader.res" class="Symfony\Component\Translation\Loader\IcuResFileLoader">
+      <tag name="translation.loader" alias="res"/>
+    </service>
+    <service id="translation.loader.dat" class="Symfony\Component\Translation\Loader\IcuResFileLoader">
+      <tag name="translation.loader" alias="dat"/>
+    </service>
+    <service id="translation.loader.ini" class="Symfony\Component\Translation\Loader\IniFileLoader">
+      <tag name="translation.loader" alias="ini"/>
+    </service>
+    <service id="translation.dumper.php" class="Symfony\Component\Translation\Dumper\PhpFileDumper">
+      <tag name="translation.dumper" alias="php"/>
+    </service>
+    <service id="translation.dumper.xliff" class="Symfony\Component\Translation\Dumper\XliffFileDumper">
+      <tag name="translation.dumper" alias="xlf"/>
+    </service>
+    <service id="translation.dumper.po" class="Symfony\Component\Translation\Dumper\PoFileDumper">
+      <tag name="translation.dumper" alias="po"/>
+    </service>
+    <service id="translation.dumper.mo" class="Symfony\Component\Translation\Dumper\MoFileDumper">
+      <tag name="translation.dumper" alias="mo"/>
+    </service>
+    <service id="translation.dumper.yml" class="Symfony\Component\Translation\Dumper\YamlFileDumper">
+      <tag name="translation.dumper" alias="yml"/>
+    </service>
+    <service id="translation.dumper.qt" class="Symfony\Component\Translation\Dumper\QtFileDumper">
+      <tag name="translation.dumper" alias="ts"/>
+    </service>
+    <service id="translation.dumper.csv" class="Symfony\Component\Translation\Dumper\CsvFileDumper">
+      <tag name="translation.dumper" alias="csv"/>
+    </service>
+    <service id="translation.dumper.ini" class="Symfony\Component\Translation\Dumper\IniFileDumper">
+      <tag name="translation.dumper" alias="ini"/>
+    </service>
+    <service id="translation.dumper.res" class="Symfony\Component\Translation\Dumper\IcuResFileDumper">
+      <tag name="translation.dumper" alias="res"/>
+    </service>
+    <service id="translation.extractor.php" class="Symfony\Bundle\FrameworkBundle\Translation\PhpExtractor">
+      <tag name="translation.extractor" alias="php"/>
+    </service>
+    <service id="translation.loader" class="Symfony\Bundle\FrameworkBundle\Translation\TranslationLoader">
+      <call method="addLoader">
+        <argument>php</argument>
+        <argument type="service" id="translation.loader.php"/>
+      </call>
+      <call method="addLoader">
+        <argument>yml</argument>
+        <argument type="service" id="translation.loader.yml"/>
+      </call>
+      <call method="addLoader">
+        <argument>xlf</argument>
+        <argument type="service" id="translation.loader.xliff"/>
+      </call>
+      <call method="addLoader">
+        <argument>xliff</argument>
+        <argument type="service" id="translation.loader.xliff"/>
+      </call>
+      <call method="addLoader">
+        <argument>po</argument>
+        <argument type="service" id="translation.loader.po"/>
+      </call>
+      <call method="addLoader">
+        <argument>mo</argument>
+        <argument type="service" id="translation.loader.mo"/>
+      </call>
+      <call method="addLoader">
+        <argument>ts</argument>
+        <argument type="service" id="translation.loader.qt"/>
+      </call>
+      <call method="addLoader">
+        <argument>csv</argument>
+        <argument type="service" id="translation.loader.csv"/>
+      </call>
+      <call method="addLoader">
+        <argument>res</argument>
+        <argument type="service" id="translation.loader.res"/>
+      </call>
+      <call method="addLoader">
+        <argument>dat</argument>
+        <argument type="service" id="translation.loader.dat"/>
+      </call>
+      <call method="addLoader">
+        <argument>ini</argument>
+        <argument type="service" id="translation.loader.ini"/>
+      </call>
+    </service>
+    <service id="translation.extractor" class="Symfony\Component\Translation\Extractor\ChainExtractor">
+      <call method="addExtractor">
+        <argument>php</argument>
+        <argument type="service" id="translation.extractor.php"/>
+      </call>
+      <call method="addExtractor">
+        <argument>twig</argument>
+        <argument type="service" id="twig.translation.extractor"/>
+      </call>
+    </service>
+    <service id="translation.writer" class="Symfony\Component\Translation\Writer\TranslationWriter">
+      <call method="addDumper">
+        <argument>php</argument>
+        <argument type="service" id="translation.dumper.php"/>
+      </call>
+      <call method="addDumper">
+        <argument>xlf</argument>
+        <argument type="service" id="translation.dumper.xliff"/>
+      </call>
+      <call method="addDumper">
+        <argument>po</argument>
+        <argument type="service" id="translation.dumper.po"/>
+      </call>
+      <call method="addDumper">
+        <argument>mo</argument>
+        <argument type="service" id="translation.dumper.mo"/>
+      </call>
+      <call method="addDumper">
+        <argument>yml</argument>
+        <argument type="service" id="translation.dumper.yml"/>
+      </call>
+      <call method="addDumper">
+        <argument>ts</argument>
+        <argument type="service" id="translation.dumper.qt"/>
+      </call>
+      <call method="addDumper">
+        <argument>csv</argument>
+        <argument type="service" id="translation.dumper.csv"/>
+      </call>
+      <call method="addDumper">
+        <argument>ini</argument>
+        <argument type="service" id="translation.dumper.ini"/>
+      </call>
+      <call method="addDumper">
+        <argument>res</argument>
+        <argument type="service" id="translation.dumper.res"/>
+      </call>
+    </service>
+    <service id="debug.emergency_logger_listener" class="Symfony\Component\HttpKernel\EventListener\ErrorsLoggerListener">
+      <tag name="kernel.event_subscriber"/>
+      <tag name="monolog.logger" channel="emergency"/>
+      <argument>emergency</argument>
+      <argument type="service" id="monolog.logger.emergency" on-invalid="null"/>
+    </service>
+    <service id="debug.stopwatch" class="Symfony\Component\Stopwatch\Stopwatch"/>
+    <service id="debug.event_dispatcher" class="Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher">
+      <tag name="monolog.logger" channel="event"/>
+      <argument type="service" id="event_dispatcher"/>
+      <argument type="service" id="debug.stopwatch"/>
+      <argument type="service" id="monolog.logger.event" on-invalid="null"/>
+      <call method="setProfiler">
+        <argument type="service" id="profiler" on-invalid="null"/>
+      </call>
+    </service>
     <service id="debug.controller_resolver" class="Symfony\Component\HttpKernel\Controller\TraceableControllerResolver">
       <argument type="service" id="jms_di_extra.controller_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
@@ -1329,46 +1445,18 @@
         <service class="Symfony\Component\HttpFoundation\Session\Flash\FlashBag" public="false"/>
       </argument>
     </service>
-    <service id="session.storage.metadata_bag" class="Symfony\Component\HttpFoundation\Session\Storage\MetadataBag" public="false">
-      <argument>_sf2_meta</argument>
-      <argument>0</argument>
-    </service>
     <service id="session.storage.native" class="Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage">
       <argument type="collection"/>
       <argument type="service" id="session.handler"/>
-      <argument type="service" id="session.storage.metadata_bag"/>
     </service>
     <service id="session.storage.php_bridge" class="Symfony\Component\HttpFoundation\Session\Storage\PhpBridgeSessionStorage">
       <argument type="service" id="session.handler"/>
-      <argument type="service" id="session.storage.metadata_bag"/>
     </service>
     <service id="session_listener" class="Symfony\Bundle\FrameworkBundle\EventListener\SessionListener">
       <tag name="kernel.event_subscriber"/>
       <argument type="service" id="service_container"/>
     </service>
-    <service id="security.secure_random" class="Symfony\Component\Security\Core\Util\SecureRandom">
-      <tag name="monolog.logger" channel="security"/>
-      <argument>/home/boyer/hetic/app/cache/dev/secure_random.seed</argument>
-      <argument type="service" id="monolog.logger.security" on-invalid="ignore"/>
-    </service>
-    <service id="security.csrf.token_manager" class="Symfony\Component\Security\Csrf\CsrfTokenManager">
-      <argument type="service">
-        <service class="Symfony\Component\Security\Csrf\TokenGenerator\UriSafeTokenGenerator" public="false">
-          <argument type="service" id="security.secure_random"/>
-        </service>
-      </argument>
-      <argument type="service">
-        <service class="Symfony\Component\Security\Csrf\TokenStorage\SessionTokenStorage" public="false">
-          <argument type="service" id="session"/>
-        </service>
-      </argument>
-    </service>
-    <service id="form.resolved_type_factory" class="Symfony\Component\Form\Extension\DataCollector\Proxy\ResolvedTypeFactoryDataCollectorProxy">
-      <argument type="service">
-        <service class="Symfony\Component\Form\ResolvedFormTypeFactory" public="false"/>
-      </argument>
-      <argument type="service" id="data_collector.form"/>
-    </service>
+    <service id="form.resolved_type_factory" class="Symfony\Component\Form\ResolvedFormTypeFactory"/>
     <service id="form.registry" class="Symfony\Component\Form\FormRegistry">
       <argument type="collection">
         <argument type="service">
@@ -1406,13 +1494,13 @@
               <argument key="reset">form.type.reset</argument>
               <argument key="currency">form.type.currency</argument>
               <argument key="entity">form.type.entity</argument>
+              <argument key="document">form.type.mongodb_document</argument>
             </argument>
             <argument type="collection">
               <argument key="form" type="collection">
                 <argument>form.type_extension.form.http_foundation</argument>
                 <argument>form.type_extension.form.validator</argument>
                 <argument>form.type_extension.csrf</argument>
-                <argument>form.type_extension.form.data_collector</argument>
               </argument>
               <argument key="repeated" type="collection">
                 <argument>form.type_extension.repeated.validator</argument>
@@ -1424,6 +1512,7 @@
             <argument type="collection">
               <argument>form.type_guesser.validator</argument>
               <argument>form.type_guesser.doctrine</argument>
+              <argument>form.type_guesser.doctrine.mongodb</argument>
             </argument>
           </service>
         </argument>
@@ -1438,6 +1527,7 @@
       <tag name="form.type_guesser"/>
       <argument type="service" id="validator.mapping.class_metadata_factory"/>
     </service>
+    <service id="property_accessor" class="Symfony\Component\PropertyAccess\PropertyAccessor"/>
     <service id="form.type.form" class="Symfony\Component\Form\Extension\Core\Type\FormType">
       <tag name="form.type" alias="form"/>
       <argument type="service" id="property_accessor"/>
@@ -1542,8 +1632,9 @@
     <service id="form.type_extension.submit.validator" class="Symfony\Component\Form\Extension\Validator\Type\SubmitTypeValidatorExtension">
       <tag name="form.type_extension" alias="submit"/>
     </service>
-    <service id="form.csrf_provider" class="Symfony\Component\Form\Extension\Csrf\CsrfProvider\CsrfTokenManagerAdapter">
-      <argument type="service" id="security.csrf.token_manager"/>
+    <service id="form.csrf_provider" class="Symfony\Component\Form\Extension\Csrf\CsrfProvider\SessionCsrfProvider">
+      <argument type="service" id="session"/>
+      <argument>a66379eb392e48f6265be2a41049a404c</argument>
     </service>
     <service id="form.type_extension.csrf" class="Symfony\Component\Form\Extension\Csrf\Type\FormTypeCsrfExtension">
       <tag name="form.type_extension" alias="form"/>
@@ -1620,10 +1711,6 @@
         </service>
       </argument>
     </service>
-    <service id="templating.helper.stopwatch" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\StopwatchHelper">
-      <tag name="templating.helper" alias="stopwatch"/>
-      <argument type="service" id="debug.stopwatch" on-invalid="ignore"/>
-    </service>
     <service id="templating.globals" class="Symfony\Bundle\FrameworkBundle\Templating\GlobalVariables">
       <argument type="service" id="service_container"/>
     </service>
@@ -1633,16 +1720,17 @@
         <service class="Symfony\Bundle\FrameworkBundle\Validator\ConstraintValidatorFactory" public="false">
           <argument type="service" id="service_container"/>
           <argument type="collection">
-            <argument key="validator.expression">validator.expression</argument>
             <argument key="security.validator.user_password">security.validator.user_password</argument>
             <argument key="doctrine.orm.validator.unique">doctrine.orm.validator.unique</argument>
+            <argument key="doctrine_odm.mongodb.unique">doctrine_odm.mongodb.validator.unique</argument>
           </argument>
         </service>
       </argument>
-      <argument type="service" id="translator"/>
+      <argument type="service" id="translator.default"/>
       <argument>validators</argument>
       <argument type="collection">
         <argument type="service" id="doctrine.orm.validator_initializer"/>
+        <argument type="service" id="doctrine_odm.mongodb.validator_initializer"/>
       </argument>
     </service>
     <service id="validator.mapping.class_metadata_factory" class="Symfony\Component\Validator\Mapping\ClassMetadataFactory" public="false">
@@ -1674,23 +1762,23 @@
       </argument>
       <argument>null</argument>
     </service>
-    <service id="validator.expression" class="Symfony\Component\Validator\Constraints\ExpressionValidator">
-      <tag name="validator.constraint_validator" alias="validator.expression"/>
-      <argument type="service" id="property_accessor"/>
-    </service>
     <service id="esi" class="Symfony\Component\HttpKernel\HttpCache\Esi"/>
     <service id="esi_listener" class="Symfony\Component\HttpKernel\EventListener\EsiListener">
       <tag name="kernel.event_subscriber"/>
       <argument type="service" id="esi" on-invalid="ignore"/>
     </service>
+    <service id="fragment.renderer.esi" class="Symfony\Component\HttpKernel\Fragment\EsiFragmentRenderer">
+      <tag name="kernel.fragment_renderer"/>
+      <argument type="service" id="esi"/>
+      <argument type="service" id="fragment.renderer.inline"/>
+      <call method="setFragmentPath">
+        <argument>/_fragment</argument>
+      </call>
+    </service>
     <service id="fragment.listener" class="Symfony\Component\HttpKernel\EventListener\FragmentListener">
       <tag name="kernel.event_subscriber"/>
       <argument type="service" id="uri_signer"/>
       <argument>/_fragment</argument>
-    </service>
-    <service id="form.type_extension.form.data_collector" class="Symfony\Component\Form\Extension\DataCollector\Type\DataCollectorTypeExtension">
-      <tag name="form.type_extension" alias="form"/>
-      <argument type="service" id="data_collector.form"/>
     </service>
     <service id="profiler" class="Symfony\Component\HttpKernel\Profiler\Profiler">
       <tag name="monolog.logger" channel="profiler"/>
@@ -1727,7 +1815,6 @@
         <argument type="service">
           <service class="Symfony\Component\HttpKernel\DataCollector\EventDataCollector" public="false">
             <tag name="data_collector" template="@WebProfiler/Collector/events.html.twig" id="events" priority="255"/>
-            <argument type="service" id="debug.event_dispatcher" on-invalid="ignore"/>
           </service>
         </argument>
       </call>
@@ -1745,7 +1832,6 @@
           <service class="Symfony\Component\HttpKernel\DataCollector\TimeDataCollector" public="false">
             <tag name="data_collector" template="@WebProfiler/Collector/time.html.twig" id="time" priority="255"/>
             <argument type="service" id="kernel" on-invalid="ignore"/>
-            <argument type="service" id="debug.stopwatch" on-invalid="ignore"/>
           </service>
         </argument>
       </call>
@@ -1760,12 +1846,9 @@
         <argument type="service" id="data_collector.router"/>
       </call>
       <call method="add">
-        <argument type="service" id="data_collector.form"/>
-      </call>
-      <call method="add">
         <argument type="service">
           <service class="Symfony\Bundle\SecurityBundle\DataCollector\SecurityDataCollector" public="false">
-            <tag name="data_collector" template="@Security/Collector/security.html.twig" id="security"/>
+            <tag name="data_collector" template="SecurityBundle:Collector:security" id="security"/>
             <argument type="service" id="security.context" on-invalid="ignore"/>
           </service>
         </argument>
@@ -1790,6 +1873,12 @@
           </service>
         </argument>
       </call>
+      <call method="add">
+        <argument type="service" id="fos_elastica.data_collector"/>
+      </call>
+      <call method="add">
+        <argument type="service" id="doctrine_mongodb.odm.data_collector.pretty"/>
+      </call>
     </service>
     <service id="profiler_listener" class="Symfony\Component\HttpKernel\EventListener\ProfilerListener">
       <tag name="kernel.event_subscriber"/>
@@ -1797,7 +1886,6 @@
       <argument>null</argument>
       <argument>false</argument>
       <argument>false</argument>
-      <argument type="service" id="request_stack"/>
     </service>
     <service id="data_collector.request" class="Symfony\Component\HttpKernel\DataCollector\RequestDataCollector">
       <tag name="kernel.event_subscriber"/>
@@ -1806,11 +1894,6 @@
     <service id="data_collector.router" class="Symfony\Bundle\FrameworkBundle\DataCollector\RouterDataCollector">
       <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController"/>
       <tag name="data_collector" template="@WebProfiler/Collector/router.html.twig" id="router" priority="255"/>
-    </service>
-    <service id="data_collector.form.extractor" class="Symfony\Component\Form\Extension\DataCollector\FormDataExtractor"/>
-    <service id="data_collector.form" class="Symfony\Component\Form\Extension\DataCollector\FormDataCollector">
-      <tag name="data_collector" template="@WebProfiler/Collector/form.html.twig" id="form" priority="255"/>
-      <argument type="service" id="data_collector.form.extractor"/>
     </service>
     <service id="routing.loader" class="Symfony\Bundle\FrameworkBundle\Routing\DelegatingLoader">
       <tag name="monolog.logger" channel="router"/>
@@ -1839,14 +1922,6 @@
               <service class="Symfony\Component\Routing\Loader\PhpFileLoader" public="false">
                 <tag name="routing.loader"/>
                 <argument type="service" id="file_locator"/>
-              </service>
-            </argument>
-          </call>
-          <call method="addLoader">
-            <argument type="service">
-              <service class="Symfony\Bundle\AsseticBundle\Routing\AsseticLoader" public="false">
-                <tag name="routing.loader"/>
-                <argument type="service" id="assetic.asset_manager"/>
               </service>
             </argument>
           </call>
@@ -1912,7 +1987,9 @@
       <argument type="service" id="router"/>
       <argument type="service" id="router.request_context" on-invalid="ignore"/>
       <argument type="service" id="monolog.logger.request" on-invalid="ignore"/>
-      <argument type="service" id="request_stack"/>
+      <call method="setRequest">
+        <argument type="service" id="request" on-invalid="null" strict="false"/>
+      </call>
     </service>
     <service id="security.context" class="Symfony\Component\Security\Core\SecurityContext">
       <argument type="service" id="security.authentication.manager"/>
@@ -1923,19 +2000,28 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider" public="false">
-            <argument type="service" id="security.user.provider.concrete.in_memory"/>
+            <argument type="service" id="security.user.provider.concrete.site"/>
             <argument type="service">
               <service class="Symfony\Component\Security\Core\User\UserChecker" public="false"/>
             </argument>
-            <argument>secured_area</argument>
+            <argument>site</argument>
             <argument type="service" id="security.encoder_factory"/>
             <argument>true</argument>
+          </service>
+        </argument>
+        <argument type="service">
+          <service class="Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider" public="false">
+            <argument type="service">
+              <service class="Symfony\Component\Security\Core\User\UserChecker" public="false"/>
+            </argument>
+            <argument>g46hqs4d9jqsdsd6g54h6sdyfhgadphfhgdldhjjhgjgm46sdfshg5qd1o</argument>
+            <argument>site</argument>
           </service>
         </argument>
       </argument>
       <argument>true</argument>
       <call method="setEventDispatcher">
-        <argument type="service" id="debug.event_dispatcher"/>
+        <argument type="service" id="event_dispatcher"/>
       </call>
     </service>
     <service id="security.authentication.trust_resolver" class="Symfony\Component\Security\Core\Authentication\AuthenticationTrustResolver">
@@ -1962,16 +2048,6 @@
               </service>
             </argument>
             <argument type="service">
-              <service class="Symfony\Component\Security\Core\Authorization\Voter\ExpressionVoter" public="false">
-                <tag name="security.voter" priority="245"/>
-                <argument type="service">
-                  <service class="Symfony\Component\Security\Core\Authorization\ExpressionLanguage" public="false"/>
-                </argument>
-                <argument type="service" id="security.authentication.trust_resolver"/>
-                <argument type="service" id="security.role_hierarchy" on-invalid="null"/>
-              </service>
-            </argument>
-            <argument type="service">
               <service class="Symfony\Component\Security\Core\Authorization\Voter\RoleHierarchyVoter" public="false">
                 <tag name="security.voter" priority="245"/>
                 <argument type="service" id="security.role_hierarchy"/>
@@ -1992,13 +2068,12 @@
     </service>
     <service id="security.role_hierarchy" class="Symfony\Component\Security\Core\Role\RoleHierarchy">
       <argument type="collection">
-        <argument key="ROLE_ADMIN" type="collection">
+        <argument key="ROLE_USER" type="collection">
           <argument>ROLE_USER</argument>
         </argument>
-        <argument key="ROLE_SUPER_ADMIN" type="collection">
-          <argument>ROLE_USER</argument>
-          <argument>ROLE_ANONYM</argument>
+        <argument key="ROLE_ADMIN" type="collection">
           <argument>ROLE_ADMIN</argument>
+          <argument>ROLE_USER</argument>
           <argument>ROLE_ALLOWED_TO_SWITCH</argument>
         </argument>
       </argument>
@@ -2009,25 +2084,35 @@
         <service class="Symfony\Bundle\SecurityBundle\Security\FirewallMap" public="false">
           <argument type="service" id="service_container"/>
           <argument type="collection">
-            <argument key="security.firewall.map.context.login" type="service">
+            <argument key="security.firewall.map.context.dev" type="service">
               <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                <argument>^/demo/secured/login$</argument>
+                <argument>^/(_(profiler|wdt)|css|images|js)/</argument>
               </service>
             </argument>
-            <argument key="security.firewall.map.context.secured_area" type="service">
+            <argument key="security.firewall.map.context.login_firewall" type="service">
               <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                <argument>^/administration</argument>
+                <argument>^/login</argument>
+              </service>
+            </argument>
+            <argument key="security.firewall.map.context.site" type="service">
+              <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                <argument>^/backend</argument>
               </service>
             </argument>
           </argument>
         </service>
       </argument>
-      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="event_dispatcher"/>
     </service>
     <service id="security.validator.user_password" class="Symfony\Component\Security\Core\Validator\Constraints\UserPasswordValidator">
       <tag name="validator.constraint_validator" alias="security.validator.user_password"/>
       <argument type="service" id="security.context"/>
       <argument type="service" id="security.encoder_factory"/>
+    </service>
+    <service id="security.secure_random" class="Symfony\Component\Security\Core\Util\SecureRandom">
+      <tag name="monolog.logger" channel="security"/>
+      <argument>/home/boyer/hetic/app/cache/dev/secure_random.seed</argument>
+      <argument type="service" id="monolog.logger.security" on-invalid="ignore"/>
     </service>
     <service id="security.rememberme.response_listener" class="Symfony\Component\Security\Http\RememberMe\ResponseListener">
       <tag name="kernel.event_subscriber"/>
@@ -2037,8 +2122,8 @@
       <argument type="service" id="service_container"/>
       <argument type="service" id="router"/>
       <call method="registerListener">
-        <argument>secured_area</argument>
-        <argument>site_logout</argument>
+        <argument>site</argument>
+        <argument>/backend/logout</argument>
         <argument>logout</argument>
         <argument>_csrf_token</argument>
         <argument>null</argument>
@@ -2048,35 +2133,21 @@
       <tag name="templating.helper" alias="security"/>
       <argument type="service" id="security.context" on-invalid="ignore"/>
     </service>
-    <service id="security.user.provider.concrete.in_memory" class="Symfony\Component\Security\Core\User\InMemoryUserProvider" public="false">
-      <call method="createUser">
-        <argument type="service">
-          <service class="Symfony\Component\Security\Core\User\User" public="false">
-            <argument>user</argument>
-            <argument>userpass</argument>
-            <argument type="collection">
-              <argument>ROLE_USER</argument>
-            </argument>
-          </service>
-        </argument>
-      </call>
-      <call method="createUser">
-        <argument type="service">
-          <service class="Symfony\Component\Security\Core\User\User" public="false">
-            <argument>admin</argument>
-            <argument>adminpass</argument>
-            <argument type="collection">
-              <argument>ROLE_ADMIN</argument>
-            </argument>
-          </service>
-        </argument>
-      </call>
+    <service id="security.user.provider.concrete.site" class="Symfony\Bridge\Doctrine\Security\User\EntityUserProvider" public="false">
+      <argument type="service" id="doctrine"/>
+      <argument>HeticSiteBundle:Administrateur</argument>
+      <argument>email</argument>
+      <argument>null</argument>
     </service>
-    <service id="security.firewall.map.context.login" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext">
+    <service id="security.firewall.map.context.dev" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext">
       <argument type="collection"/>
       <argument>null</argument>
     </service>
-    <service id="security.firewall.map.context.secured_area" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext">
+    <service id="security.firewall.map.context.login_firewall" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext">
+      <argument type="collection"/>
+      <argument>null</argument>
+    </service>
+    <service id="security.firewall.map.context.site" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext">
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\ChannelListener" public="false">
@@ -2086,24 +2157,24 @@
                 <call method="add">
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/demo/secured/hello/admin/</argument>
-                    </service>
-                  </argument>
-                  <argument type="collection">
-                    <argument>ROLE_ADMIN</argument>
-                  </argument>
-                  <argument>null</argument>
-                </call>
-                <call method="add">
-                  <argument type="service">
-                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
                       <argument>^/login</argument>
                     </service>
                   </argument>
                   <argument type="collection">
                     <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
                   </argument>
-                  <argument>https</argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/backend</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_USER</argument>
+                  </argument>
+                  <argument>null</argument>
                 </call>
                 <call method="add">
                   <argument type="service">
@@ -2131,11 +2202,18 @@
           <service class="Symfony\Component\Security\Http\Firewall\ContextListener" public="false">
             <argument type="service" id="security.context"/>
             <argument type="collection">
-              <argument type="service" id="security.user.provider.concrete.in_memory"/>
+              <argument type="service">
+                <service class="Symfony\Component\Security\Core\User\ChainUserProvider" public="false">
+                  <argument type="collection">
+                    <argument type="service" id="security.user.provider.concrete.site"/>
+                  </argument>
+                </service>
+              </argument>
+              <argument type="service" id="security.user.provider.concrete.site"/>
             </argument>
-            <argument>secured_area</argument>
+            <argument>site</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
-            <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
+            <argument type="service" id="event_dispatcher" on-invalid="null"/>
           </service>
         </argument>
         <argument type="service">
@@ -2161,18 +2239,35 @@
             <argument type="collection">
               <argument key="csrf_parameter">_csrf_token</argument>
               <argument key="intention">logout</argument>
-              <argument key="logout_path">site_logout</argument>
+              <argument key="logout_path">/backend/logout</argument>
             </argument>
             <call method="addHandler">
               <argument type="service">
-                <service class="Symfony\Component\Security\Http\Logout\SessionLogoutHandler" public="false"/>
+                <service class="Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices" public="false">
+                  <argument type="collection">
+                    <argument type="service" id="security.user.provider.concrete.site"/>
+                  </argument>
+                  <argument>g46hqs4d9jqsdsd6g54h6sdyfhgadphfhgdldhjjhgjgm46sdfshg5qd1o</argument>
+                  <argument>site</argument>
+                  <argument type="collection">
+                    <argument key="lifetime">720000</argument>
+                    <argument key="path">/</argument>
+                    <argument key="domain">null</argument>
+                    <argument key="always_remember_me">true</argument>
+                    <argument key="name">REMEMBERME</argument>
+                    <argument key="secure">false</argument>
+                    <argument key="httponly">true</argument>
+                    <argument key="remember_me_parameter">_remember_me</argument>
+                  </argument>
+                  <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+                </service>
               </argument>
             </call>
           </service>
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener" public="false">
-            <tag name="security.remember_me_aware" id="secured_area" provider="security.user.provider.concrete.in_memory"/>
+            <tag name="security.remember_me_aware" id="site" provider="security.user.provider.concrete.site"/>
             <argument type="service" id="security.context"/>
             <argument type="service" id="security.authentication.manager"/>
             <argument type="service">
@@ -2186,25 +2281,12 @@
                 <argument type="service" id="router" on-invalid="null"/>
               </service>
             </argument>
-            <argument>secured_area</argument>
+            <argument>site</argument>
             <argument type="service">
-              <service class="Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler" public="false">
-                <argument type="service">
-                  <service class="Symfony\Component\Security\Http\HttpUtils" public="false">
-                    <argument type="service" id="router" on-invalid="null"/>
-                    <argument type="service" id="router" on-invalid="null"/>
-                  </service>
-                </argument>
-                <argument type="collection">
-                  <argument key="login_path">site_login</argument>
-                  <argument key="always_use_default_target_path">false</argument>
-                  <argument key="default_target_path">/</argument>
-                  <argument key="target_path_parameter">_target_path</argument>
-                  <argument key="use_referer">false</argument>
-                </argument>
-                <call method="setProviderKey">
-                  <argument>secured_area</argument>
-                </call>
+              <service class="Hetic\SiteBundle\Authentication\AuthenticationSiteHandler" public="false">
+                <argument type="service" id="router"/>
+                <argument type="service" id="doctrine.orm.default_entity_manager"/>
+                <argument type="service" id="session"/>
               </service>
             </argument>
             <argument type="service">
@@ -2217,7 +2299,7 @@
                   </service>
                 </argument>
                 <argument type="collection">
-                  <argument key="login_path">site_login</argument>
+                  <argument key="login_path">/login</argument>
                   <argument key="failure_path">null</argument>
                   <argument key="failure_forward">false</argument>
                   <argument key="failure_path_parameter">_failure_path</argument>
@@ -2226,7 +2308,7 @@
               </service>
             </argument>
             <argument type="collection">
-              <argument key="check_path">site_login_check</argument>
+              <argument key="check_path">/backend/login_check</argument>
               <argument key="use_forward">false</argument>
               <argument key="require_previous_session">true</argument>
               <argument key="username_parameter">_username</argument>
@@ -2236,7 +2318,57 @@
               <argument key="post_only">true</argument>
             </argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
-            <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
+            <argument type="service" id="event_dispatcher" on-invalid="null"/>
+            <call method="setRememberMeServices">
+              <argument type="service">
+                <service class="Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices" public="false">
+                  <argument type="collection">
+                    <argument type="service" id="security.user.provider.concrete.site"/>
+                  </argument>
+                  <argument>g46hqs4d9jqsdsd6g54h6sdyfhgadphfhgdldhjjhgjgm46sdfshg5qd1o</argument>
+                  <argument>site</argument>
+                  <argument type="collection">
+                    <argument key="lifetime">720000</argument>
+                    <argument key="path">/</argument>
+                    <argument key="domain">null</argument>
+                    <argument key="always_remember_me">true</argument>
+                    <argument key="name">REMEMBERME</argument>
+                    <argument key="secure">false</argument>
+                    <argument key="httponly">true</argument>
+                    <argument key="remember_me_parameter">_remember_me</argument>
+                  </argument>
+                  <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+                </service>
+              </argument>
+            </call>
+          </service>
+        </argument>
+        <argument type="service">
+          <service class="Symfony\Component\Security\Http\Firewall\RememberMeListener" public="false">
+            <argument type="service" id="security.context"/>
+            <argument type="service">
+              <service class="Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices" public="false">
+                <argument type="collection">
+                  <argument type="service" id="security.user.provider.concrete.site"/>
+                </argument>
+                <argument>g46hqs4d9jqsdsd6g54h6sdyfhgadphfhgdldhjjhgjgm46sdfshg5qd1o</argument>
+                <argument>site</argument>
+                <argument type="collection">
+                  <argument key="lifetime">720000</argument>
+                  <argument key="path">/</argument>
+                  <argument key="domain">null</argument>
+                  <argument key="always_remember_me">true</argument>
+                  <argument key="name">REMEMBERME</argument>
+                  <argument key="secure">false</argument>
+                  <argument key="httponly">true</argument>
+                  <argument key="remember_me_parameter">_remember_me</argument>
+                </argument>
+                <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+              </service>
+            </argument>
+            <argument type="service" id="security.authentication.manager"/>
+            <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+            <argument type="service" id="event_dispatcher" on-invalid="null"/>
           </service>
         </argument>
         <argument type="service">
@@ -2249,24 +2381,24 @@
                 <call method="add">
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/demo/secured/hello/admin/</argument>
-                    </service>
-                  </argument>
-                  <argument type="collection">
-                    <argument>ROLE_ADMIN</argument>
-                  </argument>
-                  <argument>null</argument>
-                </call>
-                <call method="add">
-                  <argument type="service">
-                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
                       <argument>^/login</argument>
                     </service>
                   </argument>
                   <argument type="collection">
                     <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
                   </argument>
-                  <argument>https</argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/backend</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_USER</argument>
+                  </argument>
+                  <argument>null</argument>
                 </call>
                 <call method="add">
                   <argument type="service">
@@ -2295,7 +2427,7 @@
               <argument type="service" id="router" on-invalid="null"/>
             </service>
           </argument>
-          <argument>secured_area</argument>
+          <argument>site</argument>
           <argument type="service">
             <service class="Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint" public="false">
               <argument type="service" id="http_kernel"/>
@@ -2305,11 +2437,11 @@
                   <argument type="service" id="router" on-invalid="null"/>
                 </service>
               </argument>
-              <argument>site_login</argument>
+              <argument>/login</argument>
               <argument>false</argument>
             </service>
           </argument>
-          <argument>null</argument>
+          <argument>/access-denied</argument>
           <argument>null</argument>
           <argument type="service" id="monolog.logger.security" on-invalid="null"/>
         </service>
@@ -2397,21 +2529,6 @@
       </call>
       <call method="addExtension">
         <argument type="service">
-          <service class="Symfony\Bridge\Twig\Extension\StopwatchExtension" public="false">
-            <tag name="twig.extension"/>
-            <argument type="service" id="debug.stopwatch" on-invalid="ignore"/>
-          </service>
-        </argument>
-      </call>
-      <call method="addExtension">
-        <argument type="service">
-          <service class="Symfony\Bridge\Twig\Extension\ExpressionExtension" public="false">
-            <tag name="twig.extension"/>
-          </service>
-        </argument>
-      </call>
-      <call method="addExtension">
-        <argument type="service">
           <service class="Symfony\Bridge\Twig\Extension\HttpKernelExtension" public="false">
             <tag name="twig.extension"/>
             <argument type="service" id="fragment.handler"/>
@@ -2428,7 +2545,7 @@
                   <service class="Symfony\Bridge\Twig\Form\TwigRendererEngine" public="false">
                     <argument type="collection">
                       <argument>form_div_layout.html.twig</argument>
-                      <argument>HeticSiteBundle:Form:fields.html.twig</argument>
+                      <argument>HeticSiteBundle:Default:forms.html.twig</argument>
                     </argument>
                   </service>
                 </argument>
@@ -2452,12 +2569,16 @@
             <tag name="assetic.templating.twig"/>
             <argument type="service" id="assetic.asset_factory"/>
             <argument type="service" id="templating.name_parser"/>
-            <argument>true</argument>
+            <argument>false</argument>
             <argument type="collection"/>
             <argument type="collection">
               <argument>HeticSiteBundle</argument>
             </argument>
-            <argument type="service" id="assetic.value_supplier.default" on-invalid="null"/>
+            <argument type="service">
+              <service class="Symfony\Bundle\AsseticBundle\DefaultValueSupplier" public="false">
+                <argument type="service" id="service_container"/>
+              </service>
+            </argument>
           </service>
         </argument>
       </call>
@@ -2487,9 +2608,142 @@
       <call method="addExtension">
         <argument type="service" id="knp_paginator.twig.extension.pagination"/>
       </call>
+      <call method="addExtension">
+        <argument type="service">
+          <service class="Knp\Menu\Twig\MenuExtension" public="false">
+            <tag name="twig.extension"/>
+            <argument type="service">
+              <service class="Knp\Menu\Twig\Helper" public="false">
+                <argument type="service" id="knp_menu.renderer_provider"/>
+                <argument type="service" id="knp_menu.menu_provider"/>
+              </service>
+            </argument>
+          </service>
+        </argument>
+      </call>
       <call method="addGlobal">
         <argument>app</argument>
         <argument type="service" id="templating.globals"/>
+      </call>
+      <call method="addGlobal">
+        <argument>base_url</argument>
+        <argument>http://www.weekinsport.fr/</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>imgsite</argument>
+        <argument>/bundles/site/images/</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>imgproducts</argument>
+        <argument>/uploads/products/</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>imgcategories</argument>
+        <argument>/uploads/categories/</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>imguser</argument>
+        <argument>/uploads/users/</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>imgpartenaire</argument>
+        <argument>/uploads/partenaires/</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>imgrdvs</argument>
+        <argument>/uploads/rdvs/</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>imgoffers</argument>
+        <argument>/uploads/offers/</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>imgsports</argument>
+        <argument>/uploads/sports/</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>imgremises</argument>
+        <argument>/uploads/remises/</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>imgpromotions</argument>
+        <argument>/uploads/promotions/</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>unknowuserfnormal</argument>
+        <argument>/uploads/users/unknow/unknow-f-normal.jpg</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>unknowuserfbig</argument>
+        <argument>/uploads/users/unknow/unknow-f-medium.jpg</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>unknowuserf</argument>
+        <argument>/uploads/users/unknow/unknow-f-small.jpg</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>unknowusersmallf</argument>
+        <argument>/uploads/users/unknow/unknow-f-mini.jpg</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>unknowusermnormal</argument>
+        <argument>/uploads/users/unknow/unknow-m-normal.jpg</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>unknowusermbig</argument>
+        <argument>/uploads/users/unknow/unknow-m-medium.jpg</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>unknowuserm</argument>
+        <argument>/uploads/users/unknow/unknow-m-small.jpg</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>unknowusersmallm</argument>
+        <argument>/uploads/users/unknow/unknow-m-mini.jpg</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>imguserunknow</argument>
+        <argument>/images/unknow_user.gif</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>flashmessages</argument>
+        <argument type="collection">
+          <argument type="collection">
+            <argument key="title">News 1</argument>
+            <argument key="content">Nouveau site de WKS</argument>
+          </argument>
+          <argument type="collection">
+            <argument key="title">Titre de site 2</argument>
+            <argument key="content">Site WKS</argument>
+          </argument>
+        </argument>
+      </call>
+      <call method="addGlobal">
+        <argument>nom_site</argument>
+        <argument>WKS</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>slogan</argument>
+        <argument>Réseau social de Sports</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>topmenu</argument>
+        <argument type="collection">
+          <argument type="collection">
+            <argument key="label">Home</argument>
+            <argument key="routing">wks_site_homepage</argument>
+            <argument key="icon">&lt;i class="icon-home"&gt; &lt;/i&gt;</argument>
+          </argument>
+        </argument>
+      </call>
+      <call method="addGlobal">
+        <argument>fastactions</argument>
+        <argument type="collection">
+          <argument type="collection">
+            <argument key="label">Home</argument>
+            <argument key="routing">wks_site_homepage</argument>
+          </argument>
+        </argument>
       </call>
     </service>
     <service id="twig.translation.extractor" class="Symfony\Bridge\Twig\Translation\TwigExtractor">
@@ -2541,6 +2795,7 @@
         <argument key="sass">assetic.filter.sass</argument>
         <argument key="compass">assetic.filter.compass</argument>
         <argument key="yui_css">assetic.filter.yui_css</argument>
+        <argument key="closure">assetic.filter.closure.jar</argument>
       </argument>
     </service>
     <service id="assetic.asset_manager" class="Assetic\Factory\LazyAssetManager">
@@ -2632,16 +2887,6 @@
           </service>
         </argument>
       </call>
-      <call method="addWorker">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Worker\UseControllerWorker" public="false">
-            <tag name="assetic.factory_worker"/>
-          </service>
-        </argument>
-      </call>
-    </service>
-    <service id="assetic.value_supplier.default" class="Symfony\Bundle\AsseticBundle\DefaultValueSupplier" public="false">
-      <argument type="service" id="service_container"/>
     </service>
     <service id="assetic.filter.cssrewrite" class="Assetic\Filter\CssRewriteFilter">
       <tag name="assetic.filter" alias="cssrewrite"/>
@@ -2649,7 +2894,7 @@
     <service id="assetic.filter.uglifyjs" class="Assetic\Filter\UglifyJsFilter">
       <tag name="assetic.filter" alias="uglifyjs"/>
       <argument>/usr/bin/uglifyjs</argument>
-      <argument>/usr/sbin/node</argument>
+      <argument>/usr/bin/node</argument>
       <call method="setTimeout">
         <argument>null</argument>
       </call>
@@ -2764,21 +3009,16 @@
         <argument>null</argument>
       </call>
     </service>
-    <service id="assetic.controller" class="Symfony\Bundle\AsseticBundle\Controller\AsseticController" scope="prototype">
-      <argument type="service" id="request"/>
-      <argument type="service" id="assetic.asset_manager"/>
-      <argument type="service" id="assetic.cache"/>
-      <argument>false</argument>
-      <argument type="service" id="profiler" on-invalid="null"/>
-      <call method="setValueSupplier">
-        <argument type="service" id="assetic.value_supplier.default" on-invalid="ignore"/>
+    <service id="assetic.filter.closure.jar" class="Assetic\Filter\GoogleClosure\CompilerJarFilter">
+      <tag name="assetic.filter" alias="closure"/>
+      <argument>/home/boyer/hetic/app/Resources/java/googleclosure.jar</argument>
+      <argument>/usr/bin/java</argument>
+      <call method="setTimeout">
+        <argument>null</argument>
       </call>
-    </service>
-    <service id="assetic.cache" class="Assetic\Cache\FilesystemCache" public="false">
-      <argument>/home/boyer/hetic/app/cache/dev/assetic/assets</argument>
-    </service>
-    <service id="assetic.request_listener" class="Symfony\Bundle\AsseticBundle\EventListener\RequestListener">
-      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
+      <call method="setCompilationLevel">
+        <argument>null</argument>
+      </call>
     </service>
     <service id="doctrine.dbal.connection_factory" class="Doctrine\Bundle\DoctrineBundle\ConnectionFactory">
       <argument type="collection"/>
@@ -2831,6 +3071,57 @@
       <argument type="service">
         <service class="Symfony\Bridge\Doctrine\ContainerAwareEventManager" public="false">
           <argument type="service" id="service_container"/>
+          <call method="addEventSubscriber">
+            <argument type="service">
+              <service class="FOS\ElasticaBundle\Doctrine\ORM\Listener" public="false">
+                <tag name="doctrine.event_subscriber"/>
+                <argument type="service" id="fos_elastica.object_persister.website.article"/>
+                <argument>Hetic\SiteBundle\Entity\Article</argument>
+                <argument type="collection">
+                  <argument>postPersist</argument>
+                  <argument>postUpdate</argument>
+                  <argument>postRemove</argument>
+                  <argument>preRemove</argument>
+                </argument>
+                <argument>id</argument>
+                <argument></argument>
+              </service>
+            </argument>
+          </call>
+          <call method="addEventSubscriber">
+            <argument type="service">
+              <service class="FOS\ElasticaBundle\Doctrine\ORM\Listener" public="false">
+                <tag name="doctrine.event_subscriber"/>
+                <argument type="service" id="fos_elastica.object_persister.website.category"/>
+                <argument>Hetic\SiteBundle\Entity\Category</argument>
+                <argument type="collection">
+                  <argument>postPersist</argument>
+                  <argument>postUpdate</argument>
+                  <argument>postRemove</argument>
+                  <argument>preRemove</argument>
+                </argument>
+                <argument>id</argument>
+                <argument></argument>
+              </service>
+            </argument>
+          </call>
+          <call method="addEventSubscriber">
+            <argument type="service">
+              <service class="FOS\ElasticaBundle\Doctrine\ORM\Listener" public="false">
+                <tag name="doctrine.event_subscriber"/>
+                <argument type="service" id="fos_elastica.object_persister.website.tag"/>
+                <argument>Hetic\SiteBundle\Entity\Tag</argument>
+                <argument type="collection">
+                  <argument>postPersist</argument>
+                  <argument>postUpdate</argument>
+                  <argument>postRemove</argument>
+                  <argument>preRemove</argument>
+                </argument>
+                <argument>id</argument>
+                <argument></argument>
+              </service>
+            </argument>
+          </call>
         </service>
       </argument>
       <argument type="collection"/>
@@ -2855,8 +3146,8 @@
       <argument type="collection"/>
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager" class="EntityManager5273a64836ed2_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
-      <file>/home/boyer/hetic/app/cache/dev/jms_diextra/doctrine/EntityManager_5273a64836ed2.php</file>
+    <service id="doctrine.orm.default_entity_manager" class="EntityManager528954d1bfb48_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
+      <file>/home/boyer/hetic/app/cache/dev/jms_diextra/doctrine/EntityManager_528954d1bfb48.php</file>
       <argument type="service">
         <service class="Doctrine\ORM\EntityManager" factory-method="create" public="false">
           <argument type="service" id="doctrine.dbal.default_connection"/>
@@ -2871,7 +3162,7 @@
                 <argument type="service">
                   <service class="Doctrine\Common\Cache\ArrayCache" public="false">
                     <call method="setNamespace">
-                      <argument>sf2orm_default_2d20ca64a5807eb89591b7b92eb3c8c0318c9db9bd9a0942f9d7a7e86f25aa69</argument>
+                      <argument>sf2orm_default_9fc9af545035b4449a7b0a7b99b5b91b</argument>
                     </call>
                   </service>
                 </argument>
@@ -2880,7 +3171,7 @@
                 <argument type="service">
                   <service class="Doctrine\Common\Cache\ArrayCache" public="false">
                     <call method="setNamespace">
-                      <argument>sf2orm_default_2d20ca64a5807eb89591b7b92eb3c8c0318c9db9bd9a0942f9d7a7e86f25aa69</argument>
+                      <argument>sf2orm_default_9fc9af545035b4449a7b0a7b99b5b91b</argument>
                     </call>
                   </service>
                 </argument>
@@ -2889,7 +3180,7 @@
                 <argument type="service">
                   <service class="Doctrine\Common\Cache\ArrayCache" public="false">
                     <call method="setNamespace">
-                      <argument>sf2orm_default_2d20ca64a5807eb89591b7b92eb3c8c0318c9db9bd9a0942f9d7a7e86f25aa69</argument>
+                      <argument>sf2orm_default_9fc9af545035b4449a7b0a7b99b5b91b</argument>
                     </call>
                   </service>
                 </argument>
@@ -2925,11 +3216,6 @@
               </call>
               <call method="setDefaultRepositoryClassName">
                 <argument>Doctrine\ORM\EntityRepository</argument>
-              </call>
-              <call method="setNamingStrategy">
-                <argument type="service">
-                  <service class="Doctrine\ORM\Mapping\DefaultNamingStrategy" public="false"/>
-                </argument>
               </call>
             </service>
           </argument>
@@ -3366,7 +3652,7 @@
       </call>
     </service>
     <service id="fos_rest.body_listener" class="FOS\RestBundle\EventListener\BodyListener">
-      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
+      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" priority="10"/>
       <argument type="service" id="fos_rest.decoder_provider"/>
     </service>
     <service id="fos_rest.param_fetcher_listener" class="FOS\RestBundle\EventListener\ParamFetcherListener">
@@ -3489,7 +3775,7 @@
       <argument type="service" id="monolog.logger.request" on-invalid="ignore"/>
     </service>
     <service id="knp_paginator" class="Knp\Component\Pager\Paginator">
-      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="event_dispatcher"/>
       <call method="setDefaultPaginatorOptions">
         <argument type="collection">
           <argument key="pageParameterName">page</argument>
@@ -3533,6 +3819,532 @@
       <tag name="twig.extension"/>
       <argument type="service" id="knp_paginator.helper.processor"/>
     </service>
+    <service id="fos_elastica.logger" class="FOS\ElasticaBundle\Logger\ElasticaLogger">
+      <tag name="monolog.logger" channel="elastica"/>
+      <argument type="service" id="monolog.logger.elastica" on-invalid="null"/>
+      <argument>true</argument>
+    </service>
+    <service id="fos_elastica.data_collector" class="FOS\ElasticaBundle\DataCollector\ElasticaDataCollector">
+      <tag name="data_collector" template="FOSElasticaBundle:Collector:elastica" id="elastica"/>
+      <argument type="service" id="fos_elastica.logger"/>
+    </service>
+    <service id="fos_elastica.index_manager" class="FOS\ElasticaBundle\IndexManager">
+      <argument type="collection">
+        <argument key="website" type="service" id="fos_elastica.index.website"/>
+      </argument>
+      <argument type="service" id="fos_elastica.index.website"/>
+    </service>
+    <service id="fos_elastica.resetter" class="FOS\ElasticaBundle\Resetter">
+      <argument type="collection">
+        <argument key="website" type="collection">
+          <argument key="index" type="service" id="fos_elastica.index.website"/>
+          <argument key="config" type="collection">
+            <argument key="mappings" type="collection">
+              <argument key="article" type="collection">
+                <argument key="properties" type="collection">
+                  <argument key="title" type="collection">
+                    <argument key="type">string</argument>
+                    <argument key="include_in_all">true</argument>
+                  </argument>
+                  <argument key="content" type="collection">
+                    <argument key="type">string</argument>
+                    <argument key="include_in_all">true</argument>
+                  </argument>
+                  <argument key="nature" type="collection">
+                    <argument key="type">integer</argument>
+                    <argument key="include_in_all">true</argument>
+                  </argument>
+                  <argument key="isVisible" type="collection">
+                    <argument key="type">boolean</argument>
+                    <argument key="include_in_all">true</argument>
+                  </argument>
+                  <argument key="point" type="collection">
+                    <argument key="type">integer</argument>
+                    <argument key="include_in_all">true</argument>
+                  </argument>
+                  <argument key="datePublication" type="collection">
+                    <argument key="type">date</argument>
+                    <argument key="include_in_all">true</argument>
+                  </argument>
+                </argument>
+              </argument>
+              <argument key="category" type="collection">
+                <argument key="properties" type="collection">
+                  <argument key="name" type="collection">
+                    <argument key="type">string</argument>
+                    <argument key="include_in_all">true</argument>
+                  </argument>
+                  <argument key="description" type="collection">
+                    <argument key="type">string</argument>
+                    <argument key="include_in_all">true</argument>
+                  </argument>
+                </argument>
+              </argument>
+              <argument key="tag" type="collection">
+                <argument key="properties" type="collection">
+                  <argument key="word" type="collection">
+                    <argument key="type">string</argument>
+                    <argument key="include_in_all">true</argument>
+                  </argument>
+                </argument>
+              </argument>
+            </argument>
+          </argument>
+        </argument>
+      </argument>
+    </service>
+    <service id="fos_elastica.provider_registry" class="FOS\ElasticaBundle\Provider\ProviderRegistry">
+      <call method="setContainer">
+        <argument type="service" id="service_container"/>
+      </call>
+      <call method="addProvider">
+        <argument>website</argument>
+        <argument>article</argument>
+        <argument>fos_elastica.provider.website.article</argument>
+      </call>
+      <call method="addProvider">
+        <argument>website</argument>
+        <argument>category</argument>
+        <argument>fos_elastica.provider.website.category</argument>
+      </call>
+      <call method="addProvider">
+        <argument>website</argument>
+        <argument>tag</argument>
+        <argument>fos_elastica.provider.website.tag</argument>
+      </call>
+    </service>
+    <service id="fos_elastica.paginator.subscriber" class="FOS\ElasticaBundle\Subscriber\PaginateElasticaQuerySubscriber">
+      <tag name="knp_paginator.subscriber"/>
+    </service>
+    <service id="fos_elastica.property_accessor" class="Symfony\Component\PropertyAccess\PropertyAccessor"/>
+    <service id="fos_elastica.client.default" class="FOS\ElasticaBundle\Client">
+      <tag name="fos_elastica.client"/>
+      <argument type="collection">
+        <argument key="servers" type="collection">
+          <argument type="collection">
+            <argument key="host">localhost</argument>
+            <argument key="port">9200</argument>
+          </argument>
+        </argument>
+      </argument>
+      <call method="setLogger">
+        <argument type="service" id="fos_elastica.logger"/>
+      </call>
+    </service>
+    <service id="fos_elastica.index.website" class="Elastica\Index" factory-method="getIndex" factory-service="fos_elastica.client.default">
+      <argument>website_qa</argument>
+    </service>
+    <service id="fos_elastica.index.website.article" class="Elastica\Type" factory-method="getType" factory-service="fos_elastica.index.website">
+      <argument>article</argument>
+    </service>
+    <service id="fos_elastica.manager.orm" class="FOS\ElasticaBundle\Doctrine\RepositoryManager">
+      <argument type="service" id="doctrine"/>
+      <argument type="service" id="annotation_reader"/>
+      <call method="addEntity">
+        <argument>Hetic\SiteBundle\Entity\Article</argument>
+        <argument type="service" id="fos_elastica.finder.website.article"/>
+        <argument>Hetic\SiteBundle\Entity\ArticleRepository</argument>
+      </call>
+      <call method="addEntity">
+        <argument>Hetic\SiteBundle\Entity\Category</argument>
+        <argument type="service" id="fos_elastica.finder.website.category"/>
+        <argument>Hetic\SiteBundle\Entity\CategoryRepository</argument>
+      </call>
+      <call method="addEntity">
+        <argument>Hetic\SiteBundle\Entity\Tag</argument>
+        <argument type="service" id="fos_elastica.finder.website.tag"/>
+        <argument>Hetic\SiteBundle\Entity\CategoryRepository</argument>
+      </call>
+    </service>
+    <service id="fos_elastica.object_persister.website.article" class="FOS\ElasticaBundle\Persister\ObjectPersister">
+      <argument type="service">
+        <service class="Elastica\Type" factory-method="getType" factory-service="fos_elastica.index.website">
+          <argument>article</argument>
+        </service>
+      </argument>
+      <argument type="service">
+        <service class="FOS\ElasticaBundle\Transformer\ModelToElasticaAutoTransformer" public="false">
+          <argument type="collection">
+            <argument key="identifier">id</argument>
+          </argument>
+          <call method="setPropertyAccessor">
+            <argument type="service" id="fos_elastica.property_accessor"/>
+          </call>
+        </service>
+      </argument>
+      <argument>Hetic\SiteBundle\Entity\Article</argument>
+      <argument type="collection">
+        <argument key="title" type="collection">
+          <argument key="type">string</argument>
+          <argument key="include_in_all">true</argument>
+        </argument>
+        <argument key="content" type="collection">
+          <argument key="type">string</argument>
+          <argument key="include_in_all">true</argument>
+        </argument>
+        <argument key="nature" type="collection">
+          <argument key="type">integer</argument>
+          <argument key="include_in_all">true</argument>
+        </argument>
+        <argument key="isVisible" type="collection">
+          <argument key="type">boolean</argument>
+          <argument key="include_in_all">true</argument>
+        </argument>
+        <argument key="point" type="collection">
+          <argument key="type">integer</argument>
+          <argument key="include_in_all">true</argument>
+        </argument>
+        <argument key="datePublication" type="collection">
+          <argument key="type">date</argument>
+          <argument key="include_in_all">true</argument>
+        </argument>
+      </argument>
+    </service>
+    <service id="fos_elastica.provider.website.article" class="FOS\ElasticaBundle\Doctrine\ORM\Provider">
+      <tag name="fos_elastica.provider" index="website" type="article"/>
+      <argument type="service" id="fos_elastica.object_persister.website.article"/>
+      <argument>Hetic\SiteBundle\Entity\Article</argument>
+      <argument type="collection">
+        <argument key="query_builder_method">createIsActiveQueryBuilder</argument>
+        <argument key="batch_size">100</argument>
+        <argument key="clear_object_manager">true</argument>
+      </argument>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="fos_elastica.finder.website.article" class="FOS\ElasticaBundle\Finder\TransformedFinder">
+      <argument type="service">
+        <service class="Elastica\Type" factory-method="getType" factory-service="fos_elastica.index.website">
+          <argument>article</argument>
+        </service>
+      </argument>
+      <argument type="service">
+        <service class="FOS\ElasticaBundle\Doctrine\ORM\ElasticaToModelTransformer" public="false">
+          <tag name="fos_elastica.elastica_to_model_transformer" type="article" index="website"/>
+          <argument type="service" id="doctrine"/>
+          <argument>Hetic\SiteBundle\Entity\Article</argument>
+          <argument type="collection">
+            <argument key="hydrate">true</argument>
+            <argument key="identifier">id</argument>
+            <argument key="ignore_missing">false</argument>
+            <argument key="query_builder_method">createQueryBuilder</argument>
+          </argument>
+          <call method="setPropertyAccessor">
+            <argument type="service" id="fos_elastica.property_accessor"/>
+          </call>
+        </service>
+      </argument>
+    </service>
+    <service id="fos_elastica.index.website.category" class="Elastica\Type" factory-method="getType" factory-service="fos_elastica.index.website">
+      <argument>category</argument>
+    </service>
+    <service id="fos_elastica.object_persister.website.category" class="FOS\ElasticaBundle\Persister\ObjectPersister">
+      <argument type="service">
+        <service class="Elastica\Type" factory-method="getType" factory-service="fos_elastica.index.website">
+          <argument>category</argument>
+        </service>
+      </argument>
+      <argument type="service">
+        <service class="FOS\ElasticaBundle\Transformer\ModelToElasticaAutoTransformer" public="false">
+          <argument type="collection">
+            <argument key="identifier">id</argument>
+          </argument>
+          <call method="setPropertyAccessor">
+            <argument type="service" id="fos_elastica.property_accessor"/>
+          </call>
+        </service>
+      </argument>
+      <argument>Hetic\SiteBundle\Entity\Category</argument>
+      <argument type="collection">
+        <argument key="name" type="collection">
+          <argument key="type">string</argument>
+          <argument key="include_in_all">true</argument>
+        </argument>
+        <argument key="description" type="collection">
+          <argument key="type">string</argument>
+          <argument key="include_in_all">true</argument>
+        </argument>
+      </argument>
+    </service>
+    <service id="fos_elastica.provider.website.category" class="FOS\ElasticaBundle\Doctrine\ORM\Provider">
+      <tag name="fos_elastica.provider" index="website" type="category"/>
+      <argument type="service" id="fos_elastica.object_persister.website.category"/>
+      <argument>Hetic\SiteBundle\Entity\Category</argument>
+      <argument type="collection">
+        <argument key="query_builder_method">getActiveCategoryQueryBuilder</argument>
+        <argument key="batch_size">100</argument>
+        <argument key="clear_object_manager">true</argument>
+      </argument>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="fos_elastica.finder.website.category" class="FOS\ElasticaBundle\Finder\TransformedFinder">
+      <argument type="service">
+        <service class="Elastica\Type" factory-method="getType" factory-service="fos_elastica.index.website">
+          <argument>category</argument>
+        </service>
+      </argument>
+      <argument type="service">
+        <service class="FOS\ElasticaBundle\Doctrine\ORM\ElasticaToModelTransformer" public="false">
+          <tag name="fos_elastica.elastica_to_model_transformer" type="category" index="website"/>
+          <argument type="service" id="doctrine"/>
+          <argument>Hetic\SiteBundle\Entity\Category</argument>
+          <argument type="collection">
+            <argument key="hydrate">true</argument>
+            <argument key="identifier">id</argument>
+            <argument key="ignore_missing">false</argument>
+            <argument key="query_builder_method">createQueryBuilder</argument>
+          </argument>
+          <call method="setPropertyAccessor">
+            <argument type="service" id="fos_elastica.property_accessor"/>
+          </call>
+        </service>
+      </argument>
+    </service>
+    <service id="fos_elastica.index.website.tag" class="Elastica\Type" factory-method="getType" factory-service="fos_elastica.index.website">
+      <argument>tag</argument>
+    </service>
+    <service id="fos_elastica.object_persister.website.tag" class="FOS\ElasticaBundle\Persister\ObjectPersister">
+      <argument type="service">
+        <service class="Elastica\Type" factory-method="getType" factory-service="fos_elastica.index.website">
+          <argument>tag</argument>
+        </service>
+      </argument>
+      <argument type="service">
+        <service class="FOS\ElasticaBundle\Transformer\ModelToElasticaAutoTransformer" public="false">
+          <argument type="collection">
+            <argument key="identifier">id</argument>
+          </argument>
+          <call method="setPropertyAccessor">
+            <argument type="service" id="fos_elastica.property_accessor"/>
+          </call>
+        </service>
+      </argument>
+      <argument>Hetic\SiteBundle\Entity\Tag</argument>
+      <argument type="collection">
+        <argument key="word" type="collection">
+          <argument key="type">string</argument>
+          <argument key="include_in_all">true</argument>
+        </argument>
+      </argument>
+    </service>
+    <service id="fos_elastica.provider.website.tag" class="FOS\ElasticaBundle\Doctrine\ORM\Provider">
+      <tag name="fos_elastica.provider" index="website" type="tag"/>
+      <argument type="service" id="fos_elastica.object_persister.website.tag"/>
+      <argument>Hetic\SiteBundle\Entity\Tag</argument>
+      <argument type="collection">
+        <argument key="query_builder_method">getTags</argument>
+        <argument key="batch_size">100</argument>
+        <argument key="clear_object_manager">true</argument>
+      </argument>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="fos_elastica.finder.website.tag" class="FOS\ElasticaBundle\Finder\TransformedFinder">
+      <argument type="service">
+        <service class="Elastica\Type" factory-method="getType" factory-service="fos_elastica.index.website">
+          <argument>tag</argument>
+        </service>
+      </argument>
+      <argument type="service">
+        <service class="FOS\ElasticaBundle\Doctrine\ORM\ElasticaToModelTransformer" public="false">
+          <tag name="fos_elastica.elastica_to_model_transformer" type="tag" index="website"/>
+          <argument type="service" id="doctrine"/>
+          <argument>Hetic\SiteBundle\Entity\Tag</argument>
+          <argument type="collection">
+            <argument key="hydrate">true</argument>
+            <argument key="identifier">id</argument>
+            <argument key="ignore_missing">false</argument>
+            <argument key="query_builder_method">createQueryBuilder</argument>
+          </argument>
+          <call method="setPropertyAccessor">
+            <argument type="service" id="fos_elastica.property_accessor"/>
+          </call>
+        </service>
+      </argument>
+    </service>
+    <service id="form.type.mongodb_document" class="Doctrine\Bundle\MongoDBBundle\Form\Type\DocumentType">
+      <tag name="form.type" alias="document"/>
+      <argument type="service" id="doctrine_mongodb"/>
+    </service>
+    <service id="form.type_guesser.doctrine.mongodb" class="Doctrine\Bundle\MongoDBBundle\Form\DoctrineMongoDBTypeGuesser">
+      <tag name="form.type_guesser"/>
+      <argument type="service" id="doctrine_mongodb"/>
+    </service>
+    <service id="doctrine_mongodb.odm.metadata.chain" class="Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain"/>
+    <service id="doctrine_mongodb.odm.metadata.annotation" class="Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver">
+      <argument type="service" id="annotation_reader"/>
+      <argument type="collection"/>
+    </service>
+    <service id="doctrine_mongodb.odm.metadata.xml" class="Doctrine\Bundle\MongoDBBundle\Mapping\Driver\XmlDriver">
+      <argument type="collection"/>
+    </service>
+    <service id="doctrine_mongodb.odm.metadata.yml" class="Doctrine\Bundle\MongoDBBundle\Mapping\Driver\YamlDriver">
+      <argument type="collection"/>
+    </service>
+    <service id="doctrine_mongodb.odm.cache.array" class="Doctrine\Common\Cache\ArrayCache"/>
+    <service id="doctrine_mongodb.odm.data_collector.pretty" class="Doctrine\Bundle\MongoDBBundle\DataCollector\PrettyDataCollector" public="false">
+      <tag name="data_collector" id="mongodb" template="DoctrineMongoDBBundle:Collector:mongodb"/>
+      <call method="setBatchInsertThreshold">
+        <argument>4</argument>
+      </call>
+    </service>
+    <service id="doctrine_odm.mongodb.validator.unique" class="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntityValidator">
+      <tag name="validator.constraint_validator" alias="doctrine_odm.mongodb.unique"/>
+      <argument type="service" id="doctrine_mongodb"/>
+    </service>
+    <service id="doctrine_odm.mongodb.validator_initializer" class="Symfony\Bridge\Doctrine\Validator\DoctrineInitializer">
+      <tag name="validator.initializer"/>
+      <argument type="service" id="doctrine_mongodb"/>
+    </service>
+    <service id="doctrine_mongodb" class="Doctrine\Bundle\MongoDBBundle\ManagerRegistry">
+      <argument>MongoDB</argument>
+      <argument type="collection">
+        <argument key="default">doctrine_mongodb.odm.default_connection</argument>
+      </argument>
+      <argument type="collection">
+        <argument key="default">doctrine_mongodb.odm.default_document_manager</argument>
+      </argument>
+      <argument>default</argument>
+      <argument>default</argument>
+      <argument>Doctrine\ODM\MongoDB\Proxy\Proxy</argument>
+      <call method="setContainer">
+        <argument type="service" id="service_container"/>
+      </call>
+    </service>
+    <service id="doctrine_mongodb.odm.default_connection" class="Doctrine\MongoDB\Connection">
+      <argument>mongodb://localhost:27017</argument>
+      <argument type="collection"/>
+      <argument type="service" id="doctrine_mongodb.odm.default_configuration"/>
+      <argument type="service" id="doctrine_mongodb.odm.event_manager"/>
+    </service>
+    <service id="doctrine_mongodb.odm.default_configuration" class="Doctrine\ODM\MongoDB\Configuration">
+      <call method="setDocumentNamespaces">
+        <argument type="collection"/>
+      </call>
+      <call method="setMetadataCacheImpl">
+        <argument type="service">
+          <service class="Doctrine\Common\Cache\ArrayCache" public="false">
+            <call method="setNamespace">
+              <argument>sf2mongodb_default_9fc9af545035b4449a7b0a7b99b5b91b</argument>
+            </call>
+          </service>
+        </argument>
+      </call>
+      <call method="setMetadataDriverImpl">
+        <argument type="service">
+          <service class="Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain" public="false"/>
+        </argument>
+      </call>
+      <call method="setProxyDir">
+        <argument>/home/boyer/hetic/app/cache/dev/doctrine/odm/mongodb/Proxies</argument>
+      </call>
+      <call method="setProxyNamespace">
+        <argument>MongoDBODMProxies</argument>
+      </call>
+      <call method="setAutoGenerateProxyClasses">
+        <argument>false</argument>
+      </call>
+      <call method="setHydratorDir">
+        <argument>/home/boyer/hetic/app/cache/dev/doctrine/odm/mongodb/Hydrators</argument>
+      </call>
+      <call method="setHydratorNamespace">
+        <argument>Hydrators</argument>
+      </call>
+      <call method="setAutoGenerateHydratorClasses">
+        <argument>false</argument>
+      </call>
+      <call method="setDefaultDB">
+        <argument>test_database</argument>
+      </call>
+      <call method="setDefaultCommitOptions">
+        <argument type="collection">
+          <argument key="safe">true</argument>
+          <argument key="fsync">false</argument>
+          <argument key="timeout">30000</argument>
+        </argument>
+      </call>
+      <call method="setRetryConnect">
+        <argument>0</argument>
+      </call>
+      <call method="setRetryQuery">
+        <argument>0</argument>
+      </call>
+      <call method="setLoggerCallable">
+        <argument type="collection">
+          <argument type="service">
+            <service class="Doctrine\Bundle\MongoDBBundle\Logger\AggregateLogger" public="false">
+              <argument type="collection">
+                <argument type="service">
+                  <service class="Doctrine\Bundle\MongoDBBundle\Logger\Logger" public="false">
+                    <tag name="monolog.logger" channel="doctrine"/>
+                    <argument type="service" id="monolog.logger.doctrine" on-invalid="null"/>
+                    <call method="setBatchInsertThreshold">
+                      <argument>4</argument>
+                    </call>
+                  </service>
+                </argument>
+                <argument type="service" id="doctrine_mongodb.odm.data_collector.pretty"/>
+              </argument>
+            </service>
+          </argument>
+          <argument>logQuery</argument>
+        </argument>
+      </call>
+    </service>
+    <service id="doctrine_mongodb.odm.default_manager_configurator" class="Doctrine\Bundle\MongoDBBundle\ManagerConfigurator">
+      <argument type="collection"/>
+    </service>
+    <service id="doctrine_mongodb.odm.default_document_manager" class="Doctrine\ODM\MongoDB\DocumentManager" factory-method="create">
+      <tag name="doctrine_mongodb.odm.document_manager"/>
+      <argument type="service" id="doctrine_mongodb.odm.default_connection"/>
+      <argument type="service" id="doctrine_mongodb.odm.default_configuration"/>
+      <argument type="service" id="doctrine_mongodb.odm.event_manager"/>
+      <configurator service="doctrine_mongodb.odm.default_manager_configurator" method="configure"/>
+    </service>
+    <service id="knp_menu.factory" class="Knp\Menu\MenuFactory">
+      <call method="addExtension">
+        <argument type="service">
+          <service class="Knp\Menu\Silex\RoutingExtension" public="false">
+            <tag name="knp_menu.factory_extension"/>
+            <argument type="service" id="router"/>
+          </service>
+        </argument>
+        <argument>0</argument>
+      </call>
+    </service>
+    <service id="knp_menu.matcher" class="Knp\Menu\Matcher\Matcher">
+      <call method="addVoter">
+        <argument type="service" id="knp_menu.voter.router"/>
+      </call>
+    </service>
+    <service id="knp_menu.renderer_provider" class="Knp\Bundle\MenuBundle\Renderer\ContainerAwareProvider">
+      <argument type="service" id="service_container"/>
+      <argument>twig</argument>
+      <argument type="collection">
+        <argument key="list">knp_menu.renderer.list</argument>
+        <argument key="twig">knp_menu.renderer.twig</argument>
+      </argument>
+    </service>
+    <service id="knp_menu.renderer.list" class="Knp\Menu\Renderer\ListRenderer">
+      <tag name="knp_menu.renderer" alias="list"/>
+      <argument type="service" id="knp_menu.matcher"/>
+      <argument type="collection"/>
+      <argument>UTF-8</argument>
+    </service>
+    <service id="knp_menu.listener.voters" class="Knp\Bundle\MenuBundle\EventListener\VoterInitializerListener">
+      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
+      <call method="addVoter">
+        <argument type="service" id="knp_menu.voter.router"/>
+      </call>
+    </service>
+    <service id="knp_menu.voter.router" class="Knp\Menu\Silex\Voter\RouteVoter">
+      <tag name="knp_menu.voter" request="1"/>
+    </service>
+    <service id="knp_menu.renderer.twig" class="Knp\Menu\Renderer\TwigRenderer">
+      <tag name="knp_menu.renderer" alias="twig"/>
+      <argument type="service" id="twig"/>
+      <argument>HeticSiteBundle:Default:menu.html.twig</argument>
+      <argument type="service" id="knp_menu.matcher"/>
+      <argument type="collection"/>
+    </service>
     <service id="web_profiler.controller.profiler" class="Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController">
       <argument type="service" id="router" on-invalid="null"/>
       <argument type="service" id="profiler" on-invalid="null"/>
@@ -3570,13 +4382,9 @@
           <argument>router</argument>
           <argument>@WebProfiler/Collector/router.html.twig</argument>
         </argument>
-        <argument key="data_collector.form" type="collection">
-          <argument>form</argument>
-          <argument>@WebProfiler/Collector/form.html.twig</argument>
-        </argument>
         <argument key="data_collector.security" type="collection">
           <argument>security</argument>
-          <argument>@Security/Collector/security.html.twig</argument>
+          <argument>SecurityBundle:Collector:security</argument>
         </argument>
         <argument key="swiftmailer.data_collector" type="collection">
           <argument>swiftmailer</argument>
@@ -3585,6 +4393,14 @@
         <argument key="data_collector.doctrine" type="collection">
           <argument>db</argument>
           <argument>DoctrineBundle:Collector:db</argument>
+        </argument>
+        <argument key="fos_elastica.data_collector" type="collection">
+          <argument>elastica</argument>
+          <argument>FOSElasticaBundle:Collector:elastica</argument>
+        </argument>
+        <argument key="doctrine_mongodb.odm.data_collector.pretty" type="collection">
+          <argument>mongodb</argument>
+          <argument>DoctrineMongoDBBundle:Collector:mongodb</argument>
         </argument>
       </argument>
       <argument>bottom</argument>
@@ -3669,21 +4485,6 @@
         <argument type="service" id="monolog.handler.debug"/>
       </call>
     </service>
-    <service id="monolog.logger.security" class="Symfony\Bridge\Monolog\Logger">
-      <argument>security</argument>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.chromephp"/>
-      </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.firephp"/>
-      </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.main"/>
-      </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
-      </call>
-    </service>
     <service id="monolog.logger.templating" class="Symfony\Bridge\Monolog\Logger">
       <argument>templating</argument>
       <call method="pushHandler">
@@ -3729,8 +4530,38 @@
         <argument type="service" id="monolog.handler.debug"/>
       </call>
     </service>
+    <service id="monolog.logger.security" class="Symfony\Bridge\Monolog\Logger">
+      <argument>security</argument>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.chromephp"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.firephp"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.main"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
+      </call>
+    </service>
     <service id="monolog.logger.doctrine" class="Symfony\Bridge\Monolog\Logger">
       <argument>doctrine</argument>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.chromephp"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.firephp"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.main"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
+      </call>
+    </service>
+    <service id="monolog.logger.elastica" class="Symfony\Bridge\Monolog\Logger">
+      <argument>elastica</argument>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.chromephp"/>
       </call>
@@ -3750,8 +4581,6 @@
     </service>
     <service id="session.storage.filesystem" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage">
       <argument>/home/boyer/hetic/app/cache/dev/sessions</argument>
-      <argument>MOCKSESSID</argument>
-      <argument type="service" id="session.storage.metadata_bag"/>
     </service>
     <service id="session.handler" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler">
       <argument>/home/boyer/hetic/app/cache/dev/sessions</argument>
@@ -3776,10 +4605,9 @@
           <argument key="code">templating.helper.code</argument>
           <argument key="translator">templating.helper.translator</argument>
           <argument key="form">templating.helper.form</argument>
-          <argument key="stopwatch">templating.helper.stopwatch</argument>
           <argument key="logout_url">templating.helper.logout_url</argument>
           <argument key="security">templating.helper.security</argument>
-          <argument key="assetic">assetic.helper.dynamic</argument>
+          <argument key="assetic">assetic.helper.static</argument>
           <argument key="jms_serializer">jms_serializer.templating.helper.serializer</argument>
           <argument key="knp_pagination">knp_paginator.templating.helper.pagination</argument>
         </argument>
@@ -3801,7 +4629,7 @@
     <service id="router" class="Symfony\Bundle\FrameworkBundle\Routing\Router">
       <tag name="monolog.logger" channel="router"/>
       <argument type="service" id="service_container"/>
-      <argument>/home/boyer/hetic/app/cache/dev/assetic/routing.yml</argument>
+      <argument>/home/boyer/hetic/app/config/routing_dev.yml</argument>
       <argument type="collection">
         <argument key="cache_dir">/home/boyer/hetic/app/cache/dev</argument>
         <argument key="debug">true</argument>
@@ -3827,10 +4655,12 @@
     </service>
     <service id="security.encoder_factory" class="Symfony\Component\Security\Core\Encoder\EncoderFactory">
       <argument type="collection">
-        <argument key="Symfony\Component\Security\Core\User\User" type="collection">
-          <argument key="class">%security.encoder.plain.class%</argument>
+        <argument key="Hetic\SiteBundle\Entity\Administrateur" type="collection">
+          <argument key="class">%security.encoder.digest.class%</argument>
           <argument key="arguments" type="collection">
-            <argument>false</argument>
+            <argument>sha512</argument>
+            <argument>true</argument>
+            <argument>10</argument>
           </argument>
         </argument>
       </argument>
@@ -3868,6 +4698,14 @@
         <argument>KnpPaginator</argument>
       </call>
       <call method="addPath">
+        <argument>/home/boyer/hetic/vendor/friendsofsymfony/elastica-bundle/FOS/ElasticaBundle/Resources/views</argument>
+        <argument>FOSElastica</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/boyer/hetic/vendor/doctrine/mongodb-odm-bundle/Doctrine/Bundle/MongoDBBundle/Resources/views</argument>
+        <argument>DoctrineMongoDB</argument>
+      </call>
+      <call method="addPath">
         <argument>/home/boyer/hetic/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views</argument>
         <argument>WebProfiler</argument>
       </call>
@@ -3880,6 +4718,9 @@
       </call>
       <call method="addPath">
         <argument>/home/boyer/hetic/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/boyer/hetic/vendor/knplabs/knp-menu/src/Knp/Menu/Resources/views</argument>
       </call>
     </service>
     <service id="logger" class="Symfony\Bridge\Monolog\Logger">
@@ -3980,6 +4821,9 @@
                       <argument key="JMS\SecurityExtraBundle">/home/boyer/hetic/vendor/jms/security-extra-bundle/JMS/SecurityExtraBundle/Resources/config/serializer</argument>
                       <argument key="JMS\DiExtraBundle">/home/boyer/hetic/vendor/jms/di-extra-bundle/JMS/DiExtraBundle/Resources/config/serializer</argument>
                       <argument key="Knp\Bundle\PaginatorBundle">/home/boyer/hetic/vendor/knplabs/knp-paginator-bundle/Knp/Bundle/PaginatorBundle/Resources/config/serializer</argument>
+                      <argument key="FOS\ElasticaBundle">/home/boyer/hetic/vendor/friendsofsymfony/elastica-bundle/FOS/ElasticaBundle/Resources/config/serializer</argument>
+                      <argument key="Doctrine\Bundle\MongoDBBundle">/home/boyer/hetic/vendor/doctrine/mongodb-odm-bundle/Doctrine/Bundle/MongoDBBundle/Resources/config/serializer</argument>
+                      <argument key="Knp\Bundle\MenuBundle">/home/boyer/hetic/vendor/knplabs/knp-menu-bundle/Knp/Bundle/MenuBundle/Resources/config/serializer</argument>
                       <argument key="Symfony\Bundle\WebProfilerBundle">/home/boyer/hetic/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
                       <argument key="Sensio\Bundle\DistributionBundle">/home/boyer/hetic/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/config/serializer</argument>
                       <argument key="Sensio\Bundle\GeneratorBundle">/home/boyer/hetic/vendor/sensio/generator-bundle/Sensio/Bundle/GeneratorBundle/Resources/config/serializer</argument>
@@ -4008,6 +4852,9 @@
                       <argument key="JMS\SecurityExtraBundle">/home/boyer/hetic/vendor/jms/security-extra-bundle/JMS/SecurityExtraBundle/Resources/config/serializer</argument>
                       <argument key="JMS\DiExtraBundle">/home/boyer/hetic/vendor/jms/di-extra-bundle/JMS/DiExtraBundle/Resources/config/serializer</argument>
                       <argument key="Knp\Bundle\PaginatorBundle">/home/boyer/hetic/vendor/knplabs/knp-paginator-bundle/Knp/Bundle/PaginatorBundle/Resources/config/serializer</argument>
+                      <argument key="FOS\ElasticaBundle">/home/boyer/hetic/vendor/friendsofsymfony/elastica-bundle/FOS/ElasticaBundle/Resources/config/serializer</argument>
+                      <argument key="Doctrine\Bundle\MongoDBBundle">/home/boyer/hetic/vendor/doctrine/mongodb-odm-bundle/Doctrine/Bundle/MongoDBBundle/Resources/config/serializer</argument>
+                      <argument key="Knp\Bundle\MenuBundle">/home/boyer/hetic/vendor/knplabs/knp-menu-bundle/Knp/Bundle/MenuBundle/Resources/config/serializer</argument>
                       <argument key="Symfony\Bundle\WebProfilerBundle">/home/boyer/hetic/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
                       <argument key="Sensio\Bundle\DistributionBundle">/home/boyer/hetic/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/config/serializer</argument>
                       <argument key="Sensio\Bundle\GeneratorBundle">/home/boyer/hetic/vendor/sensio/generator-bundle/Sensio/Bundle/GeneratorBundle/Resources/config/serializer</argument>
@@ -4036,6 +4883,9 @@
                       <argument key="JMS\SecurityExtraBundle">/home/boyer/hetic/vendor/jms/security-extra-bundle/JMS/SecurityExtraBundle/Resources/config/serializer</argument>
                       <argument key="JMS\DiExtraBundle">/home/boyer/hetic/vendor/jms/di-extra-bundle/JMS/DiExtraBundle/Resources/config/serializer</argument>
                       <argument key="Knp\Bundle\PaginatorBundle">/home/boyer/hetic/vendor/knplabs/knp-paginator-bundle/Knp/Bundle/PaginatorBundle/Resources/config/serializer</argument>
+                      <argument key="FOS\ElasticaBundle">/home/boyer/hetic/vendor/friendsofsymfony/elastica-bundle/FOS/ElasticaBundle/Resources/config/serializer</argument>
+                      <argument key="Doctrine\Bundle\MongoDBBundle">/home/boyer/hetic/vendor/doctrine/mongodb-odm-bundle/Doctrine/Bundle/MongoDBBundle/Resources/config/serializer</argument>
+                      <argument key="Knp\Bundle\MenuBundle">/home/boyer/hetic/vendor/knplabs/knp-menu-bundle/Knp/Bundle/MenuBundle/Resources/config/serializer</argument>
                       <argument key="Symfony\Bundle\WebProfilerBundle">/home/boyer/hetic/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
                       <argument key="Sensio\Bundle\DistributionBundle">/home/boyer/hetic/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/config/serializer</argument>
                       <argument key="Sensio\Bundle\GeneratorBundle">/home/boyer/hetic/vendor/sensio/generator-bundle/Sensio/Bundle/GeneratorBundle/Resources/config/serializer</argument>
@@ -4174,7 +5024,28 @@
     <service id="jms_di_extra.metadata_driver" class="JMS\DiExtraBundle\Metadata\Driver\AnnotationDriver">
       <argument type="service" id="annotation_reader"/>
     </service>
-    <service id="event_dispatcher" alias="debug.event_dispatcher"/>
+    <service id="doctrine_mongodb.odm.event_manager" class="Symfony\Bridge\Doctrine\ContainerAwareEventManager">
+      <argument type="service" id="service_container"/>
+    </service>
+    <service id="knp_menu.menu_provider" class="Knp\Menu\Provider\ChainProvider">
+      <argument type="collection">
+        <argument type="service">
+          <service class="Knp\Bundle\MenuBundle\Provider\ContainerAwareProvider" public="false">
+            <tag name="knp_menu.provider"/>
+            <argument type="service" id="service_container"/>
+            <argument type="collection"/>
+          </service>
+        </argument>
+        <argument type="service">
+          <service class="Knp\Bundle\MenuBundle\Provider\BuilderAliasProvider" public="false">
+            <tag name="knp_menu.provider"/>
+            <argument type="service" id="kernel"/>
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="knp_menu.factory"/>
+          </service>
+        </argument>
+      </argument>
+    </service>
     <service id="session.storage" alias="session.storage.native"/>
     <service id="debug.templating.engine.twig" alias="templating"/>
     <service id="swiftmailer.spool" alias="swiftmailer.mailer.default.spool"/>
@@ -4190,6 +5061,14 @@
     <service id="fos_rest.templating" alias="templating"/>
     <service id="fos_rest.serializer" alias="jms_serializer"/>
     <service id="fos_rest.inflector" alias="fos_rest.inflector.doctrine"/>
+    <service id="fos_elastica.client" alias="fos_elastica.client.default"/>
+    <service id="fos_elastica.index" alias="fos_elastica.index.website"/>
+    <service id="fos_elastica.manager" alias="fos_elastica.manager.orm"/>
+    <service id="doctrine_mongodb.odm.cache" alias="doctrine_mongodb.odm.cache.array"/>
+    <service id="doctrine_mongodb.odm.metadata.annotation_reader" alias="annotation_reader"/>
+    <service id="doctrine_mongodb.odm.document_manager" alias="doctrine_mongodb.odm.default_document_manager"/>
+    <service id="doctrine.odm.mongodb.document_manager" alias="doctrine_mongodb.odm.default_document_manager"/>
     <service id="sensio.distribution.webconfigurator" alias="sensio_distribution.webconfigurator"/>
+    <service id="assetic.filter.closure" alias="assetic.filter.closure.jar"/>
   </services>
 </container>

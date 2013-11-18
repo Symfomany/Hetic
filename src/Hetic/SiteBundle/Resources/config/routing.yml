@@ -1,80 +1,138 @@
-hetic_site_hello:
+hetic_site_main:
+  pattern:  /backend/
+  defaults: { _controller: HeticSiteBundle:Main:index }
+
+hetic_site_root:
   pattern:  /
-  defaults: { _controller: HeticSiteBundle:Default:index }
+  defaults: { _controller: HeticSiteBundle:Administrateur:login }
+
+hetic_site_dashboard:
+  pattern:  /backend/dashboard
+  defaults: { _controller: HeticSiteBundle:Main:dashboard }
+
+hetic_site_products:
+  pattern:  /backend/produits
+  defaults: { _controller: HeticSiteBundle:Product:products }
+
+hetic_site_remove_product:
+  pattern:  /backend/produit/suppression/{id}
+  defaults: { _controller: HeticSiteBundle:Product:removeproduct }
+
+hetic_site_remove_image_product:
+  pattern:  /backend/produit-image/suppression/{id}
+  defaults: { _controller: HeticSiteBundle:Product:removeimageproduct }
+
+hetic_site_cover_image_product:
+  pattern:  /backend/produit-image/cover/{id}
+  defaults: { _controller: HeticSiteBundle:Product:coverimageproduct }
+
+hetic_site_active_product:
+  pattern:  /backend/produit/activation/{id}
+  defaults: { _controller: HeticSiteBundle:Product:activeproduct }
+
+hetic_site_desactive_product:
+  pattern:  /backend/produit/desactivation/{id}
+  defaults: { _controller: HeticSiteBundle:Product:desactiveproduct }
+
+hetic_site_create_product:
+  pattern:  /backend/creer-un-produit
+  defaults: { _controller: HeticSiteBundle:Product:createproduct }
+
+hetic_site_edit_product:
+  pattern:  /backend/editer-un-produit/{id}
+  defaults: { _controller: HeticSiteBundle:Product:editproduct }
+
+hetic_site_visualize_product:
+  pattern:  /backend/voir-un-produit/{id}
+  defaults: { _controller: HeticSiteBundle:Product:visualizeproduct }
+
+hetic_site_edit_pictures_product:
+  pattern:  /backend/photo-du-produit/{id}
+  defaults: { _controller: HeticSiteBundle:Product:pictureproduct }
+
+hetic_site_commands:
+  pattern:  /backend/commandes
+  defaults: { _controller: HeticSiteBundle:Main:commands }
+
+hetic_site_familles:
+  pattern:  /backend/familles
+  defaults: { _controller: HeticSiteBundle:Category:familles }
+
+hetic_site_add_famille:
+  pattern:  /backend/famille/ajouter
+  defaults: { _controller: HeticSiteBundle:Category:createfamille }
+
+hetic_site_remove_famille:
+  pattern:  /backend/famille/supprimer/{id}
+  defaults: { _controller: HeticSiteBundle:Category:removefamille }
+
+hetic_site_edit_famille:
+  pattern:  /backend/famille/editer/{id}
+  defaults: { _controller: HeticSiteBundle:Category:editfamille }
+
+hetic_site_categories:
+  pattern:  /backend/categories
+  defaults: { _controller: HeticSiteBundle:Category:categories }
+
+hetic_site_add_category:
+  pattern:  /backend/category/ajouter
+  defaults: { _controller: HeticSiteBundle:Category:createcategory }
+
+hetic_site_edit_image_category:
+  pattern:  /backend/photo-de-category/{id}
+  defaults: { _controller: HeticSiteBundle:Category:picturecategory }
+
+hetic_site_category:
+  pattern:  /backend/category/{id}
+  defaults: { _controller: HeticSiteBundle:Category:category }
+
+hetic_site_cover_image_category:
+  pattern:  /backend/category-image/cover/{id}
+  defaults: { _controller: HeticSiteBundle:Category:coverimagecategory }
+
+hetic_site_remove_image_category:
+  pattern:  /backend/photo-de-category/suppression/{id}
+  defaults: { _controller: HeticSiteBundle:Category:removeimagecategory }
+
+hetic_site_remove_category:
+  pattern:  /backend/category/supprimer/{id}
+  defaults: { _controller: HeticSiteBundle:Category:removecategory }
+
+hetic_site_edit_category:
+  pattern:  /backend/category/editer/{id}
+  defaults: { _controller: HeticSiteBundle:Category:editcategory }
+
+hetic_site_active_category:
+  pattern:  /backend/category/activation/{id}
+  defaults: { _controller: HeticSiteBundle:Category:activecategory }
+
+hetic_site_desactive_category:
+  pattern:  /backend/category/desactivation/{id}
+  defaults: { _controller: HeticSiteBundle:Category:desactivecategory }
+
 
 hetic_about:
   pattern:  /about
-  defaults: { _controller: HeticSiteBundle:Default:about }
+  defaults: { _controller: HeticSiteBundle:Main:about }
 
 hetic_contact:
   pattern:  /contact
-  defaults: { _controller: HeticSiteBundle:Default:contact }
+  defaults: { _controller: HeticSiteBundle:Main:contact }
 
-hetic_site_remove:
-    pattern:  /remove/article/{id}
-    defaults: { _controller: HeticSiteBundle:Default:removeArticle }
+hetic_search:
+    pattern:  /recherche/
+    defaults: { _controller: HeticSiteBundle:Main:search }
 
-hetic_site_add_star:
-    pattern:  /addfavoris/addstar/{id}
-    defaults: { _controller: HeticSiteBundle:Default:putInStar }
+hetic_search_avanced:
+    pattern:  /recherche-avancee/
+    defaults: { _controller: HeticSiteBundle:Main:advancedsearch }
 
-hetic_site_remove_star:
-    pattern:  /articles/removestar/{id}
-    defaults: { _controller: HeticSiteBundle:Default:pullInStar }
+login:
+  pattern:  /login
+  defaults: { _controller: HeticSiteBundle:Administrateur:login }
 
-hetic_site_articles_by_cat:
-    pattern:  /articles/sortbycategory/{id}
-    defaults: { _controller: HeticSiteBundle:Default:getArticlesByCategory }
+login_check:
+  pattern:   /backend/login_check
 
-hetic_site_articles_by_tags:
-    pattern:  /articles/{tag}
-    defaults: { _controller: HeticSiteBundle:Default:getArticlesByTags }
-
-hetic_site_visible:
-    pattern:  /visible/{id}
-    defaults: { _controller: HeticSiteBundle:Default:visible }
-
-hetic_site_invisible:
-    pattern:  /invisible/{id}
-    defaults: { _controller: HeticSiteBundle:Default:invisible }
-
-hetic_site_edit:
-    pattern:  /editable/{id}
-    defaults: { _controller: HeticSiteBundle:Default:editable }
-
-hetic_article_see:
-    pattern:  /article/{id}
-    defaults: { _controller: HeticSiteBundle:Default:seearticle }
-
-hetic_article_more:
-    pattern:  /bonus-article/{id}
-    defaults: { _controller: HeticSiteBundle:Default:bonusarticle }
-
-hetic_article_less:
-    pattern:  /malus-article/{id}
-    defaults: { _controller: HeticSiteBundle:Default:malusarticle }
-
-hetic_category_detail:
-    pattern:  /category/{id}
-    defaults: { _controller: HeticSiteBundle:Default:categorydetail }
-
-hetic_category_sorted:
-    pattern:  /sort-by-category/{id}
-    defaults: { _controller: HeticSiteBundle:Default:categorysort }
-
-hetic_article_detail:
-    pattern:  /article-single/{id}
-    defaults: { _controller: HeticSiteBundle:Default:articledetail }
-
-hetic_category_create:
-    pattern:  /category-add/
-    defaults: { _controller: HeticSiteBundle:Default:categorycreate }
-
-hetic_category_edit:
-    pattern:  /category-edit/{id}
-    defaults: { _controller: HeticSiteBundle:Default:categoryedit }
-
-
-hetic_tag_remove:
-    pattern:  /tag-remove/{id}/{aid}
-    defaults: { _controller: HeticSiteBundle:Default:tagremove }
+logout:
+  pattern:   /backend/logout

@@ -1,31 +1,121 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}Source de Symfony 2 à Hetic{% endblock %}
+{% block title %}Horus Shop CMF{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css" />
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic' rel='stylesheet' type='text/css'>    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400" />
-    {% stylesheets '@HeticSiteBundle/Resources/public/css/main.sass' %}
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}" />
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="http://bootswatch.com/amelia/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="http://davidstutz.github.io/bootstrap-multiselect/css/bootstrap-multiselect.css"/>
+
+    {% stylesheets '@HeticSiteBundle/Resources/public/css/flat/green.css' filter='yui_css' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
+    {% stylesheets '@HeticSiteBundle/Resources/public/css/main.sass' filter='yui_css' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
     {% endstylesheets %}
 {% endblock %}
 
 
 {% block body %}
+    <a href="https://github.com/you"><img style="z-index: 50000;position: absolute; top: 0; right: 0; border: 0;"
+                                          src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
+                                          alt="Fork me on GitHub"></a>
     {% include 'HeticSiteBundle:Default:topmenu.html.twig' %}
     <div class="container-fluid">
         <div class="row-fluid">
             <div class="span12">
-                {% for flashMessage in app.session.flashbag.get('notice') %}
-                    <div class="flash-notice alert alert-block">
-                        {{ flashMessage }}
+                <div class="container">
+                    <div class="row-fluid">
+                        <div class="span3">
+                            <button id="closepanel" type="button" class="close" data-dismiss="alert"><i class="glyphicon glyphicon-remove-circle"></i> </button>
+                            <div class="panel panel-primary">
+                                <div class="panel-heading"><h4><i class="glyphicon glyphicon-list-alt"></i> Menu</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a><i class="glyphicon glyphicon-home"></i> Home</a></li>
+                                        <li><a><i class="glyphicon glyphicon-shopping-cart"></i> Gérer mes produits<span
+                                                        class="badge">10</span></a></li>
+                                        <li><a><i class="glyphicon glyphicon-ok"></i> Gérer mes commandes<span
+                                                        class="badge">42</span></a></li>
+                                        <li><a><i class="glyphicon glyphicon-cog"></i> Configuration</a></li>
+                                    </ul>
+                                </div>
+                                <div class="panel-heading"></div>
+                            </div>
+                        </div>
+
+                        <div class="span9">
+                            {#{% include 'HeticSiteBundle:Default:mainmenu.html.twig' %}#}
+                            {% include 'HeticSiteBundle:Default:flashdatas.html.twig' %}
+
+                            <nav class="navbar navbar-default" role="navigation">
+                                <button id="closesearch" type="button" class="close" data-dismiss="alert"><i class="glyphicon glyphicon-remove-circle"></i> </button>
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                            data-target="#bs-example-navbar-collapse-2">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="#"><i class="glyphicon glyphicon-search"></i> Rechercher un produit</a>
+                                </div>
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                                    <form action="{{ path('hetic_search') }}" class="span12" role="search">
+                                        <div class="form-group">
+                                            <div class="col-xs-8">
+                                                <input type="text" class="form-control"
+                                                       placeholder="Mots-clefs: Nom, Référence, Description, Catégorie...">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary"><i
+                                                        class="glyphicon glyphicon-search"></i></button>
+                                            <a id="moresearch" class="btn btn-primary"><i
+                                                        class="glyphicon glyphicon-plus-sign"></i> </a>
+
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="hide" id="advancedsearch">
+                                    <form action="{{ path('hetic_search_avanced') }}" class="form-inline" role="form">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail2"
+                                                   placeholder="Enter email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword2"
+                                                   placeholder="Password">
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"> Remember me
+                                            </label>
+                                        </div>
+                                        <button type="submit" class="btn btn-default">Sign in</button>
+                                    </form>
+                                </div>
+                            </nav>
+                            <div class="maincontent">
+                                {% block content %}
+                                {% endblock %}
+                            </div>
+                        </div>
                     </div>
-                {% endfor %}
-                {% block content %}
-                {% endblock %}
+                </div>
             </div>
+            <a href="#" class="scrollup">Scroll</a>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="container text-center">
+            <p class="muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
         </div>
     </div>
 {% endblock %}
@@ -34,4 +124,14 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <script src="http://damirfoy.com/iCheck/jquery.icheck.min.js?v=0.9.1"></script>
+    <script src="http://davidstutz.github.io/bootstrap-multiselect/js/bootstrap-multiselect.js"></script>
+    <script src="/js/ckeditor/ckeditor.js"></script>
+
+
+    {% javascripts '@HeticSiteBundle/Resources/public/js/main.coffee'  filter='closure' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
 {% endblock %}

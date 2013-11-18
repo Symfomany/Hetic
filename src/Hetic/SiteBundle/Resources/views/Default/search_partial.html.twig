@@ -1,0 +1,8 @@
+{% block search %}
+        <h2>Rechercher un article</h2>
+        <form action="{{ path('hetic_search') }}" method="post" id="addarticle">
+            {{ form_widget(form2) }}
+            <button class="btn btn-primary" type="submit">Rechercher un article</button>
+        </form>
+{% endblock %}
+

@@ -5,7 +5,6 @@ namespace Doctrine\Tests\ORM\Functional;
 use Doctrine\Tests\Models\CMS\CmsUser;
 use Doctrine\Tests\Models\CMS\CmsAddress;
 use Doctrine\Tests\Models\CMS\CmsPhonenumber;
-use Doctrine\Common\Collections\Criteria;
 
 require_once __DIR__ . '/../../TestInit.php';
 
@@ -47,12 +46,6 @@ class EntityRepositoryTest extends \Doctrine\Tests\OrmFunctionalTestCase
         $user3->status = null;
         $this->_em->persist($user3);
 
-        $user4 = new CmsUser;
-        $user4->name = 'Alexander';
-        $user4->username = 'asm89';
-        $user4->status = 'dev';
-        $this->_em->persist($user4);
-
         $this->_em->flush();
 
         $user1Id = $user->getId();
@@ -60,7 +53,6 @@ class EntityRepositoryTest extends \Doctrine\Tests\OrmFunctionalTestCase
         unset($user);
         unset($user2);
         unset($user3);
-        unset($user4);
 
         $this->_em->clear();
 
@@ -134,7 +126,7 @@ class EntityRepositoryTest extends \Doctrine\Tests\OrmFunctionalTestCase
         $repos = $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsUser');
 
         $users = $repos->findBy(array('status' => 'dev'));
-        $this->assertEquals(2, count($users));
+        $this->assertEquals(1, count($users));
         $this->assertInstanceOf('Doctrine\Tests\Models\CMS\CmsUser',$users[0]);
         $this->assertEquals('Guilherme', $users[0]->name);
         $this->assertEquals('dev', $users[0]->status);
@@ -194,7 +186,7 @@ class EntityRepositoryTest extends \Doctrine\Tests\OrmFunctionalTestCase
         $repos = $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsUser');
 
         $users = $repos->findByStatus('dev');
-        $this->assertEquals(2, count($users));
+        $this->assertEquals(1, count($users));
         $this->assertInstanceOf('Doctrine\Tests\Models\CMS\CmsUser',$users[0]);
         $this->assertEquals('Guilherme', $users[0]->name);
         $this->assertEquals('dev', $users[0]->status);
@@ -206,7 +198,7 @@ class EntityRepositoryTest extends \Doctrine\Tests\OrmFunctionalTestCase
         $repos = $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsUser');
 
         $users = $repos->findAll();
-        $this->assertEquals(4, count($users));
+        $this->assertEquals(3, count($users));
     }
 
     public function testFindByAlias()
@@ -219,7 +211,7 @@ class EntityRepositoryTest extends \Doctrine\Tests\OrmFunctionalTestCase
         $repos = $this->_em->getRepository('CMS:CmsUser');
 
         $users = $repos->findAll();
-        $this->assertEquals(4, count($users));
+        $this->assertEquals(3, count($users));
     }
 
     /**
@@ -345,20 +337,6 @@ class EntityRepositoryTest extends \Doctrine\Tests\OrmFunctionalTestCase
     }
 
     /**
-     * @group DDC-1241
-     */
-    public function testFindOneByOrderBy()
-    {
-    	$this->loadFixture();
-    	
-    	$repos = $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsUser');
-    	$userAsc = $repos->findOneBy(array(), array("username" => "ASC"));
-    	$userDesc = $repos->findOneBy(array(), array("username" => "DESC"));
-    	
-    	$this->assertNotSame($userAsc, $userDesc);
-    }
-    
-    /**
      * @group DDC-817
      */
     public function testFindByAssociationKey()
@@ -453,7 +431,7 @@ class EntityRepositoryTest extends \Doctrine\Tests\OrmFunctionalTestCase
         $users1 = $repos->findBy(array(), null, 1, 0);
         $users2 = $repos->findBy(array(), null, 1, 1);
 
-        $this->assertEquals(4, count($repos->findBy(array())));
+        $this->assertEquals(3, count($repos->findBy(array())));
         $this->assertEquals(1, count($users1));
         $this->assertEquals(1, count($users2));
         $this->assertNotSame($users1[0], $users2[0]);
@@ -470,49 +448,12 @@ class EntityRepositoryTest extends \Doctrine\Tests\OrmFunctionalTestCase
         $usersAsc = $repos->findBy(array(), array("username" => "ASC"));
         $usersDesc = $repos->findBy(array(), array("username" => "DESC"));
 
-        $this->assertEquals(4, count($usersAsc), "Pre-condition: only four users in fixture");
-        $this->assertEquals(4, count($usersDesc), "Pre-condition: only four users in fixture");
-        $this->assertSame($usersAsc[0], $usersDesc[3]);
-        $this->assertSame($usersAsc[3], $usersDesc[0]);
+        $this->assertEquals(3, count($usersAsc), "Pre-condition: only three users in fixture");
+        $this->assertEquals(3, count($usersDesc), "Pre-condition: only three users in fixture");
+        $this->assertSame($usersAsc[0], $usersDesc[2]);
+        $this->assertSame($usersAsc[2], $usersDesc[0]);
     }
 
-    /**
-     * @group DDC-1426
-     */
-    public function testFindFieldByMagicCallOrderBy()
-    {
-        $this->loadFixture();
-        $repos = $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsUser');
-
-        $usersAsc = $repos->findByStatus('dev', array('username' => "ASC"));
-        $usersDesc = $repos->findByStatus('dev', array('username' => "DESC"));
-
-        $this->assertEquals(2, count($usersAsc));
-        $this->assertEquals(2, count($usersDesc));
-
-        $this->assertInstanceOf('Doctrine\Tests\Models\CMS\CmsUser',$usersAsc[0]);
-        $this->assertEquals('Alexander', $usersAsc[0]->name);
-        $this->assertEquals('dev', $usersAsc[0]->status);
-
-        $this->assertSame($usersAsc[0], $usersDesc[1]);
-        $this->assertSame($usersAsc[1], $usersDesc[0]);
-    }
-
-    /**
-     * @group DDC-1426
-     */
-    public function testFindFieldByMagicCallLimitOffset()
-    {
-        $this->loadFixture();
-        $repos = $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsUser');
-
-        $users1 = $repos->findByStatus('dev', array(), 1, 0);
-        $users2 = $repos->findByStatus('dev', array(), 1, 1);
-
-        $this->assertEquals(1, count($users1));
-        $this->assertEquals(1, count($users2));
-        $this->assertNotSame($users1[0], $users2[0]);
-    }
 
     /**
      * @group DDC-753
@@ -542,7 +483,7 @@ class EntityRepositoryTest extends \Doctrine\Tests\OrmFunctionalTestCase
     /**
      * @group DDC-753
      * @expectedException Doctrine\ORM\ORMException
-     * @expectedExceptionMessage Invalid repository class 'Doctrine\Tests\Models\DDC753\DDC753InvalidRepository'. It must be a Doctrine\Common\Persistence\ObjectRepository.
+     * @expectedExceptionMessage Invalid repository class 'Doctrine\Tests\Models\DDC753\DDC753InvalidRepository'. it must be a Doctrine\ORM\EntityRepository.
      */
     public function testSetDefaultRepositoryInvalidClassError()
     {
@@ -559,152 +500,6 @@ class EntityRepositoryTest extends \Doctrine\Tests\OrmFunctionalTestCase
 
         $repo = $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsUser');
         $repo->findBy(array('status' => 'test'), array('username' => 'INVALID'));
-    }
-
-    /**
-     * @group DDC-1713
-     */
-    public function testFindByAssocationArray()
-    {
-        $repo = $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsArticle');
-        $data = $repo->findBy(array('user' => array(1, 2, 3)));
-
-        $query = array_pop($this->_sqlLoggerStack->queries);
-        $this->assertEquals(array(1,2,3), $query['params'][0]);
-        $this->assertEquals(\Doctrine\DBAL\Connection::PARAM_INT_ARRAY, $query['types'][0]);
-    }
-
-    /**
-     * @group DDC-1637
-     */
-    public function testMatchingEmptyCriteria()
-    {
-        $this->loadFixture();
-
-        $repository = $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsUser');
-        $users = $repository->matching(new Criteria());
-
-        $this->assertEquals(4, count($users));
-    }
-
-    /**
-     * @group DDC-1637
-     */
-    public function testMatchingCriteriaEqComparison()
-    {
-        $this->loadFixture();
-
-        $repository = $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsUser');
-        $users = $repository->matching(new Criteria(
-            Criteria::expr()->eq('username', 'beberlei')
-        ));
-
-        $this->assertEquals(1, count($users));
-    }
-
-    /**
-     * @group DDC-1637
-     */
-    public function testMatchingCriteriaNeqComparison()
-    {
-        $this->loadFixture();
-
-        $repository = $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsUser');
-        $users = $repository->matching(new Criteria(
-            Criteria::expr()->neq('username', 'beberlei')
-        ));
-
-        $this->assertEquals(3, count($users));
-    }
-
-    /**
-     * @group DDC-1637
-     */
-    public function testMatchingCriteriaInComparison()
-    {
-        $this->loadFixture();
-
-        $repository = $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsUser');
-        $users = $repository->matching(new Criteria(
-            Criteria::expr()->in('username', array('beberlei', 'gblanco'))
-        ));
-
-        $this->assertEquals(2, count($users));
-    }
-
-    /**
-     * @group DDC-1637
-     */
-    public function testMatchingCriteriaNotInComparison()
-    {
-        $this->loadFixture();
-
-        $repository = $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsUser');
-        $users = $repository->matching(new Criteria(
-            Criteria::expr()->notIn('username', array('beberlei', 'gblanco', 'asm89'))
-        ));
-
-        $this->assertEquals(1, count($users));
-    }
-
-    /**
-     * @group DDC-1637
-     */
-    public function testMatchingCriteriaLtComparison()
-    {
-        $firstUserId = $this->loadFixture();
-
-        $repository = $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsUser');
-        $users = $repository->matching(new Criteria(
-            Criteria::expr()->lt('id', $firstUserId + 1)
-        ));
-
-        $this->assertEquals(1, count($users));
-    }
-
-    /**
-     * @group DDC-1637
-     */
-    public function testMatchingCriteriaLeComparison()
-    {
-        $firstUserId = $this->loadFixture();
-
-        $repository = $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsUser');
-        $users = $repository->matching(new Criteria(
-            Criteria::expr()->lte('id', $firstUserId + 1)
-        ));
-
-        $this->assertEquals(2, count($users));
-    }
-
-    /**
-     * @group DDC-1637
-     */
-    public function testMatchingCriteriaGtComparison()
-    {
-        $firstUserId = $this->loadFixture();
-
-        $repository = $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsUser');
-        $users = $repository->matching(new Criteria(
-            Criteria::expr()->gt('id', $firstUserId)
-        ));
-
-        $this->assertEquals(3, count($users));
-    }
-
-    /**
-     * @group DDC-1637
-     */
-    public function testMatchingCriteriaGteComparison()
-    {
-        $firstUserId = $this->loadFixture();
-
-        $repository = $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsUser');
-        $users = $repository->matching(new Criteria(
-            Criteria::expr()->gte('id', $firstUserId)
-        ));
-
-        $this->assertEquals(4, count($users));
     }
 }
 

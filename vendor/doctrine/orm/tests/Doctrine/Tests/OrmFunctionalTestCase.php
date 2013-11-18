@@ -148,7 +148,6 @@ abstract class OrmFunctionalTestCase extends OrmTestCase
             $conn->executeUpdate('DELETE FROM cms_comments');
             $conn->executeUpdate('DELETE FROM cms_articles');
             $conn->executeUpdate('DELETE FROM cms_users');
-            $conn->executeUpdate('DELETE FROM cms_emails');
         }
 
         if (isset($this->_usedModelSets['ecommerce'])) {
@@ -209,6 +208,7 @@ abstract class OrmFunctionalTestCase extends OrmTestCase
             $conn->executeUpdate('DELETE FROM Directory');
         }
         if (isset($this->_usedModelSets['ddc117'])) {
+            return;
             $conn->executeUpdate('DELETE FROM ddc117editor_ddc117translation');
             $conn->executeUpdate('DELETE FROM DDC117Editor');
             $conn->executeUpdate('DELETE FROM DDC117ApproveChanges');
@@ -343,7 +343,7 @@ abstract class OrmFunctionalTestCase extends OrmTestCase
         $config->setProxyDir(__DIR__ . '/Proxies');
         $config->setProxyNamespace('Doctrine\Tests\Proxies');
 
-        $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver(array(), true));
+        $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver());
 
         $conn = static::$_sharedConn;
         $conn->getConfiguration()->setSQLLogger($this->_sqlLoggerStack);

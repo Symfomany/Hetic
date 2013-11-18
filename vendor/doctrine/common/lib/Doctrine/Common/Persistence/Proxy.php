@@ -1,4 +1,5 @@
 <?php
+
 /*
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -13,7 +14,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * This software consists of voluntary contributions made by many individuals
- * and is licensed under the MIT license. For more information, see
+ * and is licensed under the LGPL. For more information, see
  * <http://www.doctrine-project.org>.
  */
 
@@ -23,7 +24,7 @@ namespace Doctrine\Common\Persistence;
  * Interface for proxy classes.
  *
  * @author Roman Borschel <roman@code-factory.org>
- * @since  2.2
+ * @since 2.2
  */
 interface Proxy
 {
@@ -35,14 +36,14 @@ interface Proxy
     const MARKER = '__CG__';
 
     /**
-     * Length of the proxy marker.
+     * Length of the proxy marker
      *
-     * @var integer
+     * @var int
      */
     const MARKER_LENGTH = 6;
 
     /**
-     * Initializes this proxy if its not yet initialized.
+     * Initialize this proxy if its not yet initialized.
      *
      * Acts as a no-op if already initialized.
      *
@@ -51,7 +52,7 @@ interface Proxy
     public function __load();
 
     /**
-     * Returns whether this proxy is initialized or not.
+     * Is this proxy initialized or not.
      *
      * @return bool
      */

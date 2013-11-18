@@ -27,7 +27,6 @@ $metadata->mapField(array(
    'unique' => true,
    'nullable' => true,
    'columnName' => 'name',
-   'options' => array('foo' => 'bar', 'baz' => array('key' => 'val')),
   ));
 $metadata->mapField(array(
    'fieldName' => 'email',
@@ -35,9 +34,6 @@ $metadata->mapField(array(
    'columnName' => 'user_email',
    'columnDefinition' => 'CHAR(32) NOT NULL',
   ));
-$mapping = array('fieldName' => 'version', 'type' => 'integer');
-$metadata->setVersionMapping($mapping);
-$metadata->mapField($mapping);
 $metadata->setIdGeneratorType(ClassMetadataInfo::GENERATOR_TYPE_AUTO);
 $metadata->mapOneToOne(array(
    'fieldName' => 'address',
@@ -110,10 +106,6 @@ $metadata->mapManyToMany(array(
    ),
    'orderBy' => NULL,
   ));
-$metadata->table['options'] = array(
-    'foo' => 'bar', 
-    'baz' => array('key' => 'val')
-);
 $metadata->table['uniqueConstraints'] = array(
     'search_idx' => array('columns' => array('name', 'user_email')),
 );

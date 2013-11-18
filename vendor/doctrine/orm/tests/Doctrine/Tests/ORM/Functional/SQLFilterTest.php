@@ -301,18 +301,18 @@ class SQLFilterTest extends \Doctrine\Tests\OrmFunctionalTestCase
         $query->setQueryCacheDriver($cache);
 
         $query->getResult();
-        $this->assertEquals(2, sizeof($cacheDataReflection->getValue($cache)));
+        $this->assertEquals(1, sizeof($cacheDataReflection->getValue($cache)));
 
         $conf = $this->_em->getConfiguration();
         $conf->addFilter("locale", "\Doctrine\Tests\ORM\Functional\MyLocaleFilter");
         $this->_em->getFilters()->enable("locale");
 
         $query->getResult();
-        $this->assertEquals(3, sizeof($cacheDataReflection->getValue($cache)));
+        $this->assertEquals(2, sizeof($cacheDataReflection->getValue($cache)));
 
         // Another time doesn't add another cache entry
         $query->getResult();
-        $this->assertEquals(3, sizeof($cacheDataReflection->getValue($cache)));
+        $this->assertEquals(2, sizeof($cacheDataReflection->getValue($cache)));
     }
 
     public function testQueryGeneration_DependsOnFilters()
@@ -326,80 +326,6 @@ class SQLFilterTest extends \Doctrine\Tests\OrmFunctionalTestCase
             ->setParameter("country", "en", DBALType::STRING);
 
         $this->assertNotEquals($firstSQLQuery, $query->getSQL());
-    }
-
-    public function testRepositoryFind()
-    {
-        $this->loadFixtureData();
-
-        $this->assertNotNull($this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsGroup')->find($this->groupId));
-        $this->assertNotNull($this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsGroup')->find($this->groupId2));
-
-        $this->useCMSGroupPrefixFilter();
-        $this->_em->clear();
-
-        $this->assertNotNull($this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsGroup')->find($this->groupId));
-        $this->assertNull($this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsGroup')->find($this->groupId2));
-    }
-
-    public function testRepositoryFindAll()
-    {
-        $this->loadFixtureData();
-
-        $this->assertCount(2, $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsGroup')->findAll());
-
-        $this->useCMSGroupPrefixFilter();
-        $this->_em->clear();
-
-        $this->assertCount(1, $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsGroup')->findAll());
-    }
-
-    public function testRepositoryFindBy()
-    {
-        $this->loadFixtureData();
-
-        $this->assertCount(1, $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsGroup')->findBy(array('id' => $this->groupId2)));
-
-        $this->useCMSGroupPrefixFilter();
-        $this->_em->clear();
-
-        $this->assertCount(0, $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsGroup')->findBy(array('id' => $this->groupId2)));
-    }
-
-    public function testRepositoryFindByX()
-    {
-        $this->loadFixtureData();
-
-        $this->assertCount(1, $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsGroup')->findById($this->groupId2));
-
-        $this->useCMSGroupPrefixFilter();
-        $this->_em->clear();
-
-        $this->assertCount(0, $this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsGroup')->findById($this->groupId2));
-    }
-
-    public function testRepositoryFindOneBy()
-    {
-        $this->loadFixtureData();
-
-        $this->assertNotNull($this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsGroup')->findOneBy(array('id' => $this->groupId2)));
-
-        $this->useCMSGroupPrefixFilter();
-        $this->_em->clear();
-
-        $this->assertNull($this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsGroup')->findOneBy(array('id' => $this->groupId2)));
-    }
-
-    public function testRepositoryFindOneByX()
-    {
-        $this->loadFixtureData();
-
-        $this->assertNotNull($this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsGroup')->findOneById($this->groupId2));
-
-        $this->useCMSGroupPrefixFilter();
-        $this->_em->clear();
-
-        $this->assertNull($this->_em->getRepository('Doctrine\Tests\Models\CMS\CmsGroup')->findOneById($this->groupId2));
     }
 
     public function testToOneFilter()
@@ -441,22 +367,6 @@ class SQLFilterTest extends \Doctrine\Tests\OrmFunctionalTestCase
     {
         $this->loadFixtureData();
         $query = $this->_em->createQuery('select ug from Doctrine\Tests\Models\CMS\CmsGroup ug WHERE 1=1');
-
-        // We get two users before enabling the filter
-        $this->assertEquals(2, count($query->getResult()));
-
-        $conf = $this->_em->getConfiguration();
-        $conf->addFilter("group_prefix", "\Doctrine\Tests\ORM\Functional\CMSGroupPrefixFilter");
-        $this->_em->getFilters()->enable("group_prefix")->setParameter("prefix", "bar_%", DBALType::STRING);
-
-        // We get one user after enabling the filter
-        $this->assertEquals(1, count($query->getResult()));
-    }
-
-    public function testWhereOrFilter()
-    {
-        $this->loadFixtureData();
-        $query = $this->_em->createQuery('select ug from Doctrine\Tests\Models\CMS\CmsGroup ug WHERE 1=1 OR 1=1');
 
         // We get two users before enabling the filter
         $this->assertEquals(2, count($query->getResult()));

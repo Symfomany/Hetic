@@ -1,0 +1,24 @@
+2013-07-29 18:11:10 - ----------------------------------------------------------
+2013-07-29 18:11:10 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-29 18:11:11 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2013-07-29 18:11:11 - response return (code 02503)
+2013-07-29 20:57:45 - ----------------------------------------------------------
+2013-07-29 20:57:45 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-29 20:57:45 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2013-07-29 20:57:46 - response return (code 02503)
+2013-07-29 20:59:39 - ----------------------------------------------------------
+2013-07-29 20:59:39 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-29 20:59:39 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2013-07-29 20:59:40 - response return (code 02503)
+2013-07-29 21:10:30 - ----------------------------------------------------------
+2013-07-29 21:10:30 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-29 21:10:30 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2013-07-29 21:10:30 - response return (code 02503)
+2013-07-29 23:42:27 - ----------------------------------------------------------
+2013-07-29 23:42:27 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-29 23:42:27 - webServiceRequest(doWebPayment) - Location : https://homologation.payline.com/V4/services/WebPaymentAPI
+2013-07-29 23:42:28 - response return (code 00000)
+2013-07-29 23:48:27 - ----------------------------------------------------------
+2013-07-29 23:48:27 - paylineSDK::__construct(74523340176234, q5****************7K, , , , , )
+2013-07-29 23:48:27 - webServiceRequest(getCards) - Location : https://homologation.payline.com/V4/services/DirectPaymentAPI
+2013-07-29 23:48:27 - response return (code 02503)

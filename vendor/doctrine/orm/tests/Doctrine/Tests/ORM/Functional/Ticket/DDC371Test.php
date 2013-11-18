@@ -5,9 +5,6 @@ use Doctrine\ORM\Query;
 
 require_once __DIR__ . '/../../../TestInit.php';
 
-/**
- * @group DDC-371
- */
 class DDC371Test extends \Doctrine\Tests\OrmFunctionalTestCase
 {
     protected function setUp()

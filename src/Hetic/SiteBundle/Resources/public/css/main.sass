@@ -1,3 +1,366 @@
+@import "compass"
+
+
+/*
+ * Global Variable
+ */
+
+$helvetica: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif
+$blue: #2980b9
+
+
+/*
+ * --------------------------------------------------------------------------------------------------------------------------------
+ */
+
+
+/*
+ * Clear Page
+ */
+@mixin clearfix()
+  &:before,&:after
+    content: ""
+    display: table
+  &:after
+    clear: both
+
+
+/*
+ * Full Page
+ */
+@mixin fullpage()
+  width: 100%
+  height: 100%
+
+/*
+ * Get Compatible property
+ */
+@mixin vendorize($property, $value)
+  -webkit-#{$property}: $value
+  -moz-#{$property}: $value
+  -ms-#{$property}: $value
+  -o-#{$property}: $value
+  #{$property}: $value
+
+
+/*
+ * Get Clear method
+ */
+@mixin clear()
+  &:before, &:after
+    content: "\0020"
+    display: block
+    height: 0
+    overflow: hidden
+  &:after
+    clear: both
+
+/*
+ * Get Test Out of Page
+ */
+@mixin linkTextOffscreen()
+  text-indent: -9999px
+  overflow: hidden
+  text-decoration: none
+  display: block
+  font-size: 0
+  text-align: start
+
+/*
+ * Get Common Property
+ */
+@mixin hoverActiveFocus($property, $value)
+  &:hover, &:active, &:focus
+    #{$property}: $value
+
+
+/*
+ * Get Font Size Responsive
+ */
+@mixin font-size($sizeValue: 1.6)
+  font-size: ($sizeValue * 10) + px
+  font-size: $sizeValue + rem
+
+
+/*
+ * --------------------------------------------------------------------------------------------------------------------------------
+ */
+
+
+
+
+/*
+ * General dom Elements
+ */
 body
-  background: #f6f4f4 url(https://www.myposeo.com/img/frontend/main_background.jpg) repeat
+  background: url('https://www.myposeo.com/img/frontend/main_background.jpg')
   margin: 0
+  padding: 0
+label
+  font-size: 18px
+  color: brown
+  font-family: 'Lobster',cursive
+
+.form-control
+  font-size: 16px
+a
+  color: chocolate
+a.list-group-item
+  color: #222
+.navbar-default
+  @include box-shadow(1px 1px 12px #555)
+
+hr.fancy-line
+  border: 0
+  height: 1px
+
+
+hr.fancy-line:before
+  top: -0.5em
+  height: 1em
+
+hr.fancy-line:after
+  content: ''
+  height: 0.5em
+  top: 1px
+
+.iradio_flat-green
+  margin-right: 7px
+hr.fancy-line:before, hr.fancy-line:after
+  content: ''
+  position: absolute
+  width: 100%
+
+hr.fancy-line, hr.fancy-line:before
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%,rgba(0,0,0,0) 75%)
+
+
+body, hr.fancy-line:after
+  background: #f4f4f4
+
+.maincontent
+  button[type="submit"]
+    width: 100%
+
+input:invalid,
+textarea:invalid,
+select:invalid
+  color: #b94a48
+  border-color: #ee5f5b
+  &:focus
+    border-color: darken(#ee5f5b, 10%)
+    @include box-shadow(0 0 6px lighten(#ee5f5b, 20%))
+
+.container-fluid
+  min-height: 700px
+  height: auto !important
+  height: 100%
+  margin: 0 auto 0px
+
+.nav-pills>li>a
+  color: #ff743d
+  text-shadow: 1px 1px #49080c, 1px 1px #49080c
+.nav>li>a:hover, .nav>li>a:focus
+  text-decoration: none
+  background-color: #49080c
+  color: white
+
+.media-body
+  min-height: 155px
+
+#closepanel, #closesearch
+  position: relative
+  top: 15px
+  right: 4px
+
+#footer
+  background-color: #111
+  height: 150px
+  border: 1px solid black
+
+.panel
+  background-color: darkred
+
+.form-signin
+  max-width: 330px
+  padding: 15px
+  margin: 0 auto
+
+.img-thumbnail
+  background-color: transparent
+
+.well
+  background-color: cornsilk
+  border: 1px solid bisque
+
+.maincontent
+  .tab-content>.tab-pane
+    border: 1px dashed brown
+    padding: 15px
+    background-color: white
+    border-radius: 4px
+
+.nav-tabs
+  border: none
+
+img.img-thumbnail
+  max-width: 200px
+
+h1, h2
+  color: darkcyan
+
+.media
+  img
+    max-width: 200px
+
+.nav-tabs>li>a:hover
+  border-color: transparent transparent brown
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus
+  background-color: brown
+
+@media (min-width: 768px)
+  .scrollup
+    width: 40px
+    height: 40px
+    opacity: 0.3
+    position: fixed
+    bottom: 50px
+    right: 100px
+    display: none
+    text-indent: -9999px
+    background: url('http://www.pawelkaim.com/img/arrowTop.png')
+
+@media (min-width: 500px)
+  .container-fluid
+    padding-top: 70px
+@media (max-width: 600px)
+  .nav>li
+    margin-left: 5px
+  .nav-tabs>li>a
+    font-size: 11px
+  .navbar-fixed-top, .navbar-fixed-bottom
+    position: fixed
+  .navbar-default
+    .navbar-brand
+      position: relative
+      left: 50px
+  .label
+    font-size: 64%
+  .navbar-default
+    margin: 0
+  .form-control
+    font-size: 14px
+  h1
+    font-size: 18px
+  h3,h4
+    font-size: 14px
+  .media-body
+    font-size: 11px
+  p
+    font-size: 11px
+  .nav-pills>li>a
+    font-size: 11px
+  .media-heading
+    font-size: 15px
+  .media
+    .pull-right
+      clear: both
+
+
+/*
+ * --------------------------------------------------------------------------------------------------------------------------------
+ */
+
+
+/*
+ * General blocks
+ */
+//
+//
+///* Main Container */
+.container
+  .maincontent
+    background-color: #fff
+    background-image: linear-gradient(#eee .1em, transparent .1em)
+    background-size: 100% 1.2em
+    border-radius: 5px
+    color: darkgoldenrod
+    padding: 10px
+    border: 1px solid #ddd
+
+//  position: relative
+//  @include fullpage()
+//  left: 0
+//  +transition(left 0.4s ease-in-out)
+//  .open-sidebar
+//    left: 240px
+//
+//  /* Sidebar Element */
+//  #sidebar
+//    position: absolute
+//    left: -240px
+//    background: $blue
+//    width: 240px
+//    height: 100%
+//    @include box-sizing(border-box)
+//    a
+//      padding: 15px 20px
+//      font-size: 16px
+//      font-weight: 100
+//      color: white
+//      text-decoration: none
+//      display: block
+//      border-bottom: 1px solid $blue
+//      +transition(background 0.3s ease-in-out)
+//      cursor: pointer
+//      &:hover
+//        background: #3498db
+//
+//  /* Main Content */
+//  .main-content
+//    @include fullpage()
+//    @include box-sizing(border-box)
+//    padding: 10px
+//    position: relative
+//
+//    /* Content */
+//    .content
+//      @include box-sizing(border-box)
+//      padding-left: 60px
+//      width: 100%
+//      h1
+//        font-weight: 100
+//
+//    /* Sidebar */
+//    #sidebar-toggle
+//      background: $blue
+//      @include border-radius(3px)
+//      display: block
+//      position: relative
+//      padding: 10px 7px
+//      float: left
+//      cursor: pointer
+//      span
+//        display: block
+//        width: 18px
+//        margin-bottom: 3px
+//        height: 2px
+//        background-color: #fff
+//        @include border-radius(1px)
+//        &:last-child
+//          margin-bottom: 0
+//
+
+
+/*
+ * --------------------------------------------------------------------------------------------------------------------------------
+ */
+
+/*
+ * General Classes
+ */
+ .clear
+  both
+
+

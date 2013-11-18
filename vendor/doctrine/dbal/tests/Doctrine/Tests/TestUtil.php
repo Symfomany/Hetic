@@ -28,7 +28,7 @@ class TestUtil
      * 1) Each invocation of this method returns a NEW database connection.
      * 2) The database is dropped and recreated to ensure it's clean.
      *
-     * @return \Doctrine\DBAL\Connection The database connection instance.
+     * @return Doctrine\DBAL\Connection The database connection instance.
      */
     public static function getConnection()
     {
@@ -71,7 +71,8 @@ class TestUtil
                 $tmpConn = \Doctrine\DBAL\DriverManager::getConnection($tmpDbParams);
                 $realConn->close();
 
-                $tmpConn->getSchemaManager()->dropAndCreateDatabase($dbname);
+                $tmpConn->getSchemaManager()->dropDatabase($dbname);
+                $tmpConn->getSchemaManager()->createDatabase($dbname);
 
                 $tmpConn->close();
             } else {

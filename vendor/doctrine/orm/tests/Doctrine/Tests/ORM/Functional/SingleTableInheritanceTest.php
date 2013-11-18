@@ -3,7 +3,8 @@
 namespace Doctrine\Tests\ORM\Functional;
 
 use Doctrine\ORM\Mapping\ClassMetadata;
-use Doctrine\Common\Collections\Criteria;
+
+require_once __DIR__ . '/../../TestInit.php';
 
 class SingleTableInheritanceTest extends \Doctrine\Tests\OrmFunctionalTestCase
 {
@@ -332,26 +333,6 @@ class SingleTableInheritanceTest extends \Doctrine\Tests\OrmFunctionalTestCase
         $repos = $this->_em->getRepository("Doctrine\Tests\Models\Company\CompanyFlexUltraContract");
         $contracts = $repos->findBy(array('salesPerson' => $this->salesPerson->getId()));
         $this->assertEquals(1, count($contracts), "There should be 1 entities related to " . $this->salesPerson->getId() . " for 'Doctrine\Tests\Models\Company\CompanyFlexUltraContract'");
-    }
-
-    /**
-     * @group DDC-1637
-     */
-    public function testInheritanceMatching()
-    {
-        $this->loadFullFixture();
-
-        $repository = $this->_em->getRepository("Doctrine\Tests\Models\Company\CompanyContract");
-        $contracts = $repository->matching(new Criteria(
-            Criteria::expr()->eq('salesPerson', $this->salesPerson->getId())
-        ));
-        $this->assertEquals(3, count($contracts));
-
-        $repository = $this->_em->getRepository("Doctrine\Tests\Models\Company\CompanyFixContract");
-        $contracts = $repository->matching(new Criteria(
-            Criteria::expr()->eq('salesPerson', $this->salesPerson->getId())
-        ));
-        $this->assertEquals(1, count($contracts));
     }
 
     /**

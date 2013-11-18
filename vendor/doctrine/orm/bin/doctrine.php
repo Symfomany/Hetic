@@ -17,7 +17,14 @@
  * <http://www.doctrine-project.org>.
  */
 
-(@include_once __DIR__ . '/../vendor/autoload.php') || @include_once __DIR__ . '/../../../autoload.php';
+require_once 'Doctrine/Common/ClassLoader.php';
+
+$classLoader = new \Doctrine\Common\ClassLoader('Doctrine');
+$classLoader->register();
+
+$classLoader = new \Doctrine\Common\ClassLoader('Symfony', 'Doctrine');
+$classLoader->register();
+
 $configFile = getcwd() . DIRECTORY_SEPARATOR . 'cli-config.php';
 
 $helperSet = null;

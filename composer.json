@@ -8,8 +8,8 @@
     },
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "~2.4",
-        "doctrine/orm": ">=2.2.3,<2.4-dev",
+        "symfony/symfony": "~2.3",
+        "doctrine/orm": ">=2.2.3,<2.3",
         "doctrine/doctrine-bundle": "1.2.*",
         "twig/extensions": "1.0.*",
         "symfony/assetic-bundle": "2.3.*",
@@ -23,7 +23,15 @@
         "jms/serializer-bundle": "dev-master",
         "jms/security-extra-bundle": "dev-master",
         "knplabs/knp-paginator-bundle": "dev-master",
-        "codeception/codeception": "*"
+        "codeception/codeception": "*",
+        "friendsofsymfony/elastica-bundle": "3.0.*@dev",
+        "doctrine/mongodb-odm-bundle": "3.0.*",
+        "whiteoctober/breadcrumbs-bundle": "dev-master",
+        "knplabs/knp-menu-bundle":"dev-master",
+        "stof/doctrine-extensions-bundle":"dev-master",
+        "fg/essence":  "1.4.1",
+        "imagine/Imagine":"0.6.*@dev"
+
     },
     "scripts": {
         "post-install-cmd": [
@@ -44,7 +52,7 @@
     "config": {
         "bin-dir": "bin"
     },
-    "minimum-stability": "beta",
+    "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
@@ -52,7 +60,7 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": {
-            "dev-master": "2.4-dev"
+            "dev-master": "2.3-dev"
         }
     }
 }

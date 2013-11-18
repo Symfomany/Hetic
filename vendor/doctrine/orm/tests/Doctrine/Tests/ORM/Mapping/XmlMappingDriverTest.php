@@ -55,7 +55,7 @@ class XmlMappingDriverTest extends AbstractMappingDriverTest
     /**
      * @group DDC-1468
      *
-     * @expectedException Doctrine\Common\Persistence\Mapping\MappingException
+     * @expectedException Doctrine\ORM\Mapping\MappingException
      * @expectedExceptionMessage Invalid mapping file 'Doctrine.Tests.Models.Generic.SerializationModel.dcm.xml' for class 'Doctrine\Tests\Models\Generic\SerializationModel'.
      */
     public function testInvalidMappingFileException()
@@ -83,16 +83,6 @@ class XmlMappingDriverTest extends AbstractMappingDriverTest
             array(__DIR__ . "/xml/Doctrine.Tests.ORM.Mapping.User.dcm.xml"),
             array(__DIR__ . "/xml/CatNoId.dcm.xml"),
         );
-    }
-
-    /**
-     * @group DDC-889
-     * @expectedException Doctrine\Common\Persistence\Mapping\MappingException
-     * @expectedExceptionMessage Invalid mapping file 'Doctrine.Tests.Models.DDC889.DDC889Class.dcm.xml' for class 'Doctrine\Tests\Models\DDC889\DDC889Class'.
-     */
-    public function testinvalidEntityOrMappedSuperClassShouldMentionParentClasses()
-    {
-        $this->createClassMetadata('Doctrine\Tests\Models\DDC889\DDC889Class');
     }
 }
 

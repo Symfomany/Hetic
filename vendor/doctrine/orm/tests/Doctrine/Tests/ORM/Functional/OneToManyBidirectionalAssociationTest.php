@@ -4,7 +4,7 @@ namespace Doctrine\Tests\ORM\Functional;
 
 use Doctrine\Tests\Models\ECommerce\ECommerceProduct;
 use Doctrine\Tests\Models\ECommerce\ECommerceFeature;
-use Doctrine\Common\Collections\Criteria;
+use Doctrine\ORM\Mapping\AssociationMapping;
 
 require_once __DIR__ . '/../../TestInit.php';
 
@@ -149,75 +149,6 @@ class OneToManyBidirectionalAssociationTest extends \Doctrine\Tests\OrmFunctiona
         $query = $this->_em->createQuery('select f,p from Doctrine\Tests\Models\ECommerce\ECommerceFeature f join f.product p');
         $features = $query->getResult();
         $this->assertEquals(0, count($features));
-    }
-
-    /**
-     * @group DDC-1637
-     */
-    public function testMatching()
-    {
-        $this->_createFixture();
-
-        $product  = $this->_em->find('Doctrine\Tests\Models\ECommerce\ECommerceProduct', $this->product->getId());
-        $features = $product->getFeatures();
-
-        $results = $features->matching(new Criteria(
-            Criteria::expr()->eq('description', 'Model writing tutorial')
-        ));
-
-        $this->assertInstanceOf('Doctrine\Common\Collections\Collection', $results);
-        $this->assertEquals(1, count($results));
-
-        $results = $features->matching(new Criteria());
-
-        $this->assertInstanceOf('Doctrine\Common\Collections\Collection', $results);
-        $this->assertEquals(2, count($results));
-    }
-
-    /**
-     * @group DDC-2340
-     */
-    public function testMatchingOnDirtyCollection()
-    {
-        $this->_createFixture();
-
-        $product  = $this->_em->find('Doctrine\Tests\Models\ECommerce\ECommerceProduct', $this->product->getId());
-
-        $thirdFeature = new ECommerceFeature();
-        $thirdFeature->setDescription('Model writing tutorial');
-
-        $features = $product->getFeatures();
-        $features->add($thirdFeature);
-
-        $results = $features->matching(new Criteria(
-            Criteria::expr()->eq('description', 'Model writing tutorial')
-        ));
-
-        $this->assertEquals(2, count($results));
-    }
-
-    public function testMatchingBis()
-    {
-        $this->_createFixture();
-
-        $product  = $this->_em->find('Doctrine\Tests\Models\ECommerce\ECommerceProduct', $this->product->getId());
-        $features = $product->getFeatures();
-
-        $thirdFeature = new ECommerceFeature();
-        $thirdFeature->setDescription('Third feature');
-        $product->addFeature($thirdFeature);
-
-        $results = $features->matching(new Criteria(
-            Criteria::expr()->eq('description', 'Third feature')
-        ));
-
-        $this->assertInstanceOf('Doctrine\Common\Collections\Collection', $results);
-        $this->assertCount(1, $results);
-
-        $results = $features->matching(new Criteria());
-
-        $this->assertInstanceOf('Doctrine\Common\Collections\Collection', $results);
-        $this->assertCount(3, $results);
     }
 
     private function _createFixture()

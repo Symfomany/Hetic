@@ -83,7 +83,7 @@ Example:
 
 ``` php
 <?php
-$I->seeInDatabase('users', array('name' => 'Davert', 'email' => 'davert@mail.com'));
+$I->dontSeeInDatabase('users', array('name' => 'Davert', 'email' => 'davert@mail.com'));
 
 ```
 Will generate:
@@ -95,6 +95,11 @@ Fails if such user was found.
 
  * param $table
  * param array $criteria
+
+
+### getName
+
+__not documented__
 
 
 ### grabFromDatabase

@@ -5,22 +5,22 @@
     <ignored path="hetic.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/app.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1381688711343" ignored="false" />
-    <file path="/index.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383322427841" ignored="false" />
+    <file path="/index.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384676178903" ignored="false" />
     <file path="/routing_dev.yml" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1381829618923" ignored="false" />
-    <file path="/DefaultController.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383324394143" ignored="false" />
+    <file path="/DefaultController.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384629268610" ignored="false" />
     <file path="/hello.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382280929118" ignored="false" />
-    <file path="/routing.yml" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383323861722" ignored="false" />
+    <file path="/routing.yml" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384763827050" ignored="false" />
     <file path="/partial.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1381814432181" ignored="false" />
-    <file path="/ArticleRepository.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382984760893" ignored="false" />
-    <file path="/Article.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383310738691" ignored="false" />
-    <file path="/layout.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382347681625" ignored="false" />
+    <file path="/ArticleRepository.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383761184231" ignored="false" />
+    <file path="/Article.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384698287449" ignored="false" />
+    <file path="/layout.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384765190420" ignored="false" />
     <file path="/another.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1381814942330" ignored="false" />
     <file path="/page2.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1381815291193" ignored="false" />
     <file path="/test.css" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382288173508" ignored="false" />
     <file path="/test.js" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1381817139137" ignored="false" />
     <file path="/hetic.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382015567061" ignored="false" />
     <file path="/AppKernel.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1381850388059" ignored="false" />
-    <file path="/config.yml" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383035389782" ignored="false" />
+    <file path="/config.yml" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384731549665" ignored="false" />
     <file path="/SearchType.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1381858398883" ignored="false" />
     <file path="$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Form/AbstractType.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382374214535" ignored="false" />
     <file path="$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Form/FormBuilder.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1381858574203" ignored="false" />
@@ -29,7 +29,7 @@
     <file path="$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/HttpFoundation/Response.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1381923811188" ignored="false" />
     <file path="$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Form/FormBuilderInterface.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1381858574203" ignored="false" />
     <file path="$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/ContainerAware.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1381923811191" ignored="false" />
-    <file path="/security.yml" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382376988824" ignored="false" />
+    <file path="/security.yml" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384641251862" ignored="false" />
     <file path="$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Bridge/Twig/phpunit.xml.dist" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1381923811188" ignored="false" />
     <file path="$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/phpunit.xml.dist" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1381923811188" ignored="false" />
     <file path="$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Routing/Tests/Fixtures/missing_id.xml" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1381923811188" ignored="false" />
@@ -190,7 +190,7 @@
     <file path="$PROJECT_DIR$/web/bundles/framework/css/structure.css" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382282610866" ignored="false" />
     <file path="$PROJECT_DIR$/web/bundles/sensiodistribution/webconfigurator/css/configurator.css" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382282610866" ignored="false" />
     <file path="$PROJECT_DIR$/web/bundles/framework/css/exception.css" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382282610866" ignored="false" />
-    <file path="/topmenu.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383323929903" ignored="false" />
+    <file path="/topmenu.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384758994512" ignored="false" />
     <file path="/index.css" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382347449100" ignored="false" />
     <file path="/ArticleType.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383311020451" ignored="false" />
     <file path="/edit.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382978485299" ignored="false" />
@@ -199,14 +199,14 @@
     <file path="$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Form/Form.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382374214535" ignored="false" />
     <file path="$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/Controller.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382374214535" ignored="false" />
     <file path="$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/HttpFoundation/Request.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382374214535" ignored="false" />
-    <file path="/Category.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382375614189" ignored="false" />
+    <file path="/Category.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384729974798" ignored="false" />
     <file path="/administration.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382376719618" ignored="false" />
-    <file path="/a.dummy" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383322485030" ignored="false" />
+    <file path="/a.dummy" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384643558608" ignored="false" />
     <file path="/Tags.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382385426953" ignored="false" />
     <file path="/detail.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382388420900" ignored="false" />
     <file path="/detail.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382976586741" ignored="false" />
-    <file path="/Tag.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382435812678" ignored="false" />
-    <file path="/CategoryRepository.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382900833001" ignored="false" />
+    <file path="/Tag.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384616086635" ignored="false" />
+    <file path="/CategoryRepository.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383650894716" ignored="false" />
     <file path="/index.sass" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382974805137" ignored="false" />
     <file path="/Star.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382907172452" ignored="false" />
     <file path="/articlesingle.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383045087126" ignored="false" />
@@ -214,24 +214,98 @@
     <file path="$PROJECT_DIR$/vendor/doctrine/orm/tools/sandbox/xml/Entities.User.dcm.xml" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382955655286" ignored="false" />
     <file path="$PROJECT_DIR$/vendor/doctrine/orm/build.xml" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382955655286" ignored="false" />
     <file path="/leftnav.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382975148403" ignored="false" />
-    <file path="/main.sass" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382977831939" ignored="false" />
+    <file path="/main.sass" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384765162839" ignored="false" />
     <file path="/DefaultControllerTest.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383046329481" ignored="false" />
-    <file path="/fields.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1382997784001" ignored="false" />
-    <file path="/AddArticleCept.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383317013774" ignored="false" />
+    <file path="/fields.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384607180952" ignored="false" />
+    <file path="/AddArticleCept.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383766959319" ignored="false" />
     <file path="/acceptance.suite.yml" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383300065838" ignored="false" />
-    <file path="$PROJECT_DIR$/app/cache/dev/appDevDebugProjectContainer.xml" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383310923411" ignored="false" />
+    <file path="$PROJECT_DIR$/app/cache/dev/appDevDebugProjectContainer.xml" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384643412982" ignored="false" />
     <file path="/createcategory.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383036107972" ignored="false" />
-    <file path="/createcategory.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383303697096" ignored="false" />
-    <file path="/editcategory.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383044638436" ignored="false" />
+    <file path="/createcategory.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384729191330" ignored="false" />
+    <file path="/editcategory.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384730671644" ignored="false" />
     <file path="/CategoryType.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383301768076" ignored="false" />
     <file path="/AddArticleFunctionalCept.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383302868497" ignored="false" />
     <file path="$PROJECT_DIR$/app/cache/test/appTestDebugProjectContainer.xml" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383311799715" ignored="false" />
     <file path="/AddArticleTest.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383318696905" ignored="false" />
-    <file path="/CestAddArticleCest.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383334874735" ignored="false" />
+    <file path="/CestAddArticleCest.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383586147047" ignored="false" />
     <file path="/about.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383323680621" ignored="false" />
     <file path="/contact.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383323882143" ignored="false" />
-    <file path="/README.md" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383326250642" ignored="false" />
+    <file path="/README.md" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384598765435" ignored="false" />
     <file path="/.gitignore" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383326402281" ignored="false" />
+    <file path="/app.js" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383666549779" ignored="false" />
+    <file path="/search.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383760868465" ignored="false" />
+    <file path="/TagRepository.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383752232028" ignored="false" />
+    <file path="/ReposArticleTest.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383764018792" ignored="false" />
+    <file path="$PROJECT_DIR$/tests/_log/acceptance-2013-11-06" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383764679027" ignored="false" />
+    <file path="/CestWelcomeCest.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383765449075" ignored="false" />
+    <file path="/CestModifyArticleCest.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1383765671516" ignored="false" />
+    <file path="/mainmenu.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384604136376" ignored="false" />
+    <file path="/LayoutController.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384604175487" ignored="false" />
+    <file path="/menu.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384606813337" ignored="false" />
+    <file path="/services.xml" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384605471446" ignored="false" />
+    <file path="/dashboard.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384613669136" ignored="false" />
+    <file path="/forms.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384612917715" ignored="false" />
+    <file path="/index.js" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384607759691" ignored="false" />
+    <file path="$PROJECT_DIR$/app/cache/dev/twig/72/6b/000154f8aade0cb6faa8898cfecf4164ddee4ceebc0229069539f4f5fa77.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384608119110" ignored="false" />
+    <file path="$PROJECT_DIR$/app/cache/dev/twig/6e/8b/bc632bd19eac186597af58eb68fbfa71109b74c1c135656ef6821dd10061.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384608119110" ignored="false" />
+    <file path="$PROJECT_DIR$/app/cache/dev/twig/ef/df/2c258cd68617d7b476a610719fc6cacb2b358800023ef0e98ec470d167eb.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384608119110" ignored="false" />
+    <file path="$PROJECT_DIR$/app/cache/dev/classes.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384643023321" ignored="false" />
+    <file path="$PROJECT_DIR$/app/cache/dev/appDevDebugProjectContainer.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384610525473" ignored="false" />
+    <file path="$PROJECT_DIR$/app/cache/dev/twig/de/5a/83b120297b906801afc255ac2f3514180276c2533b0638684277e9a17fa6.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384608119110" ignored="false" />
+    <file path="$PROJECT_DIR$/app/cache/dev/twig/0f/ff/0786f80ceb4d69ce6ed6f2d6456863444c37ee1ab7260455b4022e7c0a42.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384608119110" ignored="false" />
+    <file path="/main.coffee" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384709645994" ignored="false" />
+    <file path="/green.css" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384612400670" ignored="false" />
+    <file path="/Produit.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384758098991" ignored="false" />
+    <file path="/products.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384765939904" ignored="false" />
+    <file path="$PROJECT_DIR$/web/js/ckeditor/samples/plugins/wysiwygarea/fullpage.html" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384617588567" ignored="false" />
+    <file path="$PROJECT_DIR$/web/js/ckeditor/samples/plugins/toolbar/toolbar.html" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384617588567" ignored="false" />
+    <file path="$PROJECT_DIR$/web/js/ckeditor/samples/xhtmlstyle.html" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384617588567" ignored="false" />
+    <file path="$PROJECT_DIR$/web/js/ckeditor/samples/plugins/enterkey/enterkey.html" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384617588567" ignored="false" />
+    <file path="$PROJECT_DIR$/web/js/ckeditor/samples/plugins/dialog/dialog.html" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384617588567" ignored="false" />
+    <file path="/login.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384674579182" ignored="false" />
+    <file path="$PROJECT_DIR$/web/css/446f6d5.css" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384629334909" ignored="false" />
+    <file path="$PROJECT_DIR$/web/css/446f6d5_main_1.css" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384629334909" ignored="false" />
+    <file path="$PROJECT_DIR$/web/css/e95eeb8_main_1.css" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384765898334" ignored="false" />
+    <file path="$PROJECT_DIR$/web/css/e95eeb8.css" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384760282342" ignored="false" />
+    <file path="/topmenu_logout.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384629413739" ignored="false" />
+    <file path="/layout_simple.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384629983438" ignored="false" />
+    <file path="/Demandeur.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384633961788" ignored="false" />
+    <file path="/AuthenticationSiteHandler.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384641538392" ignored="false" />
+    <file path="/AdministrateurController.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384640473116" ignored="false" />
+    <file path="/flashdatas.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384638315961" ignored="false" />
+    <file path="/Administrateur.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384643612764" ignored="false" />
+    <file path="/AdministrateurRepository.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384640282667" ignored="false" />
+    <file path="/MainController.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384641033665" ignored="false" />
+    <file path="/config_dev.yml" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384643455166" ignored="false" />
+    <file path="/.htaccess" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384642574130" ignored="false" />
+    <file path="$PROJECT_DIR$/web/css/3bb152f.css" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384680938170" ignored="false" />
+    <file path="$PROJECT_DIR$/web/css/3bb152f_green_1.css" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384680938170" ignored="false" />
+    <file path="/ProductController.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384732041294" ignored="false" />
+    <file path="/createproduct.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384758299958" ignored="false" />
+    <file path="/ProductType.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384705326751" ignored="false" />
+    <file path="/Seo.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384696315748" ignored="false" />
+    <file path="/SeoType.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384687843589" ignored="false" />
+    <file path="/Meta.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384689409572" ignored="false" />
+    <file path="/MetaType.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384694965339" ignored="false" />
+    <file path="/product.coffee" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384707556669" ignored="false" />
+    <file path="/product.js" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384701720176" ignored="false" />
+    <file path="$PROJECT_DIR$/web/js/4c2c099.js" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384701780109" ignored="false" />
+    <file path="$PROJECT_DIR$/web/js/4c2c099_product_1.js" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384701780109" ignored="false" />
+    <file path="/editproduct.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384715307707" ignored="false" />
+    <file path="/flashdatas.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384712731213" ignored="false" />
+    <file path="/pictureproduct.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384726911825" ignored="false" />
+    <file path="/ImageType.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384722029004" ignored="false" />
+    <file path="/Image.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384722063344" ignored="false" />
+    <file path="/visualizeproduct.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384726406765" ignored="false" />
+    <file path="/categories.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384764409119" ignored="false" />
+    <file path="/CategoryController.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384763791270" ignored="false" />
+    <file path="/ImageCategory.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384732337569" ignored="false" />
+    <file path="/picturecategory.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384732228910" ignored="false" />
+    <file path="/Famille.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384758265386" ignored="false" />
+    <file path="/familles.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384759563249" ignored="false" />
+    <file path="/createfamille.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384759334069" ignored="false" />
+    <file path="/editfamille.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384759349093" ignored="false" />
+    <file path="/category.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384764256167" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,10 +325,82 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="composer.json" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/composer.json">
+      <file leaf-file-name="CategoryController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Controller/CategoryController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="46" selection-start="801" selection-end="801" vertical-scroll-proportion="0.2827225">
+            <state line="224" column="55" selection-start="6548" selection-end="6548" vertical-scroll-proportion="-8.25">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="categories.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/categories.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="33" column="110" selection-start="2479" selection-end="2534" vertical-scroll-proportion="-24.75">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routing.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/config/routing.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="44" column="28" selection-start="1428" selection-end="1456" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="products.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Product/products.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="34" column="113" selection-start="2518" selection-end="2518" vertical-scroll-proportion="-16.5">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProductType.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Form/ProductType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="category.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/category.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="90" column="80" selection-start="5828" selection-end="5828" vertical-scroll-proportion="-21.708334">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="editcategory.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/editcategory.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/layout.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="53" column="64" selection-start="3086" selection-end="3086" vertical-scroll-proportion="-1.6122448">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="topmenu.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Default/topmenu.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="66" column="24" selection-start="5666" selection-end="5666" vertical-scroll-proportion="-8.875">
               <folding />
             </state>
           </provider>
@@ -270,31 +416,31 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/tests/functional/AddArticleFunctionalCept.php" />
-        <option value="$PROJECT_DIR$/tests/unit.suite.yml" />
-        <option value="$PROJECT_DIR$/tests/acceptance/AddArticleCept.php" />
-        <option value="$PROJECT_DIR$/tests/unit/AddArticleTest.php" />
-        <option value="$PROJECT_DIR$/codeception.yml" />
-        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Entity/Article.php" />
-        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Default/index.html.twig" />
-        <option value="$PROJECT_DIR$/tests/unit/ReposArticleTest.php" />
-        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Default/about.html.twig" />
-        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Default/contact.html.twig" />
-        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Default/topmenu.html.twig" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Entity/Famille.php" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Product/createproduct.html.twig" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Product/editproduct.html.twig" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Form/FamilleType.php" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/createfamille.html.twig" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/familles.html.twig" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/editfamille.html.twig" />
         <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/config/routing.yml" />
-        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Controller/DefaultController.php" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/tests/acceptance/CestAddArticleCest.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Controller/CategoryController.php" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/category.html.twig" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/editcategory.html.twig" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/categories.html.twig" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Default/topmenu.html.twig" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/layout.html.twig" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/public/css/main.sass" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Product/products.html.twig" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="307" />
-    <option name="y" value="124" />
-    <option name="width" value="1197" />
-    <option name="height" value="746" />
+    <option name="x" value="48" />
+    <option name="y" value="-4" />
+    <option name="width" value="1553" />
+    <option name="height" value="905" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -322,6 +468,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -350,7 +497,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -364,33 +511,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="symfony" />
+              <option name="myItemId" value="Hetic" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="symfony" />
+              <option name="myItemId" value="SiteBundle" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -404,7 +533,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SiteBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -418,23 +563,356 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="acceptance" />
+              <option name="myItemId" value="Hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SiteBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Product" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SiteBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Default" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SiteBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Category" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SiteBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SiteBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SiteBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SiteBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SiteBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SiteBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Form" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SiteBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Entity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SiteBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SiteBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Authentication" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="options.lastSelected" value="editor" />
+    <property name="options.lastSelected" value="preferences.keymap" />
     <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$USER_HOME$/mfj" />
     <property name="options.searchVisible" value="true" />
@@ -462,11 +940,17 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Default" />
-      <recent name="$PROJECT_DIR$/web" />
+      <recent name="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category" />
       <recent name="$PROJECT_DIR$/src/Hetic/SiteBundle/Form" />
+      <recent name="$PROJECT_DIR$/src/Hetic/SiteBundle/Repository" />
+      <recent name="$PROJECT_DIR$/src/Hetic/SiteBundle/Entity" />
+      <recent name="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Product" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/js" />
       <recent name="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/public/css" />
-      <recent name="$PROJECT_DIR$/app/Resources" />
+      <recent name="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Form" />
+      <recent name="$PROJECT_DIR$/tests/acceptance/home" />
     </key>
   </component>
   <component name="RunManager" selected="PHPUnit on Server.DefaultControllerTest on Hetic">
@@ -502,6 +986,23 @@
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="c3710369-12cf-41a7-b768-bf355bf28dfd" name="Default" comment="" />
@@ -511,7 +1012,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="307" y="124" width="1197" height="746" extended-state="0" />
+    <frame x="48" y="-4" width="1553" height="905" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -519,7 +1020,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2753138" sideWeight="0.670947" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22114764" sideWeight="0.5479452" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24348474" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905295" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -528,7 +1029,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905295" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4520548" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -595,91 +1096,116 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tests/unit/ReposArticleTest.php">
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Form/FamilleType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="31" selection-start="355" selection-end="355" vertical-scroll-proportion="10.0" />
+        <state line="27" column="0" selection-start="978" selection-end="978" vertical-scroll-proportion="0.79310346">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Default/about.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/createfamille.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="816" selection-end="816" vertical-scroll-proportion="-15.0" />
+        <state line="13" column="77" selection-start="402" selection-end="402" vertical-scroll-proportion="-9.75">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Default/contact.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/editfamille.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="591" selection-end="591" vertical-scroll-proportion="-12.75" />
+        <state line="13" column="79" selection-start="404" selection-end="404" vertical-scroll-proportion="-9.75">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/layout.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/familles.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="1.5416666" />
+        <state line="20" column="65" selection-start="1139" selection-end="1144" vertical-scroll-proportion="-2.7755103">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Controller/CategoryController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="224" column="55" selection-start="6548" selection-end="6548" vertical-scroll-proportion="-8.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Entity/Category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="41" selection-start="1309" selection-end="1314" vertical-scroll-proportion="0.41107872">
+          <folding>
+            <element signature="e#43#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Product/visualizeproduct.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="125" column="22" selection-start="4750" selection-end="5010" vertical-scroll-proportion="0.28366762">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/category.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="90" column="80" selection-start="5828" selection-end="5828" vertical-scroll-proportion="-21.708334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/categories.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="110" selection-start="2479" selection-end="2534" vertical-scroll-proportion="-24.75">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Default/topmenu.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="50" selection-start="684" selection-end="684" vertical-scroll-proportion="-9.0" />
+        <state line="66" column="24" selection-start="5666" selection-end="5666" vertical-scroll-proportion="-8.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="64" selection-start="3086" selection-end="3086" vertical-scroll-proportion="-1.6122448">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/public/css/main.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="238" column="20" selection-start="3965" selection-end="3965" vertical-scroll-proportion="0.7">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/editcategory.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="0" selection-start="1287" selection-end="1287" vertical-scroll-proportion="-9.72" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="418" column="24" selection-start="13053" selection-end="13053" vertical-scroll-proportion="9.416072" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="33" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="31" selection-start="228" selection-end="236" vertical-scroll-proportion="0.21105528">
+        <state line="44" column="28" selection-start="1428" selection-end="1456" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Product/products.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-3.0993152">
+        <state line="34" column="113" selection-start="2518" selection-end="2518" vertical-scroll-proportion="-16.5">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codeception.yml">
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Form/ProductType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/acceptance/CestAddArticleCest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="163" column="5" selection-start="5241" selection-end="5241" vertical-scroll-proportion="1.0518732">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/_log/CestAddArticleCest.clickOnTag.page.fail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="36" selection-start="1511" selection-end="1511" vertical-scroll-proportion="-0.40055633">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="46" selection-start="801" selection-end="801" vertical-scroll-proportion="0.2827225">
           <folding />
         </state>
       </provider>

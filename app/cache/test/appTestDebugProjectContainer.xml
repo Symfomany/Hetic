@@ -23,6 +23,7 @@
       <parameter key="JMSSecurityExtraBundle">JMS\SecurityExtraBundle\JMSSecurityExtraBundle</parameter>
       <parameter key="JMSDiExtraBundle">JMS\DiExtraBundle\JMSDiExtraBundle</parameter>
       <parameter key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</parameter>
+      <parameter key="FOSElasticaBundle">FOS\ElasticaBundle\FOSElasticaBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
       <parameter key="SensioGeneratorBundle">Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle</parameter>
@@ -687,8 +688,8 @@
     <parameter key="jms_di_extra.disable_grep">false</parameter>
     <parameter key="jms_di_extra.doctrine_integration">true</parameter>
     <parameter key="jms_di_extra.cache_warmer.controller_file_blacklist" type="collection"/>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/home/boyer/hetic/app/cache/test/jms_diextra/doctrine/EntityManager_5273a9b2c20bb.php</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager5273a9b2c20bb_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/home/boyer/hetic/app/cache/test/jms_diextra/doctrine/EntityManager_527a8a2305c46.php</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager527a8a2305c46_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
     <parameter key="knp_paginator.class">Knp\Component\Pager\Paginator</parameter>
     <parameter key="knp_paginator.templating.helper.pagination.class">Knp\Bundle\PaginatorBundle\Templating\PaginationHelper</parameter>
     <parameter key="knp_paginator.helper.processor.class">Knp\Bundle\PaginatorBundle\Helper\Processor</parameter>
@@ -696,6 +697,15 @@
     <parameter key="knp_paginator.template.filtration">KnpPaginatorBundle:Pagination:filtration.html.twig</parameter>
     <parameter key="knp_paginator.template.sortable">KnpPaginatorBundle:Pagination:sortable_link.html.twig</parameter>
     <parameter key="knp_paginator.page_range">5</parameter>
+    <parameter key="fos_elastica.client.class">FOS\ElasticaBundle\Client</parameter>
+    <parameter key="fos_elastica.index.class">Elastica\Index</parameter>
+    <parameter key="fos_elastica.type.class">Elastica\Type</parameter>
+    <parameter key="fos_elastica.logger.class">FOS\ElasticaBundle\Logger\ElasticaLogger</parameter>
+    <parameter key="fos_elastica.data_collector.class">FOS\ElasticaBundle\DataCollector\ElasticaDataCollector</parameter>
+    <parameter key="fos_elastica.manager.class">FOS\ElasticaBundle\Manager\RepositoryManager</parameter>
+    <parameter key="fos_elastica.elastica_to_model_transformer.collection.class">FOS\ElasticaBundle\Transformer\ElasticaToModelTransformerCollection</parameter>
+    <parameter key="fos_elastica.provider_registry.class">FOS\ElasticaBundle\Provider\ProviderRegistry</parameter>
+    <parameter key="fos_elastica.property_accessor.class">Symfony\Component\PropertyAccess\PropertyAccessor</parameter>
     <parameter key="web_profiler.controller.profiler.class">Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController</parameter>
     <parameter key="web_profiler.controller.router.class">Symfony\Bundle\WebProfilerBundle\Controller\RouterController</parameter>
     <parameter key="web_profiler.controller.exception.class">Symfony\Bundle\WebProfilerBundle\Controller\ExceptionController</parameter>
@@ -749,6 +759,10 @@
       <parameter key="data_collector.doctrine" type="collection">
         <parameter>db</parameter>
         <parameter>DoctrineBundle:Collector:db</parameter>
+      </parameter>
+      <parameter key="fos_elastica.data_collector" type="collection">
+        <parameter>elastica</parameter>
+        <parameter>FOSElasticaBundle:Collector:elastica</parameter>
       </parameter>
     </parameter>
     <parameter key="console.command.ids" type="collection"/>
@@ -1164,6 +1178,14 @@
         <argument>1</argument>
       </call>
       <call method="addListenerService">
+        <argument>knp_pager.items</argument>
+        <argument type="collection">
+          <argument>fos_elastica.paginator.subscriber</argument>
+          <argument>items</argument>
+        </argument>
+        <argument>1</argument>
+      </call>
+      <call method="addListenerService">
         <argument>kernel.controller</argument>
         <argument type="collection">
           <argument>data_collector.router</argument>
@@ -1217,7 +1239,7 @@
           <argument>fos_rest.body_listener</argument>
           <argument>onKernelRequest</argument>
         </argument>
-        <argument>0</argument>
+        <argument>10</argument>
       </call>
       <call method="addListenerService">
         <argument>kernel.controller</argument>
@@ -1808,6 +1830,9 @@
             </call>
           </service>
         </argument>
+      </call>
+      <call method="add">
+        <argument type="service" id="fos_elastica.data_collector"/>
       </call>
     </service>
     <service id="profiler_listener" class="Symfony\Component\HttpKernel\EventListener\ProfilerListener">
@@ -2850,6 +2875,57 @@
       <argument type="service">
         <service class="Symfony\Bridge\Doctrine\ContainerAwareEventManager" public="false">
           <argument type="service" id="service_container"/>
+          <call method="addEventSubscriber">
+            <argument type="service">
+              <service class="FOS\ElasticaBundle\Doctrine\ORM\Listener" public="false">
+                <tag name="doctrine.event_subscriber"/>
+                <argument type="service" id="fos_elastica.object_persister.website.article"/>
+                <argument>Hetic\SiteBundle\Entity\Article</argument>
+                <argument type="collection">
+                  <argument>postPersist</argument>
+                  <argument>postUpdate</argument>
+                  <argument>postRemove</argument>
+                  <argument>preRemove</argument>
+                </argument>
+                <argument>id</argument>
+                <argument></argument>
+              </service>
+            </argument>
+          </call>
+          <call method="addEventSubscriber">
+            <argument type="service">
+              <service class="FOS\ElasticaBundle\Doctrine\ORM\Listener" public="false">
+                <tag name="doctrine.event_subscriber"/>
+                <argument type="service" id="fos_elastica.object_persister.website.category"/>
+                <argument>Hetic\SiteBundle\Entity\Category</argument>
+                <argument type="collection">
+                  <argument>postPersist</argument>
+                  <argument>postUpdate</argument>
+                  <argument>postRemove</argument>
+                  <argument>preRemove</argument>
+                </argument>
+                <argument>id</argument>
+                <argument></argument>
+              </service>
+            </argument>
+          </call>
+          <call method="addEventSubscriber">
+            <argument type="service">
+              <service class="FOS\ElasticaBundle\Doctrine\ORM\Listener" public="false">
+                <tag name="doctrine.event_subscriber"/>
+                <argument type="service" id="fos_elastica.object_persister.website.tag"/>
+                <argument>Hetic\SiteBundle\Entity\Tag</argument>
+                <argument type="collection">
+                  <argument>postPersist</argument>
+                  <argument>postUpdate</argument>
+                  <argument>postRemove</argument>
+                  <argument>preRemove</argument>
+                </argument>
+                <argument>id</argument>
+                <argument></argument>
+              </service>
+            </argument>
+          </call>
         </service>
       </argument>
       <argument type="collection"/>
@@ -2874,8 +2950,8 @@
       <argument type="collection"/>
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager" class="EntityManager5273a9b2c20bb_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
-      <file>/home/boyer/hetic/app/cache/test/jms_diextra/doctrine/EntityManager_5273a9b2c20bb.php</file>
+    <service id="doctrine.orm.default_entity_manager" class="EntityManager527a8a2305c46_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
+      <file>/home/boyer/hetic/app/cache/test/jms_diextra/doctrine/EntityManager_527a8a2305c46.php</file>
       <argument type="service">
         <service class="Doctrine\ORM\EntityManager" factory-method="create" public="false">
           <argument type="service" id="doctrine.dbal.default_connection"/>
@@ -3385,7 +3461,7 @@
       </call>
     </service>
     <service id="fos_rest.body_listener" class="FOS\RestBundle\EventListener\BodyListener">
-      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
+      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" priority="10"/>
       <argument type="service" id="fos_rest.decoder_provider"/>
     </service>
     <service id="fos_rest.param_fetcher_listener" class="FOS\RestBundle\EventListener\ParamFetcherListener">
@@ -3552,6 +3628,344 @@
       <tag name="twig.extension"/>
       <argument type="service" id="knp_paginator.helper.processor"/>
     </service>
+    <service id="fos_elastica.logger" class="FOS\ElasticaBundle\Logger\ElasticaLogger">
+      <tag name="monolog.logger" channel="elastica"/>
+      <argument type="service" id="monolog.logger.elastica" on-invalid="null"/>
+      <argument>true</argument>
+    </service>
+    <service id="fos_elastica.data_collector" class="FOS\ElasticaBundle\DataCollector\ElasticaDataCollector">
+      <tag name="data_collector" template="FOSElasticaBundle:Collector:elastica" id="elastica"/>
+      <argument type="service" id="fos_elastica.logger"/>
+    </service>
+    <service id="fos_elastica.index_manager" class="FOS\ElasticaBundle\IndexManager">
+      <argument type="collection">
+        <argument key="website" type="service" id="fos_elastica.index.website"/>
+      </argument>
+      <argument type="service" id="fos_elastica.index.website"/>
+    </service>
+    <service id="fos_elastica.resetter" class="FOS\ElasticaBundle\Resetter">
+      <argument type="collection">
+        <argument key="website" type="collection">
+          <argument key="index" type="service" id="fos_elastica.index.website"/>
+          <argument key="config" type="collection">
+            <argument key="mappings" type="collection">
+              <argument key="article" type="collection">
+                <argument key="properties" type="collection">
+                  <argument key="title" type="collection">
+                    <argument key="type">string</argument>
+                    <argument key="include_in_all">true</argument>
+                  </argument>
+                  <argument key="content" type="collection">
+                    <argument key="type">string</argument>
+                    <argument key="include_in_all">true</argument>
+                  </argument>
+                  <argument key="nature" type="collection">
+                    <argument key="type">integer</argument>
+                    <argument key="include_in_all">true</argument>
+                  </argument>
+                  <argument key="isVisible" type="collection">
+                    <argument key="type">boolean</argument>
+                    <argument key="include_in_all">true</argument>
+                  </argument>
+                  <argument key="point" type="collection">
+                    <argument key="type">integer</argument>
+                    <argument key="include_in_all">true</argument>
+                  </argument>
+                  <argument key="datePublication" type="collection">
+                    <argument key="type">date</argument>
+                    <argument key="include_in_all">true</argument>
+                  </argument>
+                </argument>
+              </argument>
+              <argument key="category" type="collection">
+                <argument key="properties" type="collection">
+                  <argument key="name" type="collection">
+                    <argument key="type">string</argument>
+                    <argument key="include_in_all">true</argument>
+                  </argument>
+                  <argument key="description" type="collection">
+                    <argument key="type">string</argument>
+                    <argument key="include_in_all">true</argument>
+                  </argument>
+                </argument>
+              </argument>
+              <argument key="tag" type="collection">
+                <argument key="properties" type="collection">
+                  <argument key="word" type="collection">
+                    <argument key="type">string</argument>
+                    <argument key="include_in_all">true</argument>
+                  </argument>
+                </argument>
+              </argument>
+            </argument>
+          </argument>
+        </argument>
+      </argument>
+    </service>
+    <service id="fos_elastica.provider_registry" class="FOS\ElasticaBundle\Provider\ProviderRegistry">
+      <call method="setContainer">
+        <argument type="service" id="service_container"/>
+      </call>
+      <call method="addProvider">
+        <argument>website</argument>
+        <argument>article</argument>
+        <argument>fos_elastica.provider.website.article</argument>
+      </call>
+      <call method="addProvider">
+        <argument>website</argument>
+        <argument>category</argument>
+        <argument>fos_elastica.provider.website.category</argument>
+      </call>
+      <call method="addProvider">
+        <argument>website</argument>
+        <argument>tag</argument>
+        <argument>fos_elastica.provider.website.tag</argument>
+      </call>
+    </service>
+    <service id="fos_elastica.paginator.subscriber" class="FOS\ElasticaBundle\Subscriber\PaginateElasticaQuerySubscriber">
+      <tag name="knp_paginator.subscriber"/>
+    </service>
+    <service id="fos_elastica.property_accessor" class="Symfony\Component\PropertyAccess\PropertyAccessor"/>
+    <service id="fos_elastica.client.default" class="FOS\ElasticaBundle\Client">
+      <tag name="fos_elastica.client"/>
+      <argument type="collection">
+        <argument key="servers" type="collection">
+          <argument type="collection">
+            <argument key="host">localhost</argument>
+            <argument key="port">9200</argument>
+          </argument>
+        </argument>
+      </argument>
+      <call method="setLogger">
+        <argument type="service" id="fos_elastica.logger"/>
+      </call>
+    </service>
+    <service id="fos_elastica.index.website" class="Elastica\Index" factory-method="getIndex" factory-service="fos_elastica.client.default">
+      <argument>website_qa</argument>
+    </service>
+    <service id="fos_elastica.index.website.article" class="Elastica\Type" factory-method="getType" factory-service="fos_elastica.index.website">
+      <argument>article</argument>
+    </service>
+    <service id="fos_elastica.manager.orm" class="FOS\ElasticaBundle\Doctrine\RepositoryManager">
+      <argument type="service" id="doctrine"/>
+      <argument type="service" id="annotation_reader"/>
+      <call method="addEntity">
+        <argument>Hetic\SiteBundle\Entity\Article</argument>
+        <argument type="service" id="fos_elastica.finder.website.article"/>
+        <argument>Hetic\SiteBundle\Entity\ArticleRepository</argument>
+      </call>
+      <call method="addEntity">
+        <argument>Hetic\SiteBundle\Entity\Category</argument>
+        <argument type="service" id="fos_elastica.finder.website.category"/>
+        <argument>Hetic\SiteBundle\Entity\CategoryRepository</argument>
+      </call>
+      <call method="addEntity">
+        <argument>Hetic\SiteBundle\Entity\Tag</argument>
+        <argument type="service" id="fos_elastica.finder.website.tag"/>
+        <argument>Hetic\SiteBundle\Entity\CategoryRepository</argument>
+      </call>
+    </service>
+    <service id="fos_elastica.object_persister.website.article" class="FOS\ElasticaBundle\Persister\ObjectPersister">
+      <argument type="service">
+        <service class="Elastica\Type" factory-method="getType" factory-service="fos_elastica.index.website">
+          <argument>article</argument>
+        </service>
+      </argument>
+      <argument type="service">
+        <service class="FOS\ElasticaBundle\Transformer\ModelToElasticaAutoTransformer" public="false">
+          <argument type="collection">
+            <argument key="identifier">id</argument>
+          </argument>
+          <call method="setPropertyAccessor">
+            <argument type="service" id="fos_elastica.property_accessor"/>
+          </call>
+        </service>
+      </argument>
+      <argument>Hetic\SiteBundle\Entity\Article</argument>
+      <argument type="collection">
+        <argument key="title" type="collection">
+          <argument key="type">string</argument>
+          <argument key="include_in_all">true</argument>
+        </argument>
+        <argument key="content" type="collection">
+          <argument key="type">string</argument>
+          <argument key="include_in_all">true</argument>
+        </argument>
+        <argument key="nature" type="collection">
+          <argument key="type">integer</argument>
+          <argument key="include_in_all">true</argument>
+        </argument>
+        <argument key="isVisible" type="collection">
+          <argument key="type">boolean</argument>
+          <argument key="include_in_all">true</argument>
+        </argument>
+        <argument key="point" type="collection">
+          <argument key="type">integer</argument>
+          <argument key="include_in_all">true</argument>
+        </argument>
+        <argument key="datePublication" type="collection">
+          <argument key="type">date</argument>
+          <argument key="include_in_all">true</argument>
+        </argument>
+      </argument>
+    </service>
+    <service id="fos_elastica.provider.website.article" class="FOS\ElasticaBundle\Doctrine\ORM\Provider">
+      <tag name="fos_elastica.provider" index="website" type="article"/>
+      <argument type="service" id="fos_elastica.object_persister.website.article"/>
+      <argument>Hetic\SiteBundle\Entity\Article</argument>
+      <argument type="collection">
+        <argument key="query_builder_method">createIsActiveQueryBuilder</argument>
+        <argument key="batch_size">100</argument>
+        <argument key="clear_object_manager">true</argument>
+      </argument>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="fos_elastica.finder.website.article" class="FOS\ElasticaBundle\Finder\TransformedFinder">
+      <argument type="service">
+        <service class="Elastica\Type" factory-method="getType" factory-service="fos_elastica.index.website">
+          <argument>article</argument>
+        </service>
+      </argument>
+      <argument type="service">
+        <service class="FOS\ElasticaBundle\Doctrine\ORM\ElasticaToModelTransformer" public="false">
+          <tag name="fos_elastica.elastica_to_model_transformer" type="article" index="website"/>
+          <argument type="service" id="doctrine"/>
+          <argument>Hetic\SiteBundle\Entity\Article</argument>
+          <argument type="collection">
+            <argument key="hydrate">true</argument>
+            <argument key="identifier">id</argument>
+            <argument key="ignore_missing">false</argument>
+          </argument>
+          <call method="setPropertyAccessor">
+            <argument type="service" id="fos_elastica.property_accessor"/>
+          </call>
+        </service>
+      </argument>
+    </service>
+    <service id="fos_elastica.index.website.category" class="Elastica\Type" factory-method="getType" factory-service="fos_elastica.index.website">
+      <argument>category</argument>
+    </service>
+    <service id="fos_elastica.object_persister.website.category" class="FOS\ElasticaBundle\Persister\ObjectPersister">
+      <argument type="service">
+        <service class="Elastica\Type" factory-method="getType" factory-service="fos_elastica.index.website">
+          <argument>category</argument>
+        </service>
+      </argument>
+      <argument type="service">
+        <service class="FOS\ElasticaBundle\Transformer\ModelToElasticaAutoTransformer" public="false">
+          <argument type="collection">
+            <argument key="identifier">id</argument>
+          </argument>
+          <call method="setPropertyAccessor">
+            <argument type="service" id="fos_elastica.property_accessor"/>
+          </call>
+        </service>
+      </argument>
+      <argument>Hetic\SiteBundle\Entity\Category</argument>
+      <argument type="collection">
+        <argument key="name" type="collection">
+          <argument key="type">string</argument>
+          <argument key="include_in_all">true</argument>
+        </argument>
+        <argument key="description" type="collection">
+          <argument key="type">string</argument>
+          <argument key="include_in_all">true</argument>
+        </argument>
+      </argument>
+    </service>
+    <service id="fos_elastica.provider.website.category" class="FOS\ElasticaBundle\Doctrine\ORM\Provider">
+      <tag name="fos_elastica.provider" index="website" type="category"/>
+      <argument type="service" id="fos_elastica.object_persister.website.category"/>
+      <argument>Hetic\SiteBundle\Entity\Category</argument>
+      <argument type="collection">
+        <argument key="query_builder_method">getActiveCategoryQueryBuilder</argument>
+        <argument key="batch_size">100</argument>
+        <argument key="clear_object_manager">true</argument>
+      </argument>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="fos_elastica.finder.website.category" class="FOS\ElasticaBundle\Finder\TransformedFinder">
+      <argument type="service">
+        <service class="Elastica\Type" factory-method="getType" factory-service="fos_elastica.index.website">
+          <argument>category</argument>
+        </service>
+      </argument>
+      <argument type="service">
+        <service class="FOS\ElasticaBundle\Doctrine\ORM\ElasticaToModelTransformer" public="false">
+          <tag name="fos_elastica.elastica_to_model_transformer" type="category" index="website"/>
+          <argument type="service" id="doctrine"/>
+          <argument>Hetic\SiteBundle\Entity\Category</argument>
+          <argument type="collection">
+            <argument key="hydrate">true</argument>
+            <argument key="identifier">id</argument>
+            <argument key="ignore_missing">false</argument>
+          </argument>
+          <call method="setPropertyAccessor">
+            <argument type="service" id="fos_elastica.property_accessor"/>
+          </call>
+        </service>
+      </argument>
+    </service>
+    <service id="fos_elastica.index.website.tag" class="Elastica\Type" factory-method="getType" factory-service="fos_elastica.index.website">
+      <argument>tag</argument>
+    </service>
+    <service id="fos_elastica.object_persister.website.tag" class="FOS\ElasticaBundle\Persister\ObjectPersister">
+      <argument type="service">
+        <service class="Elastica\Type" factory-method="getType" factory-service="fos_elastica.index.website">
+          <argument>tag</argument>
+        </service>
+      </argument>
+      <argument type="service">
+        <service class="FOS\ElasticaBundle\Transformer\ModelToElasticaAutoTransformer" public="false">
+          <argument type="collection">
+            <argument key="identifier">id</argument>
+          </argument>
+          <call method="setPropertyAccessor">
+            <argument type="service" id="fos_elastica.property_accessor"/>
+          </call>
+        </service>
+      </argument>
+      <argument>Hetic\SiteBundle\Entity\Tag</argument>
+      <argument type="collection">
+        <argument key="word" type="collection">
+          <argument key="type">string</argument>
+          <argument key="include_in_all">true</argument>
+        </argument>
+      </argument>
+    </service>
+    <service id="fos_elastica.provider.website.tag" class="FOS\ElasticaBundle\Doctrine\ORM\Provider">
+      <tag name="fos_elastica.provider" index="website" type="tag"/>
+      <argument type="service" id="fos_elastica.object_persister.website.tag"/>
+      <argument>Hetic\SiteBundle\Entity\Tag</argument>
+      <argument type="collection">
+        <argument key="query_builder_method">getTags</argument>
+        <argument key="batch_size">100</argument>
+        <argument key="clear_object_manager">true</argument>
+      </argument>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="fos_elastica.finder.website.tag" class="FOS\ElasticaBundle\Finder\TransformedFinder">
+      <argument type="service">
+        <service class="Elastica\Type" factory-method="getType" factory-service="fos_elastica.index.website">
+          <argument>tag</argument>
+        </service>
+      </argument>
+      <argument type="service">
+        <service class="FOS\ElasticaBundle\Doctrine\ORM\ElasticaToModelTransformer" public="false">
+          <tag name="fos_elastica.elastica_to_model_transformer" type="tag" index="website"/>
+          <argument type="service" id="doctrine"/>
+          <argument>Hetic\SiteBundle\Entity\Tag</argument>
+          <argument type="collection">
+            <argument key="hydrate">true</argument>
+            <argument key="identifier">id</argument>
+            <argument key="ignore_missing">false</argument>
+          </argument>
+          <call method="setPropertyAccessor">
+            <argument type="service" id="fos_elastica.property_accessor"/>
+          </call>
+        </service>
+      </argument>
+    </service>
     <service id="web_profiler.controller.profiler" class="Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController">
       <argument type="service" id="router" on-invalid="null"/>
       <argument type="service" id="profiler" on-invalid="null"/>
@@ -3604,6 +4018,10 @@
         <argument key="data_collector.doctrine" type="collection">
           <argument>db</argument>
           <argument>DoctrineBundle:Collector:db</argument>
+        </argument>
+        <argument key="fos_elastica.data_collector" type="collection">
+          <argument>elastica</argument>
+          <argument>FOSElasticaBundle:Collector:elastica</argument>
         </argument>
       </argument>
       <argument>bottom</argument>
@@ -3719,6 +4137,18 @@
     </service>
     <service id="monolog.logger.doctrine" class="Symfony\Bridge\Monolog\Logger">
       <argument>doctrine</argument>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.chromephp"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.firephp"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.main"/>
+      </call>
+    </service>
+    <service id="monolog.logger.elastica" class="Symfony\Bridge\Monolog\Logger">
+      <argument>elastica</argument>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.chromephp"/>
       </call>
@@ -3849,6 +4279,10 @@
         <argument>KnpPaginator</argument>
       </call>
       <call method="addPath">
+        <argument>/home/boyer/hetic/vendor/friendsofsymfony/elastica-bundle/FOS/ElasticaBundle/Resources/views</argument>
+        <argument>FOSElastica</argument>
+      </call>
+      <call method="addPath">
         <argument>/home/boyer/hetic/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views</argument>
         <argument>WebProfiler</argument>
       </call>
@@ -3910,6 +4344,7 @@
                       <argument key="JMS\SecurityExtraBundle">/home/boyer/hetic/vendor/jms/security-extra-bundle/JMS/SecurityExtraBundle/Resources/config/serializer</argument>
                       <argument key="JMS\DiExtraBundle">/home/boyer/hetic/vendor/jms/di-extra-bundle/JMS/DiExtraBundle/Resources/config/serializer</argument>
                       <argument key="Knp\Bundle\PaginatorBundle">/home/boyer/hetic/vendor/knplabs/knp-paginator-bundle/Knp/Bundle/PaginatorBundle/Resources/config/serializer</argument>
+                      <argument key="FOS\ElasticaBundle">/home/boyer/hetic/vendor/friendsofsymfony/elastica-bundle/FOS/ElasticaBundle/Resources/config/serializer</argument>
                       <argument key="Symfony\Bundle\WebProfilerBundle">/home/boyer/hetic/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
                       <argument key="Sensio\Bundle\DistributionBundle">/home/boyer/hetic/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/config/serializer</argument>
                       <argument key="Sensio\Bundle\GeneratorBundle">/home/boyer/hetic/vendor/sensio/generator-bundle/Sensio/Bundle/GeneratorBundle/Resources/config/serializer</argument>
@@ -3938,6 +4373,7 @@
                       <argument key="JMS\SecurityExtraBundle">/home/boyer/hetic/vendor/jms/security-extra-bundle/JMS/SecurityExtraBundle/Resources/config/serializer</argument>
                       <argument key="JMS\DiExtraBundle">/home/boyer/hetic/vendor/jms/di-extra-bundle/JMS/DiExtraBundle/Resources/config/serializer</argument>
                       <argument key="Knp\Bundle\PaginatorBundle">/home/boyer/hetic/vendor/knplabs/knp-paginator-bundle/Knp/Bundle/PaginatorBundle/Resources/config/serializer</argument>
+                      <argument key="FOS\ElasticaBundle">/home/boyer/hetic/vendor/friendsofsymfony/elastica-bundle/FOS/ElasticaBundle/Resources/config/serializer</argument>
                       <argument key="Symfony\Bundle\WebProfilerBundle">/home/boyer/hetic/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
                       <argument key="Sensio\Bundle\DistributionBundle">/home/boyer/hetic/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/config/serializer</argument>
                       <argument key="Sensio\Bundle\GeneratorBundle">/home/boyer/hetic/vendor/sensio/generator-bundle/Sensio/Bundle/GeneratorBundle/Resources/config/serializer</argument>
@@ -3966,6 +4402,7 @@
                       <argument key="JMS\SecurityExtraBundle">/home/boyer/hetic/vendor/jms/security-extra-bundle/JMS/SecurityExtraBundle/Resources/config/serializer</argument>
                       <argument key="JMS\DiExtraBundle">/home/boyer/hetic/vendor/jms/di-extra-bundle/JMS/DiExtraBundle/Resources/config/serializer</argument>
                       <argument key="Knp\Bundle\PaginatorBundle">/home/boyer/hetic/vendor/knplabs/knp-paginator-bundle/Knp/Bundle/PaginatorBundle/Resources/config/serializer</argument>
+                      <argument key="FOS\ElasticaBundle">/home/boyer/hetic/vendor/friendsofsymfony/elastica-bundle/FOS/ElasticaBundle/Resources/config/serializer</argument>
                       <argument key="Symfony\Bundle\WebProfilerBundle">/home/boyer/hetic/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
                       <argument key="Sensio\Bundle\DistributionBundle">/home/boyer/hetic/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/config/serializer</argument>
                       <argument key="Sensio\Bundle\GeneratorBundle">/home/boyer/hetic/vendor/sensio/generator-bundle/Sensio/Bundle/GeneratorBundle/Resources/config/serializer</argument>
@@ -4120,6 +4557,9 @@
     <service id="fos_rest.templating" alias="templating"/>
     <service id="fos_rest.serializer" alias="jms_serializer"/>
     <service id="fos_rest.inflector" alias="fos_rest.inflector.doctrine"/>
+    <service id="fos_elastica.client" alias="fos_elastica.client.default"/>
+    <service id="fos_elastica.index" alias="fos_elastica.index.website"/>
+    <service id="fos_elastica.manager" alias="fos_elastica.manager.orm"/>
     <service id="sensio.distribution.webconfigurator" alias="sensio_distribution.webconfigurator"/>
   </services>
 </container>

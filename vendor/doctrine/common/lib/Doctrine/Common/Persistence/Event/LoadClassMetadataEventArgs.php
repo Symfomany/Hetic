@@ -13,7 +13,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * This software consists of voluntary contributions made by many individuals
- * and is licensed under the MIT license. For more information, see
+ * and is licensed under the LGPL. For more information, see
  * <http://www.doctrine-project.org>.
  */
 
@@ -44,7 +44,7 @@ class LoadClassMetadataEventArgs extends EventArgs
     /**
      * Constructor.
      *
-     * @param ClassMetadata $classMetadata
+     * @param ClasseMetadata $classMetadata
      * @param ObjectManager $objectManager
      */
     public function __construct(ClassMetadata $classMetadata, ObjectManager $objectManager)
@@ -54,7 +54,7 @@ class LoadClassMetadataEventArgs extends EventArgs
     }
 
     /**
-     * Retrieves the associated ClassMetadata.
+     * Retrieve associated ClassMetadata.
      *
      * @return ClassMetadata
      */
@@ -64,7 +64,7 @@ class LoadClassMetadataEventArgs extends EventArgs
     }
 
     /**
-     * Retrieves the associated ObjectManager.
+     * Retrieve associated ObjectManager.
      *
      * @return ObjectManager
      */
@@ -73,3 +73,4 @@ class LoadClassMetadataEventArgs extends EventArgs
         return $this->objectManager;
     }
 }
+

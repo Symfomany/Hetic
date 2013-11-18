@@ -125,7 +125,6 @@ class SchemaManagerFunctionalTestCase extends \Doctrine\Tests\DbalFunctionalTest
         $table->addColumn('baz1', 'datetime');
         $table->addColumn('baz2', 'time');
         $table->addColumn('baz3', 'date');
-        $table->setPrimaryKey(array('id'));
 
         return $table;
     }
@@ -439,10 +438,6 @@ class SchemaManagerFunctionalTestCase extends \Doctrine\Tests\DbalFunctionalTest
 
     public function testCreateAndListViews()
     {
-        if (!$this->_sm->getDatabasePlatform()->supportsViews()) {
-            $this->markTestSkipped('Views is not supported by this platform.');
-        }
-
         $this->createTestTable('view_test_table');
 
         $name = "doctrine_test_view";

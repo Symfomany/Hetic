@@ -17,7 +17,7 @@ abstract class OrmTestCase extends DoctrineTestCase
 
     /**
      * @param array $paths
-     * @return \Doctrine\ORM\Mapping\Driver\AnnotationDriver
+     * @return \Doctrine\Common\Annotations\AnnotationReader
      */
     protected function createAnnotationDriver($paths = array(), $alias = null)
     {
@@ -76,7 +76,7 @@ abstract class OrmTestCase extends DoctrineTestCase
         $config = new \Doctrine\ORM\Configuration();
 
         $config->setMetadataCacheImpl($metadataCache);
-        $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver(array(), true));
+        $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver());
         $config->setQueryCacheImpl(self::getSharedQueryCacheImpl());
         $config->setProxyDir(__DIR__ . '/Proxies');
         $config->setProxyNamespace('Doctrine\Tests\Proxies');
@@ -113,5 +113,10 @@ abstract class OrmTestCase extends DoctrineTestCase
         }
 
         return self::$_queryCacheImpl;
+    }
+
+    public function assertSQLEquals($expectedSQL, $actualSQL, $failureMessage = null)
+    {
+        return $this->assertEquals(strtolower($expectedSQL), strtolower($actualSQL), $failureMessage);
     }
 }

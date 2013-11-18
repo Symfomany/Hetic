@@ -31,8 +31,6 @@ class ReposArticleTest extends \Codeception\TestCase\Test
     {
         $container = $this->getModule('Symfony2')->container;
         $em = $container->get('doctrine')->getManager();
-        $articles = $em->getRepository('HeticSiteBundle:Article')->getArticlesByCategory(2);
-        $this->assertEquals(1, count($articles));
         $articles = $em->getRepository('HeticSiteBundle:Article')->getArticlesByCategory(4);
         $this->assertEquals(2, count($articles));
 
@@ -43,8 +41,11 @@ class ReposArticleTest extends \Codeception\TestCase\Test
     {
         $container = $this->getModule('Symfony2')->container;
         $em = $container->get('doctrine')->getManager();
+
         $articles = $em->getRepository('HeticSiteBundle:Article')->getArticlesByTags('sex-appeal');
         $this->assertEquals(0, count($articles));
+        $markdown = new MarkdownParser();
+        $html = $markdown->parse("**Hello world**");
         $articles = $em->getRepository('HeticSiteBundle:Article')->getArticlesByTags('Duke Nukem');
         $this->assertEquals(0, count($articles));
         $articles = $em->getRepository('HeticSiteBundle:Article')->getArticlesByTags('800 millions d’euros');

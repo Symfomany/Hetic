@@ -13,9 +13,9 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * This software consists of voluntary contributions made by many individuals
- * and is licensed under the MIT license. For more information, see
+ * and is licensed under the LGPL. For more information, see
  * <http://www.doctrine-project.org>.
- */
+*/
 
 namespace Doctrine\Common\Persistence\Mapping\Driver;
 
@@ -26,8 +26,8 @@ use Doctrine\Common\Persistence\Mapping\MappingException;
  * to the DefaultFileLocator. By assuming paths only contain entities of a certain
  * namespace the mapping files consists of the short classname only.
  *
- * @author  Fabien Potencier <fabien@symfony.com>
- * @author  Benjamin Eberlei <kontakt@beberlei.de>
+ * @author Fabien Potencier <fabien@symfony.com>
+ * @author Benjamin Eberlei <kontakt@beberlei.de>
  * @license MIT
  */
 class SymfonyFileLocator implements FileLocator
@@ -49,40 +49,22 @@ class SymfonyFileLocator implements FileLocator
     /**
      * File extension that is searched for.
      *
-     * @var string|null
+     * @var string
      */
     protected $fileExtension;
 
-    /**
-     * Constructor.
-     *
-     * @param array       $prefixes
-     * @param string|null $fileExtension
-     */
     public function __construct(array $prefixes, $fileExtension = null)
     {
         $this->addNamespacePrefixes($prefixes);
         $this->fileExtension = $fileExtension;
     }
 
-    /**
-     * Adds Namespace Prefixes.
-     *
-     * @param array $prefixes
-     *
-     * @return void
-     */
     public function addNamespacePrefixes(array $prefixes)
     {
         $this->prefixes = array_merge($this->prefixes, $prefixes);
         $this->paths = array_merge($this->paths, array_keys($prefixes));
     }
 
-    /**
-     * Gets Namespace Prefixes.
-     *
-     * @return array
-     */
     public function getNamespacePrefixes()
     {
         return $this->prefixes;
@@ -105,10 +87,9 @@ class SymfonyFileLocator implements FileLocator
     }
 
     /**
-     * Sets the file extension used to look for mapping files under.
+     * Set the file extension used to look for mapping files under
      *
-     * @param string $fileExtension The file extension to set.
-     *
+     * @param string $fileExtension The file extension to set
      * @return void
      */
     public function setFileExtension($fileExtension)
