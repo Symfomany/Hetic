@@ -211,9 +211,9 @@ class __TwigTemplate_f0c417d6e1850f1569d02579b47a4514156fb5d067e72eb7b7af13d2b92
         echo "
         ";
         // line 110
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "isShop"), 'widget', array("attr" => array("class" => "rad pull-left")));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "isVisible"), 'widget', array("attr" => array("class" => "rad pull-left")));
         echo "
-        <p><label for=\"isShop\" class=\"pull-left\">Ce produit est ligne</label></p>
+        <p><label for=\"isVisible\" class=\"pull-left\">Ce produit est ligne</label></p>
 
         <div class=\"clear\"></div>
     </div>

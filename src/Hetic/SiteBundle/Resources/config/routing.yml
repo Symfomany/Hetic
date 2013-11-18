@@ -54,6 +54,10 @@ hetic_site_commands:
   pattern:  /backend/commandes
   defaults: { _controller: HeticSiteBundle:Main:commands }
 
+hetic_site_famille:
+  pattern:  /backend/famille/{id}
+  defaults: { _controller: HeticSiteBundle:Category:famille }
+
 hetic_site_familles:
   pattern:  /backend/familles
   defaults: { _controller: HeticSiteBundle:Category:familles }

@@ -21,6 +21,7 @@ class Produit
         $this->dateCreated = new \Datetime('now');
         $this->dateUpdated = new \Datetime('now');
         $this->isShop = true;
+        $this->isVisible = true;
     }
     /**
      * @var integer

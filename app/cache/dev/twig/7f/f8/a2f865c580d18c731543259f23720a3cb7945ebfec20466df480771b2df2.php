@@ -402,10 +402,12 @@ class __TwigTemplate_7ff8a2f865c580d18c731543259f23720a3cb7945ebfec20466df480771
         echo "
             <hr class=\"fancy-line\" />
             <h3>Catégorie</h3>
-            <p>Catégorie principale : ";
+            <p>Catégorie principale : <a href=\"";
         // line 179
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("hetic_site_category", array("id" => $this->getAttribute($this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "category"), "id"))), "html", null, true);
+        echo "\"> ";
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "category"), "name"), "html", null, true);
-        echo "</p>
+        echo "</a></p>
             <p>Catégories secondaire: </p>
             <ul>
             ";
@@ -415,9 +417,11 @@ class __TwigTemplate_7ff8a2f865c580d18c731543259f23720a3cb7945ebfec20466df480771
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["cat"]) {
             // line 183
-            echo "                   <li>";
+            echo "                   <li><a href=\"";
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("hetic_site_category", array("id" => $this->getAttribute((isset($context["cat"]) ? $context["cat"] : $this->getContext($context, "cat")), "id"))), "html", null, true);
+            echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["cat"]) ? $context["cat"] : $this->getContext($context, "cat")), "name"), "html", null, true);
-            echo "</li>
+            echo "</a></li>
             ";
             $context['_iterated'] = true;
         }
@@ -434,15 +438,45 @@ class __TwigTemplate_7ff8a2f865c580d18c731543259f23720a3cb7945ebfec20466df480771
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 190
         echo "            </ul>
+            <p>Familles: </p>
+            <ul>
+            ";
+        // line 193
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "familles"));
+        $context['_iterated'] = false;
+        foreach ($context['_seq'] as $context["_key"] => $context["cat"]) {
+            // line 194
+            echo "                   <li><a href=\"";
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("hetic_site_famille", array("id" => $this->getAttribute((isset($context["cat"]) ? $context["cat"] : $this->getContext($context, "cat")), "id"))), "html", null, true);
+            echo "\">";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["cat"]) ? $context["cat"] : $this->getContext($context, "cat")), "name"), "html", null, true);
+            echo "</a></li>
+            ";
+            $context['_iterated'] = true;
+        }
+        if (!$context['_iterated']) {
+            // line 196
+            echo "                <div class=\"alert alert-dismissable alert-warning\">
+                    <button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>
+                    <i class=\"glyphicon glyphicon-warning-sign\"></i> Aucune famille pour le moment
+                </div>
+            ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['cat'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 201
+        echo "            </ul>
 
             <p>Mots clefs: </p>
             ";
-        // line 193
+        // line 204
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "tags"));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["tag"]) {
-            // line 194
+            // line 205
             echo "            <h4><span class=\"label label-primary\">";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["tag"]) ? $context["tag"] : $this->getContext($context, "tag")), "word"), "html", null, true);
             echo "</span></h4>
@@ -450,7 +484,7 @@ class __TwigTemplate_7ff8a2f865c580d18c731543259f23720a3cb7945ebfec20466df480771
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 196
+            // line 207
             echo "                <div class=\"alert alert-dismissable alert-warning\">
                     <button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>
                     <i class=\"glyphicon glyphicon-warning-sign\"></i> Aucune tag pour le moment
@@ -460,7 +494,7 @@ class __TwigTemplate_7ff8a2f865c580d18c731543259f23720a3cb7945ebfec20466df480771
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['tag'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 201
+        // line 212
         echo "
 
             <hr class=\"fancy-line\" />
@@ -476,7 +510,7 @@ class __TwigTemplate_7ff8a2f865c580d18c731543259f23720a3cb7945ebfec20466df480771
                 </thead>
                 <tbody>
                     ";
-        // line 215
+        // line 226
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "metas"));
         $context['_iterated'] = false;
@@ -494,18 +528,18 @@ class __TwigTemplate_7ff8a2f865c580d18c731543259f23720a3cb7945ebfec20466df480771
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["meta"]) {
-            // line 216
+            // line 227
             echo "                        <tr>
                             <td>";
-            // line 217
+            // line 228
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["loop"]) ? $context["loop"] : $this->getContext($context, "loop")), "index"), "html", null, true);
             echo "</td>
                             <td><strong>";
-            // line 218
+            // line 229
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["meta"]) ? $context["meta"] : $this->getContext($context, "meta")), "title"), "html", null, true);
             echo "</strong></td>
                             <td>";
-            // line 219
+            // line 230
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["meta"]) ? $context["meta"] : $this->getContext($context, "meta")), "content"), "html", null, true);
             echo "</td>
                         </tr>
@@ -521,7 +555,7 @@ class __TwigTemplate_7ff8a2f865c580d18c731543259f23720a3cb7945ebfec20466df480771
             }
         }
         if (!$context['_iterated']) {
-            // line 222
+            // line 233
             echo "                        <tr>
                             <div class=\"alert alert-dismissable alert-warning\">
                                 <i class=\"glyphicon glyphicon-warning-sign\"></i> Aucune fiche pour le moment
@@ -532,12 +566,12 @@ class __TwigTemplate_7ff8a2f865c580d18c731543259f23720a3cb7945ebfec20466df480771
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['meta'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 228
+        // line 239
         echo "                </tbody>
             </table>
 
             <a href=\"";
-        // line 231
+        // line 242
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("hetic_site_edit_product", array("id" => $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "id"))), "html", null, true);
         echo "\" class=\"btn btn-primary\"><i
                         class=\"glyphicon glyphicon-pencil\"></i> Editer ce produit</a>
@@ -558,6 +592,6 @@ class __TwigTemplate_7ff8a2f865c580d18c731543259f23720a3cb7945ebfec20466df480771
 
     public function getDebugInfo()
     {
-        return array (  541 => 231,  536 => 228,  525 => 222,  509 => 219,  505 => 218,  501 => 217,  498 => 216,  480 => 215,  464 => 201,  454 => 196,  446 => 194,  441 => 193,  436 => 190,  426 => 185,  418 => 183,  413 => 182,  407 => 179,  402 => 176,  392 => 171,  380 => 164,  376 => 163,  372 => 161,  367 => 160,  363 => 158,  353 => 153,  343 => 147,  339 => 145,  333 => 143,  331 => 142,  327 => 141,  323 => 140,  319 => 138,  315 => 136,  309 => 134,  307 => 133,  303 => 131,  298 => 130,  294 => 128,  284 => 123,  278 => 121,  274 => 119,  272 => 118,  267 => 116,  263 => 115,  259 => 114,  254 => 113,  249 => 112,  242 => 108,  235 => 104,  225 => 97,  222 => 96,  215 => 92,  211 => 91,  208 => 90,  206 => 89,  202 => 87,  198 => 85,  194 => 83,  190 => 81,  186 => 79,  182 => 77,  178 => 75,  176 => 74,  171 => 71,  167 => 69,  163 => 67,  159 => 65,  157 => 64,  152 => 61,  148 => 59,  144 => 57,  140 => 55,  138 => 54,  131 => 50,  124 => 46,  117 => 42,  110 => 38,  103 => 34,  96 => 30,  92 => 28,  88 => 26,  84 => 24,  82 => 23,  77 => 21,  71 => 18,  65 => 15,  60 => 12,  57 => 11,  41 => 6,  37 => 5,  32 => 4,  29 => 3,);
+        return array (  575 => 242,  570 => 239,  559 => 233,  543 => 230,  539 => 229,  535 => 228,  532 => 227,  514 => 226,  498 => 212,  488 => 207,  480 => 205,  475 => 204,  470 => 201,  460 => 196,  450 => 194,  445 => 193,  440 => 190,  430 => 185,  420 => 183,  415 => 182,  407 => 179,  402 => 176,  392 => 171,  380 => 164,  376 => 163,  372 => 161,  367 => 160,  363 => 158,  353 => 153,  343 => 147,  339 => 145,  333 => 143,  331 => 142,  327 => 141,  323 => 140,  319 => 138,  315 => 136,  309 => 134,  307 => 133,  303 => 131,  298 => 130,  294 => 128,  284 => 123,  278 => 121,  274 => 119,  272 => 118,  267 => 116,  263 => 115,  259 => 114,  254 => 113,  249 => 112,  242 => 108,  235 => 104,  225 => 97,  222 => 96,  215 => 92,  211 => 91,  208 => 90,  206 => 89,  202 => 87,  198 => 85,  194 => 83,  190 => 81,  186 => 79,  182 => 77,  178 => 75,  176 => 74,  171 => 71,  167 => 69,  163 => 67,  159 => 65,  157 => 64,  152 => 61,  148 => 59,  144 => 57,  140 => 55,  138 => 54,  131 => 50,  124 => 46,  117 => 42,  110 => 38,  103 => 34,  96 => 30,  92 => 28,  88 => 26,  84 => 24,  82 => 23,  77 => 21,  71 => 18,  65 => 15,  60 => 12,  57 => 11,  41 => 6,  37 => 5,  32 => 4,  29 => 3,);
     }
 }

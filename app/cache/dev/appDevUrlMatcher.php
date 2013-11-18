@@ -219,6 +219,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             if (0 === strpos($pathinfo, '/backend/famille')) {
+                // hetic_site_famille
+                if (preg_match('#^/backend/famille/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'hetic_site_famille')), array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\CategoryController::familleAction',));
+                }
+
                 // hetic_site_familles
                 if ($pathinfo === '/backend/familles') {
                     return array (  '_controller' => 'Hetic\\SiteBundle\\Controller\\CategoryController::famillesAction',  '_route' => 'hetic_site_familles',);

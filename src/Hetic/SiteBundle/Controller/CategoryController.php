@@ -119,7 +119,7 @@ class CategoryController extends Controller
         return $this->render('HeticSiteBundle:Category:editfamille.html.twig',
             array(
                 'form' => $form->createView(),
-                'famille' =>$id,
+                'famille' => $id,
             )
         );
 
@@ -160,8 +160,8 @@ class CategoryController extends Controller
         $em = $this->getDoctrine()->getManager();
         $category = $id->getCategory();
         $oldsimage = $category->getImages();
-        if(!empty($oldsimage))
-            foreach($oldsimage as $img){
+        if (!empty($oldsimage))
+            foreach ($oldsimage as $img) {
                 $img->setCover(false);
                 $em->persist($img);
                 $em->flush();
@@ -226,7 +226,19 @@ class CategoryController extends Controller
             array(
                 'category' => $id,
             )
-        );    }
+        );
+    }
+
+
+    public function familleAction(Famille $id)
+    {
+
+        return $this->render('HeticSiteBundle:Category:famille.html.twig',
+            array(
+                'category' => $id,
+            )
+        );
+    }
 
 
     public function picturecategoryAction(Category $id)
@@ -285,7 +297,7 @@ class CategoryController extends Controller
         return $this->render('HeticSiteBundle:Category:editcategory.html.twig',
             array(
                 'form' => $form->createView(),
-                'category' =>$id,
+                'category' => $id,
             )
         );
 

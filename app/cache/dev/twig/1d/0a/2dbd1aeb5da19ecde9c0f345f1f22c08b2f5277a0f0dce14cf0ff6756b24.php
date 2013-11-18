@@ -90,15 +90,20 @@ class __TwigTemplate_1d0a2dbd1aeb5da19ecde9c0f345f1f22c08b2f5277a0f0dce14cf0ff67
             // line 28
             echo $this->getAttribute((isset($context["famille"]) ? $context["famille"] : $this->getContext($context, "famille")), "cover");
             echo "</p>
+                    <h4 class=\"pull-right\"><span class=\"label label-info\">";
+            // line 29
+            echo twig_escape_filter($this->env, _twig_default_filter(twig_length_filter($this->env, $this->getAttribute((isset($context["famille"]) ? $context["famille"] : $this->getContext($context, "famille")), "produits")), "0"), "html", null, true);
+            echo " produit(s)</span></h4>
+
                 </div>
             </div>
             ";
-            // line 31
+            // line 33
             if ((!$this->getAttribute((isset($context["loop"]) ? $context["loop"] : $this->getContext($context, "loop")), "last"))) {
-                // line 32
+                // line 34
                 echo "                <hr class=\"clear fancy-line\"/>";
             }
-            // line 33
+            // line 35
             echo "        ";
             ++$context['loop']['index0'];
             ++$context['loop']['index'];
@@ -112,15 +117,11 @@ class __TwigTemplate_1d0a2dbd1aeb5da19ecde9c0f345f1f22c08b2f5277a0f0dce14cf0ff67
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['famille'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 34
+        // line 36
         echo "        <a href=\"";
         echo $this->env->getExtension('routing')->getPath("hetic_site_add_famille");
         echo "\" class=\"btn btn-primary\"><i class=\"glyphicon glyphicon-plus\"></i> Ajouter une famille</a>
         ";
-        // line 36
-        echo "            ";
-        // line 37
-        echo "            ";
         // line 38
         echo "            ";
         // line 39
@@ -128,8 +129,12 @@ class __TwigTemplate_1d0a2dbd1aeb5da19ecde9c0f345f1f22c08b2f5277a0f0dce14cf0ff67
         // line 40
         echo "            ";
         // line 41
-        echo "        ";
+        echo "            ";
         // line 42
+        echo "            ";
+        // line 43
+        echo "        ";
+        // line 44
         echo "        <div class=\"clear\"></div>
     </div>
 ";
@@ -147,6 +152,6 @@ class __TwigTemplate_1d0a2dbd1aeb5da19ecde9c0f345f1f22c08b2f5277a0f0dce14cf0ff67
 
     public function getDebugInfo()
     {
-        return array (  133 => 42,  131 => 41,  129 => 40,  127 => 39,  125 => 38,  123 => 37,  121 => 36,  116 => 34,  102 => 33,  99 => 32,  97 => 31,  91 => 28,  88 => 27,  84 => 25,  80 => 23,  78 => 22,  74 => 21,  65 => 15,  61 => 14,  53 => 8,  36 => 7,  31 => 4,  28 => 3,);
+        return array (  138 => 44,  136 => 43,  134 => 42,  132 => 41,  130 => 40,  128 => 39,  126 => 38,  121 => 36,  107 => 35,  104 => 34,  102 => 33,  95 => 29,  91 => 28,  88 => 27,  84 => 25,  80 => 23,  78 => 22,  74 => 21,  65 => 15,  61 => 14,  53 => 8,  36 => 7,  31 => 4,  28 => 3,);
     }
 }

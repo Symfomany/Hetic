@@ -255,7 +255,7 @@
     <file path="$PROJECT_DIR$/app/cache/dev/twig/0f/ff/0786f80ceb4d69ce6ed6f2d6456863444c37ee1ab7260455b4022e7c0a42.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384608119110" ignored="false" />
     <file path="/main.coffee" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384709645994" ignored="false" />
     <file path="/green.css" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384612400670" ignored="false" />
-    <file path="/Produit.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384758098991" ignored="false" />
+    <file path="/Produit.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384766909912" ignored="false" />
     <file path="/products.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384765939904" ignored="false" />
     <file path="$PROJECT_DIR$/web/js/ckeditor/samples/plugins/wysiwygarea/fullpage.html" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384617588567" ignored="false" />
     <file path="$PROJECT_DIR$/web/js/ckeditor/samples/plugins/toolbar/toolbar.html" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384617588567" ignored="false" />
@@ -281,8 +281,8 @@
     <file path="$PROJECT_DIR$/web/css/3bb152f.css" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384680938170" ignored="false" />
     <file path="$PROJECT_DIR$/web/css/3bb152f_green_1.css" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384680938170" ignored="false" />
     <file path="/ProductController.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384732041294" ignored="false" />
-    <file path="/createproduct.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384758299958" ignored="false" />
-    <file path="/ProductType.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384705326751" ignored="false" />
+    <file path="/createproduct.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384766893409" ignored="false" />
+    <file path="/ProductType.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384766842748" ignored="false" />
     <file path="/Seo.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384696315748" ignored="false" />
     <file path="/SeoType.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384687843589" ignored="false" />
     <file path="/Meta.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384689409572" ignored="false" />
@@ -296,9 +296,9 @@
     <file path="/pictureproduct.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384726911825" ignored="false" />
     <file path="/ImageType.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384722029004" ignored="false" />
     <file path="/Image.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384722063344" ignored="false" />
-    <file path="/visualizeproduct.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384726406765" ignored="false" />
-    <file path="/categories.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384764409119" ignored="false" />
-    <file path="/CategoryController.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384763791270" ignored="false" />
+    <file path="/visualizeproduct.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384767349910" ignored="false" />
+    <file path="/categories.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384767565460" ignored="false" />
+    <file path="/CategoryController.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384767206712" ignored="false" />
     <file path="/ImageCategory.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384732337569" ignored="false" />
     <file path="/picturecategory.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384732228910" ignored="false" />
     <file path="/Famille.php" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384758265386" ignored="false" />
@@ -306,6 +306,7 @@
     <file path="/createfamille.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384759334069" ignored="false" />
     <file path="/editfamille.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384759349093" ignored="false" />
     <file path="/category.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384764256167" ignored="false" />
+    <file path="/famille.html.twig" changelist="c3710369-12cf-41a7-b768-bf355bf28dfd" time="1384767226139" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -325,82 +326,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CategoryController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Controller/CategoryController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="224" column="55" selection-start="6548" selection-end="6548" vertical-scroll-proportion="-8.25">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="categories.html.twig" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/categories.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="110" selection-start="2479" selection-end="2534" vertical-scroll-proportion="-24.75">
+            <state line="41" column="0" selection-start="2920" selection-end="2920" vertical-scroll-proportion="-8.448979">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routing.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/config/routing.yml">
+      <file leaf-file-name="familles.html.twig" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/familles.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="28" selection-start="1428" selection-end="1456" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="products.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Product/products.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="113" selection-start="2518" selection-end="2518" vertical-scroll-proportion="-16.5">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductType.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Form/ProductType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="category.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/category.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="80" selection-start="5828" selection-end="5828" vertical-scroll-proportion="-21.708334">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="editcategory.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/editcategory.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="layout.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/layout.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="64" selection-start="3086" selection-end="3086" vertical-scroll-proportion="-1.6122448">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="topmenu.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Default/topmenu.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="24" selection-start="5666" selection-end="5666" vertical-scroll-proportion="-8.875">
+            <state line="28" column="84" selection-start="1601" selection-end="1601" vertical-scroll-proportion="0.42420027">
               <folding />
             </state>
           </provider>
@@ -416,22 +354,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Entity/Famille.php" />
-        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Product/createproduct.html.twig" />
-        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Product/editproduct.html.twig" />
-        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Form/FamilleType.php" />
-        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/createfamille.html.twig" />
-        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/familles.html.twig" />
         <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/editfamille.html.twig" />
-        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/config/routing.yml" />
-        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Controller/CategoryController.php" />
         <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/category.html.twig" />
         <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/editcategory.html.twig" />
-        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/categories.html.twig" />
         <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Default/topmenu.html.twig" />
         <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/layout.html.twig" />
         <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/public/css/main.sass" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Form/ProductType.php" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Product/createproduct.html.twig" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Entity/Produit.php" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Controller/CategoryController.php" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/config/routing.yml" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Product/visualizeproduct.html.twig" />
         <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Product/products.html.twig" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/categories.html.twig" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/famille.html.twig" />
+        <option value="$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/familles.html.twig" />
       </list>
     </option>
   </component>
@@ -550,74 +488,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SiteBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Product" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SiteBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Default" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1096,67 +966,9 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Form/FamilleType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="978" selection-end="978" vertical-scroll-proportion="0.79310346">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/createfamille.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="77" selection-start="402" selection-end="402" vertical-scroll-proportion="-9.75">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/editfamille.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="79" selection-start="404" selection-end="404" vertical-scroll-proportion="-9.75">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/familles.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="65" selection-start="1139" selection-end="1144" vertical-scroll-proportion="-2.7755103">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Controller/CategoryController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="224" column="55" selection-start="6548" selection-end="6548" vertical-scroll-proportion="-8.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Entity/Category.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="41" selection-start="1309" selection-end="1314" vertical-scroll-proportion="0.41107872">
-          <folding>
-            <element signature="e#43#75#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Product/visualizeproduct.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="22" selection-start="4750" selection-end="5010" vertical-scroll-proportion="0.28366762">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/category.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="90" column="80" selection-start="5828" selection-end="5828" vertical-scroll-proportion="-21.708334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/categories.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="110" selection-start="2479" selection-end="2534" vertical-scroll-proportion="-24.75">
           <folding />
         </state>
       </provider>
@@ -1175,13 +987,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/public/css/main.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="238" column="20" selection-start="3965" selection-end="3965" vertical-scroll-proportion="0.7">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/editcategory.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -1189,23 +994,86 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/config/routing.yml">
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/public/css/main.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="28" selection-start="1428" selection-end="1456" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Product/products.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="113" selection-start="2518" selection-end="2518" vertical-scroll-proportion="-16.5">
+        <state line="107" column="0" selection-start="1716" selection-end="1716" vertical-scroll-proportion="-5.18">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Form/ProductType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="39" column="25" selection-start="2279" selection-end="2285" vertical-scroll-proportion="-10.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Entity/Produit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="235" column="16" selection-start="6092" selection-end="6096" vertical-scroll-proportion="-4.7959185">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Product/createproduct.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="103" column="41" selection-start="4516" selection-end="4516" vertical-scroll-proportion="-2.510204">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Entity/Famille.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="7" selection-start="387" selection-end="387" vertical-scroll-proportion="0.4180328">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Controller/CategoryController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="235" column="62" selection-start="6769" selection-end="6776" vertical-scroll-proportion="-10.510204">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="18" selection-start="1829" selection-end="1847" vertical-scroll-proportion="-14.84">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Product/visualizeproduct.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="193" column="101" selection-start="8629" selection-end="8629" vertical-scroll-proportion="-20.208334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Product/products.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="20" selection-start="3039" selection-end="3039" vertical-scroll-proportion="0.3504868">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/famille.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="0" selection-start="1759" selection-end="1759" vertical-scroll-proportion="-0.45201668">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/categories.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="0" selection-start="2920" selection-end="2920" vertical-scroll-proportion="-8.448979">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hetic/SiteBundle/Resources/views/Category/familles.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="84" selection-start="1601" selection-end="1601" vertical-scroll-proportion="0.42420027">
           <folding />
         </state>
       </provider>

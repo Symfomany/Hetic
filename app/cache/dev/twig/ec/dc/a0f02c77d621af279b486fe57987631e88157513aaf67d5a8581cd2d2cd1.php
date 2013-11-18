@@ -136,37 +136,38 @@ class __TwigTemplate_ecdca0f02c77d621af279b486fe57987631e88157513aaf67d5a8581cd2
             // line 43
             echo $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "cover");
             echo "</p>
+
                     <h3>
                         ";
-            // line 45
+            // line 46
             if (($this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "quantity") > 0)) {
-                // line 46
+                // line 47
                 echo "                            <span class=\"label label-success pull-left\">";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "quantity"), "html", null, true);
                 echo " en stock</span>
                         ";
             } else {
-                // line 48
+                // line 49
                 echo "                            <span class=\"label label-danger pull-left\">Rupture de stock</span>
                         ";
             }
-            // line 50
+            // line 51
             echo "                    </h3>
                     <p>
                         <a href=\"";
-            // line 52
+            // line 53
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("hetic_site_visualize_product", array("id" => $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "id"))), "html", null, true);
             echo "\" class=\"btn-xs btn btn-warning pull-right\"><i class=\"glyphicon glyphicon-search\"></i> Voir le produit</a>
                     </p>
                 </div>
             </div>
             ";
-            // line 56
+            // line 57
             if ((!$this->getAttribute((isset($context["loop"]) ? $context["loop"] : $this->getContext($context, "loop")), "last"))) {
-                // line 57
+                // line 58
                 echo "                <hr class=\"clear fancy-line\"/>";
             }
-            // line 58
+            // line 59
             echo "        ";
             ++$context['loop']['index0'];
             ++$context['loop']['index'];
@@ -180,13 +181,11 @@ class __TwigTemplate_ecdca0f02c77d621af279b486fe57987631e88157513aaf67d5a8581cd2
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['produit'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 59
+        // line 60
         echo "        <a href=\"";
         echo $this->env->getExtension('routing')->getPath("hetic_site_create_product");
         echo "\" class=\"btn btn-primary\"><i class=\"glyphicon glyphicon-plus\"></i> Ajouter un produit</a>
         ";
-        // line 61
-        echo "            ";
         // line 62
         echo "            ";
         // line 63
@@ -196,8 +195,10 @@ class __TwigTemplate_ecdca0f02c77d621af279b486fe57987631e88157513aaf67d5a8581cd2
         // line 65
         echo "            ";
         // line 66
-        echo "        ";
+        echo "            ";
         // line 67
+        echo "        ";
+        // line 68
         echo "        <div class=\"clear\"></div>
     </div>
 ";
@@ -215,6 +216,6 @@ class __TwigTemplate_ecdca0f02c77d621af279b486fe57987631e88157513aaf67d5a8581cd2
 
     public function getDebugInfo()
     {
-        return array (  201 => 67,  199 => 66,  197 => 65,  195 => 64,  193 => 63,  191 => 62,  189 => 61,  184 => 59,  170 => 58,  167 => 57,  165 => 56,  158 => 52,  154 => 50,  150 => 48,  144 => 46,  142 => 45,  137 => 43,  133 => 41,  129 => 39,  125 => 37,  123 => 36,  113 => 35,  108 => 32,  104 => 30,  98 => 28,  96 => 27,  88 => 22,  84 => 21,  80 => 20,  75 => 19,  69 => 17,  63 => 15,  61 => 14,  53 => 8,  36 => 7,  31 => 4,  28 => 3,);
+        return array (  202 => 68,  200 => 67,  198 => 66,  196 => 65,  194 => 64,  192 => 63,  190 => 62,  185 => 60,  171 => 59,  168 => 58,  166 => 57,  159 => 53,  155 => 51,  151 => 49,  145 => 47,  143 => 46,  137 => 43,  133 => 41,  129 => 39,  125 => 37,  123 => 36,  113 => 35,  108 => 32,  104 => 30,  98 => 28,  96 => 27,  88 => 22,  84 => 21,  80 => 20,  75 => 19,  69 => 17,  63 => 15,  61 => 14,  53 => 8,  36 => 7,  31 => 4,  28 => 3,);
     }
 }

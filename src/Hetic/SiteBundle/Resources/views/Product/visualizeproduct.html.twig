@@ -176,15 +176,26 @@
 
             <hr class="fancy-line" />
             <h3>Catégorie</h3>
-            <p>Catégorie principale : {{ produit.category.name }}</p>
+            <p>Catégorie principale : <a href="{{ path('hetic_site_category', {'id' : produit.category.id}) }}"> {{ produit.category.name }}</a></p>
             <p>Catégories secondaire: </p>
             <ul>
             {% for cat in produit.cates %}
-                   <li>{{ cat.name }}</li>
+                   <li><a href="{{ path('hetic_site_category', {'id' : cat.id}) }}">{{ cat.name }}</a></li>
             {% else %}
                 <div class="alert alert-dismissable alert-warning">
                     <button type="button" class="close" data-dismiss="alert">×</button>
                     <i class="glyphicon glyphicon-warning-sign"></i> Aucune catégorie secondaire pour le moment
+                </div>
+            {% endfor %}
+            </ul>
+            <p>Familles: </p>
+            <ul>
+            {% for cat in produit.familles %}
+                   <li><a href="{{ path('hetic_site_famille', {'id' : cat.id}) }}">{{ cat.name }}</a></li>
+            {% else %}
+                <div class="alert alert-dismissable alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <i class="glyphicon glyphicon-warning-sign"></i> Aucune famille pour le moment
                 </div>
             {% endfor %}
             </ul>

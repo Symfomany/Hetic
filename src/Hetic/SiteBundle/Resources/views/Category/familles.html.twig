@@ -26,6 +26,8 @@
                         {% endif %}
                     </h4>
                     <p>{{ famille.cover|raw }}</p>
+                    <h4 class="pull-right"><span class="label label-info">{{ famille.produits|length|default('0') }} produit(s)</span></h4>
+
                 </div>
             </div>
             {% if not loop.last %}

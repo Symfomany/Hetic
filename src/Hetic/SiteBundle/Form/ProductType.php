@@ -36,7 +36,7 @@ class ProductType extends AbstractType
                 'required' => true,
                 'expanded' => true
             ))
-            ->add('category',null, array('property' => 'optionLabel'))
+            ->add('category',null, array('required' => true,'property' => 'optionLabel'))
             ->add('isShop')
             ->add('accesories')
             ->add('cates',null, array('property' => 'optionLabel'))

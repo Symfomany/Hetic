@@ -130,15 +130,19 @@ class __TwigTemplate_c3fa16de649d7f026705978cc7a7e184058417f1f2d553912ae4fbc1604
             // line 41
             echo $this->getAttribute((isset($context["category"]) ? $context["category"] : $this->getContext($context, "category")), "cover");
             echo "</p>
+                    <h4 class=\"pull-right\"><span class=\"label label-info\">";
+            // line 42
+            echo twig_escape_filter($this->env, _twig_default_filter(twig_length_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : $this->getContext($context, "category")), "produits")), "0"), "html", null, true);
+            echo " produit(s)</span></h4>
                 </div>
             </div>
             ";
-            // line 44
+            // line 45
             if ((!$this->getAttribute((isset($context["loop"]) ? $context["loop"] : $this->getContext($context, "loop")), "last"))) {
-                // line 45
+                // line 46
                 echo "                <hr class=\"clear fancy-line\"/>";
             }
-            // line 46
+            // line 47
             echo "        ";
             ++$context['loop']['index0'];
             ++$context['loop']['index'];
@@ -152,13 +156,11 @@ class __TwigTemplate_c3fa16de649d7f026705978cc7a7e184058417f1f2d553912ae4fbc1604
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 47
+        // line 48
         echo "        <a href=\"";
         echo $this->env->getExtension('routing')->getPath("hetic_site_add_category");
         echo "\" class=\"btn btn-primary\"><i class=\"glyphicon glyphicon-plus\"></i> Ajouter une catégorie</a>
         ";
-        // line 49
-        echo "            ";
         // line 50
         echo "            ";
         // line 51
@@ -168,8 +170,10 @@ class __TwigTemplate_c3fa16de649d7f026705978cc7a7e184058417f1f2d553912ae4fbc1604
         // line 53
         echo "            ";
         // line 54
-        echo "        ";
+        echo "            ";
         // line 55
+        echo "        ";
+        // line 56
         echo "        <div class=\"clear\"></div>
     </div>
 ";
@@ -187,6 +191,6 @@ class __TwigTemplate_c3fa16de649d7f026705978cc7a7e184058417f1f2d553912ae4fbc1604
 
     public function getDebugInfo()
     {
-        return array (  173 => 55,  171 => 54,  169 => 53,  167 => 52,  165 => 51,  163 => 50,  161 => 49,  156 => 47,  142 => 46,  139 => 45,  137 => 44,  131 => 41,  128 => 40,  124 => 38,  120 => 36,  118 => 35,  112 => 34,  107 => 31,  103 => 29,  97 => 27,  95 => 26,  88 => 22,  84 => 21,  80 => 20,  75 => 19,  69 => 17,  63 => 15,  61 => 14,  53 => 8,  36 => 7,  31 => 4,  28 => 3,);
+        return array (  177 => 56,  175 => 55,  173 => 54,  171 => 53,  169 => 52,  167 => 51,  165 => 50,  160 => 48,  146 => 47,  143 => 46,  141 => 45,  135 => 42,  131 => 41,  128 => 40,  124 => 38,  120 => 36,  118 => 35,  112 => 34,  107 => 31,  103 => 29,  97 => 27,  95 => 26,  88 => 22,  84 => 21,  80 => 20,  75 => 19,  69 => 17,  63 => 15,  61 => 14,  53 => 8,  36 => 7,  31 => 4,  28 => 3,);
     }
 }
